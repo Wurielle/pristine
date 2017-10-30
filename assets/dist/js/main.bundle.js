@@ -16785,7 +16785,7 @@ window._ = __WEBPACK_IMPORTED_MODULE_6_underscore__;
 window.backbone = __WEBPACK_IMPORTED_MODULE_5_backbone__;
 // JS
 __WEBPACK_IMPORTED_MODULE_4_jquery__(function () {
-    console.log('app ready');
+    console.log('App Ready');
     __WEBPACK_IMPORTED_MODULE_4_jquery__("body").css({ 'background-color': '#eaeaea' });
 });
 

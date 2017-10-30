@@ -23,6 +23,6 @@ window.backbone = backbone;
 
 // JS
 $(function() {
-    console.log('app ready');
+    console.log('App Ready');
     $("body").css({'background-color': '#eaeaea'});
 });
