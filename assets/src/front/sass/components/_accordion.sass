@@ -1,0 +1,15 @@
+.accordion 
+    .accordion-item
+        .accordion-head
+            i
+                transition: transform 0.2s ease-in-out
+        .accordion-body
+            // height: 0
+            display: none
+            // transition: height 0.75s ease-in-out
+        &.active
+            &>.accordion-head
+                i.accordion-arrow
+                    transform: rotate(90deg)
+        //     &>.accordion-body
+        //         height: auto

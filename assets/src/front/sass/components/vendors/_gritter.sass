@@ -1,0 +1,140 @@
+/* the norm */
+#gritter-notice-wrapper
+    position: fixed
+    top: 78px+ $vs
+    right: $gutter
+    width: 290px
+    z-index: 9998
+    // background-color: white
+    // border: 1px solid $border-color
+
+#gritter-notice-wrapper.top-left
+    left:  20px
+    right:  auto
+
+#gritter-notice-wrapper.bottom-right
+    top:  auto
+    left:  auto
+    bottom:  20px
+    right:  20px
+
+#gritter-notice-wrapper.bottom-left
+    top:  auto
+    right:  auto
+    bottom:  20px
+    left:  20px
+
+.gritter-item-wrapper
+    position: relative
+    margin: 0 0 $vs 0
+    background-color: white
+    border: 1px solid $border-color
+    border-radius: $border-radius
+    // background: url('../images/ie-spacer.gif') /* ie7/8 fix */
+.gritter-top
+    // background: url(../images/gritter.png) no-repeat left -30px
+    // height: 10px
+
+.hover .gritter-top
+    background-position: right -30px
+
+.gritter-bottom
+    // background: url(../images/gritter.png) no-repeat left bottom
+    // height: 8px
+    margin: 0
+
+.hover .gritter-bottom
+    background-position:  bottom right
+
+.gritter-item
+    display: block
+    // background: url(../images/gritter.png) no-repeat left -40px
+    // color: #eee
+    padding: $vs $gutter
+    font-size:  11px
+    font-family: verdana
+
+.hover .gritter-item
+    background-position: right -40px
+
+.gritter-item p
+    padding: 0
+    margin: 0
+    word-wrap: break-word
+    max-height: 250px
+    overflow: auto
+
+.gritter-close
+    display: inline!important
+    position: absolute
+    top: 8px
+    right: $gutter
+    // background: url(../images/gritter.png) no-repeat left top
+    cursor: pointer
+    width: 2*$gutter
+    height: 2*$vs
+    text-indent: -9999em
+    color: $font-color
+    margin: 0
+    @extend .button
+    @extend .button.ghost
+    @extend .button.round
+    &::before
+        content: "\F129"
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        text-indent: initial
+        text-align: center
+        line-height: 2*$vs - 2px
+        display: inline-block
+        font-family: "Ionicons"
+        speak: none
+        font-style: normal
+        font-weight: normal
+        font-variant: normal
+        text-transform: none
+        text-rendering: auto
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+
+.gritter-title
+    font-size: 1rem
+    font-weight: 600
+    // letter-spacing: 0.1rem
+    line-height: 16px
+    padding: 0 2*$gutter 10px 0
+    display: block
+    text-transform: uppercase
+    // text-shadow: 1px 1px 0 #000
+.gritter-no-message
+    p
+        display: none
+    .gritter-title
+        padding: 0 2*$gutter 0 0
+
+.gritter-image
+    width: 48px
+    height: 48px
+    float: left
+
+.gritter-with-image,
+.gritter-without-image
+    padding: 0
+
+.gritter-with-image
+    width: 220px
+    float: right
+
+/* for the light (white) version of the gritter notice */
+.gritter-light .gritter-item,
+.gritter-light .gritter-bottom,
+.gritter-light .gritter-top,
+.gritter-light .gritter-close
+    // background-image:  url(../images/gritter-light.png)
+    color:  #222
+
+.gritter-light .gritter-title
+    text-shadow:  none

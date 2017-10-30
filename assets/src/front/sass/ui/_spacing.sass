@@ -1,0 +1,148 @@
+// Variables--------------------------------------------------------------------
+$spacing-button-margin: 0 0 1.5rem 0
+$spacing-input-margin: 0 0 1.5rem 0
+$spacing-misc-margin: 0 0 1.5rem 0
+$small-spacing: 4px
+$spacing: 15px
+$big-spacing: 3*$spacing
+$vs: $gutter
+$xs-vs: 0 0 $gutter 0
+$sm-vs: 0 0 $gutter 0
+$md-vs: 0 0 $gutter 0
+$lg-vs: 0 0 $gutter 0
+// Spacing ---------------------------------------------------------------------
+button,
+.button,
+.toggle,
+span.select2
+    margin: $spacing-button-margin
+    &:last-child
+        margin-bottom: 0
+input,
+textarea,
+select,
+fieldset
+    margin: $spacing-input-margin
+    &:last-child
+        margin-bottom: 0
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form
+    margin: $spacing-misc-margin
+    &:last-child
+        margin-bottom: 0
+// margins and paddings
+.nm
+    margin: 0!important
+.nmt
+    margin-top: 0!important
+.nmr
+    margin-right: 0!important
+.nmb
+    margin-bottom: 0!important
+.nml
+    margin-left: 0!important
+.np
+    padding: 0!important
+.npt
+    padding-top: 0!important
+.npr
+    padding-right: 0!important
+.npb
+    padding-bottom: 0!important
+.npl
+    padding-left: 0!important
+.m
+    margin-left: $spacing!important
+.mt
+    margin-top: $spacing!important
+.mr
+    margin-right: $spacing!important
+.mb
+    margin-bottom: $spacing!important
+.ml
+    margin-left: $spacing!important
+.p
+    padding: $spacing!important
+.pt
+    padding-top: $spacing!important
+.pr
+    padding-right: $spacing!important
+.pb
+    padding-bottom: $spacing!important
+.pl
+    padding-left: $spacing!important
+.m-
+    margin-left: $small-spacing!important
+.mt-
+    margin-top: $small-spacing!important
+.mr-
+    margin-right: $small-spacing!important
+.mb-
+    margin-bottom: $small-spacing!important
+.ml-
+    margin-left: $small-spacing!important
+.p-
+    padding: $small-spacing!important
+.pt-
+    padding-top: $small-spacing!important
+.pr-
+    padding-right: $small-spacing!important
+.pb-
+    padding-bottom: $small-spacing!important
+.pl-
+    padding-left: $small-spacing!important
+.m\+
+    margin-left: $big-spacing!important
+.mt\+
+    margin-top: $big-spacing!important
+.mr\+
+    margin-right: $big-spacing!important
+.mb\+
+    margin-bottom: $big-spacing!important
+.ml\+
+    margin-left: $big-spacing!important
+.p\+
+    padding: $big-spacing!important
+.pt\+
+    padding-top: $big-spacing!important
+.pr\+
+    padding-right: $big-spacing!important
+.pb\+
+    padding-bottom: $big-spacing!important
+.pl\+
+    padding-left: $big-spacing!important
+
+// vertical Spacing
+.vs
+    margin: 0 0 $vs 0
+
+@media (min-width: $lg)
+    .lg-vs
+        margin: $lg-vs
+    .lg-novs
+        margin: 0
+
+@media (min-width: $md)
+    .md-vs
+        margin: $md-vs
+    .md-novs
+        margin: 0
+
+@media (min-width: $sm)
+    .sm-vs
+        margin: $sm-vs
+    .sm-novs
+        margin: 0
+
+@media (min-width: $xs)
+    .xs-vs
+        margin: $xs-vs
+    .xs-vs
+        margin: 0

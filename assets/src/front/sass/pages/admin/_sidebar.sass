@@ -1,0 +1,108 @@
+// Variables -------------------------------------------------------------------
+$sidebar-width: 250px
+$save-height: 46px
+// Code ------------------------------------------------------------------------
+#sidebar
+    overflow: hidden
+    width: $sidebar-width
+    height: 100vh
+    position: fixed
+    background-color: $bg-menu-color
+    color: white
+    // overflow: auto
+    z-index: 9999
+    // padding-top: $header-height
+    transform: translateX(0%)
+    transition: 0.5s transform cubic-bezier(0.165, 0.84, 0.44, 1)
+    @media (max-width: $sm)
+        transform: translateX(-100%)
+    &.opened
+        transform: translateX(0%)
+    .brand
+        height: $header-height
+        position: relative
+        line-height: $header-height
+        padding: 5px 30px
+        text-align: center
+        border-bottom: 1px solid $border-color-transparent
+        .brand-logo
+            height: 100%
+            width: 100%
+            display: inline-block
+            background-size: contain
+            background-position: center
+            background-repeat: no-repeat
+    .sidebar-wrapper
+        height: -webkit-calc(100vh - #{$header-height} - #{$save-height})
+        height: calc(100vh - #{$header-height} - #{$save-height})
+        &>ul.menu
+            height: 100%
+            overflow-y: scroll
+            overflow-x: hidden
+            float: left
+            position: relative
+            &>li
+                width: $sidebar-width
+                a,
+                &>span
+                    color: white
+                    display: block
+                    padding: 15px 30px
+                    font-size: $font-size-smallest
+                    text-transform: uppercase
+                &>span
+                    font-weight: 600
+                    color: $font-color-dark
+                &>a
+                    &:hover
+                        background-color: lighten($bg-menu-color, 1%)
+                &>ul
+                    background-color: lighten(#1C1F1F, 4%)
+                    overflow: hidden
+                    li
+                        a
+                            &:hover
+                                background-color: lighten($bg-menu-color, 5%)
+                    ul
+                        padding-left: $gutter
+        ul
+            margin: 0
+            list-style: none
+            position: relative
+            li
+                margin: 0
+                a
+                    height: 45px
+                    line-height: 15px
+        &>ul.menu
+            &>li
+    footer
+        border-top: 1px solid $border-color-transparent
+        height: 46px
+        line-height: 45px
+        position: relative
+        ul
+            height: 100%
+            text-align: center
+            li
+                height: 100%
+                &:after
+                    content: '\2022'
+                    display: inline-block
+                    padding-left: 3px
+                &:last-child
+                    &:after
+                        content: ''
+                a
+                    padding: 3px
+                    font-size: $font-size-smallest
+                    text-transform: uppercase
+                    color: $font-color-dark
+    .ps-scrollbar-y-rail
+        width: 4px!important
+        background-color: transparent!important
+        .ps-scrollbar-y
+            background-color: $font-color-dark
+            width: 4px!important
+            border-radius: 0
+            right: 0

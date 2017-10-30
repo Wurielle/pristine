@@ -1,0 +1,98 @@
+// Variables -------------------------------------------------------------------
+// Breakpoints
+$xxs: 480px
+$xs: 640px
+$sm: 768px
+$md: 1000px
+$lg: 1200px
+
+//gutters
+$gutter: 15px
+
+// columns
+$columns: 12
+
+// Grid ------------------------------------------------------------------------
+.container
+    position: relative
+    width: 100%
+    max-width: $lg
+    margin: 0 auto
+    padding-left: $gutter
+    padding-right: $gutter
+.container-fluid
+    margin-right: auto
+    margin-left: auto
+    padding-left: $gutter
+    padding-right: $gutter
+
+.row
+    margin-right: -$gutter
+    margin-left: -$gutter
+    &.no-float
+        word-spacing: -.3em
+        &>.col
+            float: none
+            display: inline-block
+            vertical-align: top
+        &>*
+            word-spacing: initial
+.col,
+.cols,
+.column,
+.columns,
+[class^="col-"]
+    width: 100%
+    float: left
+    padding-left: $gutter
+    padding-right: $gutter
+
+// Columns
+@for $i from $columns through 1
+    .#{min}-#{$i}
+        width: ($i/$columns)*100%
+
+@media (min-width: $xs)
+    @for $i from $columns through 1
+        .#{xs}-#{$i}
+            width: ($i/$columns)*100%
+
+@media (min-width: $sm)
+    @for $i from $columns through 1
+        .#{sm}-#{$i}
+            width: ($i/$columns)*100%
+
+@media (min-width: $md)
+    @for $i from $columns through 1
+        .#{md}-#{$i}
+            width: ($i/$columns)*100%
+
+@media (min-width: $lg)
+    @for $i from $columns through 1
+        .#{lg}-#{$i}
+            width: ($i/$columns)*100%
+
+// Offsets
+@for $i from $columns through 0
+    .#{min}-off-#{$i}
+        margin-left: ($i/$columns)*100%
+
+@media (min-width: $xs)
+    @for $i from $columns through 0
+        .#{xs}-off-#{$i}
+            margin-left: ($i/$columns)*100%
+
+@media (min-width: $sm)
+    @for $i from $columns through 0
+        .#{sm}-off-#{$i}
+            margin-left: ($i/$columns)*100%
+
+@media (min-width: $md)
+    @for $i from $columns through 0
+        .#{md}-off-#{$i}
+            margin-left: ($i/$columns)*100%
+
+@media (min-width: $lg)
+    @for $i from $columns through 0
+        .#{lg}-off-#{$i}
+            margin-left: ($i/$columns)*100%

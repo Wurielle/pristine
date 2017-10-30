@@ -1,0 +1,37 @@
+// Variables--------------------------------------------------------------------
+
+// Utilities -------------------------------------------------------------------
+.u-full-width
+    width: 100%
+    box-sizing: border-box
+.u-max-full-width
+    max-width: 100%
+    box-sizing: border-box
+.pull-right
+    float: right!important
+.pull-left
+    float: left!important
+.disable-scrollable
+    background-color: $black
+    cursor: pointer
+    .scrollable
+        display: block
+        pointer-events: none
+        position: relative /* IE needs a position other than static */
+        opacity: 0.75
+        transition: opacity 0.3s cubic-bezier(.165,.84,.44,1)
+        &.active
+            opacity: 1
+            pointer-events: auto
+.group
+    white-space: nowrap
+.relative
+    position: relative
+.absolute
+    position: absolute
+.overflow-visible
+    overflow: visible!important
+.overflow-hidden
+    overflow: hidden!important
+.display-none
+    display: none

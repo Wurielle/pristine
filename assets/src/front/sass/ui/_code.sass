@@ -1,0 +1,89 @@
+// Variables -------------------------------------------------------------------
+$code-padding: .2rem .5rem
+$code-margin: 0 .2rem
+$code-font-size: 90%
+$pre-code-padding: 1rem 1.5rem
+$code-border-with: 1px
+// Code ------------------------------------------------------------------------
+code
+    padding: $code-padding
+    margin: $code-margin
+    font-size: $code-font-size
+    white-space: nowrap
+    background: $bg-color
+    border: $border-style $border-color
+    border-radius: $border-radius
+    color: $primary
+
+pre
+    letter-spacing: 0
+    font-size: 1.3rem
+    color: $primary
+
+pre > code
+    display: inline-block
+    margin: 0
+    min-width: 100%
+    padding: $pre-code-padding
+    white-space: pre
+
+pre, pre > code
+    ul, ol
+        display: block
+    .linenums
+        li
+            margin: 0
+            list-style-type: decimal
+// Prettyprint theme https://github.com/google/code-prettify -------------------
+pre
+    /*background-color: #393939*/
+    /*padding: 2em*/
+    /*font-size: .7em*/
+    color: $font-color
+pre code
+    font-family: 'Source Code Pro', Monaco, Consolas, "Lucida Console", monospace
+
+pre .pln
+    color: #696969
+    color: #75715e
+
+pre .str
+    color: #4ea1df
+
+pre .kwd
+    color: #4ea1df
+
+pre .com
+    color: #c7c7c7
+    color: #75715e
+
+pre .typ
+    color: #f66153
+
+pre .lit
+    color: #808dd3
+
+pre .pun,
+pre .opn,
+pre .clo
+    color: #e3e2e0
+    color: #75715e
+
+pre .tag
+    color: #4ea1df
+    color: #c55865
+
+pre .atn
+    color: #f66153
+    color: #be735b
+
+pre .atv
+    color: #808dd3
+    color: #89b477
+
+pre .dec,
+pre .var
+    color: #4ea1df
+
+pre .fun
+    color: #4ea1df

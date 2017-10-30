@@ -1,0 +1,38 @@
+// Variables--------------------------------------------------------------------
+$tables-td-padding: 4px 15px
+
+// Tables ----------------------------------------------------------------------
+table
+    font-size: $font-size-small
+    // width: 100%
+    // overflow: auto
+    // display: block
+thead
+    font-size: $font-size-small - 0.1rem
+    th
+        font-weight: normal
+        &:hover,
+        &.active
+            background: $bg-color
+th,
+td
+    padding: $tables-td-padding
+    text-align: left
+    border-bottom: $border-style $border-color
+    vertical-align: middle
+    img
+        max-height: 32px
+tbody
+    td
+        white-space: nowrap
+th:first-child,
+td:first-child
+    padding-left: 0
+th:last-child,
+td:last-child
+    padding-right: 0
+
+// utility ---------------------------------------------------------------------
+.table-wrapper
+    width: 100%
+    overflow: auto

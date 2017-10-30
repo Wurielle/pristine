@@ -1,0 +1,135 @@
+// Variables--------------------------------------------------------------------
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800")
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700")
+
+$font-family: "Segoe UI","Open Sans", "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
+$code-font-family: "Source Code Pro", "Segoe UI","Open Sans", "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif
+
+$h-list: h1, h2, h3, h4, h5, h6
+
+$font-size: 1.4rem
+$font-size-small: 1.2rem
+$font-size-smallest: 1.0rem
+$line-height: 1.5
+$font-weight: 400
+$font-weight-title: 400
+$letter-spacing: 0.05em
+
+$font-margin-h: 0 0 1.5rem 0
+$font-weight-h: 300
+$color-h: $title-color
+
+$font-size-h1: 4.0rem
+$font-size-h2: 3.6rem
+$font-size-h3: 3.0rem
+$font-size-h4: 2.4rem
+$font-size-h5: 1.8rem
+$font-size-h6: 1.5rem
+$font-size-title: 1.2rem
+
+$line-height-h1: 1.2
+$line-height-h2: 1.25
+$line-height-h3: 1.3
+$line-height-h4: 1.35
+$line-height-h5: 1.5
+$line-height-h6: 1.6
+$line-height-title: 1.5
+
+$letter-spacing-h1: -.1rem
+$letter-spacing-h2: -.1rem
+$letter-spacing-h3: -.1rem
+$letter-spacing-h4: -.08rem
+$letter-spacing-h5: -.05rem
+$letter-spacing-h6: 0
+$letter-spacing-title: .2rem
+
+// creates 64 font-sizes
+$sizes: 64
+
+// For devices larger than $bp-xs
+$enable-min-xs-h: true // Enables following h font-sizes for (min-width: $bp-xs)
+
+$min-xs-h1: 5.0rem
+$min-xs-h2: 4.2rem
+$min-xs-h3: 3.6rem
+$min-xs-h4: 3.0rem
+$min-xs-h5: 2.4rem
+$min-xs-h6: 1.5rem
+
+// Typography ------------------------------------------------------------------
+#{$h-list}
+    margin: $font-margin-h
+    font-weight: $font-weight-h
+    color: $color-h
+    &.title
+        margin: $font-margin-h
+        font-weight: $font-weight-h
+        color: $color-h
+h1
+    font-size: $font-size-h1
+    line-height: $line-height-h1
+    letter-spacing: $letter-spacing-h1
+h2
+    font-size: $font-size-h2
+    line-height: $line-height-h2
+    letter-spacing: $letter-spacing-h2
+h3
+    font-size: $font-size-h3
+    line-height: $line-height-h3
+    letter-spacing: $letter-spacing-h3
+h4
+    font-size: $font-size-h4
+    line-height: $line-height-h4
+    letter-spacing: $letter-spacing-h4
+h5
+    font-size: $font-size-h5
+    line-height: $line-height-h5
+    letter-spacing: $letter-spacing-h5
+h6
+    font-size: $font-size-h6
+    line-height: $line-height-h6
+    letter-spacing: $letter-spacing-h6
+// most of the time we tend to use heading for semantic purpose but we often don't really want the style based on the heading's level. Add the class title to have a predefined style of title no matter the heading's level! :)
+#{$h-list}
+    &.title
+        font-size: $font-size-title
+        font-weight: $font-weight-title
+        line-height: $line-height-title
+        letter-spacing: $letter-spacing-title
+        text-transform: uppercase
+
+/* Larger than phablet */
+@if $enable-min-xs-h == true
+    @media (min-width: $xs)
+        h1
+            font-size: $min-xs-h1
+        h2
+            font-size: $min-xs-h2
+        h3
+            font-size: $min-xs-h3
+        h4
+            font-size: $min-xs-h4
+        h5
+            font-size: $min-xs-h5
+        h6
+            font-size: $min-xs-h6
+p
+    margin-top: 0
+.sub
+    font-size: 1rem
+    color: $font-color-light
+pre,
+code
+    font-family: $code-font-family
+// Utilities -------------------------------------------------------------------
+.text-left
+    text-align: left
+.text-right
+    text-align: right
+.text-center
+    text-align: center
+
+// Creates a .size-#{number} class with a font size going through 0 to $sizes --
+@for $i from 0 through $sizes
+    .size-#{$i}
+        font-size: ($i/10)+rem!important

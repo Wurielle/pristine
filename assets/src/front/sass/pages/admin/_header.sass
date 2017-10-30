@@ -1,0 +1,82 @@
+$header-height: 78px
+$header-padding: 200px
+$user-portrait: 40px
+#header
+    position: fixed
+    height: $header-height
+    width: 100%
+    border-bottom: 1px solid $border-color-transparent
+    padding-left: $header-padding
+    z-index: 9998
+    #open-menu
+        display: none
+    @media (max-width: $sm)
+        padding-left: 0
+        #open-menu
+            display: inline-block
+    .container-fluid
+        width: 100%
+        height: 100%
+        background-color: white
+    nav
+        height: 100%
+        position: relative
+        background-color: white
+        line-height: $header-height
+        .user
+            ul
+                margin: 0
+                list-style: none
+                li
+                    margin: 0
+                    a
+                        color: $font-color
+                        display: block
+                        &:hover
+                            color: $font-color
+
+            &>ul
+                display: inline-block
+                height: $header-height
+                margin: 0
+                float: left
+                &>li
+                    height: 100%
+                    margin: 0
+                    float: left
+                    position: relative
+                    &>a
+                        padding: $header-height/3 5px
+                        line-height: $header-height/3
+                        height: 100%
+            span
+                text-transform: uppercase
+                font-size: 1rem
+                font-weight: 600
+            .user-image
+                padding: ($header-height - $user-portrait)/2 0
+                float: left
+                line-height: 0
+                height: 100%
+                .image
+                    width: $user-portrait
+                    height: $user-portrait
+                    background-size: cover
+                    background-position: center
+                    border-radius: 9999px
+                    // overflow: hidden
+                    margin-left: 5px
+                    position: relative
+                    .icon
+                        border-radius: 9999px
+                        opacity: 0
+                        width: 100%
+                        height: 100%
+                        background-color: rgba($black, 0.5)
+                        line-height: $user-portrait
+                        text-align: center
+                        transition: 0.5s opacity cubic-bezier(0.165, 0.84, 0.44, 1)
+                        &:hover
+                            opacity: 1
+                        i
+                            color: white

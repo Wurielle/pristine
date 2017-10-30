@@ -1,0 +1,123 @@
+$friend-chats-height: 375px
+#friend-chats
+    position: fixed
+    width: 100%
+    left: 0
+    bottom: 0
+    height: 375px
+    // background-color: blue
+    padding-left: $sidebar-width
+    padding-bottom: $save-height
+    padding-right: $friend-tab-width
+    z-index: 9990
+    pointer-events: none
+    .chat-container
+        height: $friend-chats-height - $save-height
+        white-space: nowrap
+        text-align: right
+        word-spacing: -0.3em
+        *
+            word-spacing: normal
+        .chatbox
+            box-shadow: 0 1px 6px rgba(0,0,0,0.1)
+            pointer-events: initial
+            text-align: left
+            // float: right
+            display: inline-block
+            width: 320px - 2*$gutter
+            border-left: 1px solid $border-color
+            border-right: 1px solid $border-color
+            border-top-left-radius: 3px
+            border-top-right-radius: 3px
+            overflow: hidden
+            margin-right: 2*$gutter
+            &:last-child
+                margin-right: 0
+            .chat-head
+                padding: 10px $gutter
+                border-top: 3px solid $dark-grey
+                background-color: white
+                border-bottom: 1px solid $border-color
+                // height: 34px
+                button
+                    margin-left: -$gutter
+                span
+                    line-height: 34px
+                    font-size: $font-size-smallest
+                    text-transform: uppercase
+                // height: 25px
+                .recipient-user
+                    img
+                        width: 30px
+                        height: 30px
+                        border-radius: 9999px
+
+            .chat-body
+                position: relative
+                height: 273px
+                background-color: white
+                .messages
+                    padding: $gutter
+                    padding-bottom: 0
+                    overflow-y: auto
+                    height: 239px
+                    .message
+                        span
+                            white-space: pre-wrap
+                            float: left
+                            margin-bottom: $vs
+                            border: 1px solid $border-color
+                            border-radius: $border-radius
+                            padding: 5px 10px
+                            display: inline-block
+                        &.my
+                            span
+                                float: right
+                                background-color: $blue
+                                border-color: $blue
+                                color: white
+                .message-form
+                    background-color: white
+                    width: 100%
+                    height: 34px
+                    position: absolute
+                    bottom: 0
+                    left: 0
+                    padding: 0 $gutter
+                    border-top: 1px solid $border-color
+                    .input-wrapper
+                        width: calc(100% - 34px)
+                        float: left
+                        position: relative
+                        // &::after
+                        //     content: ''
+                        //     right: $gutter
+                        //     width: 1px
+                        //     height: 24px
+                        //     position: absolute
+                        //     display: inline-block
+                        //     background-color: $border-color
+                        //     top: 5px
+                        textarea
+                            height: 34px!important
+                            min-height: 34px!important
+                            width: 100%
+                            margin: 0
+                            padding-left: 0
+                            border-radius: 0
+                            border: none
+                            resize: none
+                    button
+                        float: left
+            &.online
+                .chat-head
+                    border-top-color: $green
+            &.busy
+                .chat-head
+                    border-top-color: $red
+            &.away
+                .chat-head
+                    border-top-color: $orange
+            &.offline
+                .chat-head
+                    border-top-color: $dark-grey

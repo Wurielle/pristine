@@ -1,0 +1,58 @@
+$fullscreen-min-width: 640px
+#fullscreen
+    position: fixed
+    left: 0
+    top: 0
+    width: 100%
+    height: 100vh
+    background-color: rgba($black, 0.6)
+    pointer-events: none
+    padding: ($header-height+4*$gutter) (0+4*$gutter) ($save-height+4*$gutter) ($sidebar-width+4*$gutter)
+    transition: opacity .5s cubic-bezier(.165,.84,.44,1)
+    opacity: 0
+    &.active
+        pointer-events: initial
+        opacity: 1
+    @media (max-width: $sm)
+        padding: ($header-height+2*$gutter) (0+2*$gutter) ($save-height+2*$gutter) (0+2*$gutter)
+    @media (max-width: $xs)
+        padding: ($header-height+$gutter) (0+$gutter) ($save-height+$gutter) (0+$gutter)
+    #popup
+        background-color: white
+        border: $border-style $border-color
+        border-radius: $border-radius
+        position: relative
+        padding: $gutter
+        width: 100%
+        max-height: 100%
+        max-width: $fullscreen-min-width
+        margin-left: auto
+        margin-right: auto
+        .popup-head
+            height: $button-height
+            line-height: $button-height
+            width: 100%
+            // position: absolute
+            // top: $gutter
+            left: 0
+            margin: 0
+            z-index: 1
+            span
+                text-transform: uppercase
+                font-size: 1.2rem
+                font-weight: 400
+                letter-spacing: 0.2rem
+        .popup-body
+            // height: calc(100% - #{$button-height+2*$gutter})
+            width: 100%
+            // position: absolute
+            // top: $button-height+2*$gutter
+            left: 0
+            margin: 0
+            z-index: 0
+            overflow: auto
+            max-height: calc(100vh - #{$header-height + $save-height + 11*$gutter + $button-height + 2})
+            @media (max-width: $sm)
+                max-height: calc(100vh - #{$header-height + $save-height + 7*$gutter + $button-height + 2})
+            @media (max-width: $xs)
+                max-height: calc(100vh - #{$header-height + $save-height + 5*$gutter + $button-height + 2})

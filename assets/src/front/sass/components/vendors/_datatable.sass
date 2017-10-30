@@ -1,0 +1,64 @@
+.dataTables_wrapper
+    .dataTables_filter
+        margin-bottom: 15px
+        label
+            font-weight: 400
+    .dataTables_info
+        font-size: $font-size-small
+        padding: 0
+        line-height: $button-height
+    table.dataTable
+        border-bottom: none
+        thead
+            tr
+                th
+                    padding: $tables-td-padding
+                    font-weight: 400
+                    border-bottom: 1px solid $border-color
+                    &:first-child
+                        padding-left: 0
+                    &:last-child
+                        padding-right: 0
+        tbody
+            tr
+                td
+                    padding: $tables-td-padding
+                    &:first-child
+                        padding-left: 0
+                    &:last-child
+                        padding-right: 0
+    .dataTables_paginate
+        padding: 0
+        .paginate_button
+            @extend .button
+            float: left!important
+            margin-right: 0px!important
+            margin-left: 4px!important
+            margin-bottom: $vs!important
+            background: transparent!important
+            border-color: $border-color!important
+            line-height: $button-height - 2*$button-border-width!important
+            padding: $button-padding!important
+            width: $button-height!important
+            &:hover,
+            &:focus
+                color: $primary!important
+                border-color: $primary!important
+                outline: 0!important
+            &:active
+                box-shadow: none!important
+            .current
+                color: $primary!important
+                border-color: $primary!important
+            &.previous,
+            &.next
+                // border: $button-border-width solid transparent
+                width: auto!important
+                // &:hover,
+                // &:focus
+                    // border-color: $bg-color
+                    // background-color: $bg-color
+                    // color: $font-color
+                &.disabled
+                    border-color: $border-color
+                    color: $font-color

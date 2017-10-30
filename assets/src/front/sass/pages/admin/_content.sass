@@ -1,0 +1,72 @@
+#content
+    width: 100%
+    min-height: 100vh
+    position: relative
+    padding-left: $sidebar-width
+    padding-top: $header-height
+    padding-bottom: $save-height
+    padding-right: 0
+    overflow: hidden
+    transition: 0.5s padding-left, padding-right cubic-bezier(0.165, 0.84, 0.44, 1)
+    @media (max-width: $sm)
+        padding-left: 0
+&.has_chat
+    #content
+        padding-right: $friend-tab-width
+        @media (max-width: $sm)
+            padding-right: 0
+section
+    padding: 30px 0 (30px - $vs) 0
+    border-bottom: 1px solid $border-color
+    display: inline-block
+    width: 100%
+    &:first-of-type
+        padding-top: 30px
+    &:last-of-type
+        border-bottom: none
+
+code
+    background-color: white
+.col
+    margin: 0 0 $vs 0
+    .last-child
+        margin-bottom: 0
+    & > .block
+        float: left
+        width: 100%
+        height: 100%
+        padding: $gutter
+        background-color: white
+        border: 1px solid $border-color
+        border-radius: $border-radius
+        .block-bottom
+            border-top: 1px solid $border-color
+            padding-top: $vs
+.prettyprint
+    padding: 0!important
+    border: none!important
+
+iframe
+    position: relative
+#grid
+    .big .custom-grid
+        height: 102px
+    .medium .custom-grid
+        height: 68px
+    .small .custom-grid
+        height: 34px
+    .custom-grid
+        background-color: transparent
+        border: none
+        // padding: 7px 10px
+        border-left: none
+        padding: 0 $gutter
+        &::before
+            content: ''
+            display: inline-block
+            width: 100%
+            height: 100%
+            border-radius: 2px
+            border: 1px solid $border-color
+            background-color: white
+            float: left

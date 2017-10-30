@@ -1,0 +1,26 @@
+ul.tabs
+    list-style: none
+    padding: 0
+    margin: 0
+    white-space: nowrap
+    word-spacing: -.3em
+    *
+        word-spacing: normal
+    li
+        margin: 0
+        display: inline-block
+        &.active
+            a
+                color: $primary
+                border-bottom: 2px solid $primary
+        a
+            height: 34px
+            line-height: 32px
+            display: inline-block
+            padding: 0px $gutter
+            text-decoration: none
+            color: $font-color
+            border-bottom: 2px solid transparent
+            &:hover
+                color: $primary
+                border-bottom: 2px solid $primary
