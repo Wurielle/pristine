@@ -23,5 +23,5 @@ window.backbone = backbone;
 
 // JS
 $(function() {
-    console.log('App Ready');
+    console.log('App Super Ready');
 });

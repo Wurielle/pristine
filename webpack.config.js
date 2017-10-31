@@ -22,11 +22,10 @@ module.exports = { // See https://webpack.js.org/concepts/
     },
     output: {
         path: path.resolve(__dirname, './'),
-        publicPath: 'publicPath',
+        publicPath: '',
         filename: '.' + publicPath + 'js/[name].bundle.js',
     },
     devServer: {
-        compress: true,
         open: true,
         // port: 9000
     },

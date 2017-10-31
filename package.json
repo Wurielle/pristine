@@ -31,9 +31,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "w:c": "./node_modules/.bin/webpack",
+    "w:c": "./node_modules/.bin/webpack --optimize-minimize",
     "w:w": "./node_modules/.bin/webpack --progress --colors --watch",
-    "w:o": "./node_modules/.bin/webpack --optimise-minimize",
     "w:d": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
