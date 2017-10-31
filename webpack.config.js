@@ -1,133 +1,171 @@
 const path = require('path');
+const LoaderOptionsPlugin = require('webpack');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+const publicPath = '/assets/dist/';
+
 const extractToCSS = new ExtractTextPlugin({
-    filename: "./css/[name].css",
+    // publicPath: '../../',
+    filename: publicPath + 'css/[name].css',
     disable: false
 });
-module.exports = {// See https://webpack.js.org/concepts/
+const _pathCSS = "../.." // From the css output to the assets directory
+
+module.exports = { // See https://webpack.js.org/concepts/
     devtool: 'source-map',
-    target: 'node',
+    target: 'web',
+    // target: 'node',
     context: path.resolve(__dirname, './'),
     entry: {
         main: './assets/src/front/js/main.ts',
     },
     output: {
-        path: path.resolve(__dirname, './assets/dist/'),
-        publicPath: "../",
-        filename: './js/[name].bundle.js',
+        path: path.resolve(__dirname, './'),
+        publicPath: 'publicPath',
+        filename: '.' + publicPath + 'js/[name].bundle.js',
+    },
+    devServer: {
+        compress: true,
+        open: true,
+        // port: 9000
     },
     module: {
-        rules: [// See: https://webpack.js.org/configuration/module/#rule, https://webpack.js.org/concepts/loaders/
-        { // Typescript loader
-            test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/
-        },
-        {// Sass loader
-            test: /\.sass$/,
-            use: extractToCSS.extract({
-                use: [{
-                    loader: "css-loader"
-                },
-                {
-                    loader: "postcss-loader",
-                    options: {
-                        plugins: function () {
-                            return [
-                                require('autoprefixer')
-                            ];
+        rules: [ // See: https://webpack.js.org/configuration/module/#rule, https://webpack.js.org/concepts/loaders/
+            { // Typescript loader
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            },
+            { // Sass loader
+                test: /\.sass$/,
+                use: extractToCSS.extract({
+                    use: [
+                        {
+                            loader: "css-loader",
+                            options: {
+                                url: false
+                            }
                         },
-                        sourceMap: true
-                    }
-                },
-                {
-                    loader: "resolve-url-loader"
-                },
-                {
-                    loader: "sass-loader",
-                    options: {
-                        indentedSyntax: 'sass',
-                        sourceMap: true
-                    }
-                }],
-                fallback: "style-loader"
-            })
-        },
-        {// Stylus loader
-            test: /\.styl$/,
-            use: extractToCSS.extract({
-                use: [{
-                    loader: "css-loader"
-                },
-                {
-                    loader: "postcss-loader",
-                    options: {
-                        plugins: function () {
-                            return [
-                                require('autoprefixer')
-                            ];
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                plugins: function() {
+                                    return [
+                                        require('autoprefixer')
+                                    ];
+                                },
+                                sourceMap: true
+                            }
                         },
-                        sourceMap: true
-                    }
-                },
-                {
-                    loader: "resolve-url-loader"
-                },
-                {
-                    loader: "stylus-loader",
-                    options: {
-                        sourceMap: true
-                    }
-                }],
-                fallback: "style-loader"
-            })
-        },
-        {// CSS loader
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                use: [{
-                    loader: "css-loader"
-                },
-                {
-                    loader: "postcss-loader",
-                    options: {
-                        plugins: function () {
-                            return [
-                                require('autoprefixer')
-                            ];
+                        // {
+                        //     loader: "resolve-url-loader"
+                        // },
+                        {
+                            loader: 'text-transform-loader',
+                            options: {
+                                transformText: content => content.replace(/_assets/g, _pathCSS)
+                            },
                         },
-                        sourceMap: true
+                        {
+                            loader: "sass-loader",
+                            options: {
+                                indentedSyntax: 'sass',
+                                sourceMap: true
+                            }
+                        }
+                    ],
+                    fallback: "style-loader"
+                })
+            },
+            { // Stylus loader
+                test: /\.styl$/,
+                use: extractToCSS.extract({
+                    use: [{
+                            loader: "css-loader",
+                            options: {
+                                url: false
+                            }
+                        },
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                plugins: function() {
+                                    return [
+                                        require('autoprefixer')
+                                    ];
+                                },
+                                sourceMap: true
+                            }
+                        },
+                        // {
+                        //     loader: "resolve-url-loader"
+                        // },
+                        {
+                            loader: 'text-transform-loader',
+                            options: {
+                                transformText: content => content.replace(/_assets/g, _pathCSS)
+                            },
+                        },
+                        {
+                            loader: "stylus-loader",
+                            options: {
+                                sourceMap: true
+                            }
+                        }
+                    ],
+                    fallback: "style-loader"
+                })
+            },
+            { // CSS loader
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    use: [{
+                            loader: "css-loader",
+                            options: {
+                                url: false
+                            }
+                        },
+                        {
+                            loader: "postcss-loader",
+                            options: {
+                                plugins: function() {
+                                    return [
+                                        require('autoprefixer')
+                                    ];
+                                },
+                                sourceMap: true
+                            }
+                        }
+                    ],
+                    fallback: "style-loader"
+                }),
+            },
+            { // Mustache loader
+                test: /\.html$/,
+                use: "mustache-loader"
+            },
+            { // Image loader (Resolving Images path)
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                exclude: [/fonts/],
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '.' + publicPath + 'img/[name].[ext]'
                     }
-                }],
-                fallback: "style-loader"
-            }),
-        },
-        {// Mustache loader
-            test: /\.html$/,
-            use: "mustache-loader"
-        },
-        {// Image loader (Resolving Images path)
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            exclude: [/fonts/],
-            use: [{
-                loader:'file-loader',
-                options: {
-                    name: 'images/[name].[ext]'
-                }
-            }]
+                }]
 
-        },
-        {// Font loader
-            test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-            use: [{
-                loader: 'file-loader',
-                options: {
-                    name: 'fonts/[name].[ext]'
-                }
-            }]
-        }]
+            },
+            { // Font loader
+                test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '.' + publicPath + 'fonts/[name].[ext]'
+                    }
+                }]
+            }
+        ]
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -139,13 +177,13 @@ module.exports = {// See https://webpack.js.org/concepts/
         require('autoprefixer'),
         extractToCSS, // see first few line to see the definition and the output
         new webpack.ProvidePlugin({
-          $ : "jquery",
-          jQuery: 'jquery',
-          'window.jQuery': 'jquery',
-          Backbone : "backbone",
-          _ : "underscore",
-      }),
-      new webpack.NoEmitOnErrorsPlugin(),
+            $: "jquery",
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            Backbone: "backbone",
+            _: "underscore",
+        }),
+        new webpack.NoEmitOnErrorsPlugin(),
     ]
 };
 
