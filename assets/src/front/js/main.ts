@@ -6,22 +6,34 @@ import 'gsap';
 import 'gsap/ScrollToPlugin';
 import 'gsap/Draggable';
 import * as $ from 'jquery';
-import * as backbone from 'backbone';
+import * as Backbone from 'backbone';
 import * as _ from 'underscore';
+
+import { AppRouter } from './routers/app_router.ts'
 
 // Set imports to the Global object
 declare global {
     interface Window {
         $: any;
         _: any;
-        backbone: any;
+        Backbone: any;
+        app: any;
     }
 }
 window.$ = $;
 window._ = _;
-window.backbone = backbone;
+window.Backbone = Backbone;
 
 // JS
+window.app = {
+    Router:      {},
+    Models:      {},
+    Views:       {},
+    Collections: {}
+}
+
 $(function() {
-    console.log('App Super Ready');
+    window.app.Router = new AppRouter();
+    Backbone.history.start({ pushState: true });
+    console.log('App Ready to Rock');
 });

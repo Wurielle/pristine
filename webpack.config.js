@@ -28,6 +28,9 @@ module.exports = { // See https://webpack.js.org/concepts/
     devServer: {
         open: true,
         // port: 9000
+        historyApiFallback: { // NOTE: Comment this if you're working on several pages
+            index: 'index.html'
+        }
     },
     module: {
         rules: [ // See: https://webpack.js.org/configuration/module/#rule, https://webpack.js.org/concepts/loaders/

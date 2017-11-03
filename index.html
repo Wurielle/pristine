@@ -11,13 +11,20 @@
 
 <body id="body">
     <div id="app">
-        <h1 class="text-center nmb"><i class="ion-planet"></i><br>Hello World</h1>
+        <h1 class="text-center nmb"><i class="ion-planet"></i><br><span id="title"></span></h1>
+        <div class="text-center">
+            <a href="#homepage" style="color: white;" class="button mr+">home</a>
+            <a href="#project" style="color: white;" class="button mr+">project</a>
+            <a href="#about" style="color: white;" class="button mr+">about</a>
+            <a href="#contact" style="color: white;" class="button">contact</a>
+        </div>
     </div>
     <script src="./assets/dist/js/main.bundle.js"></script>
     <script type="text/javascript">
+        console.log("App is here:", { app: app });
         console.log("Available libraries:");
         console.log("----", "jQuery", { libraryCode: $ });
-        console.log("----", "Backbone", { libraryCode: backbone});
+        console.log("----", "Backbone", { libraryCode: Backbone});
         console.log("----", "Underscore", { libraryCode: _ });
     </script>
 </body>
