@@ -5,7 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const publicPath = '/assets/dist/';
 
-const dev = true;
+const dev = process.env.NODE_ENV.trim() === 'dev' ? true : false;
 const extractToCSS = new ExtractTextPlugin({
     // publicPath: '../../',
     filename: publicPath + 'css/[name].css',
@@ -185,6 +185,12 @@ module.exports = { // See https://webpack.js.org/concepts/
             'window.jQuery': 'jquery',
             Backbone: "backbone",
             _: "underscore",
+        }),
+        new webpack.EnvironmentPlugin(['NODE_ENV']),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            }
         }),
         new webpack.NoEmitOnErrorsPlugin(),
     ]

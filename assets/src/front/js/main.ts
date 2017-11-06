@@ -33,7 +33,7 @@ window.app = {
 }
 
 $(function() {
-    window.app.Router = new AppRouter();
+    window.app.Router = new AppRouter({ allowNavigation: false }); // NOTE: set allowNavigation to true if you're working on a single page app that will run in a browser
     Backbone.history.start({ pushState: true });
     console.log('App Ready to Rock');
 });

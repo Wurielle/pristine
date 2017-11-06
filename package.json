@@ -31,9 +31,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "w:c": "./node_modules/.bin/webpack --optimize-minimize",
-    "w:w": "./node_modules/.bin/webpack --progress --colors --watch",
-    "w:d": "./node_modules/.bin/webpack-dev-server"
+    "w:c": "SET NODE_ENV=prod && webpack --optimize-minimize",
+    "w:w": "SET NODE_ENV=prod && webpack --progress --colors --watch",
+    "w:d": "SET NODE_ENV=dev && webpack-dev-server"
   },
   "repository": {
     "type": "git",

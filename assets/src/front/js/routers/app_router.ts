@@ -7,9 +7,13 @@ import { ContactView } from './../views/pages/contact/contact_view.ts';
 
 export class AppRouter extends Backbone.Router {
     routes: any;
-    allowNavigation: boolean = true; // NOTE: set to true if you're working on a single page app that will run in a browser
-    constructor(){
+    allowNavigation: boolean = true;
+    constructor(options: any){
         super();
+        if (options.allowNavigation != undefined){
+            this.allowNavigation = options.allowNavigation;
+            console.log("allowNavigation set to:", options.allowNavigation);
+        }
         this.routes = {
             'homepage': 'homepage',
             'project': 'project',
