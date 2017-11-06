@@ -14,14 +14,14 @@ import { AppRouter } from './routers/app_router.ts'
 // Set imports to the Global object
 declare global {
     interface Window {
-        $: any;
-        _: any;
+        $:        any;
+        _:        any;
         Backbone: any;
-        app: any;
+        app:      any;
     }
 }
-window.$ = $;
-window._ = _;
+window.$        = $;
+window._        = _;
 window.Backbone = Backbone;
 
 // JS

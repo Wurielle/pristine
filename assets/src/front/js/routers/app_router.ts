@@ -7,14 +7,15 @@ import { ContactView } from './../views/pages/contact/contact_view.ts';
 
 export class AppRouter extends Backbone.Router {
     routes: any;
+    allowNavigation: boolean = true; // NOTE: set to true if you're working on a single page app that will run in a browser
     constructor(){
         super();
         this.routes = {
-            '*path': 'homepage',
             'homepage': 'homepage',
             'project': 'project',
             'about': 'about',
-            'contact': 'contact'
+            'contact': 'contact',
+            '*path': 'homepage'
         };
         // call _bindRoutes() here function to bind your routes
         (<any>this)._bindRoutes();
@@ -26,13 +27,18 @@ export class AppRouter extends Backbone.Router {
         $(document).on("click", "a", function(event){
             event.preventDefault();
             var href = $(this).attr("href");
-            scope.navigate(href, {trigger: true});
+            if (scope.allowNavigation){
+                scope.navigate(href, {trigger: true});
+            }
             var page = scope.routes[href.replace('#','')];
             scope[page]();
         });
     }
 
     homepage() {
+        if (this.allowNavigation){
+            this.navigate('', {replace: true});
+        }
         var view: any = new HomepageView();
         view.render();
     }

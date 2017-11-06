@@ -5,12 +5,13 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const publicPath = '/assets/dist/';
 
+const dev = true;
 const extractToCSS = new ExtractTextPlugin({
     // publicPath: '../../',
     filename: publicPath + 'css/[name].css',
-    disable: false
+    disable: dev
 });
-const _pathCSS = "../.." // From the css output to the assets directory
+const _pathCSS = dev ? "./assets" : "../.." // From the css output to the assets directory
 
 module.exports = { // See https://webpack.js.org/concepts/
     devtool: 'source-map',

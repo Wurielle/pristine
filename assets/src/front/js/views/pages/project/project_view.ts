@@ -1,8 +1,10 @@
 import * as Backbone from 'backbone';
+import './../../../../templates/static/project/project.html'
 
 export class ProjectView extends Backbone.View<any> {
-    el: any = '#title';
+    el: any = '#app';
     $el: any = $(this.el);
+    template = require('./../../../../templates/static/project/project.html');
     constructor(){
         super();
     }
@@ -12,7 +14,8 @@ export class ProjectView extends Backbone.View<any> {
     }
 
     render(){
-        this.$el.html('Project');
+        var html = this.template({project: "project" });
+        this.$el.html(html);
         return this;
     }
 }
