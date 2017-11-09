@@ -7,6 +7,7 @@ export class AboutView extends Backbone.View<any> {
     template = require('./../../../../templates/static/about/about.html');
     constructor(){
         super();
+        this.render();
     }
 
     initialize(){

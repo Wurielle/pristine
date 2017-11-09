@@ -1,13 +1,14 @@
 import * as Backbone from 'backbone';
 import * as $ from 'jquery';
 import { HomepageView } from './../views/pages/homepage/homepage_view.ts';
-import { ProjectView } from './../views/pages/project/project_view.ts';
+import { ProjectsView } from './../views/pages/projects/projects_view.ts';
 import { AboutView } from './../views/pages/about/about_view.ts';
 import { ContactView } from './../views/pages/contact/contact_view.ts';
 
 export class AppRouter extends Backbone.Router {
     routes: any;
     allowNavigation: boolean = true;
+    view: any;
     constructor(options: any){
         super();
         if (options.allowNavigation != undefined){
@@ -16,7 +17,8 @@ export class AppRouter extends Backbone.Router {
         }
         this.routes = {
             'homepage': 'homepage',
-            'project': 'project',
+            'projects': 'projects',
+            'projects/:nb': 'projects',
             'about': 'about',
             'contact': 'contact',
             '*path': 'homepage'
@@ -34,8 +36,8 @@ export class AppRouter extends Backbone.Router {
             if (scope.allowNavigation){
                 scope.navigate(href, {trigger: true});
             }
-            var page = scope.routes[href.replace('#','')];
-            scope[page]();
+            // var page = scope.routes[href.replace('#','')];
+            // scope[page]();
         });
     }
 
@@ -43,22 +45,18 @@ export class AppRouter extends Backbone.Router {
         if (this.allowNavigation){
             this.navigate('', {replace: true});
         }
-        var view: any = new HomepageView();
-        view.render();
+        this.view = new HomepageView();
     }
 
-    project() {
-        var view: any = new ProjectView();
-        view.render();
+    projects(nb: any) {
+        this.view = new ProjectsView(nb);
     }
 
     about() {
-        var view: any = new AboutView();
-        view.render();
+        this.view = new AboutView();
     }
 
     contact() {
-        var view: any = new ContactView();
-        view.render();
+        this.view = new ContactView();
     }
 }

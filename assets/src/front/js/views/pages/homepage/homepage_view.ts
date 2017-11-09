@@ -7,6 +7,7 @@ export class HomepageView extends Backbone.View<any> {
     template = require('./../../../../templates/static/homepage/index.html');
     constructor(){
         super();
+        this.render();
     }
 
     initialize(){

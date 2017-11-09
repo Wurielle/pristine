@@ -7,6 +7,7 @@ export class ContactView extends Backbone.View<any> {
     template = require('./../../../../templates/static/contact/contact.html');
     constructor(){
         super();
+        this.render();
     }
 
     initialize(){
