@@ -1,5 +1,5 @@
 import * as Backbone from 'backbone';
-import './../../../../templates/static/contact/contact.html'
+// import './../../../../templates/static/contact/contact.html'
 
 export class ContactView extends Backbone.View<any> {
     el: any = '#app';

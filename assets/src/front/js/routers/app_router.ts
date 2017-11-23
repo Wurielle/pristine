@@ -19,6 +19,7 @@ export class AppRouter extends Backbone.Router {
             'homepage': 'homepage',
             'projects': 'projects',
             'projects/:nb': 'projects',
+            'projects/:nb/detail': 'projectDetail',
             'about': 'about',
             'contact': 'contact',
             '*path': 'homepage'
@@ -49,6 +50,10 @@ export class AppRouter extends Backbone.Router {
     }
 
     projects(nb: any) {
+        this.view = new ProjectsView(nb);
+    }
+
+    projectDetail(nb: any) {
         this.view = new ProjectsView(nb);
     }
 

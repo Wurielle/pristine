@@ -1,5 +1,5 @@
 import * as Backbone from 'backbone';
-import './../../../../templates/static/homepage/index.html'
+// import './../../../../templates/static/homepage/index.html'
 
 export class HomepageView extends Backbone.View<any> {
     el: any = '#app';

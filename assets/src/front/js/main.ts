@@ -8,7 +8,6 @@ import 'gsap/Draggable';
 import * as $ from 'jquery';
 import * as Backbone from 'backbone';
 import * as _ from 'underscore';
-
 import { AppRouter } from './routers/app_router.ts'
 
 // Set imports to the Global object
@@ -25,6 +24,8 @@ window._        = _;
 window.Backbone = Backbone;
 
 // JS
+// var Hal = require('backbone-hateoas');
+// Hal.contentType = 'application/json';
 window.app = {
     Router:      {},
     Models:      {},
