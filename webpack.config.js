@@ -1,30 +1,127 @@
+// Minimist
+// var argv = require('minimist')(process.argv.slice(2));
+// var argv = require( 'argv' );
+// var args = argv.run();
+// console.dir(args);
+// Node envoironments
+const bs = process.env.NODE_ENV.trim() === 'browsersync' ? true : false;
+const dev = process.env.NODE_ENV.trim() === 'development' ? true : false;
+const mode = process.env.NODE_ENV.trim() === 'production' ? 'production' : 'development';
+
+// Webpack modules
 const path = require('path');
 const LoaderOptionsPlugin = require('webpack');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const {
+    VueLoaderPlugin
+} = require('vue-loader')
 
-const publicPath = '/assets/dist/';
+// Paths
+const computed = {
+    path: {
+        toASSETS: function() {
+            return './assets/'
+        },
+        toSRC: function() {
+            return this.toASSETS() + 'src/'
+        },
+        toDIST: function() {
+            return this.toASSETS() + 'dist/'
+        },
+        proxy: function() {
+            return 'http://localhost:8080/namkin/base-symfony/web/app_dev.php/'
+        },
+        styles: function() {
+            return this.toSRC() + 'front/sass'
+        },
+        public: function() {
+            return '';
+        },
+        images: function() {
 
-const dev = process.env.NODE_ENV.trim() === 'dev' ? true : false;
+        },
+        CSSAssets: function() {
+            // From the css output to the assets directory
+            let path = dev ? "/assets" : "../..";
+            return path;
+        }
+    }
+}
 const extractToCSS = new ExtractTextPlugin({
     // publicPath: '../../',
-    filename: publicPath + 'css/[name].css',
+    filename: computed.path.toDIST() + 'css/[name].css',
     disable: dev
 });
-const _pathCSS = dev ? "/assets" : "../.." // From the css output to the assets directory
+const plugins = [
+    require('autoprefixer'),
+    extractToCSS, // see first few line to see the definition and the output
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        Backbone: "backbone",
+        _: "underscore",
+    }),
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    new webpack.DefinePlugin({
+        'process.env': {
+            'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }
+    }),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new VueLoaderPlugin()
+];
+if (bs) {
+    plugins.push(new BrowserSyncPlugin({
+        // browse to http://localhost:3000/ during development,
+        // ./public directory is being served
+        proxy: computed.path.proxy(),
+        files: [{
+            match: [
+                './web/**/*.twig',
+                './src/**/*.twig',
+                './app/**/*.twig',
+                './web/**/*.php',
+                './src/**/*.php',
+                './app/**/*.php',
+                './web/**/*.yml',
+                './src/**/*.yml',
+                './app/**/*.yml',
+                './**/*.env'
+            ],
+            ignore: [
+                'node_modules'
+            ],
+            fn: function(event, file) {
+                if (event === 'change') {
+                    const bs = require('browser-sync').get('bs-webpack-plugin');
+                    bs.reload();
+                }
+            }
+        }]
+    }))
+} else if (mode === 'production') {
+    // plugins.push(new UglifyJSPlugin({
+    //     extractComments: true
+    // }))
+};
 
-module.exports = { // See https://webpack.js.org/concepts/
+module.exports = { // See https://webpack.js.org/concepts/,
+    mode: mode,
     devtool: 'source-map',
     target: 'web',
     // target: 'node',
     context: path.resolve(__dirname, './'),
     entry: {
-        main: './assets/src/front/js/main.ts',
+        main: computed.path.toSRC() + 'front/js/main.ts',
     },
     output: {
         path: path.resolve(__dirname, './'),
         publicPath: '',
-        filename: '.' + publicPath + 'js/[name].bundle.js',
+        filename: computed.path.toDIST() + 'js/[name].bundle.js',
     },
     devServer: {
         open: true,
@@ -37,13 +134,24 @@ module.exports = { // See https://webpack.js.org/concepts/
         rules: [ // See: https://webpack.js.org/configuration/module/#rule, https://webpack.js.org/concepts/loaders/
             { // Typescript loader
                 test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/
+                loader: 'ts-loader',
+                exclude: [
+                    /node_modules/,
+                    /vendor/ //Symfony's vendor folder
+                ],
+                options: {
+                    appendTsSuffixTo: [/\.vue$/]
+                }
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
             },
             { // Sass loader
-                test: /\.sass$/,
+                test: /\.s[a|c]ss$/,
                 use: extractToCSS.extract({
                     use: [
+                        // 'vue-style-loader',
                         {
                             loader: "css-loader",
                             options: {
@@ -67,7 +175,7 @@ module.exports = { // See https://webpack.js.org/concepts/
                         {
                             loader: 'text-transform-loader',
                             options: {
-                                transformText: content => content.replace(/_assets/g, _pathCSS)
+                                transformText: content => content.replace(/@assets/g, computed.path.CSSAssets())
                             },
                         },
                         {
@@ -84,7 +192,9 @@ module.exports = { // See https://webpack.js.org/concepts/
             { // Stylus loader
                 test: /\.styl$/,
                 use: extractToCSS.extract({
-                    use: [{
+                    use: [
+                        // 'vue-style-loader',
+                        {
                             loader: "css-loader",
                             options: {
                                 url: false
@@ -107,7 +217,7 @@ module.exports = { // See https://webpack.js.org/concepts/
                         {
                             loader: 'text-transform-loader',
                             options: {
-                                transformText: content => content.replace(/_assets/g, _pathCSS)
+                                transformText: content => content.replace(/@assets/g, computed.path.CSSAssets())
                             },
                         },
                         {
@@ -154,7 +264,7 @@ module.exports = { // See https://webpack.js.org/concepts/
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name: '.' + publicPath + 'img/[name].[ext]'
+                        name: '.' + computed.path.toDIST() + 'img/[name].[ext]'
                     }
                 }]
 
@@ -164,7 +274,7 @@ module.exports = { // See https://webpack.js.org/concepts/
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name: '.' + publicPath + 'fonts/[name].[ext]'
+                        name: '.' + computed.path.toDIST() + 'fonts/[name].[ext]'
                     }
                 }]
             }
@@ -173,27 +283,13 @@ module.exports = { // See https://webpack.js.org/concepts/
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
-            "jquery-mobile": "jquery-mobile/dist/jquery.mobile" //webpack couldn't find jquery-mobile so I set the path myself
+            "jquery-mobile": "jquery-mobile/dist/jquery.mobile", //webpack couldn't find jquery-mobile so I set the path myself
+            'vue$': 'vue/dist/vue.esm.js',
+            // NOTE: Future improvement would be to not have to import all sass variables https://github.com/vuejs/vue-loader/issues/328
+            'styles': path.resolve(__dirname, computed.path.styles())
         },
     },
-    plugins: [
-        require('autoprefixer'),
-        extractToCSS, // see first few line to see the definition and the output
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            Backbone: "backbone",
-            _: "underscore",
-        }),
-        new webpack.EnvironmentPlugin(['NODE_ENV']),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-            }
-        }),
-        new webpack.NoEmitOnErrorsPlugin(),
-    ]
+    plugins: plugins
 };
 
 // Tuto: https://blog.madewithenvy.com/getting-started-with-webpack-2-ed2b86c68783
