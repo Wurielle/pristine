@@ -1,22 +1,12 @@
 <template>
     <div>This is a {{ message }}</div>
 </template>
-<style lang="sass">
+<style lang="sass" scope>
     @import 'styles/_variables.sass' // see webpack aliases
     *
         background-color: $grey
 </style>
 <script lang="ts">
-    // export default {
-    //     data(){
-    //         return {
-    //             message: 'a warming welcome'
-    //         }
-    //     },
-    //     created() {
-    //         console.log('a')
-    //     }
-    // }
     import { Vue, Component, Prop } from "vue-property-decorator";
 
     @Component
@@ -25,6 +15,7 @@
             @Prop() initialEnthusiasm!: number;
             enthusiasm = this.initialEnthusiasm;
             message: any = 'uwu';
+
             increment() {
                 this.enthusiasm++;
             }
