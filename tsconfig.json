@@ -1,21 +1,39 @@
 {
-    "compilerOptions": {
-        "outDir": "./web/assets/dist/js/",
-        "moduleResolution": "node",
-        "noImplicitAny": true,
-        "module": "es6",
-        "target": "es5",
-        "jsx": "react",
-        "allowJs": true,
-        "experimentalDecorators": true,
-        "lib": ["dom", "esnext"]
-    },
-    "files": [
-        "./assets/src/front/js/main.ts"
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "node"
     ],
-    "typeRoots": ["./typings"],
-    "exclude": [
-        "node_modules",
-        "vendor"
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
