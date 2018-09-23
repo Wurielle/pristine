@@ -27,4 +27,3 @@
   }
 }
 </style>
-<style src="@/assets/css/tailwind.css"></style>
