@@ -1,0 +1,67 @@
+//@each $bp, $bp-value in $bp-list
+//    @media (min-width: $bp-value)
+//        @each $state, $state-value in $state-list
+//            &#{_(state-#{$state}, $bp)}
+//                color: white
+//                border-radius: 3*$border-radius
+//                border-color: $state-value
+//                background-color: $state-value
+//
+//            &#{u(background-color-#{$state}, $bp)}
+//                background-color: $state-value!important
+//
+//            &#{u(border-color-#{$state}, $bp)}
+//                border-color: $state-value!important
+//
+//            &#{u(text-color-#{$state}, $bp)}
+//                color: $state-value!important
+//
+//        #{_(diff-change, $bp)},
+//        #{_(diff-changed, $bp)},
+//        #{_(diff-secondary, $bp)},
+//        #{_(diff-info, $bp)}
+//            border-color: $color--secondary
+//            &:focus
+//                border-color: $color--primary
+//        #{_(diff-done, $bp)},
+//        #{_(diff-success, $bp)}
+//            border-color: $color--success
+//            &:focus
+//                border-color: $color--primary
+//        #{_(diff-error, $bp)}
+//        #{_(diff-danger, $bp)}
+//            border-color: $color--danger
+//            &:focus
+//                border-color: $color--primary
+//        #{_(diff-change, $bp)},
+//        #{_(diff-changed, $bp)},
+//        #{_(diff-secondary, $bp)},
+//        #{_(diff-info, $bp)},
+//        #{_(diff-done, $bp)},
+//        #{_(diff-success, $bp)},
+//        #{_(diff-error, $bp)}
+//        #{_(diff-danger, $bp)}
+//            &.error
+//                border-color: $color--danger
+//                &:focus
+//                    border-color: $color--primary
+//
+//.diff-changed
+//    border-color: $color--secondary
+//    &:focus
+//        border-color: $color--primary
+//.diff-done
+//    border-color: $color--success
+//    &:focus
+//        border-color: $color--primary
+//.diff-error
+//    border-color: $color--danger
+//    &:focus
+//        border-color: $color--primary
+//.diff-changed,
+//.diff-done,
+//.diff-error
+//    &.error
+//        border-color: $color--danger
+//        &:focus
+//            border-color: $color--primary

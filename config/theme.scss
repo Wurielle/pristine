@@ -1,5 +1,14 @@
 $theme:(
+  ui: (
+    unit: (
+      base: 34px
+    ),
+    spaceUnit: (
+      base: 12px
+    )
+  ),
   colors: (
+    font-color: #22292f,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -86,8 +95,9 @@ $theme:(
     mono: (Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace)
   ),
   textSizes: (
-    xs: .75rem,
-    sm: .875rem,
+    xs: 10px,
+    sm: 12px,
+    md: 14px,
     base: 1rem,
     lg: 1.125rem,
     xl: 1.25rem,
@@ -119,6 +129,7 @@ $theme:(
     wide: 0.05em
   ),
   textColors: (
+    font-color: #22292f,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -194,6 +205,7 @@ $theme:(
     pink-lightest: #ffebef
   ),
   backgroundColors: (
+    font-color: #22292f,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -282,6 +294,7 @@ $theme:(
   ),
   borderColors: (
     default: #dae1e7,
+    font-color: #22292f,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -359,6 +372,7 @@ $theme:(
   borderRadius: (
     none: 0,
     sm: .125rem,
+    base: 6px,
     default: .25rem,
     lg: .5rem,
     full: 9999px
@@ -454,6 +468,7 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
+    base: 12px,
     px: 1px
   ),
   margin: (
@@ -471,6 +486,7 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
+    base: 12px,
     auto: auto,
     px: 1px
   ),
@@ -489,12 +505,13 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
+    base: -12px,
     px: 1px
   ),
   shadows: (
-    default: 0 2px 4px 0 rgba(0,0,0,0.10),
-    md: 0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08),
-    lg: 0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08),
+    default: 0px 2px 6px rgba(0,0,0,0.1),
+    md: 0 4px 8px 0 rgba(0,0,0,0.12),
+    lg: 0 15px 30px 0 rgba(0,0,0,0.11),
     inner: inset 0 2px 4px 0 rgba(0,0,0,0.06),
     outline: 0 0 0 3px rgba(52,144,220,0.5),
     none: none
@@ -573,7 +590,7 @@ $theme:(
   ),
   plugins: (null),
   options: (
-    prefix: ,
+    prefix: pr-,
     important: false,
     separator: \:
   )

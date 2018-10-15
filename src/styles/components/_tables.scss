@@ -1,0 +1,86 @@
+//// Tables ----------------------------------------------------------------------
+//table
+//    width: 100%
+//    font-size: $table-font-size
+//thead
+//    font-size: $table-font-size
+//    th
+//        &:hover,
+//        &.active
+//            background: $color--whitest-grey
+//th,
+//td
+//    padding: $table-padding
+//    text-align: left
+//    border-bottom: $border-width $border-style $color--border
+//    vertical-align: middle
+//    img
+//        max-height: $table-items-max-height
+//tbody
+//    td
+//        white-space: nowrap
+//th:first-child,
+//td:first-child
+//    padding-left: 0
+//th:last-child,
+//td:last-child
+//    padding-right: 0
+//
+//// utility ---------------------------------------------------------------------
+//.table-wrapper
+//    width: 100%
+//    overflow: auto
+//    margin-bottom: sp(md)
+//    &>table
+//        margin-bottom: 0!important
+//
+//.table-display
+//    display: table
+//    padding-left: 0
+//    padding-right: 0
+//    table-layout: fixed
+//    &>.row
+//        // display: table-row
+//        display: table
+//        width: 100%
+//        position: relative
+//        left: $gutter
+//        table-layout: fixed
+//        &>.col
+//            display: table-cell
+//            table-layout: fixed
+//            float: none
+//@mixin reset-table-display()
+//    display: block
+//    padding-left: $gutter
+//    padding-right: $gutter
+//    &>.row
+//        display: block
+//        &>.col
+//            display: inherit
+//            float: left
+//
+//// Utilities -------------------------------------------------------------------
+//
+//@each $bp, $bp-value in $bp-list
+//    @media (min-width: $bp-value)
+//        #{_(table-padding)}
+//            padding: $table-padding
+//
+//        #{_(table-font-size)}
+//            font-size: $table-font-size
+//
+//        #{_(table-items-max-height)}
+//            max-height: $table-items-max-height
+//
+//// Misc ------------------------------------------------------------------------
+//table
+//    .btn,
+//    .button,
+//    #{_(button)},
+//    button,
+//    input[type="submit"],
+//    input[type="reset"],
+//    input[type="button"]
+//        margin-top: 0
+//        margin-bottom: 0

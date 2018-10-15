@@ -35,6 +35,23 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
+@import "components/_animations";
+@import "components/_grid";
+@import "components/_spacing";
+@import "components/_typography";
+@import "components/_base";
+@import "components/_links";
+@import "components/_buttons";
+@import "components/_forms";
+@import "components/_lists";
+@import "components/_code";
+@import "components/_tables";
+@import "components/_misc";
+@import "components/_clearing";
+@import "components/_icons";
+@import "components/_flex";
+@import "components/_states";
+@import "components/_utilities";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -45,7 +62,7 @@
  * @import "tailwindcss/utilities";
  */
 @tailwind utilities;
-@import "custom-utilities.css";
+@import "tailwind-custom-utilities.css";
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

@@ -1,5 +1,10 @@
 module.exports = {
-  plugins: {
-    autoprefixer: {}
-  }
+    plugins: [
+        require('tailwindcss')('./config/theme.js'),
+        require('autoprefixer'),
+        require('postcss-pxtorem')({
+            replace: true,
+            propList: ['*'],
+        }),
+    ]
 }

@@ -1,0 +1,33 @@
+@import "~@/styles/functions.scss";
+@import "~@/styles/mixins.scss";
+@import "~@config/theme.scss";
+
+//// Buttons ---------------------------------------------------------------------
+/**
+ * @atom Button
+ * @section Navigation > Buttons
+ * @description
+ *  Buttons for various purposes.
+ * @modifiers
+ *  .button--alert an alert button
+ * @markup
+ *   <button class="button">A button</button>
+ *   <button class="button button--alert">
+ *     An alert button
+ *   </button>
+ */
+$element-class-name: 'button';
+button,
+.#{$element-class-name},
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+  text-align: center;
+  align-items: center;
+  display: inline-flex;
+  text-decoration: none;
+  text-transform: uppercase;
+  @include unit-style($element-class-name, clickable);
+  @apply pr-text-xs pr-font-semibold pr-tracking-wide;
+}
+
