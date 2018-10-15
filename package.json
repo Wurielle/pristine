@@ -6,10 +6,12 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "tailwind-init": "tailwind init tailwind.js"
+    "build-watch": "vue-cli-service build-watch",
+    "test:unit": "vue-cli-service test:unit",
+    "tailwind-init": "./node_modules/.bin/tailwind init config/theme.js"
   },
   "dependencies": {
-    "element-ui": "^2.3.6",
+    "element-ui": "^2.4.5",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
@@ -17,15 +19,25 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.1",
-    "@vue/cli-plugin-typescript": "^3.0.1",
-    "@vue/cli-service": "^3.0.1",
-    "node-sass": "^4.9.0",
-    "postcss-import": "^12.0.0",
-    "sass-loader": "^7.0.1",
-    "tailwindcss": "^0.6.5",
+    "@types/jest": "^23.1.4",
+    "@vue/cli-plugin-babel": "^3.0.5",
+    "@vue/cli-plugin-typescript": "^3.0.5",
+    "@vue/cli-plugin-unit-jest": "^3.0.5",
+    "@vue/cli-service": "^3.0.5",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "json-sass": "^1.2.1",
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0",
+    "node-sass": "^4.9.2",
+    "node-watch": "^0.5.8",
+    "postcss-pxtorem": "^4.0.1",
+    "sass-loader": "^7.0.3",
+    "tailwindcss": "^0.6.6",
+    "ts-jest": "^23.0.0",
     "typescript": "^3.0.0",
-    "vue-cli-plugin-element-ui": "^1.1.4",
+    "vue-cli-plugin-build-watch": "^1.0.0",
+    "vue-cli-plugin-element": "^1.0.0",
     "vue-template-compiler": "^2.5.17"
   }
 }

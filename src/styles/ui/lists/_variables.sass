@@ -1,0 +1,20 @@
+// Variables--------------------------------------------------------------------
+$list-li-margin: 0 0 sp(sm) 0
+$list-margin: sp(md) 0 sp(md) 2.2rem
+$list-font-size: 90%
+
+@mixin list
+    position: relative
+    padding-left: sp(lg)
+    &::before
+        content: ''
+        background-color: #a21c27
+        position: absolute
+        left: 0
+        height: 0.9rem
+        width: 0.9rem
+        margin-right: 8px
+        top: 1.8rem
+        display: inline-block
+        transform: translateY(-100%)
+        margin-right: sp(sm)

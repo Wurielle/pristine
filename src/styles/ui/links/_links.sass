@@ -1,0 +1,24 @@
+// Variables -------------------------------------------------------------------
+
+// Links -----------------------------------------------------------------------
+a
+    color: $color--secondary
+    text-decoration: none
+    &:hover,
+    &:active,
+    &:focus
+        color: $color--primary
+        text-decoration: none
+
+    &#{u(link-default)}
+        color: $color--secondary!important
+        text-decoration: none!important
+        &:hover,
+        &:active,
+        &:focus
+            color: $color--primary!important
+            text-decoration: none!important
+    &#{u(link-neutral)}
+        color: $color--font
+        &:hover
+            color: $color--font

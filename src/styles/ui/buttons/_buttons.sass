@@ -1,0 +1,273 @@
+// Buttons ---------------------------------------------------------------------
+#{_(button)},
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"]
+    display: inline-block
+    height: $button-height
+    line-height: $button-height - $button-border-top-width - $button-border-bottom-width
+    padding: $button-padding
+    color: $color--font
+    text-align: center
+    font-size: $button-font-size
+    font-weight: $button-font-weight
+    letter-spacing: $button-letter-spacing
+    text-transform: uppercase
+    text-decoration: none
+    white-space: nowrap
+    background-color: white
+    border-radius: $button-border-radius
+    border: $button-border-style $color--border
+    border-top-width: $button-border-top-width
+    border-left-width: $button-border-left-width
+    border-right-width: $button-border-right-width
+    border-bottom-width: $button-border-bottom-width
+    border-style: $button-border-style
+    cursor: pointer
+    box-shadow: none
+    svg
+        fill: $color--secondary!important
+        //*
+        //    fill: $color--secondary!important
+    &:focus,&.active
+        color: white
+        border-color: $color--primary
+        background-color: $color--primary
+        outline: 0
+        box-shadow: none
+        svg
+            fill: white!important
+            stroke: #ffffff!important
+            *
+                //fill: white!important
+                stroke: #ffffff!important
+    &#{_(button-thinest-border)}
+        border-top-width: $thinest-border
+        border-left-width: $thinest-border
+        border-right-width: $thinest-border
+        border-bottom-width: $thinest-border
+    &#{_(button-lightgrey)}
+        color: white
+        background-color: $color--light-grey
+        border: $button-border-style $color--light-grey
+    &#{_(button-choice)}
+        color: white
+        background-color: $color--primary
+        border: $button-border-style $color--primary
+        font-size: fs(xxxlg)
+        height: auto
+        border-radius: 0.8rem
+        line-height: inherit
+        z-index: 1
+    &#{_(button-xxs)}
+        height: unit(xxs)
+        line-height: unit(xxs) - $button-border-top-width - $button-border-bottom-width
+    &#{_(button-small)}
+        height: unit(xs)
+        line-height: unit(xs) - $button-border-top-width - $button-border-bottom-width
+    &#{_(button-large)}
+        height: unit(xlg)
+        line-height: unit(xlg) - $button-border-top-width - $button-border-bottom-width
+        font-size: $font-size-h2
+        background-color: white
+        border-color: $color--secondary
+        color: $color--secondary
+        &.active
+            color: white
+            background-color: $color--secondary
+    &[type="submit"]
+        background-color: $color--success
+        border-color: $color--success
+        color: white
+        &:hover
+            background-color: darken($color--success, 10%)
+            border-color: darken($color--success, 10%)
+    @each $state, $state-value in $state-list
+        &#{_(button-#{$state})}
+            //color: white
+            background-color: $state-value
+            border-color: $state-value
+            //&:hover,
+            //&:focus
+            //    background-color: darken($state-value, 10%)
+            //    border-color: darken($state-value, 10%)
+    &#{_(button-ghost)}
+        border-color: transparent
+        &:hover,
+        &:focus
+            border-color: $color--whitest-grey
+            background-color: $color--whitest-grey
+    &#{_(button-silent)}
+        border-color: transparent
+        background-color: transparent
+        &:hover,
+        &:focus
+            background-color: transparent
+    &#{_(button-big)}
+        height: $button-height-big!important
+        width: $button-height-big!important
+        display: flex
+        justify-content: center
+        align-items: center
+        i
+            padding-left: 0.4rem
+    &#{_(button-medium)}
+        height: $button-height-medium!important
+        width: $button-height-medium!important
+        display: flex
+        justify-content: center
+        align-items: center
+    &#{_(button-dashed)}
+        border-color: $color--border-dark
+        background-color: transparent
+        &:hover,
+        &:focus
+            color: $color--primary
+            border-color: $color--primary
+            background-color: transparent
+    &#{_(button-square)}
+        width: $button-height
+        padding: 0
+        text-align: center
+        &#{_(button-xxs)}
+            width: unit(xxs)
+            min-width: unit(xxs)
+        &#{_(button-small)}
+            width: unit(xs)
+            min-width: unit(xs)
+        &#{_(button-large)}
+            width: unit(xlg)
+            min-width: unit(xlg)
+    &#{_(button-round)}
+        padding: 0rem
+        border-radius: 9999px
+        &:focus
+            i
+                color: $color--primary
+    &#{_(button-disabled)}
+        opacity: 0.2
+        pointer-events: none
+    &#{_(button-list)}
+        border-radius: 9999px
+        border: $border-width $border-style $color--secondary
+        pointer-events: none
+        height: unit(xlg)
+        width: unit(xlg)
+        color: $color--secondary
+        font-size: fs(xlmd)
+        &.active
+            background-color: $color--secondary
+            color: white
+    &#{_(button-hotspot)}
+        border-radius: 9999px
+        border: none
+        background-color: $color--secondary
+        color: white
+        width: 4rem
+        height: 4rem
+        line-height: 4rem
+        font-size: fs(xlg)
+        z-index: 5
+        min-width: 0px
+        position: absolute
+    &#{_(button-hotspot-list)}
+        border-radius: 9999px
+        border: none
+        pointer-events: none
+        background-color: $color--primary
+        color: white
+        width: unit(lg)
+        height: unit(lg)
+        font-weight: 300
+        font-size: fs(xxlg)
+        &:focus,&.active
+            background-color: $color--secondary
+    &#{_(button-arrow)}
+        @include arrow-figure
+        border: none
+        pointer-events: none
+        background-color: $color--primary
+        color: white
+        width: unit(lg)
+        height: unit(lg)
+        font-weight: 300
+        font-size: fs(xxlg)
+        width: 25rem
+        &::after
+            background-color: $color--primary
+            z-index: -1
+            height: 3rem!important
+            width: 3rem!important
+        &:focus,&.active
+            background-color: $color--secondary
+            &::after
+                background-color: $color--secondary
+    &#{_(button-next)}
+        border: none
+        //pointer-events: none
+        background-color: darken($color--light-grey,20%)
+        color: white
+        width: unit(sm)
+        height: unit(sm)
+        min-width: 0px
+        border-radius: 0px
+    &#{_(button-shadow)}
+        box-shadow: sh(sm)
+    //    border-radius: 9999px
+    //    border: none
+    //    background-color: $color--whitesmoke
+    //    box-shadow: sh(sm)
+    //    pointer-events: none
+    //    color: $color--secondary
+    //    width: unit(md)
+    //    height: unit(md)
+    //&#{_(button-run-xs)}
+    //    @extend #{_(button-run)}
+    //    width: unit(xxs)
+    //    height: unit(xxs)
+    //    line-height: unit(xxs)
+    //    min-width: unit(xxs)
+    //    padding: 0
+    //    text-align: center
+
+// Utilities -------------------------------------------------------------------
+
+@each $bp, $bp-value in $bp-list
+    @media (min-width: $bp-value)
+
+        #{u(button-padding, $bp)}
+            padding: $button-padding
+
+        #{u(button-height, $bp)}
+            height: $button-height
+
+        #{u(button-border-width, $bp)}
+            border-width: $button-border-width
+
+        #{u(button-border-top-width, $bp)}
+            border-top-width: $button-border-top-width
+
+        #{u(button-border-left-width, $bp)}
+            border-left-width: $button-border-left-width
+
+        #{u(button-border-right-width, $bp)}
+            border-right-width: $button-border-right-width
+
+        #{u(button-border-bottom-width, $bp)}
+            border-bottom-width: $button-border-bottom-width
+
+        #{u(button-border-radius, $bp)}
+            border-radius: $button-border-radius
+
+        #{u(button-border-style, $bp)}
+            border-style: $button-border-style
+
+        #{u(button-font-size, $bp)}
+            font-size: $button-font-size
+
+        #{u(button-font-weight, $bp)}
+            font-weight: $button-font-weight
+
+        #{u(button-letter-spacing, $bp)}
+            letter-spacing: $button-letter-spacing

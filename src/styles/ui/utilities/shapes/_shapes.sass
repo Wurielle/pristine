@@ -1,0 +1,4 @@
+@each $bp, $value in $bp-list
+    @media (min-width: $value)
+        #{u(shape-rounded-full, $bp)}
+            border-radius: 9999px

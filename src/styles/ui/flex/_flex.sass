@@ -1,0 +1,213 @@
+@each $bp, $bp-value in $bp-list
+    @media (min-width: $bp-value)
+
+        #{u(flex, $bp)}
+            display: flex
+
+        #{u(flex-none, $bp)}
+            display: block
+
+        #{u(display-unflex, $bp)}
+            display: block!important
+
+        #{u(flex-inline, $bp)},
+        #{u(display-flex-inline, $bp)}
+            display: inline-flex
+
+        // Dimension --------------------------------------------------------------
+
+        #{u(flex-none, $bp)}
+            flex: none
+
+        #{u(flex-auto, $bp)}
+            flex: auto
+
+        // Justify-content -----------------------------------------------------
+
+        #{u(flex-content-left, $bp)},
+        #{u(flex-content-justify-left, $bp)}
+            justify-content: start
+
+        #{u(flex-content-right, $bp)},
+        #{u(flex-content-justify-right, $bp)}
+            justify-content: end
+
+        #{u(flex-content-center, $bp)},
+        #{u(flex-content-justify-center, $bp)}
+            justify-content: center
+
+        #{u(flex-content-justify-around, $bp)}
+            justify-content: space-around
+
+        #{u(flex-content-justify-between, $bp)}
+            justify-content: space-between
+
+        #{u(flex-content-justify-evenly, $bp)}
+            justify-content: space-evenly
+
+        #{u(flex-content-justify-stretch, $bp)}
+            justify-content: stretch
+
+        // Align-content -------------------------------------------------------
+
+        #{u(flex-content-top, $bp)},
+        #{u(flex-content-align-top, $bp)}
+            align-content: start
+
+        #{u(flex-content-bottom, $bp)}
+        #{u(flex-content-align-bottom, $bp)}
+            align-content: end
+
+        #{u(flex-content-middle, $bp)},
+        #{u(flex-content-align-middle, $bp)}
+            align-content: center
+
+        #{u(flex-content-align-between, $bp)}
+            align-content: space-between
+
+        #{u(flex-content-align-around, $bp)}
+            align-content: space-around
+
+        #{u(flex-content-align-evenly, $bp)}
+            align-content: space-evenly
+
+        //Justify-items --------------------------------------------------------
+
+        #{u(flex-items-left, $bp)},
+        #{u(flex-items-justify-left, $bp)}
+            justify-items: left
+
+        #{u(flex-items-right, $bp)},
+        #{u(flex-items-justify-right, $bp)}
+            justify-items: right
+
+        #{u(flex-items-center, $bp)},
+        #{u(flex-items-justify-center, $bp)}
+            justify-items: center
+
+        #{u(flex-items-justify-stretch, $bp)}
+            justify-items: stretch
+
+        // Align-items ---------------------------------------------------------
+
+        #{u(flex-items-top, $bp)},
+        #{u(flex-items-align-top, $bp)}
+            align-items: start
+
+        #{u(flex-items-bottom, $bp)},
+        #{u(flex-items-align-bottom, $bp)}
+            align-items: end
+
+        #{u(flex-items-middle, $bp)},
+        #{u(flex-items-align-middle, $bp)}
+            align-items: center
+
+        #{u(flex-items-align-stretch, $bp)}
+            align-items: stretch
+
+        // Align-self ----------------------------------------------------------
+
+        #{u(flex-self-top, $bp)},
+        #{u(flex-self-align-top, $bp)}
+            align-self: flex-start
+
+        #{u(flex-self-middle, $bp)},
+        #{u(flex-self-align-middle, $bp)}
+            align-self: center
+
+        #{u(flex-self-bottom, $bp)},
+        #{u(flex-self-align-bottom, $bp)}
+            align-self: flex-end
+
+        #{u(flex-self-align-stretch, $bp)}
+            align-self: stretch
+
+        // Jusitfy-self ------------------------------------------------------
+
+        #{u(flex-self-left, $bp)},
+        #{u(flex-self-justify-left, $bp)}
+            justify-self: left
+
+        #{u(flex-self-center, $bp)},
+        #{u(flex-self-justify-center, $bp)}
+            justify-self: center
+
+        #{u(flex-self-right, $bp)},
+        #{u(flex-self-justify-right, $bp)}
+            justify-self: right
+
+        #{u(flex-self-justify-stretch, $bp)}
+            justify-self: stretch
+
+        // Flex-direction ------------------------------------------------------
+
+        #{u(flex-row, $bp)}
+            flex-direction: row
+
+        #{u(flex-row-reverse, $bp)}
+            flex-direction: row-reverse
+
+        #{u(flex-column, $bp)}
+            flex-direction: column
+
+        #{u(flex-column-reverse, $bp)}
+            flex-direction: column-reverse
+
+        // Flex-wrap --------------------------------------------------------------
+
+        #{u(flex-wrap, $bp)}
+            flex-wrap: wrap
+
+        #{u(flex-nowrap, $bp)}
+            flex-wrap: nowrap
+
+        #{u(flex-wrap-reverse, $bp)}
+            flex-wrap: wrap-reverse
+
+        #{u(flex-flow-column, $bp)}
+            flex-flow: column
+
+        #{u(flex-flow-row, $bp)}
+            flex-flow: row
+
+        // Order ---------------------------------------------------------------
+
+        #{u(flex-first, $bp)}
+            order: -1
+
+        #{u(flex-last, $bp)}
+            order: 99
+
+        // Grow ----------------------------------------------------------------
+
+        #{u(flex-0, $bp)}
+            flex-grow: 0
+
+        #{u(flex-1, $bp)}
+            flex-grow: 1
+
+        #{u(flex-2, $bp)}
+            flex-grow: 2
+
+        #{u(flex-3, $bp)}
+            flex-grow: 3
+
+        #{u(flex-4, $bp)}
+            flex-grow: 4
+
+        // Shrink --------------------------------------------------------------
+
+        #{u(flex-shrink-0, $bp)}
+            flex-shrink: 0
+
+        #{u(flex-shrink-1, $bp)}
+            flex-shrink: 1
+
+        #{u(flex-shrink-2, $bp)}
+            flex-shrink: 2
+
+        #{u(flex-shrink-3, $bp)}
+            flex-shrink: 3
+
+        #{u(flex-shrink-4, $bp)}
+            flex-shrink: 4

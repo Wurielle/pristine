@@ -1,0 +1,126 @@
+// Variables -------------------------------------------------------------------
+// Breakpoints
+// $xxs: 480px
+// $xs: 640px
+// $sm: 768px
+// $md: 1000px
+// $lg: 1200px
+// $xlg: 1400px
+
+// Mixins
+@mixin set-gutter($gutter)
+    margin-right: -$gutter
+    margin-left: -$gutter
+    .container
+        padding-left: $gutter
+        padding-right: $gutter
+    .container-fluid
+        padding-left: $gutter
+        padding-right: $gutter
+
+    .row
+        margin-right: -$gutter
+        margin-left: -$gutter
+    .col,
+    .cols,
+    .column,
+    .columns,
+    [class^="col-"]
+        padding-left: $gutter
+        padding-right: $gutter
+
+
+@mixin reset-gutter()
+    margin-right: -$gutter
+    margin-left: -$gutter
+    .container
+        padding-left: $gutter
+        padding-right: $gutter
+    .container-fluid
+        padding-left: $gutter
+        padding-right: $gutter
+
+    .row
+        margin-right: -$gutter
+        margin-left: -$gutter
+    .col,
+    .cols,
+    .column,
+    .columns,
+    [class^="col-"]
+        padding-left: $gutter
+        padding-right: $gutter
+// Grid ------------------------------------------------------------------------
+.container
+    position: relative
+    width: 100%
+    max-width: bp(xlg)
+    margin: 0 auto
+    padding-left: $gutter
+    padding-right: $gutter
+.container-fluid
+    margin-right: auto
+    margin-left: auto
+    padding-left: $gutter
+    padding-right: $gutter
+
+.row
+    margin-right: -$gutter
+    margin-left: -$gutter
+    &.no-float
+        word-spacing: -.3em
+        &>.col
+            float: none
+            display: inline-block
+            vertical-align: top
+        &>*
+            word-spacing: normal
+    @media (max-width: bp(sm))
+        @include set-gutter($gutter/2)
+    &.reset-gutter
+        @include reset-gutter()
+.row-big
+    @include set-gutter(sp(lg))
+.col,
+.cols,
+.column,
+.columns,
+[class^="col-"]
+    width: 100%
+    float: left
+    padding-left: $gutter
+    padding-right: $gutter
+@each $bp, $bp-value in $bp-list
+    @media (min-width: $bp-value)
+        @each $bp-size, $bp-value2 in $bp-list
+            // $bp-size: if($bp-size == 'min', '', '\\:#{$bp-size}')
+            // $bp-value2: if($bp-value2 == '0', '1', $bp-value2) TODO
+            #{u(width, $bp, $bp-size)}
+                width: 100%
+                max-width: $bp-value2
+            #{u(container, $bp, $bp-size)}
+                width: 100%
+                margin-left: auto
+                margin-right: auto
+                max-width: $bp-value2
+// Columns
+@for $i from $columns through 1
+    .#{min}-#{$i}
+        width: ($i/$columns)*100%
+@each $bp, $value in $bp-list
+    @media (min-width: $value)
+        @for $i from $columns through 1
+            .#{$bp}-#{$i}
+                width: ($i/$columns)*100%
+            #{u(width-#{$i}, $bp)}
+                width: ($i/$columns)*100%
+
+// Offsets
+@for $i from $columns through 0
+    .#{min}-off-#{$i}
+        margin-left: ($i/$columns)*100%
+@each $key, $value in $bp-list
+    @media (min-width: $value)
+        @for $i from $columns through 0
+            .#{$key}-off-#{$i}
+                margin-left: ($i/$columns)*100%

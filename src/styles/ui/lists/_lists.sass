@@ -1,0 +1,52 @@
+// Lists -----------------------------------------------------------------------
+
+
+.list
+    @include list
+
+&#{u(list-breadcrumbs)}
+    *
+        color: $color--blue
+        font-size: fs(md)
+        letter-spacing: 0.1rem
+        a
+            padding: sp(xs)
+ul ul,
+ul ol,
+ol ol,
+ol ul
+    margin: $list-margin
+    font-size: $list-font-size
+li
+    margin: $list-li-margin
+    list-style: none
+
+ul
+    list-style: circle inside
+    ul
+        list-style: square inside
+            list-style: circle inside
+    &#{u(list-default)}
+        list-style: circle inside!important
+        ul
+            list-style: square inside!important
+ol
+    list-style: decimal inside
+    &#{u(list-default)}
+        list-style: decimal inside!important
+ol, ul
+    margin-top: 0
+    &#{u(list-neutral)}
+        list-style: none
+        padding-left: 0
+        ul,
+        ol
+            list-style: none
+    &#{u(list-inline)}
+        padding: 0
+        margin: 0
+        list-style: none
+        li
+            display: inline-block
+            padding: 0
+            margin: 0

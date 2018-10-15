@@ -1,0 +1,287 @@
+// Typography ------------------------------------------------------------------
+h1
+    font-size: $font-size-h1
+    line-height: $line-height-h1
+    letter-spacing: $letter-spacing-h1
+h2
+    font-size: $font-size-h2
+    line-height: $line-height-h2
+    letter-spacing: $letter-spacing-h2
+h3
+    font-size: $font-size-h3
+    line-height: $line-height-h3
+    letter-spacing: $letter-spacing-h3
+h4
+    font-size: $font-size-h4
+    line-height: $line-height-h4
+    letter-spacing: $letter-spacing-h4
+h5
+    font-size: $font-size-h5
+    line-height: $line-height-h5
+    letter-spacing: $letter-spacing-h5
+h6
+    font-size: $font-size-h6
+    line-height: $line-height-h6
+    letter-spacing: $letter-spacing-h6
+// most of the time we tend to use heading for semantic purpose but we often don't really want the style based on the heading's level. Add the class title to have a predefined style of title no matter the heading's level! :)
+#{$h-list},span
+    font-weight: 300
+    color: $color--title
+    margin: 0
+    line-height: 1
+    letter-spacing: .05em
+    font-weight: bold
+    text-transform: uppercase
+    &.title
+        margin-bottom: sp(md)
+        font-weight: 300
+        color: $color--title
+        font-size: fs(md)
+    &.t2
+        font-size: $font-size-h1
+    &.t3
+        font-size: $font-size-h4
+    &.t4
+        font-weight: normal
+        font-size: $font-size-h3
+        color: $color--secondary
+    &.t5
+        font-weight: normal
+        font-size: $font-size-h4
+        color: $color--primary
+        font-style: italic
+    @mixin main-title-size($size,$background-color)
+        padding-top: $size*(2/3)
+        font-size:  $size
+        &::before
+            $height: $size+$size*(1/3)
+            $width: $height*(2/3)
+            height: $height
+            width: $width
+            left: -$height*1.2
+            background-color: $background-color!important
+    @mixin main-subtitle-size($size,$background-color)
+        //padding-top: $size*(2/3)
+        font-size:  $size
+        &::before
+            $height: $size*.90
+            $width: $height*(2/3)
+            height: $height
+            width: $width
+            left: -$height*1.3
+            background-color: $background-color!important
+    &.main-title
+        text-transform: uppercase
+        font-weight: bold
+        position: relative
+        line-height: .7
+        vertical-align: bottom
+        display: inline-block
+        margin: 0
+        &::before
+            // background-color: $color--secondary
+            content: ''
+            display: block
+            $skew: (180deg - $logo-angle)
+            transform: skewX($skew)
+            position: absolute
+            bottom: 0
+
+        @include main-title-size($font-size-h1,$color--secondary)
+        &.main-title--small
+            @include main-title-size($font-size-h2,$color--secondary)
+        &.main-title-small-blue
+            @include main-title-size($font-size-h2,$color--primary)
+            color: $color--blue!important
+        &.main-title--smallest
+            @include main-title-size($font-size-h4,$color--secondary)
+    &.main-subtitle
+        text-transform: uppercase
+        font-weight: bold
+        position: relative
+        line-height: 1
+        vertical-align: bottom
+        display: inline-block
+        margin: 0
+        text-transform: initial
+        &::before
+            // background-color: $color--secondary
+            content: ''
+            display: block
+            $skew: (180deg - $logo-angle)
+            transform: skewX($skew)
+            position: absolute
+            bottom: 0
+        @include main-subtitle-size($font-size-h1,$color--secondary)
+        &.main-subtitle--small
+            @include main-subtitle-size($font-size-h2,$color--secondary)
+        &.main-subtitle-small-blue
+            @include main-subtitle-size($font-size-h2,$color--primary)
+            color: $color--blue!important
+        &.main-subtitle--smallest
+            @include main-subtitle-size($font-size-h4,$color--secondary)
+
+
+@mixin arrow-figure
+    padding: sp(xs)
+    // background-color: $color--blue
+    color: white
+    border-radius: 0.6rem
+    width: max-content
+    font-weight: 500
+    position: relative
+    z-index: 1
+    width: 80%
+    text-align: center
+    &::after
+        content: ''
+        height: 2.6rem
+        width: 2.6rem
+        // background-color: $color--blue
+        position: absolute
+        right: 0
+        top: 38%
+        z-index: -1
+        transform: rotate(45deg) translate(0, -50%)
+        border-radius: 0.6rem
+
+.usage-title
+    @include arrow-figure
+    &::after
+        width: 2.5rem
+
+@mixin on-live-title($size,$font-size)
+    display: flex
+    font-size: $font-size
+    z-index: 1
+    .live-picto
+        height: $size
+        width: $size
+        background-color: $color--secondary
+        display: flex
+        justify-content: center
+        align-items: center
+        color: white
+        border-radius: 999rem
+    span
+        display: flex
+        align-items: center
+        color: $color--secondary
+        text-align: center
+        padding-left: sp(md)
+        transform: skewX(165deg)
+.isLive-title
+    @include on-live-title(3rem,0.7rem)
+    right: -4.5rem!important
+    top: -1rem!important
+    span
+        font-size: 2rem!important
+        padding-left: sp(sm)!important
+.isLive-big-title
+    @include on-live-title(7rem,3rem)
+    // &::after
+    //     font-weight: bold
+
+
+
+p
+    margin-top: 0
+.sub
+    font-size: 1rem
+    color: $color--font-light
+pre,
+code
+    font-family: $code-font-family
+// Utilities -------------------------------------------------------------------
+@each $bp, $bp-value in $bp-list
+    @media (min-width: $bp-value)
+        #{u(line-height-normal, $bp)}
+            line-height: $line-height
+        // Font size
+        #{u(text-small, $bp)}
+            font-size: fs(sm)
+        #{u(text-default, $bp)}
+            font-size: fs(md)
+        #{u(text-large, $bp)}
+            font-size: fs(lg)
+        @each $fs-size, $fs-value in $fs-list
+            $fs-size: if($fs-size == 'min', '', '\\:#{$fs-size}')
+            #{u(text#{$fs-size}, $bp)}
+                font-size: $fs-value!important
+        // Font weight
+        #{u(text-bold, $bp)}
+            font-weight: $font-weight-bold!important
+        #{u(text-thin, $bp)}
+            font-weight: 400
+        #{u(text-thinest, $bp)}
+            font-weight: 200!important
+        #{u(text-half-bold, $bp)}
+            font-weight: 500!important
+        // Text transform
+        #{u(text-uppercase, $bp)}
+            text-transform: uppercase
+        #{u(text-unset, $bp)}
+            text-transform: unset
+        #{u(text-capitalize, $bp)}
+            text-transform: capitalize
+        #{u(text-lowercase, $bp)}
+            text-transform: lowercase!important
+        // Font color
+        #{u(text-color-inherit, $bp)}
+            color: inherit
+        #{u(text-default, $bp)},
+        #{u(text-muted, $bp)}
+            color: $color--font
+        #{u(text-primary, $bp)}
+            color: $color--primary
+        #{u(text-success, $bp)}
+            color: $color--success
+        #{u(text-warning, $bp)}
+            color: $color--warning
+        #{u(text-danger, $bp)}
+            color: $color--danger
+        #{u(text-white, $bp)}
+            color: white!important
+        // Text align
+        #{u(text-left, $bp)}
+            text-align: left
+        #{u(text-right, $bp)}
+            text-align: right
+        #{u(text-center, $bp)}
+            text-align: center
+        #{u(text-justify, $bp)}
+            text-align: justify
+        // Text vertical align
+        #{u(text-top, $bp)}
+            vertical-align: top
+        #{u(text-middle, $bp)}
+            vertical-align: middle
+        #{u(text-bottom, $bp)}
+            vertical-align: bottom
+        #{u(text-baseline, $bp)}
+            vertical-align: baseline
+        // Text wrapping
+        #{u(text-break, $bp)}
+            max-width: 100%
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+        #{u(text-truncate, $bp)}
+            overflow-wrap: break-word
+            word-wrap: break-word
+            -webkit-hyphens: auto
+            -ms-hyphens: auto
+            hyphens: auto
+        #{u(text-nowrap, $bp)}
+            white-space: nowrap
+        #{u(text-normal, $bp)}
+            white-space: normal
+            max-width: inherit
+            text-overflow: inherit
+            overflow: auto
+            overflow-wrap: inherit
+            word-wrap: normal
+        // Creates a .size:#{number} class with a font size going through 0 to $sizes --
+        @for $i from 0 through $sizes
+            #{u(size, $bp, $i)}
+                font-size: ($i/10)+rem!important

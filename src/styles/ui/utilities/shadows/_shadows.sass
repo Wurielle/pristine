@@ -1,0 +1,5 @@
+@each $bp, $bp-value in $bp-list
+    @media (min-width: $bp-value)
+        @each $shadow, $shadow-value in $shadow-list
+            #{u(box-shadow, $bp, $shadow)}
+                box-shadow: $shadow-value
