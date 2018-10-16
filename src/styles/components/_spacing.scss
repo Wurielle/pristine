@@ -1,203 +1,29 @@
-//// Spacing ---------------------------------------------------------------------
-//button,
-//.button,
-//.toggle,
-//.#{$prefix}button,
-//span.select2,
-//.form-group
-//    margin: $spacing-button-margin
-//    &:last-of-type
-//        margin-bottom: 0
-//input,
-//textarea,
-//select,
-//fieldset
-//    margin: $spacing-input-margin
-//    &:last-child
-//        margin-bottom: 0
-//pre,
-//blockquote,
-//dl,
-//figure,
-//table,
-//.table-wrapper,
-//p,
-//ul,
-//ol,
-//form
-//    margin: $spacing-misc-margin
-//    &:last-child
-//        margin-bottom: 0
-//
-//// margins and paddings
-//@each $bp, $bp-value in $bp-list
-//    @media (min-width: $bp-value)
-//        // Regular Spacing
-//        #{u(nm, $bp)}
-//            margin: 0!important
-//        #{u(nmx, $bp)}
-//            margin-left: 0!important
-//            margin-right: 0!important
-//        #{u(mx-auto, $bp)}
-//            margin-left: auto!important
-//            margin-right: auto!important
-//        #{u(nmy, $bp)}
-//            margin-left: 0!important
-//            margin-right: 0!important
-//        #{u(nmt, $bp)}
-//            margin-top: 0!important
-//        #{u(nmr, $bp)}
-//            margin-right: 0!important
-//        #{u(nmb, $bp)}
-//            margin-bottom: 0!important
-//        #{u(nml, $bp)}
-//            margin-left: 0!important
-//        #{u(np, $bp)}
-//            padding: 0!important
-//        #{u(npx, $bp)}
-//            padding-left: 0!important
-//            padding-right: 0!important
-//        #{u(npy, $bp)}
-//            padding-left: 0!important
-//            padding-right: 0!important
-//        #{u(npt, $bp)}
-//            padding-top: 0!important
-//        #{u(npr, $bp)}
-//            padding-right: 0!important
-//        #{u(npb, $bp)}
-//            padding-bottom: 0!important
-//        #{u(npl, $bp)}
-//            padding-left: 0!important
-//        @each $sp-size, $sp-value in $sp-list
-//            // Margins
-//            #{u(m, $bp, $sp-size)}
-//                margin: $sp-value!important
-//            #{u(mx, $bp, $sp-size)}
-//                margin-left: $sp-value!important
-//                margin-right: $sp-value!important
-//            #{u(my, $bp, $sp-size)}
-//                margin-top: $sp-value!important
-//                margin-bottom: $sp-value!important
-//            #{u(mt, $bp, $sp-size)}
-//                margin-top: $sp-value!important
-//            #{u(mr, $bp, $sp-size)}
-//                margin-right: $sp-value!important
-//            #{u(mb, $bp, $sp-size)}
-//                margin-bottom: $sp-value!important
-//            #{u(ml, $bp, $sp-size)}
-//                margin-left: $sp-value!important
-//
-//            // Paddings
-//            #{u(p, $bp, $sp-size)}
-//                padding: $sp-value!important
-//            #{u(px, $bp, $sp-size)}
-//                padding-left: $sp-value!important
-//                padding-right: $sp-value!important
-//            #{u(py, $bp, $sp-size)}
-//                padding-top: $sp-value!important
-//                padding-bottom: $sp-value!important
-//            #{u(pt, $bp, $sp-size)}
-//                padding-top: $sp-value!important
-//            #{u(pr, $bp, $sp-size)}
-//                padding-right: $sp-value!important
-//            #{u(pb, $bp, $sp-size)}
-//                padding-bottom: $sp-value!important
-//            #{u(pl, $bp, $sp-size)}
-//                padding-left: $sp-value!important
-//
-//        #{u(children-nm, $bp)}
-//            &> *
-//                margin: 0!important
-//        #{u(children-nmx, $bp)}
-//            &> *
-//                margin-left: 0!important
-//                margin-right: 0!important
-//        #{u(children-nmy, $bp)}
-//            &> *
-//                margin-left: 0!important
-//                margin-right: 0!important
-//        #{u(children-nmt, $bp)}
-//            &> *
-//                margin-top: 0!important
-//        #{u(children-nmr, $bp)}
-//            &> *
-//                margin-right: 0!important
-//        #{u(children-nmb, $bp)}
-//            &> *
-//                margin-bottom: 0!important
-//        #{u(children-nml, $bp)}
-//            &> *
-//                margin-left: 0!important
-//        #{u(children-np, $bp)}
-//            &> *
-//                padding: 0!important
-//        #{u(children-npx, $bp)}
-//            &> *
-//                padding-left: 0!important
-//                padding-right: 0!important
-//        #{u(children-npy, $bp)}
-//            &> *
-//                padding-left: 0!important
-//                padding-right: 0!important
-//        #{u(children-npt, $bp)}
-//            &> *
-//                padding-top: 0!important
-//        #{u(children-npr, $bp)}
-//            &> *
-//                padding-right: 0!important
-//        #{u(children-npb, $bp)}
-//            &> *
-//                padding-bottom: 0!important
-//        #{u(children-npl, $bp)}
-//            &> *
-//                padding-left: 0!important
-//        @each $sp-size, $sp-value in $sp-list
-//            // Margins
-//            #{u(children-m, $bp, $sp-size)}
-//                & > *
-//                    margin: $sp-value!important
-//            #{u(children-mx, $bp, $sp-size)}
-//                & > *
-//                    margin-left: $sp-value!important
-//                    margin-right: $sp-value!important
-//            #{u(children-my, $bp, $sp-size)}
-//                & > *
-//                    margin-top: $sp-value!important
-//                    margin-bottom: $sp-value!important
-//            #{u(children-mt, $bp, $sp-size)}
-//                & > *
-//                    margin-top: $sp-value!important
-//            #{u(children-mr, $bp, $sp-size)}
-//                & > *
-//                    margin-right: $sp-value!important
-//            #{u(children-mb, $bp, $sp-size)}
-//                & > *
-//                    margin-bottom: $sp-value!important
-//            #{u(children-ml, $bp, $sp-size)}
-//                & > *
-//                    margin-left: $sp-value!important
-//
-//            // Paddings
-//            #{u(children-p, $bp, $sp-size)}
-//                & > *
-//                    padding: $sp-value!important
-//            #{u(children-px, $bp, $sp-size)}
-//                & > *
-//                    padding-left: $sp-value!important
-//                    padding-right: $sp-value!important
-//            #{u(children-py, $bp, $sp-size)}
-//                & > *
-//                    padding-top: $sp-value!important
-//                    padding-bottom: $sp-value!important
-//            #{u(children-pt, $bp, $sp-size)}
-//                & > *
-//                    padding-top: $sp-value!important
-//            #{u(children-pr, $bp, $sp-size)}
-//                & > *
-//                    padding-right: $sp-value!important
-//            #{u(children-pb, $bp, $sp-size)}
-//                & > *
-//                    padding-bottom: $sp-value!important
-//            #{u(children-pl, $bp, $sp-size)}
-//                & > *
-//                    padding-left: $sp-value!important
+@import "~@/styles/functions.scss";
+@import "~@/styles/mixins.scss";
+//// Spacing -----------------------------------------------------------------------------------------------------------
+button,
+.button,
+span,
+input,
+textarea,
+select,
+.select,
+fieldset,
+table,
+.table {
+    margin-bottom: theme(margin, base);
+}
+
+pre,
+blockquote,
+dl,
+figure,
+table,
+.table-wrapper,
+p,
+ul,
+ol,
+form {
+    margin-bottom: theme(margin, base);
+}
+

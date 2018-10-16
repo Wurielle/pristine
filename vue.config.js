@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
+const WebpackPluginHash = require('webpack-plugin-hash');
 const argv = require('minimist')(process.argv.slice(2));
 
 const jsonSass = require('json-sass');
@@ -46,7 +47,23 @@ module.exports = {
                 // 'API_AUTH_USERNAME': JSON.stringify(argv.apiAuthUsername.trim()),
                 // 'API_AUTH_PASSWORD': JSON.stringify(argv.apiAuthPassword.trim()),
                 // 'SERVICE_URL': JSON.stringify(argv.domain.trim())
+            }),
+            new WebpackPluginHash({
+                callback: (error, hash) => {
+                    console.log(`Build hash: ${hash}`);
+                }
             })
+            // {
+            //     apply: (compiler) => {
+            //         compiler.hooks.afterCompile.tap('AfterCompilePlugin', (stuff) => {
+            //             console.log(stuff);
+            //             // exec('<path to your post-build script here>', (err, stdout, stderr) => {
+            //             //     if (stdout) process.stdout.write(stdout);
+            //             //     if (stderr) process.stderr.write(stderr);
+            //             // });
+            //         });
+            //     }
+            // }
         ]
     }
 };

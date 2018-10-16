@@ -35,23 +35,17 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
-@import "components/_animations";
 @import "components/_grid";
 @import "components/_spacing";
 @import "components/_typography";
 @import "components/_base";
 @import "components/_links";
 @import "components/_buttons";
-@import "components/_forms";
+@import "components/_inputs";
 @import "components/_lists";
 @import "components/_code";
 @import "components/_tables";
 @import "components/_misc";
-@import "components/_clearing";
-@import "components/_icons";
-@import "components/_flex";
-@import "components/_states";
-@import "components/_utilities";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your

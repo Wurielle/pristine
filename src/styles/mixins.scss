@@ -1,96 +1,112 @@
 @import "~@/styles/functions.scss";
-@import "~@config/theme.scss";
 
 $states: (
-        primary: (
-                color: white,
-                background-color: theme($theme, colors, teal)
-        ),
-        secondary: (
-                color: white,
-                background-color: theme($theme, colors, blue)
-        ),
-        success: (
-                color: white,
-                background-color: theme($theme, colors, green)
-        ),
-        danger: (
-                color: white,
-                background-color: theme($theme, colors, red)
-        ),
-        warning: (
-                color: white,
-                background-color: theme($theme, colors, orange)
-        ),
-  //transparent: transparent
+    primary: (
+        color: white,
+        background-color: theme(colors, primary)
+    ),
+    secondary: (
+        color: white,
+        background-color: theme(colors, secondary)
+    ),
+    success: (
+        color: white,
+        background-color: theme(colors, success)
+    ),
+    danger: (
+        color: white,
+        background-color: theme(colors, danger)
+    ),
+    warning: (
+        color: white,
+        background-color: theme(colors, warning)
+    ),
+    info: (
+        color: white,
+        background-color: theme(colors, info)
+    ),
+    //transparent: transparent
 );
 @mixin unit-style($class-name, $function) {
-  height: theme($theme, ui, unit, base);
+    height: theme(ui, unit, base);
 
-  // Padding -----------------------------------------------------------------------------------------------------------
-  @apply pr-px-base;
+    // Padding -----------------------------------------------------------------------------------------------------------
+    @apply pr-px-base;
 
-  // Font --------------------------------------------------------------------------------------------------------------
-  @apply pr-text-font-color pr-bg-white;
+    // Font --------------------------------------------------------------------------------------------------------------
+    @apply pr-text-base-text-color pr-bg-white;
 
-  // Borders -----------------------------------------------------------------------------------------------------------
-  @apply pr-rounded-base pr-border-solid pr-border pr-border-grey-light;
+    // Borders -----------------------------------------------------------------------------------------------------------
+    @apply pr-rounded-base pr-border-solid pr-border pr-border-base-border-color;
 
-  // Shadows -----------------------------------------------------------------------------------------------------------
-  //@apply pr-shadow;
+    // Shadows -----------------------------------------------------------------------------------------------------------
+    //@apply pr-shadow;
 
-  // Styling -----------------------------------------------------------------------------------------------------------
-  @apply pr-bg-white;
+    // Styling -----------------------------------------------------------------------------------------------------------
+    @apply pr-bg-white;
 
-  // Specificities -----------------------------------------------------------------------------------------------------
-  @if $function == 'clickable' {
-    @apply pr-cursor-pointer;
-  }
-
-  // Native states
-  &:hover {
-    @apply pr-border-grey;
-  }
-
-  // Replace focus outline
-  &:focus {
-    @apply pr-border-grey pr-bg-grey-lightest pr-outline-none;
-  }
-
-  @if $function == 'clickable' {
-    &:active {
-      @apply pr-border-grey pr-bg-grey-light;
+    // Specificities -----------------------------------------------------------------------------------------------------
+    @if $function == 'clickable' {
+        @apply pr-cursor-pointer;
     }
-  }
 
-  // Class states
-  @each $state, $state-val in $states {
-    &.#{$class-name}--#{$state} {
-      color: map-get($state-val, color);
-      background-color: map-get($state-val, background-color);
-      border-color: map-get($state-val, background-color);
-      // Native states
-      &:hover {
-        border-color: darken(map-get($state-val, background-color), 5%);
-        @if $function == 'clickable' {
-          background-color: darken(map-get($state-val, background-color), 5%);
-        }
-      }
+    // Native states
+    &:hover {
+        border-color: darken(theme(colors, base-border-color), 10%);
+    }
 
-      // Replace focus outline
-      &:focus {
-        border-color: darken(map-get($state-val, background-color), 10%);
-        @if $function == 'clickable' {
-          background-color: darken(map-get($state-val, background-color), 10%);
-        }
-      }
+    // Replace focus outline
+    &:focus {
+        border-color: darken(theme(colors, base-border-color), 10%);
+        @apply pr-bg-base-bg-color pr-outline-none;
+    }
 
-      @if $function == 'clickable' {
+    @if $function == clickable {
         &:active {
-          border-color: darken(map-get($state-val, background-color), 15%);
-          background-color: darken(map-get($state-val, background-color), 15%);
+            border-color: darken(theme(colors, base-border-color), 10%);
+            background-color: darken(theme(colors, base-bg-color), 5%);
         }
-      }
+    } @else if $function == selectable {
+        &::-webkit-input-placeholder,
+        &:-moz-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder {
+            @apply pr-text-sm pr-tracking-base pr-text-grey-light;
+        }
     }
-  }
+
+    // Class states
+    @each $state, $state-val in $states {
+        &.#{$class-name}--#{$state} {
+            border-color: map-get($state-val, background-color);
+            @if $function == 'clickable' {
+                color: map-get($state-val, color);
+                background-color: map-get($state-val, background-color);
+            } @else if $function == 'selectable' {
+                background-color: rgba(map-get($state-val, background-color), .1);
+            }
+            // Native states
+            &:hover {
+                border-color: darken(map-get($state-val, background-color), 5%);
+                @if $function == 'clickable' {
+                    background-color: darken(map-get($state-val, background-color), 5%);
+                }
+            }
+
+            // Replace focus outline
+            &:focus {
+                border-color: darken(map-get($state-val, background-color), 8%);
+                @if $function == 'clickable' {
+                    background-color: darken(map-get($state-val, background-color), 8%);
+                }
+            }
+
+            @if $function == 'clickable' {
+                &:active {
+                    border-color: darken(map-get($state-val, background-color), 12%);
+                    background-color: darken(map-get($state-val, background-color), 12%);
+                }
+            }
+        }
+    }
 }

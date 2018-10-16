@@ -44,15 +44,17 @@ View the full documentation at https://tailwindcss.com.
 */
 let ui = {
     unit: {
-        base: "34px"
+        base: "40px"
     },
     spaceUnit: {
-        base: "12px"
+        base: "20px"
     }
-}
+};
 
 let colors = {
-    'font-color': '#22292f',
+    'base-text-color': '#22292f',
+    'base-bg-color': '#f8fafc',
+    'base-border-color': '#dae1e7',
 
     'transparent': 'transparent',
 
@@ -70,6 +72,7 @@ let colors = {
     'red-darker': '#621b18',
     'red-dark': '#cc1f1a',
     'red': '#e3342f',
+    'danger': '#e3342f',
     'red-light': '#ef5753',
     'red-lighter': '#f9acaa',
     'red-lightest': '#fcebea',
@@ -78,6 +81,7 @@ let colors = {
     'orange-darker': '#613b1f',
     'orange-dark': '#de751f',
     'orange': '#f6993f',
+    'warning': '#f6993f',
     'orange-light': '#faad63',
     'orange-lighter': '#fcd9b6',
     'orange-lightest': '#fff5eb',
@@ -94,6 +98,7 @@ let colors = {
     'green-darker': '#1a4731',
     'green-dark': '#1f9d55',
     'green': '#38c172',
+    'success': '#38c172',
     'green-light': '#51d88a',
     'green-lighter': '#a2f5bf',
     'green-lightest': '#e3fcec',
@@ -110,6 +115,8 @@ let colors = {
     'blue-darker': '#1c3d5a',
     'blue-dark': '#2779bd',
     'blue': '#3490dc',
+    'secondary': '#3490dc',
+    'info': '#3490dc',
     'blue-light': '#6cb2eb',
     'blue-lighter': '#bcdefa',
     'blue-lightest': '#eff8ff',
@@ -126,6 +133,7 @@ let colors = {
     'purple-darker': '#382b5f',
     'purple-dark': '#794acf',
     'purple': '#9561e2',
+    'primary': '#9561e2',
     'purple-light': '#a779e9',
     'purple-lighter': '#d6bbfc',
     'purple-lightest': '#f3ebff',
@@ -137,7 +145,7 @@ let colors = {
     'pink-light': '#fa7ea8',
     'pink-lighter': '#ffbbca',
     'pink-lightest': '#ffebef',
-}
+};
 
 module.exports = {
     ui: ui,
@@ -315,6 +323,7 @@ module.exports = {
     leading: {
         'none': 1,
         'tight': 1.25,
+        'base': 1.5,
         'normal': 1.5,
         'loose': 2,
     },
@@ -335,7 +344,9 @@ module.exports = {
     tracking: {
         'tight': '-0.05em',
         'normal': '0',
+        'base': '0.05em',
         'wide': '0.05em',
+        'ultrawide': '0.2em',
     },
 
 
@@ -452,7 +463,7 @@ module.exports = {
     borderRadius: {
         'none': '0',
         'sm': '.125rem',
-        'base': '6px',
+        'base': '2px',
         default: '.25rem',
         'lg': '.5rem',
         'full': '9999px',
@@ -943,8 +954,8 @@ module.exports = {
 
     plugins: [
         require('tailwindcss/plugins/container')({
-            // center: true,
-            // padding: '1rem',
+            center: true,
+            padding: ui.spaceUnit.base,
         }),
     ],
 

@@ -1,33 +1,40 @@
 @import "~@/styles/functions.scss";
 @import "~@/styles/mixins.scss";
-@import "~@config/theme.scss";
 
-//// Buttons ---------------------------------------------------------------------
+//// Buttons -----------------------------------------------------------------------------------------------------------
 /**
  * @atom Button
- * @section Navigation > Buttons
+ * @section Inputs > Buttons
  * @description
  *  Buttons for various purposes.
  * @modifiers
- *  .button--alert an alert button
+ *  .button--primary a primary button
+ *  .button--secondary a secondary button
+ *  .button--success a success button
+ *  .button--danger a danger button
+ *  .button--warning a warning button
+ *  .button--info a warning button
  * @markup
- *   <button class="button">A button</button>
- *   <button class="button button--alert">
- *     An alert button
- *   </button>
+ *  <button class="button">Button</button>
+ *  <button class="button button--primary">Primary</button>
+ *  <button class="button button--secondary">Secondary</button>
+ *  <button class="button button--success">Success</button>
+ *  <button class="button button--danger">Danger</button>
+ *  <button class="button button--warning">Warning</button>
+ *  <button class="button button--info">Info</button>
  */
+
 $element-class-name: 'button';
 button,
 .#{$element-class-name},
 input[type="reset"],
 input[type="submit"],
 input[type="button"] {
-  text-align: center;
-  align-items: center;
-  display: inline-flex;
-  text-decoration: none;
-  text-transform: uppercase;
-  @include unit-style($element-class-name, clickable);
-  @apply pr-text-xs pr-font-semibold pr-tracking-wide;
+    text-align: center;
+    align-items: center;
+    display: inline-flex;
+    text-decoration: none;
+    text-transform: uppercase;
+    @include unit-style($element-class-name, clickable);
+    @apply pr-text-xs pr-font-semibold pr-tracking-ultrawide;
 }
-

@@ -1,0 +1,113 @@
+@import "~@/styles/functions.scss";
+@import "~@/styles/mixins.scss";
+
+//// Inputs ------------------------------------------------------------------------------------------------------------
+/**
+ * @atom Inputs
+ * @section Inputs > Inputs
+ * @description
+ *  Inputs for various purposes.
+ * @modifiers
+ *  .input--primary a primary button
+ *  .input--secondary a secondary button
+ *  .input--success a success button
+ *  .input--danger a danger button
+ *  .input--warning a warning button
+ * @markup
+ *  <input type="text" placeholder="Hello World">
+ *  <input type="text" placeholder="Hello World" class="input--primary">
+ *  <input type="text" placeholder="Hello World" class="input--secondary">
+ *  <input type="text" placeholder="Hello World" class="input--success">
+ *  <input type="text" placeholder="Hello World" class="input--danger">
+ *  <input type="text" placeholder="Hello World" class="input--warning">
+ */
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+    $element-class-name: 'input';
+    align-items: center;
+    display: inline-flex;
+    text-decoration: none;
+    box-shadow: none;
+    appearance: none;
+    outline: 0;
+    width: 100%;
+    @include unit-style($element-class-name, selectable);
+    @apply pr-text-md pr-tracking-base;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline;
+}
+
+textarea {
+    height: auto;
+    resize: vertical;
+    min-height: theme(ui, unit, base) * 2;
+    @apply pr-p-base;
+}
+
+select {
+    appearance: menulist;
+}
+
+.select {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    select {
+        margin: 0;
+        appearance: none;
+        width: 100%;
+        padding-right: theme(ui, unit, base);
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 0;
+        height: 0;
+        right: theme(ui, unit, base)/2;
+        transform: translateX(50%);
+        bottom: 0;
+        margin: auto;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: theme(colors, base-text-color) transparent transparent transparent;
+        pointer-events: none;
+    }
+}
+
+.radio,
+.checkbox {
+    cursor: pointer;
+    input {
+        margin-bottom: 0;
+        margin-right: theme(ui, unit, base)/4;
+        vertical-align: text-top;
+    }
+}
+
+label,
+legend {
+    display: block;
+    margin-bottom: theme(margin, base)/3;
+    text-transform: uppercase;
+    @apply pr-font-semibold pr-text-sm pr-tracking-ultrawide;
+}
+
+fieldset {
+    & > label,
+    & > legend {
+        @apply pr-px-base;
+    }
+    @apply pr-rounded-base pr-border-solid pr-border pr-border-base-border-color pr-p-base pr-pb-0;
+}

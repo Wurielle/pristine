@@ -1,14 +1,16 @@
 $theme:(
   ui: (
     unit: (
-      base: 34px
+      base: 40px
     ),
     spaceUnit: (
-      base: 12px
+      base: 20px
     )
   ),
   colors: (
-    font-color: #22292f,
+    base-text-color: #22292f,
+    base-bg-color: white,
+    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -23,6 +25,7 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
+    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -30,6 +33,7 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
+    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -44,6 +48,7 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
+    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -58,6 +63,8 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
+    secondary: #3490dc,
+    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -72,6 +79,7 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
+    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -120,16 +128,21 @@ $theme:(
   leading: (
     none: 1,
     tight: 1.25,
+    base: 1.5,
     normal: 1.5,
     loose: 2
   ),
   tracking: (
     tight: -0.05em,
     normal: 0,
-    wide: 0.05em
+    base: 0.05em,
+    wide: 0.05em,
+    ultrawide: 0.2em
   ),
   textColors: (
-    font-color: #22292f,
+    base-text-color: #22292f,
+    base-bg-color: white,
+    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -144,6 +157,7 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
+    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -151,6 +165,7 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
+    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -165,6 +180,7 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
+    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -179,6 +195,8 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
+    secondary: #3490dc,
+    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -193,6 +211,7 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
+    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -205,7 +224,9 @@ $theme:(
     pink-lightest: #ffebef
   ),
   backgroundColors: (
-    font-color: #22292f,
+    base-text-color: #22292f,
+    base-bg-color: white,
+    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -220,6 +241,7 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
+    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -227,6 +249,7 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
+    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -241,6 +264,7 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
+    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -255,6 +279,8 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
+    secondary: #3490dc,
+    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -269,6 +295,7 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
+    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -294,7 +321,9 @@ $theme:(
   ),
   borderColors: (
     default: #dae1e7,
-    font-color: #22292f,
+    base-text-color: #22292f,
+    base-bg-color: white,
+    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -309,6 +338,7 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
+    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -316,6 +346,7 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
+    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -330,6 +361,7 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
+    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -344,6 +376,8 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
+    secondary: #3490dc,
+    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -358,6 +392,7 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
+    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -372,7 +407,7 @@ $theme:(
   borderRadius: (
     none: 0,
     sm: .125rem,
-    base: 6px,
+    base: 2px,
     default: .25rem,
     lg: .5rem,
     full: 9999px
@@ -468,7 +503,7 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
-    base: 12px,
+    base: 20px,
     px: 1px
   ),
   margin: (
@@ -486,7 +521,7 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
-    base: 12px,
+    base: 20px,
     auto: auto,
     px: 1px
   ),
@@ -505,7 +540,7 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
-    base: -12px,
+    base: -20px,
     px: 1px
   ),
   shadows: (

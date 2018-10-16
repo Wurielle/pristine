@@ -1,21 +1,10 @@
-//// Misc ------------------------------------------------------------------------
-//hr
-//    margin: $hr-margin
-//    border-width: 0
-//    border-top: $hr-border-style $color--border
-//
-//img
-//    // max-width: 100%
-//    vertical-align: middle
-//
-//iframe
-//    border: none
-//
-//// .danger
-////     color: $danger-color
-////     border-color: $danger-color
-////     background-color: lighten($danger-color, 35%)
-////     &:hover
-////         color: darken($danger-color, 10%)
-////         border-color: darken($danger-color, 10%)
-////         background-color: lighten($danger-color, 30%)
+//// Misc --------------------------------------------------------------------------------------------------------------
+hr {
+    margin: 0;
+    border-width: 0;
+    @apply pr-my-base;
+    @apply pr-rounded-base pr-border-solid pr-border-t pr-border-base-border-color;
+}
+iframe {
+    border: 0;
+}
