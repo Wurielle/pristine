@@ -14,7 +14,6 @@
   "dependencies": {
     "element-ui": "^2.4.5",
     "vue": "^2.5.17",
-    "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
@@ -28,18 +27,22 @@
     "@vue/cli-service": "^3.0.5",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
+    "dss": "^1.0.4",
     "json-sass": "^1.2.1",
     "lodash": "^4.17.11",
     "minimist": "^1.2.0",
     "node-sass": "^4.9.2",
     "node-watch": "^0.5.8",
     "postcss-pxtorem": "^4.0.1",
+    "read-multiple-files": "^2.0.0",
     "sass-loader": "^7.0.3",
     "tailwindcss": "^0.6.6",
     "ts-jest": "^23.0.0",
     "typescript": "^3.0.0",
+    "vue-class-component": "^6.3.2",
     "vue-cli-plugin-build-watch": "^1.0.0",
     "vue-cli-plugin-element": "^1.0.0",
+    "vue-codemirror": "^4.0.5",
     "vue-template-compiler": "^2.5.17"
   }
 }

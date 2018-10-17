@@ -4,12 +4,19 @@ import router from './router';
 import store from './store';
 import './plugins/element.js';
 import './element-variables.scss';
+
+let styleguide;
 import '@/styles/main.scss';
+
+if (process.env.NODE_ENV === 'development') {
+    styleguide = require('@/styleguide/Styleguide.vue').default;
+    Vue.component('Styleguide', styleguide);
+}
 
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: (h) => h(App),
+    router,
+    store,
+    render: (h) => h(App),
 }).$mount('#app');

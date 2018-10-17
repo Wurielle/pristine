@@ -3,9 +3,16 @@ code {
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
+    // Padding
     @apply pr-px-2;
+
+    // Font
     @apply pr-text-base-text-color pr-text-sm;
+
+    // Background
     @apply pr-bg-base-bg-color;
+
+    // Borders
     @apply pr-rounded-base pr-border-solid pr-border pr-border-base-border-color;
 }
 
@@ -13,13 +20,16 @@ pre {
     letter-spacing: 0;
     max-width: 100%;
     white-space: normal;
+    // Font
     @apply pr-text-base-text-color pr-text-sm;
+
     & > code {
         display: inline-block;
         align-items: start;
         margin: 0;
         min-width: 100%;
         white-space: pre-wrap;
+        // Padding
         @apply pr-p-base;
     }
 }

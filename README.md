@@ -8,7 +8,7 @@ cd MyProject
 vue add vue-cli-plugin-build-watch // Adds watch mode to Vue-CLI
 vue add element // Adds Element UI
 npm install -g nucleus-styleguide // Adds Nucleus Styleguide Generator
-npm i tailwindcss lodash json-sass@1.2.1 node-watch minimist postcss-pxtorem -D // Adds Dev Dependencies
+npm i tailwindcss lodash vue-codemirror json-sass@1.2.1 minimist postcss-pxtorem -D // Adds Dev Dependencies
 node ./node_modules/.bin/tailwind init config/theme.js // Init TailwindCSS
 nucleus init // Init Nucleus Styleguide Generator
 ```

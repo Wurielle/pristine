@@ -1,17 +1,20 @@
-@import "~@/styles/functions.scss";
-@import "~@/styles/mixins.scss";
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
 
-//// Tables ----------------------------------------------------------------------
+//// Tables ------------------------------------------------------------------------------------------------------------
 table {
     width: 100%;
+    // Font
     @apply pr-text-md;
 }
 
 thead {
     text-transform: uppercase;
+    // Font
     @apply pr-text-xs;
     th {
         &:hover {
+            // Background
             @apply pr-bg-base-bg-color;
         }
     }
@@ -21,8 +24,10 @@ th,
 td {
     text-align: left;
     vertical-align: middle;
-    @apply pr-px-base;
-    @apply pr-py-2;
+    // Padding
+    @apply pr-px-base pr-py-2;
+
+    // Borders
     @apply pr-rounded-base pr-border-solid pr-border-b pr-border-base-border-color;
     img {
         max-height: theme(ui, unit, base);
@@ -48,7 +53,7 @@ td:last-child {
     padding-right: 0
 }
 
-//// utility ---------------------------------------------------------------------
+//// utility -----------------------------------------------------------------------------------------------------------
 .table {
     width: 100%;
     overflow: auto;

@@ -1,0 +1,9 @@
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
+
+//// Variables ---------------------------------------------------------------------------------------------------------
+.col {
+    width: 100%;
+    float: left;
+    min-height: 1px;
+}

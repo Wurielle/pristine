@@ -1,11 +1,13 @@
 //// Links -------------------------------------------------------------------------------------------------------------
 a {
     text-decoration: none;
+    // Font
     @apply pr-text-primary;
     &:hover,
     &:active,
     &:focus {
         text-decoration: none;
+        // Font
         @apply pr-text-secondary;
     }
 }

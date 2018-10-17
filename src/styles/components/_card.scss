@@ -1,0 +1,101 @@
+.card {
+    @apply pr-w-full;
+    .card__image {
+        // Text
+        @apply pr-text-center;
+
+        // Layout
+        @apply pr-h-48 pr-flex-none pr-overflow-hidden;
+
+        //Style
+        @apply pr-bg-cover pr-rounded-t;
+    }
+    .card__content {
+        // Borders
+        @apply pr-border-r pr-border-b pr-border-l pr-border-grey-light pr-rounded-b;
+
+        // Padding
+        @apply pr-p-4;
+
+        // Text
+        @apply pr-leading-normal;
+
+        // Layout
+        @apply pr-flex pr-flex-col pr-justify-between;
+
+        // Style
+        @apply pr-bg-white;
+
+        .card__content__main {
+            // Margin
+            @apply pr-mb-8;
+
+            .card__content__main__availability {
+                // Text
+                @apply pr-text-sm pr-text-grey-dark;
+
+                // Layout
+                @apply pr-flex pr-items-center;
+
+                // Margin
+                @apply pr-mb-1;
+            }
+            .card__content__main__title {
+                // Font
+                @apply pr-text-black pr-font-bold pr-text-xl ;
+
+                // Margin
+                @apply pr-mb-2;
+            }
+            .card__content__main__text {
+                // Font
+                @apply pr-text-grey-darker pr-text-base;
+
+                // Margin
+                @apply pr-mb-0;
+            }
+        }
+        .card__content__author {
+            // Layout
+            @apply pr-flex pr-items-center;
+
+            .card__content__author__image {
+                // Layout
+                @apply pr-w-10 pr-h-10;
+
+                // Borders
+                @apply pr-rounded-full;
+
+                // Margin
+                @apply pr-mr-4;
+            }
+            .card__content__author__details {
+                // Font
+                @apply pr-text-sm;
+            }
+            .card__content__author__title {
+                // Font
+                @apply pr-text-black pr-leading-none;
+
+                // Margin
+                @apply pr-mb-0;
+            }
+            .card__content__author__description {
+                // Font
+                @apply pr-text-grey-dark;
+
+                // Margin
+                @apply pr-mb-0;
+            }
+        }
+    }
+    @screen lg {
+        @apply  pr-flex;
+        .card__image {
+            @apply pr-h-auto pr-w-48 pr-rounded-t-none pr-rounded-l;
+        }
+        .card__content {
+            @apply pr-border-l-0 pr-border-t pr-border-grey-light pr-rounded-b-none pr-rounded-r;
+        }
+    }
+}

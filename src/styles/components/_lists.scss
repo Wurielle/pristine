@@ -1,11 +1,12 @@
-@import "~@/styles/functions.scss";
-@import "~@/styles/mixins.scss";
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
 
 //// Lists -------------------------------------------------------------------------------------------------------------
 ul ul,
 ul ol,
 ol ol,
 ol ul {
+    // Font
     @apply pr-text-md;
     margin-bottom: theme(margin, base)/1.5;
 }

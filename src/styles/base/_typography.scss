@@ -1,0 +1,27 @@
+//// Typography ------------------------------------------------------------------
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.header {
+    // Font
+    @apply pr-text-base pr-font-bold pr-text-base-text-color;
+}
+
+// No more than tertiary
+// After that use more specific names (e.g: caption-header)
+.header--primary {
+    @apply pr-text-5xl;
+}
+
+.header--secondary {
+    @apply pr-text-4xl;
+}
+
+.header--tertiary {
+    @apply pr-text-3xl;
+}
+
+

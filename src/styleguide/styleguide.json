@@ -1,0 +1,91 @@
+{
+    "blocks": [
+        {
+            "name": "Button",
+            "section": "Components > Buttons",
+            "description": "Buttons for various purposes.",
+            "state": [
+                {
+                    "name": ".button",
+                    "escaped": "button",
+                    "description": "a normal button"
+                },
+                {
+                    "name": ".button--primary",
+                    "escaped": "button--primary",
+                    "description": "a primary button"
+                },
+                {
+                    "name": ".button--secondary",
+                    "escaped": "button--secondary",
+                    "description": "a secondary button"
+                },
+                {
+                    "name": ".button--success",
+                    "escaped": "button--success",
+                    "description": "a success button"
+                },
+                {
+                    "name": ".button--danger",
+                    "escaped": "button--danger",
+                    "description": "a danger button"
+                },
+                {
+                    "name": ".button--warning",
+                    "escaped": "button--warning",
+                    "description": "a warning button"
+                },
+                {
+                    "name": ".button--info",
+                    "escaped": "button--info",
+                    "description": "a warning button"
+                }
+            ],
+            "markup": {
+                "example": "<button class=\"button\">Button</button>\r\n<button class=\"button button--primary\">Primary</button>\r\n<button class=\"button button--secondary\">Secondary</button>\r\n<button class=\"button button--success\">Success</button>\r\n<button class=\"button button--danger\">Danger</button>\r\n<button class=\"button button--warning\">Warning</button>\r\n<button class=\"button button--info\">Info</button>",
+                "escaped": "&lt;button class=\"button\"&gt;Button&lt;/button&gt;\r\n&lt;button class=\"button button--primary\"&gt;Primary&lt;/button&gt;\r\n&lt;button class=\"button button--secondary\"&gt;Secondary&lt;/button&gt;\r\n&lt;button class=\"button button--success\"&gt;Success&lt;/button&gt;\r\n&lt;button class=\"button button--danger\"&gt;Danger&lt;/button&gt;\r\n&lt;button class=\"button button--warning\"&gt;Warning&lt;/button&gt;\r\n&lt;button class=\"button button--info\"&gt;Info&lt;/button&gt;"
+            }
+        },
+        {
+            "name": "Inputs",
+            "section": "Inputs > Inputs",
+            "description": "Inputs for various purposes.",
+            "state": [
+                {
+                    "name": ".input",
+                    "escaped": "input",
+                    "description": "a normal input"
+                },
+                {
+                    "name": ".input--primary",
+                    "escaped": "input--primary",
+                    "description": "a primary input"
+                },
+                {
+                    "name": ".input--secondary",
+                    "escaped": "input--secondary",
+                    "description": "a secondary input"
+                },
+                {
+                    "name": ".input--success",
+                    "escaped": "input--success",
+                    "description": "a success input"
+                },
+                {
+                    "name": ".input--danger",
+                    "escaped": "input--danger",
+                    "description": "a danger input"
+                },
+                {
+                    "name": ".input--warning",
+                    "escaped": "input--warning",
+                    "description": "a warning input"
+                }
+            ],
+            "markup": {
+                "example": "<input type=\"text\" placeholder=\"Hello World\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--success\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\">",
+                "escaped": "&lt;input type=\"text\" placeholder=\"Hello World\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--success\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\"&gt;"
+            }
+        }
+    ]
+}

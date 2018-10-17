@@ -1,20 +1,19 @@
-@import "~@/styles/functions.scss";
-@import "~@/styles/mixins.scss";
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
 
 //// Buttons -----------------------------------------------------------------------------------------------------------
 /**
- * @atom Button
- * @section Inputs > Buttons
- * @description
- *  Buttons for various purposes.
- * @modifiers
- *  .button--primary a primary button
- *  .button--secondary a secondary button
- *  .button--success a success button
- *  .button--danger a danger button
- *  .button--warning a warning button
- *  .button--info a warning button
- * @markup
+ * _@name Button
+ * _@section Components > Buttons
+ * _@description Buttons for various purposes.
+ * _@state .button - a normal button
+ * _@state .button--primary - a primary button
+ * _@state .button--secondary - a secondary button
+ * _@state .button--success - a success button
+ * _@state .button--danger - a danger button
+ * _@state .button--warning - a warning button
+ * _@state .button--info - a warning button
+ * _@markup
  *  <button class="button">Button</button>
  *  <button class="button button--primary">Primary</button>
  *  <button class="button button--secondary">Secondary</button>
@@ -36,5 +35,7 @@ input[type="button"] {
     text-decoration: none;
     text-transform: uppercase;
     @include unit-style($element-class-name, clickable);
+
+    // Font
     @apply pr-text-xs pr-font-semibold pr-tracking-ultrawide;
 }

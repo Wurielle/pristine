@@ -2,7 +2,10 @@
 hr {
     margin: 0;
     border-width: 0;
+    // Margin
     @apply pr-my-base;
+
+    // Borders
     @apply pr-rounded-base pr-border-solid pr-border-t pr-border-base-border-color;
 }
 iframe {

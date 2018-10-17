@@ -1,19 +1,18 @@
-@import "~@/styles/functions.scss";
-@import "~@/styles/mixins.scss";
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
 
 //// Inputs ------------------------------------------------------------------------------------------------------------
 /**
- * @atom Inputs
- * @section Inputs > Inputs
- * @description
- *  Inputs for various purposes.
- * @modifiers
- *  .input--primary a primary button
- *  .input--secondary a secondary button
- *  .input--success a success button
- *  .input--danger a danger button
- *  .input--warning a warning button
- * @markup
+ * _@name Inputs
+ * _@section Inputs > Inputs
+ * _@description Inputs for various purposes.
+ * _@state .input - a normal input
+ * _@state .input--primary - a primary input
+ * _@state .input--secondary - a secondary input
+ * _@state .input--success - a success input
+ * _@state .input--danger - a danger input
+ * _@state .input--warning - a warning input
+ * _@markup
  *  <input type="text" placeholder="Hello World">
  *  <input type="text" placeholder="Hello World" class="input--primary">
  *  <input type="text" placeholder="Hello World" class="input--secondary">
@@ -40,6 +39,7 @@ select {
     outline: 0;
     width: 100%;
     @include unit-style($element-class-name, selectable);
+    // Font
     @apply pr-text-md pr-tracking-base;
 }
 
@@ -52,6 +52,7 @@ textarea {
     height: auto;
     resize: vertical;
     min-height: theme(ui, unit, base) * 2;
+    // Padding
     @apply pr-p-base;
 }
 
@@ -101,13 +102,19 @@ legend {
     display: block;
     margin-bottom: theme(margin, base)/3;
     text-transform: uppercase;
+    // Font
     @apply pr-font-semibold pr-text-sm pr-tracking-ultrawide;
 }
 
 fieldset {
     & > label,
     & > legend {
+        // Padding
         @apply pr-px-base;
     }
-    @apply pr-rounded-base pr-border-solid pr-border pr-border-base-border-color pr-p-base pr-pb-0;
+    // Padding
+    @apply pr-p-base pr-pb-0;
+
+    // Borders
+    @apply pr-rounded-base pr-border-solid pr-border pr-border-base-border-color;
 }
