@@ -35,13 +35,31 @@
             padding-left: 50px;
             ul {
                 padding: 0;
+                margin: 0;
+            }
+            & > ul {
+                padding-top: 8px;
             }
             /deep/ {
                 ul {
                     width: 100%;
                 }
+                a {
+                    &:before {
+                        content: '';
+                        z-index: -1;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0%;
+                        height: 100%;
+                        background-color: #f5f5f5;
+                        transition: all .5s cubic-bezier(.165, .84, .44, 1);
+                    }
+                }
                 a,
                 li {
+                    position: relative;
                     min-height: 40px;
                     display: flex;
                     width: 100%;
@@ -54,16 +72,20 @@
                     text-transform: uppercase;
                     font-size: 0.75rem;
                     letter-spacing: .2em;
+                    text-decoration: none;
                     span {
                         margin: 0;
                         border-bottom: 2px dotted transparent;
+                        transition: all .5s cubic-bezier(.165, .84, .44, 1);
                     }
                     &:hover {
                         color: #adadad;
                     }
                     &.styleguide-link--active {
-                        background-color: #f5f5f5;
                         color: #22292f;
+                        &:before {
+                            width: 100%;
+                        }
                         span {
                             border-bottom: 2px dotted #22292f;
                         }
@@ -71,6 +93,7 @@
                 }
                 a {
                     padding-left: 40px;
+                    margin-bottom: 2px;
                 }
             }
         }
@@ -93,7 +116,7 @@
             <h1>PRISTINE</h1>
         </header>
         <nav class="styleguide__nav">
-            <StyleguideTreeMenu :nodes="getLinks(0)" :sections="sections" v-model="selected"></StyleguideTreeMenu>
+            <StyleguideTreeMenu :nodes="getLinks(0)" :level="0" :sections="sections" v-model="selected"></StyleguideTreeMenu>
         </nav>
         <div class="styleguide__content">
             <div class="styleguide__content__container">
@@ -244,20 +267,22 @@
         public get selectedBlocks() {
             if (this.selected !== null) {
                 let selectedSection = _.find(this.sections, (findSection: any) => findSection.id === this.selected);
-                console.log(selectedSection);
-                if(selectedSection.parents) {
-                    let selectedSectionParents = selectedSection.parents
-                        .map((parentID: any) => _.find(this.sections, (section: any) => section.id === parentID));
-                    return _.filter(this.styleguide.blocks, (block: any) => {
-                        return _.some(selectedSectionParents, (someSection) => {
-                            return someSection.name === block.section[someSection.level];
-                        });
-                    });
-                } else {
-                    return _.filter(this.styleguide.blocks, (block: any) => {
-                        return block.section[0] === selectedSection.name;
-                    });
-                }
+                return _.filter(this.styleguide.blocks, (block: any) => {
+                    return block.section[selectedSection.level] === selectedSection.name;
+                });
+                // if(selectedSection.parents) {
+                //     let selectedSectionParents = selectedSection.parents
+                //         .map((parentID: any) => _.find(this.sections, (section: any) => section.id === parentID));
+                //     return _.filter(this.styleguide.blocks, (block: any) => {
+                //         return _.some(selectedSectionParents, (someSection) => {
+                //             return someSection.name === block.section[someSection.level];
+                //         });
+                //     });
+                // } else {
+                //     return _.filter(this.styleguide.blocks, (block: any) => {
+                //         return block.section[0] === selectedSection.name;
+                //     });
+                // }
             }
             return this.styleguide.blocks;
         }

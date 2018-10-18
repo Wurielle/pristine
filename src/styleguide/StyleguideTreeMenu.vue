@@ -3,9 +3,12 @@
 
 <template>
     <ul>
+        <li v-if="level === 0" >
+            <a href="#" @click.prevent="$emit('input', null)" :class="{'styleguide-link--active': value === null}"><span>All</span></a>
+        </li>
         <li v-for="link in nodes">
-            <a :href="`#${link.id}`" @click.prevent="$emit('input', link.id)" :class="{'styleguide-link--active': getSelected(link.id)}"><span>{{link.name}}</span></a>
-            <StyleguideTreeMenu :key="link.name" v-if="link.children.length > 0" :nodes="getLinks(link.level + 1, link.id)" :sections="sections" @input="$emit('input', $event)" :value="value"></StyleguideTreeMenu>
+            <a :href="`#`" @click.prevent="$emit('input', link.id)" :class="{'styleguide-link--active': getSelected(link.id)}"><span>{{link.name}}</span></a>
+            <StyleguideTreeMenu :key="link.name" :level="link.level + 1" v-if="link.children.length > 0" :nodes="getLinks(link.level + 1, link.id)" :sections="sections" @input="$emit('input', $event)" :value="value"></StyleguideTreeMenu>
         </li>
     </ul>
 </template>
@@ -26,6 +29,7 @@
     export default class StyleguideTreeMenu extends Vue {
         @Prop({required: true}) public nodes: any;
         @Prop({required: true}) public sections: any;
+        @Prop({required: true}) public level: any;
         @Prop() public value: any;
 
         public getLinks(level: number = 0, parentID: number){
