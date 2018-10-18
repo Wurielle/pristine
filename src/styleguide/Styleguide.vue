@@ -2,31 +2,104 @@
     $spacing: 20px;
     $unit: 40px;
     $br: 3px;
+    $header-height: 16rem;
+    $navigation-width: 280px;
     #styleguide {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         padding-bottom: 8rem;
-        padding-top: 8rem;
-        padding-left: $spacing;
-        padding-right: $spacing;
-        max-width: 75rem;
-        margin: auto;
-        h1 {
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 8rem;
-            font-size: 16px;
-            letter-spacing: .4rem;
+        .styleguide__header {
+            height: $header-height;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            h1 {
+                display: inline-flex;
+                align-items: center;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 16px;
+                letter-spacing: .4rem;
+            }
+        }
+
+        .styleguide__nav {
+            padding-top: $header-height;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: $navigation-width;
+            padding-left: 50px;
+            ul {
+                padding: 0;
+            }
+            /deep/ {
+                ul {
+                    width: 100%;
+                }
+                a,
+                li {
+                    min-height: 40px;
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: center;
+                    text-align: left;
+                    margin-bottom: 0;
+                    color: #22292f;
+                    text-transform: uppercase;
+                    font-size: 0.75rem;
+                    letter-spacing: .2em;
+                    span {
+                        margin: 0;
+                        border-bottom: 2px dotted transparent;
+                    }
+                    &:hover {
+                        color: #adadad;
+                    }
+                    &.styleguide-link--active {
+                        background-color: #f5f5f5;
+                        color: #22292f;
+                        span {
+                            border-bottom: 2px dotted #22292f;
+                        }
+                    }
+                }
+                a {
+                    padding-left: 40px;
+                }
+            }
+        }
+
+        .styleguide__content {
+            padding-left: $navigation-width;
+            .styleguide__content__container {
+                max-width: 75rem;
+                margin: auto;
+                padding-left: $spacing;
+                padding-right: $spacing;
+            }
         }
     }
 </style>
 
 <template>
     <div id="styleguide">
-        <h1>PRISTINE</h1>
-        <StyleguideTreeMenu :nodes="getLinks(0)" :sections="sections"></StyleguideTreeMenu>
-        <StyleguideItem :block="block" v-for="(block, index) in styleguide.blocks" @copy="copyToClipboard($event)"></StyleguideItem>
+        <header class="styleguide__header">
+            <h1>PRISTINE</h1>
+        </header>
+        <nav class="styleguide__nav">
+            <StyleguideTreeMenu :nodes="getLinks(0)" :sections="sections" v-model="selected"></StyleguideTreeMenu>
+        </nav>
+        <div class="styleguide__content">
+            <div class="styleguide__content__container">
+                <StyleguideItem :block="block" v-for="(block, index) in selectedBlocks" @copy="copyToClipboard($event)"></StyleguideItem>
+            </div>
+        </div>
         <notifications group="copypasta" position="top right"/>
     </div>
 </template>
@@ -58,6 +131,7 @@
     export default class Styleguide extends Vue {
         private styleguide: any = styleguideData;
         private sections: any[] = [];
+        private selected: any = null;
         private cmOptions: any = {
             tabSize: 4,
             styleActiveLine: true,
@@ -113,6 +187,23 @@
                 }
             });
 
+            // create parents relations
+            this.sections.forEach((section: any) => {
+                if(section.level > 0) {
+                    section.parents = [];
+                    let parent = _.find(this.sections, (findSection: any) => findSection.id == section.parent);
+                    console.log("hey1");
+                    while (parent.level > 0) {
+                        section.parents.push(parent.id);
+                        console.log("hey");
+                        parent = _.find(this.sections, (findSection: any) => findSection.id == parent.parent);
+                    }
+                    if(parent.level === 0){
+                        section.parents.push(parent.id);
+                    }
+                }
+            });
+
         }
 
         public toggleExample(block: any) {
@@ -149,6 +240,27 @@
                 return section.level === level;
             });
         };
+
+        public get selectedBlocks() {
+            if (this.selected !== null) {
+                let selectedSection = _.find(this.sections, (findSection: any) => findSection.id === this.selected);
+                console.log(selectedSection);
+                if(selectedSection.parents) {
+                    let selectedSectionParents = selectedSection.parents
+                        .map((parentID: any) => _.find(this.sections, (section: any) => section.id === parentID));
+                    return _.filter(this.styleguide.blocks, (block: any) => {
+                        return _.some(selectedSectionParents, (someSection) => {
+                            return someSection.name === block.section[someSection.level];
+                        });
+                    });
+                } else {
+                    return _.filter(this.styleguide.blocks, (block: any) => {
+                        return block.section[0] === selectedSection.name;
+                    });
+                }
+            }
+            return this.styleguide.blocks;
+        }
     }
     Vue.component('Styleguide', Styleguide);
 </script>

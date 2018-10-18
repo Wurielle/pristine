@@ -14,6 +14,12 @@
         legend {
             padding-left: $spacing;
             padding-right: $spacing;
+            display: block;
+            margin-bottom: 0.41667rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: .2em;
         }
     }
     .styleguide__code {

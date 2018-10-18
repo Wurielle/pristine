@@ -4,8 +4,8 @@
 <template>
     <ul>
         <li v-for="link in nodes">
-            <a :href="`#${link.id}`">{{link.name}}</a>
-            <StyleguideTreeMenu v-if="link.children.length > 0" :nodes="getLinks(link.level + 1, link.id)" :sections="sections"></StyleguideTreeMenu>
+            <a :href="`#${link.id}`" @click.prevent="$emit('input', link.id)" :class="{'styleguide-link--active': getSelected(link.id)}"><span>{{link.name}}</span></a>
+            <StyleguideTreeMenu :key="link.name" v-if="link.children.length > 0" :nodes="getLinks(link.level + 1, link.id)" :sections="sections" @input="$emit('input', $event)" :value="value"></StyleguideTreeMenu>
         </li>
     </ul>
 </template>
@@ -26,6 +26,7 @@
     export default class StyleguideTreeMenu extends Vue {
         @Prop({required: true}) public nodes: any;
         @Prop({required: true}) public sections: any;
+        @Prop() public value: any;
 
         public getLinks(level: number = 0, parentID: number){
             return _.filter(this.sections, (section: any) => {
@@ -35,6 +36,13 @@
                 return section.level === level;
             });
         };
+        getSelected(id: any) {
+            let selected = _.find(this.sections, (section: any) => section.id === this.value);
+            if (this.value !== null) {
+                return this.value === id || _.includes(selected.parents, id);
+            }
+            return false;
+        }
     }
 </script>
 
