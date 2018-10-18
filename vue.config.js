@@ -57,26 +57,26 @@ function mkDirByPathSync(targetDir, { isRelativeToScript = false } = {}) {
     }, initDir);
 }
 
-let files = [];
-let content = [];
-getFilesFromDir('./src/',/\.s(c|a)ss/, function(filepath){
-    files.push(filepath)
-});
-dss.detector( function( line ) {
-
-    if ( typeof line !== 'string' ) {
+dss.detector( function(line) {
+    if (typeof line !== 'string') {
         return false;
     }
-    const reference = line.split( "\n\n" ).pop();
-    return !!reference.match( /.*_@/ ) && !reference.match( /.*@\// );
-
+    const reference = line.split("\n\n").pop();
+    return !!reference.match(/.*_@/) && !reference.match(/.*@\//);
 });
+
 dss.parser('section', function (i, line, block) {
     // Just returns the lines contents
-    return line;
-
+    return line.split('>').map((item) => item.trim());
 });
+
+let files = [];
 function exportStyleguide() {
+    let content = [];
+    files = [];
+    getFilesFromDir('./src/',/\.s(c|a)ss/, function(filepath){
+        files.push(filepath)
+    });
     readMultipleFiles(files).subscribe({
         next({path, contents}) {
             content.push(contents.toString('utf-8'));
@@ -85,11 +85,10 @@ function exportStyleguide() {
             content.join('\n');
             dss.parse(content, {}, function(parsedObject) {
                 mkDirByPathSync('src/styleguide/');
-                parsedObject = JSON.parse(JSON.stringify(parsedObject)
-                    .replace(/_@markup\\r\\n  /gi,'')
-                    .replace(/\\r\\n  /gi,'\\r\\n')
-                    .replace(/_@markup\\n  /gi,'')
-                    .replace(/\\n  /gi,'\\r\\n')
+                parsedObject = JSON.parse(
+                    JSON.stringify(parsedObject)
+                    .replace(/_@markup\\r\\n/gi,'')
+                    .replace(/_@markup\\n/gi,'')
                 );
                 fs.writeFile('src/styleguide/styleguide.json', JSON.stringify(parsedObject, null, 4), function(){
                     console.log('📖 Updated Styleguide');

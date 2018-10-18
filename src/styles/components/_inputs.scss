@@ -4,7 +4,7 @@
 //// Inputs ------------------------------------------------------------------------------------------------------------
 /**
  * _@name Inputs
- * _@section Inputs > Inputs
+ * _@section Components > Inputs
  * _@description Inputs for various purposes.
  * _@state .input - a normal input
  * _@state .input--primary - a primary input
@@ -13,12 +13,12 @@
  * _@state .input--danger - a danger input
  * _@state .input--warning - a warning input
  * _@markup
- *  <input type="text" placeholder="Hello World">
- *  <input type="text" placeholder="Hello World" class="input--primary">
- *  <input type="text" placeholder="Hello World" class="input--secondary">
- *  <input type="text" placeholder="Hello World" class="input--success">
- *  <input type="text" placeholder="Hello World" class="input--danger">
- *  <input type="text" placeholder="Hello World" class="input--warning">
+ *<input type="text" placeholder="Hello World">
+ *<input type="text" placeholder="Hello World" class="input--primary">
+ *<input type="text" placeholder="Hello World" class="input--secondary">
+ *<input type="text" placeholder="Hello World" class="input--success">
+ *<input type="text" placeholder="Hello World" class="input--danger">
+ *<input type="text" placeholder="Hello World" class="input--warning">
  */
 
 input[type="email"],

@@ -3,7 +3,7 @@
 
 //// Buttons -----------------------------------------------------------------------------------------------------------
 /**
- * _@name Button
+ * _@name Buttons
  * _@section Components > Buttons
  * _@description Buttons for various purposes.
  * _@state .button - a normal button
@@ -14,13 +14,13 @@
  * _@state .button--warning - a warning button
  * _@state .button--info - a warning button
  * _@markup
- *  <button class="button">Button</button>
- *  <button class="button button--primary">Primary</button>
- *  <button class="button button--secondary">Secondary</button>
- *  <button class="button button--success">Success</button>
- *  <button class="button button--danger">Danger</button>
- *  <button class="button button--warning">Warning</button>
- *  <button class="button button--info">Info</button>
+ *<button class="button">Button</button>
+ *<button class="button button--primary">Primary</button>
+ *<button class="button button--secondary">Secondary</button>
+ *<button class="button button--success">Success</button>
+ *<button class="button button--danger">Danger</button>
+ *<button class="button button--warning">Warning</button>
+ *<button class="button button--info">Info</button>
  */
 
 $element-class-name: 'button';

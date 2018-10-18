@@ -2,6 +2,36 @@
 @import "~@/styles/abstracts/mixins.scss";
 
 //// Tables ------------------------------------------------------------------------------------------------------------
+/**
+ * _@name Tables
+ * _@section Components > Tables
+ * _@description Tables for various purposes.
+ * _@markup
+ *<table>
+ *    <thead>
+ *        <tr>
+ *            <th></th>
+ *            <th>name</th>
+ *            <th>age</th>
+ *            <th>location</th>
+ *            <th></th>
+ *        </tr>
+ *    </thead>
+ *    <tbody>
+ *        <tr>
+ *            <td>
+ *                <img src="https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80" alt="">
+ *            </td>
+ *            <td>name</td>
+ *            <td>age</td>
+ *            <td>location</td>
+ *            <td class="pr-text-right">
+ *                <button class="button button--primary">edit</button>
+ *            </td>
+ *        </tr>
+ *    </tbody>
+ *</table>
+ */
 table {
     width: 100%;
     // Font

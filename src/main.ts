@@ -5,9 +5,9 @@ import store from './store';
 import './plugins/element.js';
 import './element-variables.scss';
 
-let styleguide;
 import '@/styles/main.scss';
 
+let styleguide;
 if (process.env.NODE_ENV === 'development') {
     styleguide = require('@/styleguide/Styleguide.vue').default;
     Vue.component('Styleguide', styleguide);

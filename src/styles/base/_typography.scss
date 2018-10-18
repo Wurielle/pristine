@@ -1,4 +1,29 @@
 //// Typography ------------------------------------------------------------------
+/**
+ * _@name Headers
+ * _@section Base > Headers
+ * _@description Headers for various purposes.
+ * _@state .header - a normal button
+ * _@state .header--primary - a primary button
+ * _@state .header--secondary - a secondary button
+ * _@state .header--tertiary - a tertiary button
+ * _@markup
+ *<div class="pr-flex pr-justify-around">
+ *    <div class="pr-text-center">
+ *        <h1 class="pr-mb-base">Header h1 </h1>
+ *        <h2 class="pr-mb-base">Header h2 </h2>
+ *        <h3 class="pr-mb-base">Header h3 </h3>
+ *        <h4 class="pr-mb-base">Header h4 </h4>
+ *        <h5 class="pr-mb-base">Header h5 </h5>
+ *        <h6 class="pr-mb-base">Header h6 </h6>
+ *    </div>
+ *    <div class="pr-text-center">
+ *        <h1 class="pr-mb-base header--primary">Header Primary</h1>
+ *        <h2 class="pr-mb-base header--secondary">Header Secondary</h2>
+ *        <h3 class="pr-mb-base header--tertiary">Header Tertiary</h3>
+ *    </div>
+ *</div>
+ */
 h1,
 h2,
 h3,

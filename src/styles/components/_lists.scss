@@ -2,6 +2,54 @@
 @import "~@/styles/abstracts/mixins.scss";
 
 //// Lists -------------------------------------------------------------------------------------------------------------
+/**
+ * _@name Lists
+ * _@section Components > Lists
+ * _@description Lists for various purposes.
+ * _@markup
+ *<div class="pr-flex pr-justify-around">
+ *    <ul class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ul>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ul>
+ *    </ul>
+ *    <ul class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ol>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ol>
+ *    </ul>
+ *    <ol class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ul>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ul>
+ *    </ol>
+ *    <ol class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ol>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ol>
+ *    </ol>
+ *</div>
+ */
 ul ul,
 ul ol,
 ol ol,
