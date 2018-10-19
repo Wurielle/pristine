@@ -1,15 +1,17 @@
 /**
  * Exports a JavaScript module to a Sass Variable.
  * @name JsonSassWebpackPlugin
- * @param {string} srcFile
- * @param {string} outputFile
+ * @param {string} inputFile - Can either be a Javascript Module or a JSON file.
+ * @param {string} [outputFile=[inputFileName].scss]
+ * @param {object} [options]
+ * @param {string} [options.key=$theme] - Sass variable name.
  * @example
  *  // webpack.config.js
  *  module.exports = {
  *      ...
  *      plugins: [
  *          ...
- *          new JsonSassWebpackPlugin('./config/theme.js', './config/theme.scss'),
+ *          new JsonSassWebpackPlugin('./config/theme.js', './config/theme.scss', { key: '$theme' }),
  *      ]
  *  }
  */
@@ -21,16 +23,24 @@ const jsonSass = require('json-sass');
 
 class JsonSassWebpackPlugin {
     constructor(src, output, options) {
-        this.defaultOptions = {};
+        this.defaultOptions = {
+            key: '$theme'
+        };
         this.src = src;
-        this.output = output;
-        this.options = options;
+        if (typeof this.output === 'object' && !Array.isArray(this.output)){
+            this.options = output;
+            this.output = null;
+        } else {
+            this.output = output;
+            this.options = options || this.defaultOptions;
+        }
     }
     throw(err) {
         throw err;
     }
     getSass(object) {
-        return "$"+path.parse(this.src).name+":"+jsonSass.convertJs(JSON.parse(JSON.stringify(object).replace(/:":"/g, ":\"\\\\:\"")))+";";
+        let key = this.options.key || this.defaultOptions.key;
+        return key+":"+jsonSass.convertJs(JSON.parse(JSON.stringify(object).replace(/:":"/g, ":\"\\\\:\"")))+";";
     }
     apply(compiler) {
         let src = this.src || this.throw('src is required');
