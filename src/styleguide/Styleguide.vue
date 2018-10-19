@@ -27,6 +27,9 @@
 
         .styleguide__nav {
             padding-top: $header-height;
+            padding-bottom: $header-height;
+            flex-direction: column;
+            display: flex;
             position: fixed;
             top: 0;
             left: 0;
@@ -39,6 +42,8 @@
             }
             & > ul {
                 padding-top: 8px;
+                flex: 1;
+                overflow-y: auto;
             }
             /deep/ {
                 ul {
