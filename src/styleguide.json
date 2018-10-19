@@ -142,6 +142,18 @@
             }
         },
         {
+            "name": "Tables",
+            "section": [
+                "Base",
+                "Tables"
+            ],
+            "description": "Tables for various purposes.",
+            "markup": {
+                "example": "<table>\n    <thead>\n        <tr>\n            <th></th>\n            <th>name</th>\n            <th>age</th>\n            <th>location</th>\n            <th></th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>\n                <img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\">\n            </td>\n            <td>name</td>\n            <td>age</td>\n            <td>location</td>\n            <td class=\"pr-text-right\">\n                <button class=\"button button--primary\">edit</button>\n            </td>\n        </tr>\n    </tbody>\n</table>",
+                "escaped": "&lt;table&gt;\n    &lt;thead&gt;\n        &lt;tr&gt;\n            &lt;th&gt;&lt;/th&gt;\n            &lt;th&gt;name&lt;/th&gt;\n            &lt;th&gt;age&lt;/th&gt;\n            &lt;th&gt;location&lt;/th&gt;\n            &lt;th&gt;&lt;/th&gt;\n        &lt;/tr&gt;\n    &lt;/thead&gt;\n    &lt;tbody&gt;\n        &lt;tr&gt;\n            &lt;td&gt;\n                &lt;img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\"&gt;\n            &lt;/td&gt;\n            &lt;td&gt;name&lt;/td&gt;\n            &lt;td&gt;age&lt;/td&gt;\n            &lt;td&gt;location&lt;/td&gt;\n            &lt;td class=\"pr-text-right\"&gt;\n                &lt;button class=\"button button--primary\"&gt;edit&lt;/button&gt;\n            &lt;/td&gt;\n        &lt;/tr&gt;\n    &lt;/tbody&gt;\n&lt;/table&gt;"
+            }
+        },
+        {
             "name": "Headers",
             "section": [
                 "Base",
@@ -173,18 +185,6 @@
             "markup": {
                 "example": "<div class=\"pr-flex pr-justify-around\">\r\n    <div class=\"pr-text-center\">\r\n        <h1 class=\"pr-mb-base\">Header h1 </h1>\r\n        <h2 class=\"pr-mb-base\">Header h2 </h2>\r\n        <h3 class=\"pr-mb-base\">Header h3 </h3>\r\n        <h4 class=\"pr-mb-base\">Header h4 </h4>\r\n        <h5 class=\"pr-mb-base\">Header h5 </h5>\r\n        <h6 class=\"pr-mb-base\">Header h6 </h6>\r\n    </div>\r\n    <div class=\"pr-text-center\">\r\n        <h1 class=\"pr-mb-base header--primary\">Header Primary</h1>\r\n        <h2 class=\"pr-mb-base header--secondary\">Header Secondary</h2>\r\n        <h3 class=\"pr-mb-base header--tertiary\">Header Tertiary</h3>\r\n    </div>\r\n</div>",
                 "escaped": "&lt;div class=\"pr-flex pr-justify-around\"&gt;\r\n    &lt;div class=\"pr-text-center\"&gt;\r\n        &lt;h1 class=\"pr-mb-base\"&gt;Header h1 &lt;/h1&gt;\r\n        &lt;h2 class=\"pr-mb-base\"&gt;Header h2 &lt;/h2&gt;\r\n        &lt;h3 class=\"pr-mb-base\"&gt;Header h3 &lt;/h3&gt;\r\n        &lt;h4 class=\"pr-mb-base\"&gt;Header h4 &lt;/h4&gt;\r\n        &lt;h5 class=\"pr-mb-base\"&gt;Header h5 &lt;/h5&gt;\r\n        &lt;h6 class=\"pr-mb-base\"&gt;Header h6 &lt;/h6&gt;\r\n    &lt;/div&gt;\r\n    &lt;div class=\"pr-text-center\"&gt;\r\n        &lt;h1 class=\"pr-mb-base header--primary\"&gt;Header Primary&lt;/h1&gt;\r\n        &lt;h2 class=\"pr-mb-base header--secondary\"&gt;Header Secondary&lt;/h2&gt;\r\n        &lt;h3 class=\"pr-mb-base header--tertiary\"&gt;Header Tertiary&lt;/h3&gt;\r\n    &lt;/div&gt;\r\n&lt;/div&gt;"
-            }
-        },
-        {
-            "name": "Tables",
-            "section": [
-                "Base",
-                "Tables"
-            ],
-            "description": "Tables for various purposes.",
-            "markup": {
-                "example": "<table>\n    <thead>\n        <tr>\n            <th></th>\n            <th>name</th>\n            <th>age</th>\n            <th>location</th>\n            <th></th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>\n                <img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\">\n            </td>\n            <td>name</td>\n            <td>age</td>\n            <td>location</td>\n            <td class=\"pr-text-right\">\n                <button class=\"button button--primary\">edit</button>\n            </td>\n        </tr>\n    </tbody>\n</table>",
-                "escaped": "&lt;table&gt;\n    &lt;thead&gt;\n        &lt;tr&gt;\n            &lt;th&gt;&lt;/th&gt;\n            &lt;th&gt;name&lt;/th&gt;\n            &lt;th&gt;age&lt;/th&gt;\n            &lt;th&gt;location&lt;/th&gt;\n            &lt;th&gt;&lt;/th&gt;\n        &lt;/tr&gt;\n    &lt;/thead&gt;\n    &lt;tbody&gt;\n        &lt;tr&gt;\n            &lt;td&gt;\n                &lt;img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\"&gt;\n            &lt;/td&gt;\n            &lt;td&gt;name&lt;/td&gt;\n            &lt;td&gt;age&lt;/td&gt;\n            &lt;td&gt;location&lt;/td&gt;\n            &lt;td class=\"pr-text-right\"&gt;\n                &lt;button class=\"button button--primary\"&gt;edit&lt;/button&gt;\n            &lt;/td&gt;\n        &lt;/tr&gt;\n    &lt;/tbody&gt;\n&lt;/table&gt;"
             }
         },
         {

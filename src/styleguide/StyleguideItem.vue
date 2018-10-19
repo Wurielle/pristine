@@ -127,9 +127,9 @@
         },
     })
     export default class StyleguideItem extends Vue {
-        @Prop({required: true}) public block: any;
-        private active: any = false;
-        private cmOptions: any = {
+        @Prop({required: true}) block: any;
+        active: any = false;
+        cmOptions: any = {
             tabSize: 4,
             styleActiveLine: true,
             mode: 'htmlmixed',

@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <styleguide></styleguide>
+        <styleguide :styleguide="styleguide"></styleguide>
     </div>
 </template>
 
@@ -11,6 +11,11 @@
         name: 'app',
         components: {
             HelloWorld,
+        },
+        data() {
+            return {
+                styleguide: require('@/styleguide.json'),
+            };
         },
     };
 </script>

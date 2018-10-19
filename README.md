@@ -2,6 +2,7 @@
 ## Project init
 In any CLI:
 ```shell 
+npm config set '@bit:registry' https://node.bitsrc.io
 npm install -g @vue/cli // For project Creation
 vue create MyProject
 cd MyProject

@@ -27,21 +27,22 @@
         },
     })
     export default class StyleguideTreeMenu extends Vue {
-        @Prop({required: true}) public nodes: any;
-        @Prop({required: true}) public sections: any;
-        @Prop({required: true}) public level: any;
-        @Prop() public value: any;
+        @Prop({required: true}) nodes: any;
+        @Prop({required: true}) sections: any;
+        @Prop({required: true}) level: any;
+        @Prop() value: any;
 
-        public getLinks(level: number = 0, parentID: number){
+        getLinks(level: number = 0, parentID: number) {
             return _.filter(this.sections, (section: any) => {
                 if(typeof parentID) {
                     return section.level === level && section.parent === parentID;
                 }
                 return section.level === level;
             });
-        };
+        }
+
         getSelected(id: any) {
-            let selected = _.find(this.sections, (section: any) => section.id === this.value);
+            const selected = _.find(this.sections, (section: any) => section.id === this.value);
             if (this.value !== null) {
                 return this.value === id || _.includes(selected.parents, id);
             }

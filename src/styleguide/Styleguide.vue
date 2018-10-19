@@ -120,7 +120,7 @@
         </nav>
         <div class="styleguide__content">
             <div class="styleguide__content__container">
-                <StyleguideItem :block="block" v-for="(block, index) in selectedBlocks" @copy="copyToClipboard($event)"></StyleguideItem>
+                <StyleguideItem :key="block.name" :block="block" v-for="(block, index) in selectedBlocks" @copy="copyToClipboard($event)"></StyleguideItem>
             </div>
         </div>
         <notifications group="copypasta" position="top right"/>
@@ -128,12 +128,6 @@
 </template>
 
 <script lang="ts">
-    let styleguideData: any;
-    try {
-        styleguideData = require('./styleguide.json');
-    } catch (e) {
-        styleguideData = {};
-    }
     import {
         Vue,
         Component,
@@ -152,10 +146,10 @@
         },
     })
     export default class Styleguide extends Vue {
-        private styleguide: any = styleguideData;
-        private sections: any[] = [];
-        private selected: any = null;
-        private cmOptions: any = {
+        @Prop({required: true}) styleguide: any;
+        sections: any[] = [];
+        selected: any = null;
+        cmOptions: any = {
             tabSize: 4,
             styleActiveLine: true,
             mode: 'htmlmixed',
@@ -165,20 +159,20 @@
             readOnly: true,
             lineWrapping: true,
         };
-        public mounted() {
+        mounted() {
             this.createRelationTree();
         }
 
-        public createRelationTree() {
+        createRelationTree() {
             let id = 0;
             // create sections
             _.each(this.styleguide.blocks, (block: any) => {
                 _.each(block.section, (section: string) => {
-                    let newSection = { id: 0, name: section, level: _.indexOf(block.section, section) };
+                    const newSection = { id: 0, name: section, level: _.indexOf(block.section, section) };
                     if (
                         !_.some(this.sections, (arraySection: any) =>
                         arraySection.name === newSection.name && arraySection.level === newSection.level)
-                    ){
+                    ) {
                         newSection.id = id;
                         this.sections.push(newSection);
                         id++;
@@ -188,8 +182,13 @@
 
             // create children relations
             this.sections.forEach((section: any) => {
-                let children = _.filter(this.styleguide.blocks, (block: any) => block.section[section.level] === section.name);
-                children = children.map((child: any) => _.find(this.sections, (findSection: any) => findSection.name === child.name).id);
+                let children = _.filter(
+                    this.styleguide.blocks,
+                    (block: any) => block.section[section.level] === section.name
+                );
+                children = children.map(
+                    (child: any) => _.find(this.sections, (findSection: any) => findSection.name === child.name).id
+                );
                 if(_.includes(children, section.id)) {
                     _.remove(children, (child: any) => child === section.id);
                 }
@@ -199,7 +198,7 @@
             // create parent relations
             this.sections.forEach((section: any) => {
                 if(section.level > 0) {
-                    let parentLevelSections = _.filter(
+                    const parentLevelSections = _.filter(
                         this.sections, (filterSection: any) => filterSection.level === section.level - 1
                     );
                     _.each(parentLevelSections, (parentLevelSection) => {
@@ -214,14 +213,12 @@
             this.sections.forEach((section: any) => {
                 if(section.level > 0) {
                     section.parents = [];
-                    let parent = _.find(this.sections, (findSection: any) => findSection.id == section.parent);
-                    console.log("hey1");
+                    let parent = _.find(this.sections, (findSection: any) => findSection.id === section.parent);
                     while (parent.level > 0) {
                         section.parents.push(parent.id);
-                        console.log("hey");
-                        parent = _.find(this.sections, (findSection: any) => findSection.id == parent.parent);
+                        parent = _.find(this.sections, (findSection: any) => findSection.id === parent.parent);
                     }
-                    if(parent.level === 0){
+                    if(parent.level === 0) {
                         section.parents.push(parent.id);
                     }
                 }
@@ -229,16 +226,9 @@
 
         }
 
-        public toggleExample(block: any) {
-            console.log(block.StyleguideCollapsedMarkup);
-            block.StyleguideCollapsedMarkup = block.StyleguideCollapsedMarkup ? false : true;
-            block.StyleguideCollapsedMarkup = !block.StyleguideCollapsedMarkup;
-            console.log(!block.StyleguideCollapsedMarkup);
-        }
-
-        public copyToClipboard(text: any) {
+        copyToClipboard(text: any) {
             if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-                var textarea = document.createElement("textarea");
+                const textarea = document.createElement("textarea");
                 textarea.textContent = text;
                 textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
                 document.body.appendChild(textarea);
@@ -252,21 +242,21 @@
                     document.body.removeChild(textarea);
                 }
             }
-            (this as any).$notify({
-                group: 'copypasta',
-                text: 'Copied to clipboard!'
-            });
+            // (this as any).$notify({
+            //     group: 'copypasta',
+            //     text: 'Copied to clipboard!'
+            // });
         }
 
-        public getLinks(level: number = 0){
+        getLinks(level: number = 0) {
             return _.filter(this.sections, (section: any) => {
                 return section.level === level;
             });
-        };
+        }
 
-        public get selectedBlocks() {
+        get selectedBlocks() {
             if (this.selected !== null) {
-                let selectedSection = _.find(this.sections, (findSection: any) => findSection.id === this.selected);
+                const selectedSection = _.find(this.sections, (findSection: any) => findSection.id === this.selected);
                 return _.filter(this.styleguide.blocks, (block: any) => {
                     return block.section[selectedSection.level] === selectedSection.name;
                 });
