@@ -1,18 +1,6 @@
 {
     "blocks": [
         {
-            "name": "Code",
-            "section": [
-                "Base",
-                "Code"
-            ],
-            "description": "Code for coders.",
-            "markup": {
-                "example": "<div class=\"pr-mb-base\">\n    In this sentence <code>there is some code</code> that can be displayed.\n</div>\n<pre>\n    <code>\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    </code>\n</pre>",
-                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\n&lt;/div&gt;\n&lt;pre&gt;\n    &lt;code&gt;\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    &lt;/code&gt;\n&lt;/pre&gt;"
-            }
-        },
-        {
             "name": "Buttons",
             "section": [
                 "Base",
@@ -59,6 +47,18 @@
             "markup": {
                 "example": "<button class=\"button\">Button</button>\r\n<button class=\"button button--primary\">Primary</button>\r\n<button class=\"button button--secondary\">Secondary</button>\r\n<button class=\"button button--success\">Success</button>\r\n<button class=\"button button--danger\">Danger</button>\r\n<button class=\"button button--warning\">Warning</button>\r\n<button class=\"button button--info\">Info</button>",
                 "escaped": "&lt;button class=\"button\"&gt;Button&lt;/button&gt;\r\n&lt;button class=\"button button--primary\"&gt;Primary&lt;/button&gt;\r\n&lt;button class=\"button button--secondary\"&gt;Secondary&lt;/button&gt;\r\n&lt;button class=\"button button--success\"&gt;Success&lt;/button&gt;\r\n&lt;button class=\"button button--danger\"&gt;Danger&lt;/button&gt;\r\n&lt;button class=\"button button--warning\"&gt;Warning&lt;/button&gt;\r\n&lt;button class=\"button button--info\"&gt;Info&lt;/button&gt;"
+            }
+        },
+        {
+            "name": "Code",
+            "section": [
+                "Base",
+                "Code"
+            ],
+            "description": "Code for coders.",
+            "markup": {
+                "example": "<div class=\"pr-mb-base\">\n    In this sentence <code>there is some code</code> that can be displayed.\n</div>\n<pre>\n    <code>\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    </code>\n</pre>",
+                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\n&lt;/div&gt;\n&lt;pre&gt;\n    &lt;code&gt;\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    &lt;/code&gt;\n&lt;/pre&gt;"
             }
         },
         {

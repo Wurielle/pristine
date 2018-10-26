@@ -1,23 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
-const WebpackPluginHash = require('webpack-plugin-hash');
 const argv = require('minimist')(process.argv.slice(2));
 
 const DSSWebpackPlugin = require('./dss-webpack-plugin.js');
 const JsonSassWebpackPlugin = require('./json-sass-webpack-plugin.js');
 
 module.exports = {
-    baseUrl: './',
-    css: {
-        loaderOptions: {
-            sass: {
-                functions: {
-
-                }
-            }
-        },
-    },
+    baseUrl: '/',
     configureWebpack: {
         resolve: {
             alias: {

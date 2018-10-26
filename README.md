@@ -1,17 +1,25 @@
 # pristine
-## Project init
-In any CLI:
-```shell 
+## Global Dependencies
+```bash
 npm config set '@bit:registry' https://node.bitsrc.io
-npm install -g @vue/cli // For project Creation
+npm install -g @vue/cli
+npm i -g @storybook/cli
+npm 
+## Project init
+In any CLI:i -g bit-bin
+```
+
+## Create a project (requires Global Dependencies)
+```bash 
 vue create MyProject
 cd MyProject
 vue add vue-cli-plugin-build-watch // Adds watch mode to Vue-CLI
 vue add element // Adds Element UI
-npm install -g nucleus-styleguide // Adds Nucleus Styleguide Generator
-npm i tailwindcss lodash vue-codemirror json-sass@1.2.1 minimist postcss-pxtorem -D // Adds Dev Dependencies
-node ./node_modules/.bin/tailwind init config/theme.js // Init TailwindCSS
-nucleus init // Init Nucleus Styleguide Generator
+npm i tailwindcss lodash vue-codemirror json-sass@1.2.1 minimist postcss-pxtorem @storybook/addon-info -D // Adds Dev Dependencies
+npm i @bit/wurielle.pristine.webpack.dss-plugin
+npm i @bit/wurielle.pristine.webpack.json-sass-plugin
+./node_modules/.bin/tailwind init config/theme.js // Init TailwindCSS
+getstorybook
 ```
 
 Edit postcss.config.js with the following lines:
@@ -26,6 +34,42 @@ module.exports = {
       }),
   ]
 }
+```
+
+Create a vue.config.js file containing
+```javascript
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
+const argv = require('minimist')(process.argv.slice(2));
+
+const DSSWebpackPlugin = require('@bit/wurielle.pristine.webpack.dss-plugin');
+const JsonSassWebpackPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
+
+module.exports = {
+    baseUrl: '/',
+    configureWebpack: {
+        resolve: {
+            alias: {
+                '@config':  path.resolve(__dirname, 'config'),
+            }
+        },
+        plugins:[
+            new webpack.DefinePlugin({
+                // 'API_AUTH_USERNAME': JSON.stringify(argv.apiAuthUsername.trim()),
+                // 'API_AUTH_PASSWORD': JSON.stringify(argv.apiAuthPassword.trim()),
+                // 'SERVICE_URL': JSON.stringify(argv.domain.trim())
+            }),
+            new DSSWebpackPlugin({
+                filter: /\.s(c|a)ss/,
+                output: './src/styleguide.json',
+                watch: './src',
+                detector: '_@'
+            }),
+            new JsonSassWebpackPlugin('./config/theme.js', './config/theme.scss')
+        ]
+    }
+};
 ```
 ## Project setup
 ```
