@@ -3,8 +3,8 @@ const path = require('path');
 const webpack = require('webpack');
 const argv = require('minimist')(process.argv.slice(2));
 
-const DSSWebpackPlugin = require('./dss-webpack-plugin.js');
-const JsonSassWebpackPlugin = require('./json-sass-webpack-plugin.js');
+const DSSWebpackPlugin = require('@bit/wurielle.pristine.webpack.dss-plugin');
+const JsonSassWebpackPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
 
 module.exports = {
     baseUrl: '/',
