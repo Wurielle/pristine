@@ -4,22 +4,35 @@
 npm config set '@bit:registry' https://node.bitsrc.io
 npm install -g @vue/cli
 npm i -g @storybook/cli
-npm 
-## Project init
-In any CLI:i -g bit-bin
+npm i -g bit-bin
 ```
 
 ## Create a project (requires Global Dependencies)
 ```bash 
 vue create MyProject
 cd MyProject
+
+# Add watch mode to Vue-CLI
 vue add vue-cli-plugin-build-watch // Adds watch mode to Vue-CLI
-vue add element // Adds Element UI
-npm i tailwindcss lodash vue-codemirror json-sass@1.2.1 minimist postcss-pxtorem @storybook/addon-info -D // Adds Dev Dependencies
+
+# Add Element UI (https://element.eleme.io/#/en-US)
+vue add element
+
+# Add Storybook Vue-CLI plugin (https://storybook.js.org/)
+vue add storybook
+
+# Add Workflow Dependencies
+npm i minimist postcss-pxtorem -D
+
+# Add Dev Dependencies
+npm i tailwindcss lodash
+
+# Add Bit Dependencies
 npm i @bit/wurielle.pristine.webpack.dss-plugin
 npm i @bit/wurielle.pristine.webpack.json-sass-plugin
-./node_modules/.bin/tailwind init config/theme.js // Init TailwindCSS
-getstorybook
+
+# Init TailwindCSS (https://tailwindcss.com/)
+./node_modules/.bin/tailwind init config/theme.js 
 ```
 
 Edit postcss.config.js with the following lines:
