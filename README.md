@@ -25,11 +25,11 @@ vue add storybook
 npm i minimist postcss-pxtorem -D
 
 # Add Dev Dependencies
-npm i tailwindcss lodash
+npm i tailwindcss lodash -D
 
 # Add Bit Dependencies
-npm i @bit/wurielle.pristine.webpack.dss-plugin
-npm i @bit/wurielle.pristine.webpack.json-sass-plugin
+npm i @bit/wurielle.pristine.webpack.dss-plugin -D
+npm i @bit/wurielle.pristine.webpack.json-sass-plugin -D
 
 # Init TailwindCSS (https://tailwindcss.com/)
 ./node_modules/.bin/tailwind init config/theme.js 
