@@ -57,8 +57,8 @@
             ],
             "description": "Code for coders.",
             "markup": {
-                "example": "<div class=\"pr-mb-base\">\r\n    In this sentence <code>there is some code</code> that can be displayed.\r\n</div>\r\n<pre>\r\n    <code>\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    </code>\r\n</pre>",
-                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\r\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\r\n&lt;/div&gt;\r\n&lt;pre&gt;\r\n    &lt;code&gt;\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    &lt;/code&gt;\r\n&lt;/pre&gt;"
+                "example": "<div class=\"pr-mb-base\">\n    In this sentence <code>there is some code</code> that can be displayed.\n</div>\n<pre>\n    <code>\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    </code>\n</pre>",
+                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\n&lt;/div&gt;\n&lt;pre&gt;\n    &lt;code&gt;\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    &lt;/code&gt;\n&lt;/pre&gt;"
             }
         },
         {
@@ -101,8 +101,8 @@
                 }
             ],
             "markup": {
-                "example": "<input type=\"text\" placeholder=\"Hello World\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--success\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\">",
-                "escaped": "&lt;input type=\"text\" placeholder=\"Hello World\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--success\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\"&gt;"
+                "example": "<input type=\"text\" placeholder=\"Hello World\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--success\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\">",
+                "escaped": "&lt;input type=\"text\" placeholder=\"Hello World\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--success\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\"&gt;"
             }
         },
         {
@@ -113,8 +113,8 @@
             ],
             "description": "Link for various purposes.",
             "markup": {
-                "example": "<div>\r\n    Sometimes texts <a href=\"\">have links</a> just like this one.\r\n</div>",
-                "escaped": "&lt;div&gt;\r\n    Sometimes texts &lt;a href=\"\"&gt;have links&lt;/a&gt; just like this one.\r\n&lt;/div&gt;"
+                "example": "<div>\n    Sometimes texts <a href=\"\">have links</a> just like this one.\n</div>",
+                "escaped": "&lt;div&gt;\n    Sometimes texts &lt;a href=\"\"&gt;have links&lt;/a&gt; just like this one.\n&lt;/div&gt;"
             }
         },
         {
@@ -137,8 +137,8 @@
             ],
             "description": "Misc for various purposes.",
             "markup": {
-                "example": "<div class=\"pr-mb-base\">\r\n    <img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\r\n         alt=\"\">\r\n    <hr>\r\n    <a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\">@jan_pd</a>\r\n</div>",
-                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\r\n    &lt;img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\r\n         alt=\"\"&gt;\r\n    &lt;hr&gt;\r\n    &lt;a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\"&gt;@jan_pd&lt;/a&gt;\r\n&lt;/div&gt;"
+                "example": "<div class=\"pr-mb-base\">\n    <img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\n         alt=\"\">\n    <hr>\n    <a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\">@jan_pd</a>\n</div>",
+                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\n    &lt;img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\n         alt=\"\"&gt;\n    &lt;hr&gt;\n    &lt;a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\"&gt;@jan_pd&lt;/a&gt;\n&lt;/div&gt;"
             }
         },
         {
@@ -149,8 +149,8 @@
             ],
             "description": "Tables for various purposes.",
             "markup": {
-                "example": "<table>\r\n    <thead>\r\n        <tr>\r\n            <th></th>\r\n            <th>name</th>\r\n            <th>age</th>\r\n            <th>location</th>\r\n            <th></th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr>\r\n            <td>\r\n                <img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\">\r\n            </td>\r\n            <td>name</td>\r\n            <td>age</td>\r\n            <td>location</td>\r\n            <td class=\"pr-text-right\">\r\n                <button class=\"button button--primary\">edit</button>\r\n            </td>\r\n        </tr>\r\n    </tbody>\r\n</table>",
-                "escaped": "&lt;table&gt;\r\n    &lt;thead&gt;\r\n        &lt;tr&gt;\r\n            &lt;th&gt;&lt;/th&gt;\r\n            &lt;th&gt;name&lt;/th&gt;\r\n            &lt;th&gt;age&lt;/th&gt;\r\n            &lt;th&gt;location&lt;/th&gt;\r\n            &lt;th&gt;&lt;/th&gt;\r\n        &lt;/tr&gt;\r\n    &lt;/thead&gt;\r\n    &lt;tbody&gt;\r\n        &lt;tr&gt;\r\n            &lt;td&gt;\r\n                &lt;img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\"&gt;\r\n            &lt;/td&gt;\r\n            &lt;td&gt;name&lt;/td&gt;\r\n            &lt;td&gt;age&lt;/td&gt;\r\n            &lt;td&gt;location&lt;/td&gt;\r\n            &lt;td class=\"pr-text-right\"&gt;\r\n                &lt;button class=\"button button--primary\"&gt;edit&lt;/button&gt;\r\n            &lt;/td&gt;\r\n        &lt;/tr&gt;\r\n    &lt;/tbody&gt;\r\n&lt;/table&gt;"
+                "example": "<table>\n    <thead>\n        <tr>\n            <th></th>\n            <th>name</th>\n            <th>age</th>\n            <th>location</th>\n            <th></th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>\n                <img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\">\n            </td>\n            <td>name</td>\n            <td>age</td>\n            <td>location</td>\n            <td class=\"pr-text-right\">\n                <button class=\"button button--primary\">edit</button>\n            </td>\n        </tr>\n    </tbody>\n</table>",
+                "escaped": "&lt;table&gt;\n    &lt;thead&gt;\n        &lt;tr&gt;\n            &lt;th&gt;&lt;/th&gt;\n            &lt;th&gt;name&lt;/th&gt;\n            &lt;th&gt;age&lt;/th&gt;\n            &lt;th&gt;location&lt;/th&gt;\n            &lt;th&gt;&lt;/th&gt;\n        &lt;/tr&gt;\n    &lt;/thead&gt;\n    &lt;tbody&gt;\n        &lt;tr&gt;\n            &lt;td&gt;\n                &lt;img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\"&gt;\n            &lt;/td&gt;\n            &lt;td&gt;name&lt;/td&gt;\n            &lt;td&gt;age&lt;/td&gt;\n            &lt;td&gt;location&lt;/td&gt;\n            &lt;td class=\"pr-text-right\"&gt;\n                &lt;button class=\"button button--primary\"&gt;edit&lt;/button&gt;\n            &lt;/td&gt;\n        &lt;/tr&gt;\n    &lt;/tbody&gt;\n&lt;/table&gt;"
             }
         },
         {
