@@ -9,7 +9,7 @@ import '@/styles/main.scss';
 
 let styleguide;
 if (process.env.NODE_ENV === 'development') {
-    styleguide = require('@/styleguide/Styleguide.vue').default;
+    styleguide = require('../components/vue-components/dss-styleguide/Styleguide.vue').default;
     Vue.component('Styleguide', styleguide);
 }
 

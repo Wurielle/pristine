@@ -1,8 +1,10 @@
 {
-    "env": {
-        "compiler": "bit.envs/compilers/typescript@0.0.5"
+    "env": {},
+    "dependencies": {
+        "wurielle.pristine/vue-components/dss-styleguide": "0.0.8",
+        "wurielle.pristine/webpack/json-sass-plugin": "0.0.6",
+        "wurielle.pristine/webpack/dss-plugin": "0.0.6"
     },
-    "dependencies": {},
     "componentsDefaultDirectory": "components/{namespace}/{name}",
     "packageManager": "npm"
 }

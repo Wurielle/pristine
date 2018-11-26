@@ -1,0 +1,12 @@
+{
+  "name": "@bit/wurielle.pristine.webpack.json-sass-plugin",
+  "version": "0.0.6",
+  "homepage": "https://bitsrc.io/wurielle/pristine/webpack/json-sass-plugin",
+  "main": "dist/json-sass-webpack-plugin.js",
+  "dependencies": {
+    "json-sass": "^1.2.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "license": "SEE LICENSE IN LICENSE"
+}

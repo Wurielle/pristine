@@ -14,8 +14,8 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "@bit/wurielle.pristine.vue-components.dss-styleguide": "0.0.6",
-    "@bit/wurielle.pristine.webpack.dss-plugin": "0.0.3",
+    "@bit/wurielle.pristine.vue-components.dss-styleguide": "file:components/vue-components/dss-styleguide",
+    "@bit/wurielle.pristine.webpack.dss-plugin": "file:components/webpack/dss-plugin",
     "element-ui": "^2.4.5",
     "vue": "^2.5.17",
     "vue-loader": "^15.4.2",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
-    "@bit/wurielle.pristine.webpack.json-sass-plugin": "0.0.4",
+    "@bit/wurielle.pristine.webpack.json-sass-plugin": "file:components/webpack/json-sass-plugin",
     "@storybook/addon-actions": "4.0.0-alpha.20",
     "@storybook/addon-links": "4.0.0-alpha.20",
     "@types/jest": "^23.1.4",
