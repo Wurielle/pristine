@@ -36,7 +36,7 @@
         "origin": "IMPORTED",
         "originallySharedDir": "components/wepback/dss-plugin"
     },
-    "wurielle.pristine/vue-components/dss-styleguide@0.0.8": {
+    "wurielle.pristine/vue-components/dss-styleguide@0.0.9": {
         "files": [
             {
                 "name": "Styleguide.vue",

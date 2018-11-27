@@ -122,8 +122,6 @@
 
             width: $navigation-width;
 
-            transition: $transition;
-
             background-color: white;
 
             z-index: 1000;
@@ -286,8 +284,6 @@
 
             padding-left: $navigation-width;
 
-            transition: $transition2;
-
             .styleguide__content__container {
 
                 max-width: 75rem;
@@ -298,13 +294,25 @@
 
                 padding-right: $spacing;
 
-                transition: $transition2;
-
             }
 
         }
 
         /deep/ {
+
+            .styleguide-transition {
+
+                transition: $transition;
+
+            }
+
+
+
+            .styleguide-transition2 {
+
+                transition: $transition2;
+
+            }
 
 
 
@@ -345,6 +353,20 @@
             .styleguide\:ul {
 
                 padding-left: $unit;
+
+            }
+
+            .styleguide-table-wrapper {
+
+                overflow-x: auto;
+
+                margin-bottom: $spacing;
+
+                border-top-width: 1px;
+
+                border-bottom-width: 1px;
+
+                border-color: #dae1e7
 
             }
 
@@ -414,6 +436,126 @@
 
                 }
 
+                &.styleguide-button--small {
+
+                    height: $unit/1.5;
+
+                }
+
+            }
+
+
+
+            .styleguide\:table {
+
+                display: table;
+
+                border-collapse: separate;
+
+                border-spacing: 0;
+
+                border-color: grey;
+
+                width: 100%;
+
+
+
+                .styleguide\:thead {
+
+                    display: table-header-group;
+
+                    vertical-align: middle;
+
+                    border-color: inherit;
+
+                    background-color:  #fafafa;
+
+                }
+
+                .styleguide\:tbody {
+
+                    display: table-row-group;
+
+                    vertical-align: middle;
+
+                    border-color: inherit;
+
+                    .styleguide\:tr {
+
+                        &:hover {
+
+                            background-color: #fafafa;
+
+                        }
+
+                    }
+
+                }
+
+                .styleguide\:tr {
+
+                    display: table-row;
+
+                    vertical-align: inherit;
+
+                    border-color: inherit;
+
+                    &:hover {
+
+                        background-color: #fafafa;
+
+                    }
+
+                }
+
+                .styleguide\:th {
+
+                    display: table-cell;
+
+                    vertical-align: inherit;
+
+                    font-weight: bold;
+
+                    text-align: left;
+
+                }
+
+                .styleguide\:td {
+
+                    display: table-cell;
+
+                    vertical-align: inherit;
+
+                    border-top-width: 1px;
+
+                    border-color: #dae1e7
+
+                }
+
+                .styleguide\:th,
+
+                .styleguide\:td {
+
+                    font-size: .875rem;
+
+                    padding: .5rem;
+
+                    .styleguide-button {
+
+                        margin-bottom: 0;
+
+                    }
+
+                }
+
+            }
+
+
+
+            .styleguide-text-right {
+
+                text-align: right;
+
             }
 
         }
@@ -470,7 +612,7 @@
 
 <template>
 
-    <div id="styleguide" :class="{ 'styleguide--full-width': state.fullWidth }">
+    <div id="styleguide" :class="{ 'styleguide--full-width': state.fullWidth }" v-if="isMounted">
 
         <div class="styleguide__header" @mouseenter="state.menuVisible = true" @mouseleave="state.menuVisible = false">
 
@@ -490,17 +632,17 @@
 
         </div>
 
-        <div class="styleguide__nav" :class="{'styleguide__nav--visible': state.menuVisible }" @mouseenter="state.menuVisible = true" @mouseleave="state.menuVisible = false">
+        <div class="styleguide__nav" :class="{'styleguide__nav--visible': state.menuVisible, 'styleguide-transition': isMounted }" @mouseenter="state.menuVisible = true" @mouseleave="state.menuVisible = false">
 
             <StyleguideTreeMenu :nodes="getLinks(0)" :level="0" :sections="sections" v-model="selected"></StyleguideTreeMenu>
 
         </div>
 
-        <div class="styleguide__content">
+        <div class="styleguide__content" :class="{ 'styleguide-transition2': isMounted}">
 
-            <div class="styleguide__content__container">
+            <div class="styleguide__content__container" :class="{ 'styleguide-transition2': isMounted}">
 
-                <StyleguideItem :key="block.name" :block="block" v-for="(block, index) in selectedBlocks" @copy="copyToClipboard($event)"></StyleguideItem>
+                <StyleguideItem :isMounted="isMounted" :key="block.name" :block="block" v-for="(block, index) in selectedBlocks" @copy="copyToClipboard($event)"></StyleguideItem>
 
             </div>
 
@@ -592,6 +734,8 @@
 
         };
 
+        isMounted: boolean = false;
+
 
 
         @Watch('state', { deep: true })
@@ -630,6 +774,8 @@
 
             this.navigateTo();
 
+            this.isMounted = true;
+
         }
 
 
@@ -640,7 +786,11 @@
 
                 const section = _.find(this.sections, (section: any) => section.path === JSON.parse(localStorage.getItem('styleguidePath')));
 
-                this.selected = section.id;
+                if(section) {
+
+                    this.selected = section.id;
+
+                }
 
             }
 
@@ -688,15 +838,33 @@
 
             _.each(this.styleguide.blocks, (block: any) => {
 
-                _.each(block.section, (section: string) => {
+                _.each(block.section, (section: string, index) => {
 
-                    const newSection = { id: 0, name: section, level: _.indexOf(block.section, section) };
+                    let path = '';
+
+                    let level = _.indexOf(block.section, section);
+
+                    for (let i = 0; i < level + 1; i++) {
+
+                        if (path === '') {
+
+                            path = encodeURI(block.section[i].toLocaleLowerCase());
+
+                        } else {
+
+                            path += '/' + encodeURI(block.section[i].toLocaleLowerCase());
+
+                        }
+
+                    }
+
+                    const newSection = { path, level, id: 0, name: section };
 
                     if (
 
                         !_.some(this.sections, (arraySection: any) =>
 
-                        arraySection.name === newSection.name && arraySection.level === newSection.level)
+                        arraySection.name === newSection.name && arraySection.level === newSection.level && arraySection.path === newSection.path)
 
                     ) {
 
@@ -718,27 +886,15 @@
 
             this.sections.forEach((section: any) => {
 
-                let children = _.filter(
+                const children = _.filter(
 
-                    this.styleguide.blocks,
+                    this.sections,
 
-                    (block: any) => block.section[section.level] === section.name
-
-                );
-
-                children = children.map(
-
-                    (child: any) => _.find(this.sections, (findSection: any) => findSection.name === child.name).id
+                    (filterSection: any) => filterSection.path.startsWith(section.path) && filterSection.id !== section.id
 
                 );
 
-                if(_.includes(children, section.id)) {
-
-                    _.remove(children, (child: any) => child === section.id);
-
-                }
-
-                section.children = children;
+                section.children = children.map((child: any) => child.id);
 
             });
 
@@ -780,45 +936,27 @@
 
                     section.parents = [];
 
-                    let parent = _.find(this.sections, (findSection: any) => findSection.id === section.parent);
+                    const pathArray = section.path.split('/');
 
-                    while (parent.level > 0) {
+                    const pathLength = pathArray.length;
 
-                        section.parents.push(parent.id);
+                    console.log(section.path, pathArray, pathLength);
 
-                        parent = _.find(this.sections, (findSection: any) => findSection.id === parent.parent);
+                    for (let i = 0; i < pathLength - 1; i++) {
+
+                        const anyParent = _.find(this.sections, (findSection: any) => {
+
+                           let rangeArray = pathArray.slice(0, i+1);
+
+                           let targetPath = rangeArray.join('/');
+
+                           return findSection.path === targetPath;
+
+                        });
+
+                        section.parents.push(anyParent.id);
 
                     }
-
-                    if(parent.level === 0) {
-
-                        section.parents.push(parent.id);
-
-                    }
-
-                }
-
-            });
-
-
-
-            // recreate path
-
-            this.sections.forEach((section: any) => {
-
-                if(section.parents && section.parents.length > 0) {
-
-                    section.parents.forEach((parentID: any) => {
-
-                       const parent = _.find(this.sections, (findSection: any) => findSection.id === parentID);
-
-                       section.path = encodeURI(parent.name.toLowerCase()) + '/' + encodeURI(section.name.toLowerCase());
-
-                    });
-
-                } else {
-
-                    section.path = null;
 
                 }
 

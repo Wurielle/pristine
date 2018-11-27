@@ -14,7 +14,7 @@
 
         </div>
 
-        <div class="styleguide:li" v-for="link in nodes">
+        <div class="styleguide:li" v-for="link in nodes" v-if="link.level <= 2">
 
             <div class="styleguide:a" :href="`#`" @click.prevent="$emit('input', link.id)" :class="{'styleguide-link--active': getSelected(link.id)}"><div class="styleguide:span">{{link.name}}</div></div>
 

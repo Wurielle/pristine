@@ -1,6 +1,6 @@
 {
   "name": "@bit/wurielle.pristine.vue-components.dss-styleguide",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "https://bitsrc.io/wurielle/pristine/vue-components/dss-styleguide",
   "main": "dist/Styleguide.vue",
   "dependencies": {
