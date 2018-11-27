@@ -8,9 +8,6 @@ $theme:(
     )
   ),
   colors: (
-    base-text-color: #22292f,
-    base-bg-color: #f8fafc,
-    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -25,7 +22,6 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
-    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -33,7 +29,6 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
-    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -48,7 +43,6 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
-    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -63,8 +57,6 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
-    secondary: #3490dc,
-    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -79,7 +71,6 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
-    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -89,7 +80,16 @@ $theme:(
     pink: #f66d9b,
     pink-light: #fa7ea8,
     pink-lighter: #ffbbca,
-    pink-lightest: #ffebef
+    pink-lightest: #ffebef,
+    base-text-color: #22292f,
+    base-bg-color: #f8fafc,
+    base-border-color: #dae1e7,
+    danger: #e3342f,
+    warning: #f6993f,
+    success: #38c172,
+    secondary: #3490dc,
+    info: #3490dc,
+    primary: #9561e2
   ),
   screens: (
     sm: 576px,
@@ -105,14 +105,14 @@ $theme:(
   textSizes: (
     xs: 10px,
     sm: 12px,
-    md: 14px,
     base: 1rem,
     lg: 1.125rem,
     xl: 1.25rem,
     2xl: 1.5rem,
     3xl: 1.875rem,
     4xl: 2.25rem,
-    5xl: 3rem
+    5xl: 3rem,
+    md: 14px
   ),
   fontWeights: (
     hairline: 100,
@@ -128,21 +128,18 @@ $theme:(
   leading: (
     none: 1,
     tight: 1.25,
-    base: 1.5,
     normal: 1.5,
-    loose: 2
+    loose: 2,
+    base: 1.5
   ),
   tracking: (
     tight: -0.05em,
     normal: 0,
-    base: 0.05em,
     wide: 0.05em,
+    base: 0.05em,
     ultrawide: 0.2em
   ),
   textColors: (
-    base-text-color: #22292f,
-    base-bg-color: #f8fafc,
-    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -157,7 +154,6 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
-    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -165,7 +161,6 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
-    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -180,7 +175,6 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
-    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -195,8 +189,6 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
-    secondary: #3490dc,
-    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -211,7 +203,6 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
-    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -221,12 +212,18 @@ $theme:(
     pink: #f66d9b,
     pink-light: #fa7ea8,
     pink-lighter: #ffbbca,
-    pink-lightest: #ffebef
+    pink-lightest: #ffebef,
+    base-text-color: #22292f,
+    base-bg-color: #f8fafc,
+    base-border-color: #dae1e7,
+    danger: #e3342f,
+    warning: #f6993f,
+    success: #38c172,
+    secondary: #3490dc,
+    info: #3490dc,
+    primary: #9561e2
   ),
   backgroundColors: (
-    base-text-color: #22292f,
-    base-bg-color: #f8fafc,
-    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -241,7 +238,6 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
-    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -249,7 +245,6 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
-    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -264,7 +259,6 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
-    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -279,8 +273,6 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
-    secondary: #3490dc,
-    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -295,7 +287,6 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
-    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -305,7 +296,16 @@ $theme:(
     pink: #f66d9b,
     pink-light: #fa7ea8,
     pink-lighter: #ffbbca,
-    pink-lightest: #ffebef
+    pink-lightest: #ffebef,
+    base-text-color: #22292f,
+    base-bg-color: #f8fafc,
+    base-border-color: #dae1e7,
+    danger: #e3342f,
+    warning: #f6993f,
+    success: #38c172,
+    secondary: #3490dc,
+    info: #3490dc,
+    primary: #9561e2
   ),
   backgroundSize: (
     auto: auto,
@@ -321,9 +321,6 @@ $theme:(
   ),
   borderColors: (
     default: #dae1e7,
-    base-text-color: #22292f,
-    base-bg-color: #f8fafc,
-    base-border-color: #dae1e7,
     transparent: transparent,
     black: #22292f,
     grey-darkest: #3d4852,
@@ -338,7 +335,6 @@ $theme:(
     red-darker: #621b18,
     red-dark: #cc1f1a,
     red: #e3342f,
-    danger: #e3342f,
     red-light: #ef5753,
     red-lighter: #f9acaa,
     red-lightest: #fcebea,
@@ -346,7 +342,6 @@ $theme:(
     orange-darker: #613b1f,
     orange-dark: #de751f,
     orange: #f6993f,
-    warning: #f6993f,
     orange-light: #faad63,
     orange-lighter: #fcd9b6,
     orange-lightest: #fff5eb,
@@ -361,7 +356,6 @@ $theme:(
     green-darker: #1a4731,
     green-dark: #1f9d55,
     green: #38c172,
-    success: #38c172,
     green-light: #51d88a,
     green-lighter: #a2f5bf,
     green-lightest: #e3fcec,
@@ -376,8 +370,6 @@ $theme:(
     blue-darker: #1c3d5a,
     blue-dark: #2779bd,
     blue: #3490dc,
-    secondary: #3490dc,
-    info: #3490dc,
     blue-light: #6cb2eb,
     blue-lighter: #bcdefa,
     blue-lightest: #eff8ff,
@@ -392,7 +384,6 @@ $theme:(
     purple-darker: #382b5f,
     purple-dark: #794acf,
     purple: #9561e2,
-    primary: #9561e2,
     purple-light: #a779e9,
     purple-lighter: #d6bbfc,
     purple-lightest: #f3ebff,
@@ -402,15 +393,24 @@ $theme:(
     pink: #f66d9b,
     pink-light: #fa7ea8,
     pink-lighter: #ffbbca,
-    pink-lightest: #ffebef
+    pink-lightest: #ffebef,
+    base-text-color: #22292f,
+    base-bg-color: #f8fafc,
+    base-border-color: #dae1e7,
+    danger: #e3342f,
+    warning: #f6993f,
+    success: #38c172,
+    secondary: #3490dc,
+    info: #3490dc,
+    primary: #9561e2
   ),
   borderRadius: (
     none: 0,
     sm: .125rem,
-    base: 2px,
     default: .25rem,
     lg: .5rem,
-    full: 9999px
+    full: 9999px,
+    base: 2px
   ),
   width: (
     1: 0.25rem,
@@ -465,7 +465,8 @@ $theme:(
   ),
   minWidth: (
     0: 0,
-    full: 100%
+    full: 100%,
+    screen: 100vw
   ),
   minHeight: (
     0: 0,
@@ -503,8 +504,8 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
-    base: 20px,
-    px: 1px
+    px: 1px,
+    base: 20px
   ),
   margin: (
     0: 0,
@@ -521,9 +522,9 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
-    base: 20px,
     auto: auto,
-    px: 1px
+    px: 1px,
+    base: 20px
   ),
   negativeMargin: (
     0: 0,
@@ -540,13 +541,13 @@ $theme:(
     20: 5rem,
     24: 6rem,
     32: 8rem,
-    base: -20px,
-    px: 1px
+    px: 1px,
+    base: -20px
   ),
   shadows: (
-    default: "0px 2px 6px rgba(0,0,0,0.1), 0px 2px 6px rgba(0,0,0,0.1)",
-    md: 0 4px 8px 0 rgba(0,0,0,0.12),
-    lg: 0 15px 30px 0 rgba(0,0,0,0.11),
+    default: 0 2px 4px 0 rgba(0,0,0,0.10),
+    md: "0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)",
+    lg: "0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)",
     inner: inset 0 2px 4px 0 rgba(0,0,0,0.06),
     outline: 0 0 0 3px rgba(52,144,220,0.5),
     none: none
