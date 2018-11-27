@@ -24,7 +24,7 @@ View the full documentation at https://tailwindcss.com.
 |
 */
 
-// let defaultConfig = require('tailwindcss/defaultConfig')()
+const defaultConfig = require('tailwindcss/defaultConfig')();
 
 
 /*
@@ -774,7 +774,7 @@ module.exports = {
     */
 
     shadows: {
-        default: '0px 2px 6px rgba(0,0,0,0.1)',
+        default: '0px 2px 6px rgba(0,0,0,0.1), 0px 2px 6px rgba(0,0,0,0.1)',
         'md': '0 4px 8px 0 rgba(0,0,0,0.12)',
         'lg': '0 15px 30px 0 rgba(0,0,0,0.11)',
         'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',

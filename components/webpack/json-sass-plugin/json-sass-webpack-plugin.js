@@ -30,7 +30,7 @@ class JsonSassPlugin {
         throw err;
     }
     getSass(object) {
-        return "$"+path.parse(this.src).name+":"+jsonSass.convertJs(JSON.parse(JSON.stringify(object).replace(/:":"/g, ":\"\\\\:\"")))+";";
+        return "$"+path.parse(this.src).name+":"+jsonSass.convertJs(object)+";";
     }
     tester() {
         return true;
