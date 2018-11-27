@@ -6,7 +6,7 @@
         <div class="styleguide:li" v-if="level === 0" >
             <div class="styleguide:a" href="#" @click.prevent="$emit('input', null)" :class="{'styleguide-link--active': value === null}"><div class="styleguide:span">All</div></div>
         </div>
-        <div class="styleguide:li" v-for="link in nodes">
+        <div class="styleguide:li" v-for="link in nodes" v-if="link.level <= 2">
             <div class="styleguide:a" :href="`#`" @click.prevent="$emit('input', link.id)" :class="{'styleguide-link--active': getSelected(link.id)}"><div class="styleguide:span">{{link.name}}</div></div>
             <StyleguideTreeMenu :key="link.name" :level="link.level + 1" v-if="link.children.length > 0" :nodes="getLinks(link.level + 1, link.id)" :sections="sections" @input="$emit('input', $event)" :value="value"></StyleguideTreeMenu>
         </div>

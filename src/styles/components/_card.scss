@@ -1,39 +1,79 @@
 //// Cards -------------------------------------------------------------------------------------------------------------
 /**
- * _@name Card
  * _@section Components > Card
- * _@description Cards.
- * _@state .card - a normal card
- * _@state .card--dark - a dark card
+ * _@description Cards are cool if you want to put stuff inside.
+ * _@state .card - Default version of a card
+ * _@state .card.card--dark - Dark version of a card
+ */
+
+/**
+ * _@name Card Default
+ * _@section Components > Card > Default
+ * _@state .card - Default version of a card
  * _@markup
- *<div class="card">
- *    <div class="card__image" title="Sunset" style="background-image: url('https://tailwindcss.com/img/card-top.jpg')"></div>
- *    <div class="card__content">
- *        <div class="card__content__main">
- *            <p class="card__content__main__availability">
- *                <svg class="pr-fill-current pr-text-grey pr-w-3 pr-h-3 pr-mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
- *                    <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"/>
- *                </svg>
- *                Members only
- *            </p>
- *            <div class="card__content__main__title">The Coldest Sunset</div>
- *            <p class="card__content__main__text">
- *                Lorem ipsum dolor sit amet, consectetur
- *                adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque,
- *                exercitationem praesentium nihil.
- *            </p>
- *        </div>
- *        <div class="card__content__author">
- *            <img class="card__content__author__image"
- *                 src="https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4"
- *                 alt="Avatar of Jonathan Reinink">
- *            <div class="card__content__author__details">
- *                <p class="card__content__author__title">Adam Wathan</p>
- *                <p class="card__content__author__description">Aug 17</p>
- *            </div>
- *        </div>
- *    </div>
- *</div>
+<div class="card">
+    <div class="card__image" title="Sunset" style="background-image: url('https://tailwindcss.com/img/card-top.jpg')"></div>
+    <div class="card__content">
+        <div class="card__content__main">
+            <p class="card__content__main__availability">
+                <svg class="pr-fill-current pr-text-grey pr-w-3 pr-h-3 pr-mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"/>
+                </svg>
+                Members only
+            </p>
+            <div class="card__content__main__title">The Coldest Sunset</div>
+            <p class="card__content__main__text">
+                Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                exercitationem praesentium nihil.
+            </p>
+        </div>
+        <div class="card__content__author">
+            <img class="card__content__author__image"
+                 src="https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4"
+                 alt="Avatar of Jonathan Reinink">
+            <div class="card__content__author__details">
+                <p class="card__content__author__title">Adam Wathan</p>
+                <p class="card__content__author__description">Aug 17</p>
+            </div>
+        </div>
+    </div>
+</div>
+ */
+
+/**
+ * _@name Card Dark
+ * _@section Components > Card > Dark
+ * _@state .card.card--dark - Dark version of a card
+ * _@markup
+<div class="card">
+    <div class="card__image" title="Sunset" style="background-image: url('https://tailwindcss.com/img/card-top.jpg')"></div>
+    <div class="card__content">
+        <div class="card__content__main">
+            <p class="card__content__main__availability">
+                <svg class="pr-fill-current pr-text-grey pr-w-3 pr-h-3 pr-mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"/>
+                </svg>
+                Members only
+            </p>
+            <div class="card__content__main__title">The Coldest Sunset</div>
+            <p class="card__content__main__text">
+                Lorem ipsum dolor sit amet, consectetur
+                adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                exercitationem praesentium nihil.
+            </p>
+        </div>
+        <div class="card__content__author">
+            <img class="card__content__author__image"
+                 src="https://avatars2.githubusercontent.com/u/4323180?s=400&u=4962a4441fae9fba5f0f86456c6c506a21ffca4f&v=4"
+                 alt="Avatar of Jonathan Reinink">
+            <div class="card__content__author__details">
+                <p class="card__content__author__title">Adam Wathan</p>
+                <p class="card__content__author__description">Aug 17</p>
+            </div>
+        </div>
+    </div>
+</div>
  */
 
 .card {

@@ -61,17 +61,64 @@
 
 <template>
     <fieldset class="styleguide:fieldset">
-        <legend class="styleguide:legend">{{block.name}}:</legend>
-        <div class="styleguide:p styleguide__description" v-html="block.description"></div>
-        <div class="styleguide__markup" v-html="block.markup.example"></div>
-        <div class="styleguide:hr"></div>
-        <div class="styleguide__actions">
-            <div class="styleguide-button styleguide-mr" @click="active = !active">Show Example</div>
-            <div class="styleguide-button" @click="$emit('copy', block.markup.example)">Copy Markup</div>
+        <legend class="styleguide:legend" v-if="block.name">{{block.name}}:</legend>
+        <div class="styleguide:p styleguide__description" v-if="block.description" v-html="block.description"></div>
+        <div class="styleguide-table-wrapper" v-if="block.state && typeof block.state === 'object'">
+            <div class="styleguide:table">
+                <div class="styleguide:thead">
+                    <div class="styleguide:tr">
+                        <div class="styleguide:th">
+                            Class
+                        </div>
+                        <div class="styleguide:th">
+                            Description
+                        </div>
+                        <div class="styleguide:th">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="styleguide:tbody">
+                    <template v-if="Array.isArray(block.state)">
+                        <div class="styleguide:tr" v-for="state in block.state">
+                            <div class="styleguide:td">
+                                {{escapeClass(state.name)}}
+                            </div>
+                            <div class="styleguide:td">
+                                {{state.description}}
+                            </div>
+                            <div class="styleguide:td styleguide-text-right">
+                                <div class="styleguide-button styleguide-button--small" @click="$emit('copy', escapeClass(state.name))">Copy 📋</div>
+                            </div>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="styleguide:tr">
+                            <div class="styleguide:td">
+                                {{escapeClass(block.state.name)}}
+                            </div>
+                            <div class="styleguide:td">
+                                {{block.state.description}}
+                            </div>
+                            <div class="styleguide:td styleguide-text-right">
+                                <div class="styleguide-button styleguide-button--small" @click="$emit('copy', escapeClass(block.state.name))">Copy 📋</div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
         </div>
-        <div class="styleguide__code" :class="{'styleguide__code--collapsed': !active }">
-            <codemirror :value="block.markup.example" :options="cmOptions"></codemirror>
-        </div>
+        <template v-if="block.markup">
+            <div class="styleguide__markup" v-html="block.markup.example"></div>
+            <div class="styleguide:hr"></div>
+            <div class="styleguide__actions">
+                <div class="styleguide-button styleguide-mr" @click="active = !active">Show Example</div>
+                <div class="styleguide-button" @click="$emit('copy', block.markup.example)">Copy 📋</div>
+            </div>
+            <div class="styleguide__code" :class="{'styleguide__code--collapsed': !active }">
+                <codemirror :value="block.markup.example" :options="cmOptions"></codemirror>
+            </div>
+        </template>
     </fieldset>
 </template>
 
@@ -106,6 +153,10 @@
             readOnly: true,
             lineWrapping: true,
         };
+
+        escapeClass(className: string) {
+            return className.replace(/\./g, ' ');
+        }
     }
 </script>
 
