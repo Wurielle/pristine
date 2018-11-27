@@ -1,6 +1,6 @@
 /**
  * Exports a JavaScript module to a Sass Variable.
- * @name JsonSassWebpackPlugin
+ * @name JsonSassPlugin
  * @param {string} srcFile
  * @param {string} outputFile
  * @example
@@ -9,7 +9,7 @@
  *      ...
  *      plugins: [
  *          ...
- *          new JsonSassWebpackPlugin('./config/theme.js', './config/theme.scss'),
+ *          new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
  *      ]
  *  }
  */
@@ -17,9 +17,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const jsonSass = require('json-sass');
+const jsonSass = require('./json-sass');
 
-class JsonSassWebpackPlugin {
+class JsonSassPlugin {
     constructor(src, output, options) {
         this.defaultOptions = {};
         this.src = src;
@@ -36,20 +36,32 @@ class JsonSassWebpackPlugin {
         return true;
     }
     apply(compiler) {
-        let src = this.src || this.throw('src is required');
-        let output = this.output || path.parse(this.src).name+'.scss';
+        const src = this.src || this.throw('src is required');
+        const srcFullPath = path.resolve(process.cwd(), src);
+        const output = this.output || path.parse(this.src).name+'.scss';
+        const outputFullPath = path.resolve(process.cwd(), output);
 
-        if (fs.existsSync(path.resolve(process.cwd(), src))) {
-            let theme = require(path.resolve(process.cwd(), src));
-            let themeSASS = this.getSass(theme);
-            fs.writeFileSync(path.resolve(process.cwd(), output), themeSASS);
-            fs.watchFile(path.resolve(process.cwd(), src), () => {
-                let newTheme = require(path.resolve(process.cwd(), src));
-                themeSASS = this.getSass(newTheme);
-                fs.writeFileSync(path.resolve(process.cwd(), output), themeSASS);
-            });
-        }
+        compiler.plugin("watch-run", (compiler, done) => {
+            const changedFiles = this.getChangedFiles(compiler);
+            if(changedFiles.some((file) => file === srcFullPath )) {
+                delete require.cache[srcFullPath];
+                let themeJS = require(srcFullPath);
+                let themeSASS = this.getSass(themeJS);
+                fs.writeFile(outputFullPath, themeSASS, () => {
+                    done();
+                });
+            } else {
+                done();
+            }
+        });
+    }
+
+    getChangedFiles(compiler) {
+        const { watchFileSystem } = compiler;
+        const watcher = watchFileSystem.watcher || watchFileSystem.wfs.watcher;
+
+        return Object.keys(watcher.mtimes);
     }
 }
 
-module.exports = JsonSassWebpackPlugin;
+module.exports = JsonSassPlugin;

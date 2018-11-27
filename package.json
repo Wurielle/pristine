@@ -40,6 +40,7 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-preset-env": "^1.7.0",
     "babel-preset-vue": "^2.0.2",
+    "chai": "^4.2.0",
     "dss": "^1.0.4",
     "json-sass": "^1.2.1",
     "lodash": "^4.17.11",

@@ -2,7 +2,7 @@
     "env": {},
     "dependencies": {
         "wurielle.pristine/vue-components/dss-styleguide": "0.0.9",
-        "wurielle.pristine/webpack/json-sass-plugin": "0.0.6",
+        "wurielle.pristine/webpack/json-sass-plugin": "0.0.7",
         "wurielle.pristine/webpack/dss-plugin": "0.0.6"
     },
     "componentsDefaultDirectory": "components/{namespace}/{name}",

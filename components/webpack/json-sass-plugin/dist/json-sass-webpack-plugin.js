@@ -8,7 +8,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
  * Exports a JavaScript module to a Sass Variable.
 
- * @name JsonSassWebpackPlugin
+ * @name JsonSassPlugin
 
  * @param {string} srcFile
 
@@ -26,7 +26,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
  *          ...
 
- *          new JsonSassWebpackPlugin('./config/theme.js', './config/theme.scss'),
+ *          new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
 
  *      ]
 
@@ -37,11 +37,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var fs = require('fs');
 var path = require('path');
 
-var jsonSass = require('json-sass');
+var jsonSass = require('./json-sass');
 
-var JsonSassWebpackPlugin = function () {
-    function JsonSassWebpackPlugin(src, output, options) {
-        _classCallCheck(this, JsonSassWebpackPlugin);
+var JsonSassPlugin = function () {
+    function JsonSassPlugin(src, output, options) {
+        _classCallCheck(this, JsonSassPlugin);
 
         this.defaultOptions = {};
         this.src = src;
@@ -49,7 +49,7 @@ var JsonSassWebpackPlugin = function () {
         this.options = options;
     }
 
-    _createClass(JsonSassWebpackPlugin, [{
+    _createClass(JsonSassPlugin, [{
         key: 'throw',
         value: function _throw(err) {
             throw err;
@@ -70,24 +70,40 @@ var JsonSassWebpackPlugin = function () {
             var _this = this;
 
             var src = this.src || this.throw('src is required');
+            var srcFullPath = path.resolve(process.cwd(), src);
             var output = this.output || path.parse(this.src).name + '.scss';
+            var outputFullPath = path.resolve(process.cwd(), output);
 
-            if (fs.existsSync(path.resolve(process.cwd(), src))) {
-                var theme = require(path.resolve(process.cwd(), src));
-                var themeSASS = this.getSass(theme);
-                fs.writeFileSync(path.resolve(process.cwd(), output), themeSASS);
-                fs.watchFile(path.resolve(process.cwd(), src), function () {
-                    var newTheme = require(path.resolve(process.cwd(), src));
-                    themeSASS = _this.getSass(newTheme);
-                    fs.writeFileSync(path.resolve(process.cwd(), output), themeSASS);
-                });
-            }
+            compiler.plugin("watch-run", function (compiler, done) {
+                var changedFiles = _this.getChangedFiles(compiler);
+                if (changedFiles.some(function (file) {
+                    return file === srcFullPath;
+                })) {
+                    delete require.cache[srcFullPath];
+                    var themeJS = require(srcFullPath);
+                    var themeSASS = _this.getSass(themeJS);
+                    fs.writeFile(outputFullPath, themeSASS, function () {
+                        done();
+                    });
+                } else {
+                    done();
+                }
+            });
+        }
+    }, {
+        key: 'getChangedFiles',
+        value: function getChangedFiles(compiler) {
+            var watchFileSystem = compiler.watchFileSystem;
+
+            var watcher = watchFileSystem.watcher || watchFileSystem.wfs.watcher;
+
+            return Object.keys(watcher.mtimes);
         }
     }]);
 
-    return JsonSassWebpackPlugin;
+    return JsonSassPlugin;
 }();
 
-module.exports = JsonSassWebpackPlugin;
+module.exports = JsonSassPlugin;
 
 //# sourceMappingURL=json-sass-webpack-plugin.js.map
