@@ -30,7 +30,10 @@
     }
     .styleguide__markup {
         margin-bottom: $spacing;
-        width: 100%;
+        margin-left: -$spacing;
+        margin-right: -$spacing;
+        background-color: #F8F8F8;
+        padding: $spacing;
     }
     .styleguide__code {
         max-width: 100%;
