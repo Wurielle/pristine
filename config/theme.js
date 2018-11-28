@@ -46,6 +46,9 @@ let pristine = {
     unit: {
         base: "40px"
     },
+    gutterUnit: {
+        base: "20px"
+    },
     spaceUnit: {
         base: "20px"
     }

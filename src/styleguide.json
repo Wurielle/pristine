@@ -1,6 +1,18 @@
 {
     "blocks": [
         {
+            "name": "Code",
+            "section": [
+                "Base",
+                "Code"
+            ],
+            "description": "Code for coders.",
+            "markup": {
+                "example": "<div class=\"pr-mb-base\">\r\n    In this sentence <code>there is some code</code> that can be displayed.\r\n</div>\r\n<pre>\r\n    <code>\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    </code>\r\n</pre>",
+                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\r\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\r\n&lt;/div&gt;\r\n&lt;pre&gt;\r\n    &lt;code&gt;\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    &lt;/code&gt;\r\n&lt;/pre&gt;"
+            }
+        },
+        {
             "name": "Buttons",
             "section": [
                 "Base",
@@ -50,15 +62,15 @@
             }
         },
         {
-            "name": "Code",
+            "name": "Links",
             "section": [
                 "Base",
-                "Code"
+                "Links"
             ],
-            "description": "Code for coders.",
+            "description": "Link for various purposes.",
             "markup": {
-                "example": "<div class=\"pr-mb-base\">\n    In this sentence <code>there is some code</code> that can be displayed.\n</div>\n<pre>\n    <code>\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    </code>\n</pre>",
-                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\n&lt;/div&gt;\n&lt;pre&gt;\n    &lt;code&gt;\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\n    &lt;/code&gt;\n&lt;/pre&gt;"
+                "example": "<div>\r\n    Sometimes texts <a href=\"\">have links</a> just like this one.\r\n</div>",
+                "escaped": "&lt;div&gt;\r\n    Sometimes texts &lt;a href=\"\"&gt;have links&lt;/a&gt; just like this one.\r\n&lt;/div&gt;"
             }
         },
         {
@@ -101,8 +113,8 @@
                 }
             ],
             "markup": {
-                "example": "<input type=\"text\" placeholder=\"Hello World\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--success\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\">\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\">",
-                "escaped": "&lt;input type=\"text\" placeholder=\"Hello World\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--success\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\"&gt;\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\"&gt;"
+                "example": "<input type=\"text\" placeholder=\"Hello World\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--success\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\">\r\n<input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\">",
+                "escaped": "&lt;input type=\"text\" placeholder=\"Hello World\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--primary\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--secondary\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--success\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--danger\"&gt;\r\n&lt;input type=\"text\" placeholder=\"Hello World\" class=\"input--warning\"&gt;"
             }
         },
         {
@@ -118,30 +130,6 @@
             }
         },
         {
-            "name": "Misc",
-            "section": [
-                "Base",
-                "Misc"
-            ],
-            "description": "Misc for various purposes.",
-            "markup": {
-                "example": "<div class=\"pr-mb-base\">\n    <img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\n         alt=\"\">\n    <hr>\n    <a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\">@jan_pd</a>\n</div>",
-                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\n    &lt;img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\n         alt=\"\"&gt;\n    &lt;hr&gt;\n    &lt;a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\"&gt;@jan_pd&lt;/a&gt;\n&lt;/div&gt;"
-            }
-        },
-        {
-            "name": "Links",
-            "section": [
-                "Base",
-                "Links"
-            ],
-            "description": "Link for various purposes.",
-            "markup": {
-                "example": "<div>\n    Sometimes texts <a href=\"\">have links</a> just like this one.\n</div>",
-                "escaped": "&lt;div&gt;\n    Sometimes texts &lt;a href=\"\"&gt;have links&lt;/a&gt; just like this one.\n&lt;/div&gt;"
-            }
-        },
-        {
             "name": "Tables",
             "section": [
                 "Base",
@@ -149,8 +137,8 @@
             ],
             "description": "Tables for various purposes.",
             "markup": {
-                "example": "<table>\n    <thead>\n        <tr>\n            <th></th>\n            <th>name</th>\n            <th>age</th>\n            <th>location</th>\n            <th></th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>\n                <img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\">\n            </td>\n            <td>name</td>\n            <td>age</td>\n            <td>location</td>\n            <td class=\"pr-text-right\">\n                <button class=\"button button--primary\">edit</button>\n            </td>\n        </tr>\n    </tbody>\n</table>",
-                "escaped": "&lt;table&gt;\n    &lt;thead&gt;\n        &lt;tr&gt;\n            &lt;th&gt;&lt;/th&gt;\n            &lt;th&gt;name&lt;/th&gt;\n            &lt;th&gt;age&lt;/th&gt;\n            &lt;th&gt;location&lt;/th&gt;\n            &lt;th&gt;&lt;/th&gt;\n        &lt;/tr&gt;\n    &lt;/thead&gt;\n    &lt;tbody&gt;\n        &lt;tr&gt;\n            &lt;td&gt;\n                &lt;img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\"&gt;\n            &lt;/td&gt;\n            &lt;td&gt;name&lt;/td&gt;\n            &lt;td&gt;age&lt;/td&gt;\n            &lt;td&gt;location&lt;/td&gt;\n            &lt;td class=\"pr-text-right\"&gt;\n                &lt;button class=\"button button--primary\"&gt;edit&lt;/button&gt;\n            &lt;/td&gt;\n        &lt;/tr&gt;\n    &lt;/tbody&gt;\n&lt;/table&gt;"
+                "example": "<table>\r\n    <thead>\r\n        <tr>\r\n            <th></th>\r\n            <th>name</th>\r\n            <th>age</th>\r\n            <th>location</th>\r\n            <th></th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr>\r\n            <td>\r\n                <img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\">\r\n            </td>\r\n            <td>name</td>\r\n            <td>age</td>\r\n            <td>location</td>\r\n            <td class=\"pr-text-right\">\r\n                <button class=\"button button--primary\">edit</button>\r\n            </td>\r\n        </tr>\r\n    </tbody>\r\n</table>",
+                "escaped": "&lt;table&gt;\r\n    &lt;thead&gt;\r\n        &lt;tr&gt;\r\n            &lt;th&gt;&lt;/th&gt;\r\n            &lt;th&gt;name&lt;/th&gt;\r\n            &lt;th&gt;age&lt;/th&gt;\r\n            &lt;th&gt;location&lt;/th&gt;\r\n            &lt;th&gt;&lt;/th&gt;\r\n        &lt;/tr&gt;\r\n    &lt;/thead&gt;\r\n    &lt;tbody&gt;\r\n        &lt;tr&gt;\r\n            &lt;td&gt;\r\n                &lt;img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\"&gt;\r\n            &lt;/td&gt;\r\n            &lt;td&gt;name&lt;/td&gt;\r\n            &lt;td&gt;age&lt;/td&gt;\r\n            &lt;td&gt;location&lt;/td&gt;\r\n            &lt;td class=\"pr-text-right\"&gt;\r\n                &lt;button class=\"button button--primary\"&gt;edit&lt;/button&gt;\r\n            &lt;/td&gt;\r\n        &lt;/tr&gt;\r\n    &lt;/tbody&gt;\r\n&lt;/table&gt;"
             }
         },
         {
@@ -238,6 +226,52 @@
             "markup": {
                 "example": "<div class=\"pr-flex pr-justify-around\">\r\n    <div class=\"pr-text-center\">\r\n        <h1 class=\"pr-mb-base\">Header h1 </h1>\r\n        <h2 class=\"pr-mb-base\">Header h2 </h2>\r\n        <h3 class=\"pr-mb-base\">Header h3 </h3>\r\n        <h4 class=\"pr-mb-base\">Header h4 </h4>\r\n        <h5 class=\"pr-mb-base\">Header h5 </h5>\r\n        <h6 class=\"pr-mb-base\">Header h6 </h6>\r\n    </div>\r\n    <div class=\"pr-text-center\">\r\n        <h1 class=\"pr-mb-base header--primary\">Header Primary</h1>\r\n        <h2 class=\"pr-mb-base header--secondary\">Header Secondary</h2>\r\n        <h3 class=\"pr-mb-base header--tertiary\">Header Tertiary</h3>\r\n    </div>\r\n</div>",
                 "escaped": "&lt;div class=\"pr-flex pr-justify-around\"&gt;\r\n    &lt;div class=\"pr-text-center\"&gt;\r\n        &lt;h1 class=\"pr-mb-base\"&gt;Header h1 &lt;/h1&gt;\r\n        &lt;h2 class=\"pr-mb-base\"&gt;Header h2 &lt;/h2&gt;\r\n        &lt;h3 class=\"pr-mb-base\"&gt;Header h3 &lt;/h3&gt;\r\n        &lt;h4 class=\"pr-mb-base\"&gt;Header h4 &lt;/h4&gt;\r\n        &lt;h5 class=\"pr-mb-base\"&gt;Header h5 &lt;/h5&gt;\r\n        &lt;h6 class=\"pr-mb-base\"&gt;Header h6 &lt;/h6&gt;\r\n    &lt;/div&gt;\r\n    &lt;div class=\"pr-text-center\"&gt;\r\n        &lt;h1 class=\"pr-mb-base header--primary\"&gt;Header Primary&lt;/h1&gt;\r\n        &lt;h2 class=\"pr-mb-base header--secondary\"&gt;Header Secondary&lt;/h2&gt;\r\n        &lt;h3 class=\"pr-mb-base header--tertiary\"&gt;Header Tertiary&lt;/h3&gt;\r\n    &lt;/div&gt;\r\n&lt;/div&gt;"
+            }
+        },
+        {
+            "name": "Grid",
+            "section": [
+                "Base",
+                "Grid"
+            ],
+            "description": "Responsive flex grid classes.",
+            "state": [
+                {
+                    "name": ".container-fluid",
+                    "escaped": "container-fluid",
+                    "description": "Container for full width"
+                },
+                {
+                    "name": ".container",
+                    "escaped": "container",
+                    "description": "Container with adaptative width depending of viewport size"
+                },
+                {
+                    "name": ".row",
+                    "escaped": "row",
+                    "description": "Row wrappers for columns"
+                },
+                {
+                    "name": ".col",
+                    "escaped": "col",
+                    "description": "Columns classes, using it with tailwind width classes."
+                }
+            ],
+            "markup": {
+                "example": "  <div class=\"container-fluid | pr-mb-4\">\r\n      <div class=\"row\">\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">1 of 3</div>\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">2 of 3</div>\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">3 of 3</div>\r\n      </div>\r\n  </div>\r\n  <div class=\"container | pr-mb-4\">\r\n      <div class=\"row\">\r\n           <div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\">1 of 2</div>\r\n           <div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\">2 of 2</div>\r\n      </div>\r\n  </div>\r\n  <div class=\"container-fluid\">\r\n      <div class=\"row\">\r\n           <div class=\"col pr-w-full | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\">1 of 1</div>\r\n      </div>\r\n  </div>",
+                "escaped": "  &lt;div class=\"container-fluid | pr-mb-4\"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;1 of 3&lt;/div&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;2 of 3&lt;/div&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;3 of 3&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"container | pr-mb-4\"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n           &lt;div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\"&gt;1 of 2&lt;/div&gt;\r\n           &lt;div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\"&gt;2 of 2&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"container-fluid\"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n           &lt;div class=\"col pr-w-full | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\"&gt;1 of 1&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;"
+            }
+        },
+        {
+            "name": "Misc",
+            "section": [
+                "Base",
+                "Misc"
+            ],
+            "description": "Misc for various purposes.",
+            "markup": {
+                "example": "<div class=\"pr-mb-base\">\r\n    <img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\r\n         alt=\"\">\r\n    <hr>\r\n    <a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\">@jan_pd</a>\r\n</div>",
+                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\r\n    &lt;img src=\"https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80\"\r\n         alt=\"\"&gt;\r\n    &lt;hr&gt;\r\n    &lt;a href=\"https://unsplash.com/photos/hZ45xlsL7kM\" target=\"_blank\"&gt;@jan_pd&lt;/a&gt;\r\n&lt;/div&gt;"
             }
         }
     ]
