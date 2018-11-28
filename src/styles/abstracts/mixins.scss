@@ -3,32 +3,32 @@
 $states: (
     primary: (
         color: white,
-        background-color: theme(colors, primary)
+        background-color: _(colors, primary)
     ),
     secondary: (
         color: white,
-        background-color: theme(colors, secondary)
+        background-color: _(colors, secondary)
     ),
     success: (
         color: white,
-        background-color: theme(colors, success)
+        background-color: _(colors, success)
     ),
     danger: (
         color: white,
-        background-color: theme(colors, danger)
+        background-color: _(colors, danger)
     ),
     warning: (
         color: white,
-        background-color: theme(colors, warning)
+        background-color: _(colors, warning)
     ),
     info: (
         color: white,
-        background-color: theme(colors, info)
+        background-color: _(colors, info)
     ),
     //transparent: transparent
 );
 @mixin unit-style($class-name, $function) {
-    height: theme(ui, unit, base);
+    height: _(pristine, unit, base);
 
     // Padding ---------------------------------------------------------------------------------------------------------
     @apply pr-px-base;
@@ -52,19 +52,19 @@ $states: (
 
     // Native states
     &:hover {
-        border-color: darken(theme(colors, base-border-color), 10%);
+        border-color: darken(_(colors, base-border-color), 10%);
     }
 
     // Replace focus outline
     &:focus {
-        border-color: darken(theme(colors, base-border-color), 10%);
+        border-color: darken(_(colors, base-border-color), 10%);
         @apply pr-bg-base-bg-color pr-outline-none;
     }
 
     @if $function == clickable {
         &:active {
-            border-color: darken(theme(colors, base-border-color), 10%);
-            background-color: darken(theme(colors, base-bg-color), 5%);
+            border-color: darken(_(colors, base-border-color), 10%);
+            background-color: darken(_(colors, base-bg-color), 5%);
         }
     } @else if $function == selectable {
         &::-webkit-input-placeholder,

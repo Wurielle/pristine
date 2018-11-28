@@ -42,7 +42,7 @@ const defaultConfig = require('tailwindcss/defaultConfig')();
 | "secondary", or even a numeric scale like "100" and "200", go for it.
 |
 */
-let ui = {
+let pristine = {
     unit: {
         base: "40px"
     },
@@ -70,7 +70,7 @@ module.exports = {
     ...defaultConfig,
 
     // Custom Objects
-    ui,
+    pristine,
 
     /*
     |-----------------------------------------------------------------------------
@@ -474,7 +474,7 @@ module.exports = {
 
     padding: {
         ...defaultConfig.padding,
-        'base': ui.spaceUnit.base,
+        'base': pristine.spaceUnit.base,
     },
 
 
@@ -495,7 +495,7 @@ module.exports = {
 
     margin: {
         ...defaultConfig.margin,
-        'base': ui.spaceUnit.base,
+        'base': pristine.spaceUnit.base,
     },
 
 
@@ -516,7 +516,7 @@ module.exports = {
 
     negativeMargin: {
         ...defaultConfig.negativeMargin,
-        'base': "-" + ui.spaceUnit.base,
+        'base': "-" + pristine.spaceUnit.base,
     },
 
 
@@ -703,7 +703,7 @@ module.exports = {
     plugins: [
         require('tailwindcss/plugins/container')({
             center: true,
-            padding: ui.spaceUnit.base,
+            padding: pristine.spaceUnit.base,
         }),
     ],
 

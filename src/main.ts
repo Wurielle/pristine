@@ -5,6 +5,7 @@ import store from './store';
 import './plugins/element.js';
 import './element-variables.scss';
 
+import '@config/theme.js';
 import '@/styles/main.scss';
 
 let styleguide;

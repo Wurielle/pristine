@@ -104,20 +104,6 @@ module.exports = {
 };
 ```
 
-#### CSS
-``postcss.config.js``
-```javascript
-module.exports = {
-  plugins: [
-      require('tailwindcss')('./config/theme.js'),
-      require('autoprefixer'),
-      require('postcss-pxtorem')({
-          replace: true,
-          propList: ['*'],
-      }),
-  ]
-};
-```
 Add ``src/styles`` files to your new project.
 
 #### Styleguide
@@ -166,4 +152,239 @@ storiesOf('DSS Styleguide', module)
         },
         template: '<Styleguide :styleguide="options"/>',
     }));
+```
+
+#### CSS
+``postcss.config.js``
+```javascript
+module.exports = {
+  plugins: [
+      require('tailwindcss')('./config/theme.js'),
+      require('autoprefixer'),
+      require('postcss-pxtorem')({
+          replace: true,
+          propList: ['*'],
+      }),
+  ]
+};
+```
+
+``config/theme.js``
+```javascript
+const defaultConfig = require('tailwindcss/defaultConfig')();
+
+const pristine = {
+    unit: {
+        base: "40px"
+    },
+    spaceUnit: {
+        base: "20px"
+    }
+};
+
+const colors = {
+    ...defaultConfig.colors,
+    'base-text-color': '#22292f',
+    'base-bg-color': '#f8fafc',
+    'base-border-color': '#dae1e7',
+    'danger': '#e3342f',
+    'warning': '#f6993f',
+    'success': '#38c172',
+    'secondary': '#3490dc',
+    'info': '#3490dc',
+    'primary': '#9561e2',
+};
+
+module.exports = {
+    // Spread Default Config
+    ...defaultConfig,
+
+    // Custom Objects
+    pristine,
+
+    colors: {
+        ...colors
+    },
+
+    screens: {
+        ...defaultConfig.screens,
+    },
+
+    fonts: {
+        ...defaultConfig.fonts,
+    },
+
+    textSizes: {
+        ...defaultConfig.textSizes,
+        'xs': '10px',
+        'sm': '12px',
+        'md': '14px',
+    },
+
+    fontWeights: {
+        ...defaultConfig.fontWeights,
+    },
+
+    leading: {
+        ...defaultConfig.leading,
+        'base': 1.5,
+    },
+
+    tracking: {
+        ...defaultConfig.tracking,
+        'base': '0.05em',
+        'ultrawide': '0.2em',
+    },
+
+    textColors: {
+        ...colors
+    },
+
+    backgroundColors: {
+        ...colors
+    },
+
+    backgroundSize: {
+        ...defaultConfig.backgroundSize,
+    },
+
+    borderWidths: {
+        ...defaultConfig.borderWidths,
+    },
+
+    borderColors: global.Object.assign({default: colors['grey-light']}, colors),
+
+
+    borderRadius: {
+        ...defaultConfig.borderRadius,
+        'base': '2px',
+        'full': '9999px',
+    },
+
+    width: {
+        ...defaultConfig.width,
+    },
+
+    height: {
+        ...defaultConfig.height,
+    },
+
+    minWidth: {
+        ...defaultConfig.minWidth,
+        'screen': '100vw',
+    },
+
+    minHeight: {
+        ...defaultConfig.minHeight,
+        'screen': '100vh',
+    },
+
+    maxWidth: {
+        ...defaultConfig.maxWidth,
+    },
+
+    maxHeight: {
+        ...defaultConfig.maxHeight,
+    },
+
+    padding: {
+        ...defaultConfig.padding,
+        'base': pristine.spaceUnit.base,
+    },
+
+    margin: {
+        ...defaultConfig.margin,
+        'base': pristine.spaceUnit.base,
+    },
+
+    negativeMargin: {
+        ...defaultConfig.negativeMargin,
+        'base': "-" + pristine.spaceUnit.base,
+    },
+
+    shadows: {
+        ...defaultConfig.shadows,
+    },
+
+    zIndex: {
+        ...defaultConfig.zIndex,
+    },
+
+    opacity: {
+        ...defaultConfig.opacity,
+    },
+
+    svgFill: {
+        ...defaultConfig.svgFill,
+    },
+
+    svgStroke: {
+        ...defaultConfig.svgStroke,
+    },
+
+    modules: {
+        appearance: ['responsive'],
+        backgroundAttachment: ['responsive'],
+        backgroundColors: ['responsive', 'hover', 'focus'],
+        backgroundPosition: ['responsive'],
+        backgroundRepeat: ['responsive'],
+        backgroundSize: ['responsive'],
+        borderCollapse: [],
+        borderColors: ['responsive', 'hover', 'focus'],
+        borderRadius: ['responsive'],
+        borderStyle: ['responsive'],
+        borderWidths: ['responsive'],
+        cursor: ['responsive'],
+        display: ['responsive'],
+        flexbox: ['responsive'],
+        float: ['responsive'],
+        fonts: ['responsive'],
+        fontWeights: ['responsive', 'hover', 'focus'],
+        height: ['responsive'],
+        leading: ['responsive'],
+        lists: ['responsive'],
+        margin: ['responsive'],
+        maxHeight: ['responsive'],
+        maxWidth: ['responsive'],
+        minHeight: ['responsive'],
+        minWidth: ['responsive'],
+        negativeMargin: ['responsive'],
+        opacity: ['responsive'],
+        outline: ['focus'],
+        overflow: ['responsive'],
+        padding: ['responsive'],
+        pointerEvents: ['responsive'],
+        position: ['responsive'],
+        resize: ['responsive'],
+        shadows: ['responsive', 'hover', 'focus'],
+        svgFill: [],
+        svgStroke: [],
+        tableLayout: ['responsive'],
+        textAlign: ['responsive'],
+        textColors: ['responsive', 'hover', 'focus'],
+        textSizes: ['responsive'],
+        textStyle: ['responsive', 'hover', 'focus'],
+        tracking: ['responsive'],
+        userSelect: ['responsive'],
+        verticalAlign: ['responsive'],
+        visibility: ['responsive'],
+        whitespace: ['responsive'],
+        width: ['responsive'],
+        zIndex: ['responsive'],
+    },
+
+    plugins: [
+        require('tailwindcss/plugins/container')({
+            center: true,
+            padding: pristine.spaceUnit.base,
+        }),
+    ],
+
+    options: {
+        prefix: 'pr-',
+        important: false,
+        separator: ':',
+    },
+
+};
 ```

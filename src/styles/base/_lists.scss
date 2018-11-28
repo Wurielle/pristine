@@ -56,10 +56,10 @@ ol ol,
 ol ul {
     // Font
     @apply pr-text-md;
-    margin-bottom: theme(margin, base)/1.5;
+    margin-bottom: _(margin, base)/1.5;
 }
 li {
-    margin-bottom: theme(margin, base)/1.5;
+    margin-bottom: _(margin, base)/1.5;
 }
 
 ul {

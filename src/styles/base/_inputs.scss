@@ -51,7 +51,7 @@ input[type="radio"] {
 textarea {
     height: auto;
     resize: vertical;
-    min-height: theme(ui, unit, base) * 2;
+    min-height: _(pristine, unit, base) * 2;
     // Padding
     @apply pr-p-base;
 }
@@ -68,7 +68,7 @@ select {
         margin: 0;
         appearance: none;
         width: 100%;
-        padding-right: theme(ui, unit, base);
+        padding-right: _(pristine, unit, base);
     }
     &:after {
         content: '';
@@ -76,13 +76,13 @@ select {
         top: 0;
         width: 0;
         height: 0;
-        right: theme(ui, unit, base)/2;
+        right: _(pristine, unit, base)/2;
         transform: translateX(50%);
         bottom: 0;
         margin: auto;
         border-style: solid;
         border-width: 5px 5px 0 5px;
-        border-color: theme(colors, base-text-color) transparent transparent transparent;
+        border-color: _(colors, base-text-color) transparent transparent transparent;
         pointer-events: none;
     }
 }
@@ -92,7 +92,7 @@ select {
     cursor: pointer;
     input {
         margin-bottom: 0;
-        margin-right: theme(ui, unit, base)/4;
+        margin-right: _(pristine, unit, base)/4;
         vertical-align: text-top;
     }
 }
@@ -100,7 +100,7 @@ select {
 label,
 legend {
     display: block;
-    margin-bottom: theme(margin, base)/3;
+    margin-bottom: _(margin, base)/3;
     text-transform: uppercase;
     // Font
     @apply pr-font-semibold pr-text-sm pr-tracking-ultrawide;

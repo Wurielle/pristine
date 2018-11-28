@@ -7,7 +7,7 @@
     @return $map;
 }
 
-@function theme($keys...) {
+@function _($keys...) {
     $map: $theme;
     @each $key in $keys {
         $map: map-get($map, $key);

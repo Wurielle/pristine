@@ -60,7 +60,7 @@ td {
     // Borders
     @apply pr-rounded-base pr-border-solid pr-border-b pr-border-base-border-color;
     img {
-        max-height: theme(ui, unit, base);
+        max-height: _(pristine, unit, base);
     }
 }
 
