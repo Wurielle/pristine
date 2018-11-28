@@ -11,22 +11,22 @@
  * _@state .row - Row wrappers for columns
  * _@state .col - Columns classes, using it with tailwind width classes.
  * _@markup
- *  <div class="container-fluid | pr-mb-4">
+ *  <div class="container-fluid | grid-exemple1">
  *      <div class="row">
- *          <div class="col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white">1 of 3</div>
- *          <div class="col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white">2 of 3</div>
- *          <div class="col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white">3 of 3</div>
+ *          <div class="col pr-w-1/3">1 of 3</div>
+ *          <div class="col pr-w-1/3">2 of 3</div>
+ *          <div class="col pr-w-1/3">3 of 3</div>
  *      </div>
  *  </div>
- *  <div class="container | pr-mb-4">
+ *  <div class="container | grid-exemple2">
  *      <div class="row">
- *           <div class="col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white">1 of 2</div>
- *           <div class="col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white">2 of 2</div>
+ *           <div class="col pr-w-1/2">1 of 2</div>
+ *           <div class="col pr-w-1/2">2 of 2</div>
  *      </div>
  *  </div>
- *  <div class="container-fluid">
+ *  <div class="container-fluid grid-exemple3">
  *      <div class="row">
- *           <div class="col pr-w-full | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white">1 of 1</div>
+ *           <div class="col pr-w-full">1 of 1</div>
  *      </div>
  *  </div>
  */
@@ -83,4 +83,19 @@
 .row {
     overflow: hidden;
     @include row();
+}
+.grid-exemple1{
+    .col{
+        @apply pr-mb-4 pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white;
+    }
+}
+.grid-exemple2{
+    .col{
+        @apply pr-mb-4 pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white;
+    }
+}
+.grid-exemple3{
+    .col{
+        @apply pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white;
+    }
 }
