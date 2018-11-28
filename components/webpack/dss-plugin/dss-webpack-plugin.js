@@ -27,8 +27,8 @@ const path = require('path');
 const readMultipleFiles = require('read-multiple-files');
 const dss = require( 'dss' );
 
-class DSSWebpackPlugin {
-    constructor(options) {
+class DSSPlugin {
+    constructor(options = {}) {
         this.files = [];
         this.parsedObject = null;
         this.defaultOptions = {
@@ -37,22 +37,20 @@ class DSSWebpackPlugin {
             watch: './',
             detector: '@'
         };
-        this.options = options;
-        this.initDSS(this.defaultOptions, this.options);
+        this.options = {...this.defaultOptions, ...options};
+        this.initDSS();
     }
 
-    initDSS(defaultOptions, options) {
-        let filter = options.filter || defaultOptions.filter;
-        let watch = options.watch || defaultOptions.watch;
-        let detector = options.detector || defaultOptions.detector;
-        detector = new RegExp(".*" + detector );
+    initDSS() {
+        let { filter, watch, detector } = this.options;
+        const pattern = new RegExp(".*" + detector );
         dss.detector( function(line) {
             if (typeof line !== 'string') {
                 return false;
             }
             const reference = line.split("\n\n").pop();
             // return !!reference.match(detector) && !reference.match(/.*@\//);
-            return !!reference.match(detector);
+            return !!reference.match(pattern);
         });
 
         dss.parser('section', function (i, line, block) {
@@ -65,16 +63,49 @@ class DSSWebpackPlugin {
     }
 
     apply(compiler) {
-        let filter = this.options.filter || this.defaultOptions.filter;
-        // compiler.plugin('done', () => {
-        //     console.log('Hello World!', this.options);
-        // });
+        let { filter } = this.options;
         compiler.plugin("watch-run", (compiler, done) => {
             const changedFiles = this.getChangedFiles(compiler);
             if (changedFiles.some((file) => filter.test(file))) {
                 this.exportStyleguide();
             }
             done();
+        });
+    }
+
+    exportStyleguide() {
+        let content = [];
+        let _this = this;
+        let { output, detector } = this.options;
+        let outputFullPath = path.resolve(process.cwd(), output);
+        let markup1 = new RegExp(detector + 'markup\\\\r\\\\n', "gi");
+        let markup2 = new RegExp(detector + 'markup\\\\n', "gi");
+        readMultipleFiles(this.files).subscribe({
+            next({path, contents}) {
+                content.push(contents.toString('utf-8'));
+            },
+            complete() {
+                content.join('\n');
+                dss.parse(content, {}, (parsedObject) => {
+
+                    const folderPath = outputFullPath.substring(0, outputFullPath.lastIndexOf("/"));
+                    _this.mkDirByPathSync(folderPath);
+                    parsedObject = JSON.parse(
+                        JSON.stringify(parsedObject)
+                            .replace(markup1, '')
+                            .replace(markup2, '')
+                    );
+                    if(!fs.existsSync(outputFullPath)
+                        || fs.existsSync(outputFullPath)
+                        &&  JSON.stringify(parsedObject) !== JSON.stringify(_this.parsedObject)
+                    ){
+                        _this.parsedObject = parsedObject;
+                        fs.writeFile(outputFullPath, JSON.stringify(parsedObject, null, 4), function(){
+                            console.log('📖 Updated Styleguide');
+                        });
+                    }
+                });
+            }
         });
     }
 
@@ -128,45 +159,9 @@ class DSSWebpackPlugin {
         }, initDir);
     }
 
-    exportStyleguide() {
-        let content = [];
-        let _this = this;
-        let output = this.options.output || this.defaultOptions.output;
-        let detector = this.options.detector || this.defaultOptions.detector;
-        let markup1 = new RegExp(detector + 'markup\\\\r\\\\n', "gi");
-        let markup2 = new RegExp(detector + 'markup\\\\n', "gi");
-        readMultipleFiles(this.files).subscribe({
-            next({path, contents}) {
-                content.push(contents.toString('utf-8'));
-            },
-            complete() {
-                content.join('\n');
-                dss.parse(content, {}, (parsedObject) => {
-
-                    const folderPath = path.resolve(process.cwd(), output).substring(0, path.resolve(process.cwd(), output).lastIndexOf("/"));
-                    _this.mkDirByPathSync(folderPath);
-                    parsedObject = JSON.parse(
-                        JSON.stringify(parsedObject)
-                            .replace(markup1, '')
-                            .replace(markup2, '')
-                    );
-                    if(!fs.existsSync(path.resolve(process.cwd(), output))
-                        || fs.existsSync(path.resolve(process.cwd(), output))
-                        &&  JSON.stringify(parsedObject) !== JSON.stringify(_this.parsedObject)
-                    ){
-                        _this.parsedObject = parsedObject;
-                        fs.writeFile(path.resolve(process.cwd(), output), JSON.stringify(parsedObject, null, 4), function(){
-                            console.log('📖 Updated Styleguide');
-                        });
-                    }
-                });
-            }
-        });
-    }
-
     tester() {
         return true
     }
 }
 
-module.exports = DSSWebpackPlugin;
+module.exports = DSSPlugin;

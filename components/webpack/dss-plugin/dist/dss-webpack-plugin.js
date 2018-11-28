@@ -1,5 +1,7 @@
 'use strict';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -55,9 +57,11 @@ var path = require('path');
 var readMultipleFiles = require('read-multiple-files');
 var dss = require('dss');
 
-var DSSWebpackPlugin = function () {
-    function DSSWebpackPlugin(options) {
-        _classCallCheck(this, DSSWebpackPlugin);
+var DSSPlugin = function () {
+    function DSSPlugin() {
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+        _classCallCheck(this, DSSPlugin);
 
         this.files = [];
         this.parsedObject = null;
@@ -67,26 +71,28 @@ var DSSWebpackPlugin = function () {
             watch: './',
             detector: '@'
         };
-        this.options = options;
-        this.initDSS(this.defaultOptions, this.options);
+        this.options = _extends({}, this.defaultOptions, options);
+        this.initDSS();
     }
 
-    _createClass(DSSWebpackPlugin, [{
+    _createClass(DSSPlugin, [{
         key: 'initDSS',
-        value: function initDSS(defaultOptions, options) {
+        value: function initDSS() {
             var _this2 = this;
 
-            var filter = options.filter || defaultOptions.filter;
-            var watch = options.watch || defaultOptions.watch;
-            var detector = options.detector || defaultOptions.detector;
-            detector = new RegExp(".*" + detector);
+            var _options = this.options,
+                filter = _options.filter,
+                watch = _options.watch,
+                detector = _options.detector;
+
+            var pattern = new RegExp(".*" + detector);
             dss.detector(function (line) {
                 if (typeof line !== 'string') {
                     return false;
                 }
                 var reference = line.split("\n\n").pop();
                 // return !!reference.match(detector) && !reference.match(/.*@\//);
-                return !!reference.match(detector);
+                return !!reference.match(pattern);
             });
 
             dss.parser('section', function (i, line, block) {
@@ -104,10 +110,8 @@ var DSSWebpackPlugin = function () {
         value: function apply(compiler) {
             var _this3 = this;
 
-            var filter = this.options.filter || this.defaultOptions.filter;
-            // compiler.plugin('done', () => {
-            //     console.log('Hello World!', this.options);
-            // });
+            var filter = this.options.filter;
+
             compiler.plugin("watch-run", function (compiler, done) {
                 var changedFiles = _this3.getChangedFiles(compiler);
                 if (changedFiles.some(function (file) {
@@ -116,6 +120,42 @@ var DSSWebpackPlugin = function () {
                     _this3.exportStyleguide();
                 }
                 done();
+            });
+        }
+    }, {
+        key: 'exportStyleguide',
+        value: function exportStyleguide() {
+            var content = [];
+            var _this = this;
+            var _options2 = this.options,
+                output = _options2.output,
+                detector = _options2.detector;
+
+            var outputFullPath = path.resolve(process.cwd(), output);
+            var markup1 = new RegExp(detector + 'markup\\\\r\\\\n', "gi");
+            var markup2 = new RegExp(detector + 'markup\\\\n', "gi");
+            readMultipleFiles(this.files).subscribe({
+                next: function next(_ref) {
+                    var path = _ref.path,
+                        contents = _ref.contents;
+
+                    content.push(contents.toString('utf-8'));
+                },
+                complete: function complete() {
+                    content.join('\n');
+                    dss.parse(content, {}, function (parsedObject) {
+
+                        var folderPath = outputFullPath.substring(0, outputFullPath.lastIndexOf("/"));
+                        _this.mkDirByPathSync(folderPath);
+                        parsedObject = JSON.parse(JSON.stringify(parsedObject).replace(markup1, '').replace(markup2, ''));
+                        if (!fs.existsSync(outputFullPath) || fs.existsSync(outputFullPath) && JSON.stringify(parsedObject) !== JSON.stringify(_this.parsedObject)) {
+                            _this.parsedObject = parsedObject;
+                            fs.writeFile(outputFullPath, JSON.stringify(parsedObject, null, 4), function () {
+                                console.log('📖 Updated Styleguide');
+                            });
+                        }
+                    });
+                }
             });
         }
     }, {
@@ -146,9 +186,9 @@ var DSSWebpackPlugin = function () {
     }, {
         key: 'mkDirByPathSync',
         value: function mkDirByPathSync(targetDir) {
-            var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-                _ref$isRelativeToScri = _ref.isRelativeToScript,
-                isRelativeToScript = _ref$isRelativeToScri === undefined ? false : _ref$isRelativeToScri;
+            var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+                _ref2$isRelativeToScr = _ref2.isRelativeToScript,
+                isRelativeToScript = _ref2$isRelativeToScr === undefined ? false : _ref2$isRelativeToScr;
 
             var sep = path.sep;
             var initDir = path.isAbsolute(targetDir) ? sep : '';
@@ -178,48 +218,15 @@ var DSSWebpackPlugin = function () {
             }, initDir);
         }
     }, {
-        key: 'exportStyleguide',
-        value: function exportStyleguide() {
-            var content = [];
-            var _this = this;
-            var output = this.options.output || this.defaultOptions.output;
-            var detector = this.options.detector || this.defaultOptions.detector;
-            var markup1 = new RegExp(detector + 'markup\\\\r\\\\n', "gi");
-            var markup2 = new RegExp(detector + 'markup\\\\n', "gi");
-            readMultipleFiles(this.files).subscribe({
-                next: function next(_ref2) {
-                    var path = _ref2.path,
-                        contents = _ref2.contents;
-
-                    content.push(contents.toString('utf-8'));
-                },
-                complete: function complete() {
-                    content.join('\n');
-                    dss.parse(content, {}, function (parsedObject) {
-
-                        var folderPath = path.resolve(process.cwd(), output).substring(0, path.resolve(process.cwd(), output).lastIndexOf("/"));
-                        _this.mkDirByPathSync(folderPath);
-                        parsedObject = JSON.parse(JSON.stringify(parsedObject).replace(markup1, '').replace(markup2, ''));
-                        if (!fs.existsSync(path.resolve(process.cwd(), output)) || fs.existsSync(path.resolve(process.cwd(), output)) && JSON.stringify(parsedObject) !== JSON.stringify(_this.parsedObject)) {
-                            _this.parsedObject = parsedObject;
-                            fs.writeFile(path.resolve(process.cwd(), output), JSON.stringify(parsedObject, null, 4), function () {
-                                console.log('📖 Updated Styleguide');
-                            });
-                        }
-                    });
-                }
-            });
-        }
-    }, {
         key: 'tester',
         value: function tester() {
             return true;
         }
     }]);
 
-    return DSSWebpackPlugin;
+    return DSSPlugin;
 }();
 
-module.exports = DSSWebpackPlugin;
+module.exports = DSSPlugin;
 
 //# sourceMappingURL=dss-webpack-plugin.js.map

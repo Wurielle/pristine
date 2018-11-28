@@ -57,7 +57,7 @@ var JsonSassPlugin = function () {
     }, {
         key: 'getSass',
         value: function getSass(object) {
-            return "$" + path.parse(this.src).name + ":" + jsonSass.convertJs(JSON.parse(JSON.stringify(object).replace(/:":"/g, ":\"\\\\:\""))) + ";";
+            return "$" + path.parse(this.src).name + ":" + jsonSass.convertJs(object) + ";";
         }
     }, {
         key: 'tester',

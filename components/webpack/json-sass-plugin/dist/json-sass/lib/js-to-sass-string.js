@@ -12,7 +12,7 @@ function jsToSassString(value) {
     case 'number':
       return value.toString();
     case 'string':
-      return value;
+      return quoteString(value);
     case 'object':
       if (_.isPlainObject(value)) {
         indentLevel += 1;
@@ -44,6 +44,13 @@ function jsToSassString(value) {
 
 function indentsToSpaces(indentCount) {
   return Array(indentCount + 1).join('  ');
+}
+
+function quoteString(value) {
+  if (new RegExp("([,:])(?![^(]*\\))").test(value)) {
+    return "\"" + value + "\"";
+  }
+  return value;
 }
 
 module.exports = jsToSassString;

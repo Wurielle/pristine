@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const argv = require('minimist')(process.argv.slice(2));
 
-const DSSWebpackPlugin = require('@bit/wurielle.pristine.webpack.dss-plugin');
+const DSSPlugin = require('@bit/wurielle.pristine.webpack.dss-plugin');
 const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
 
 module.exports = {
@@ -20,12 +20,12 @@ module.exports = {
                 // 'API_AUTH_PASSWORD': JSON.stringify(argv.apiAuthPassword.trim()),
                 // 'SERVICE_URL': JSON.stringify(argv.domain.trim())
             }),
-            // new DSSWebpackPlugin({
-            //     filter: /\.s(c|a)ss/,
-            //     output: './src/styleguide.json',
-            //     watch: './src',
-            //     detector: '_@'
-            // }),
+            new DSSPlugin({
+                filter: /\.s(c|a)ss/,
+                output: './src/styleguide.json',
+                watch: './src',
+                detector: '_@'
+            }),
             new JsonSassPlugin('./config/theme.js', './config/theme.scss')
         ]
     }
