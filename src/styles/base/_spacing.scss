@@ -1,0 +1,30 @@
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
+
+//// Spacing -----------------------------------------------------------------------------------------------------------
+button,
+.button,
+span,
+input,
+textarea,
+select,
+.select,
+fieldset,
+table,
+.table {
+    margin-bottom: theme(margin, base);
+}
+
+pre,
+blockquote,
+dl,
+figure,
+table,
+.table-wrapper,
+p,
+ul,
+ol,
+form {
+    margin-bottom: theme(margin, base);
+}
+

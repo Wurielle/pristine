@@ -1,0 +1,16 @@
+@import "~@config/theme.scss";
+
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
+@function theme($keys...) {
+    $map: $theme;
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}

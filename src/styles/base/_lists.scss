@@ -1,0 +1,74 @@
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
+
+//// Lists -------------------------------------------------------------------------------------------------------------
+/**
+ * _@name Lists
+ * _@section Base > Lists
+ * _@description Lists for various purposes.
+ * _@markup
+ *<div class="pr-flex pr-justify-around">
+ *    <ul class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ul>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ul>
+ *    </ul>
+ *    <ul class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ol>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ol>
+ *    </ul>
+ *    <ol class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ul>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ul>
+ *    </ol>
+ *    <ol class="pr-inline-block">
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <li>hey</li>
+ *        <ol>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *            <li>hey</li>
+ *        </ol>
+ *    </ol>
+ *</div>
+ */
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    // Font
+    @apply pr-text-md;
+    margin-bottom: theme(margin, base)/1.5;
+}
+li {
+    margin-bottom: theme(margin, base)/1.5;
+}
+
+ul {
+    list-style: circle inside;
+    ul {
+        list-style: square inside;
+    }
+}
+
+ol {
+    list-style: decimal inside;
+}

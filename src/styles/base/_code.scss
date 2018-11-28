@@ -1,0 +1,51 @@
+//// Code --------------------------------------------------------------------------------------------------------------
+/**
+ * _@name Code
+ * _@section Base > Code
+ * _@description Code for coders.
+ * _@markup
+ *<div class="pr-mb-base">
+ *    In this sentence <code>there is some code</code> that can be displayed.
+ *</div>
+ *<pre>
+ *    <code>
+ *        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?
+ *    </code>
+ *</pre>
+ */
+
+code {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    // Padding
+    @apply pr-px-2;
+
+    // Font
+    @apply pr-text-base-text-color pr-text-sm;
+
+    // Background
+    @apply pr-bg-base-bg-color;
+
+    // Borders
+    @apply pr-rounded-base pr-border-solid pr-border pr-border-base-border-color;
+}
+
+pre {
+    letter-spacing: 0;
+    max-width: 100%;
+    white-space: normal;
+    // Font
+    @apply pr-text-base-text-color pr-text-sm;
+
+    & > code {
+        display: inline-block;
+        align-items: start;
+        margin: 0;
+        min-width: 100%;
+        white-space: pre-wrap;
+        // Padding
+        @apply pr-p-base;
+    }
+}
+

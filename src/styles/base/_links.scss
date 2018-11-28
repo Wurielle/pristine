@@ -1,0 +1,23 @@
+//// Links -------------------------------------------------------------------------------------------------------------
+/**
+ * _@name Links
+ * _@section Base > Links
+ * _@description Link for various purposes.
+ * _@markup
+ *<div>
+ *    Sometimes texts <a href="">have links</a> just like this one.
+ *</div>
+ */
+
+a {
+    text-decoration: none;
+    // Font
+    @apply pr-text-primary;
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+        // Font
+        @apply pr-text-secondary;
+    }
+}

@@ -1,0 +1,25 @@
+//// Misc --------------------------------------------------------------------------------------------------------------
+/**
+ * _@name Misc
+ * _@section Base > Misc
+ * _@description Misc for various purposes.
+ * _@markup
+ *<div class="pr-mb-base">
+ *    <img src="https://images.unsplash.com/photo-1539534161493-dc787e96425e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=642c3aa88c7f43a3573e48d9f5b56619&auto=format&fit=crop&w=1256&q=80"
+ *         alt="">
+ *    <hr>
+ *    <a href="https://unsplash.com/photos/hZ45xlsL7kM" target="_blank">@jan_pd</a>
+ *</div>
+ */
+hr {
+    margin: 0;
+    border-width: 0;
+    // Margin
+    @apply pr-my-base;
+
+    // Borders
+    @apply pr-rounded-base pr-border-solid pr-border-t pr-border-base-border-color;
+}
+iframe {
+    border: 0;
+}
