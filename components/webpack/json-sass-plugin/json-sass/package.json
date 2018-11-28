@@ -42,7 +42,7 @@
   "description": "Streamy module that transforms a JSON stream into scss syntax Sass.",
   "devDependencies": {
     "chai": "^1.9.2",
-    "mocha": "^2.0.1"
+    "mocha": "^5.2.0"
   },
   "keywords": [
     "sass",
