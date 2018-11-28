@@ -1,12 +1,4 @@
 $theme:(
-  ui: (
-    unit: (
-      base: 40px
-    ),
-    spaceUnit: (
-      base: 20px
-    )
-  ),
   colors: (
     transparent: transparent,
     black: #22292f,
@@ -629,5 +621,13 @@ $theme:(
     prefix: pr-,
     important: false,
     separator: ":"
+  ),
+  ui: (
+    unit: (
+      base: 40px
+    ),
+    spaceUnit: (
+      base: 20px
+    )
   )
 );

@@ -66,7 +66,12 @@ let colors = {
 };
 
 module.exports = {
-    ui: ui,
+    // Spread Default Config
+    ...defaultConfig,
+
+    // Custom Objects
+    ui,
+
     /*
     |-----------------------------------------------------------------------------
     | Colors                                  https://tailwindcss.com/docs/colors
@@ -226,7 +231,9 @@ module.exports = {
     |
     */
 
-    textColors: colors,
+    textColors: {
+        ...colors
+    },
 
 
     /*
@@ -242,7 +249,9 @@ module.exports = {
     |
     */
 
-    backgroundColors: colors,
+    backgroundColors: {
+        ...colors
+    },
 
 
     /*

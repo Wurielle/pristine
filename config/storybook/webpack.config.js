@@ -1,7 +1,8 @@
 const path = require("path");
 const webpack = require('webpack');
-// https://github.com/storybooks/storybook/pull/4411 POSTCSS ISSUE
-// https://github.com/storybooks/storybook/issues/3850 Vue Issue
+
+const DSSPlugin = require('@bit/wurielle.pristine.webpack.dss-plugin');
+const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
 module.exports = {
     resolve: {
         alias: {
@@ -9,6 +10,15 @@ module.exports = {
             '@':  path.resolve(__dirname, '../../src'),
         }
     },
+    plugins:[
+        new DSSPlugin({
+            filter: /\.s(c|a)ss/,
+            output: './src/styleguide.json',
+            watch: './src',
+            detector: '_@'
+        }),
+        new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
+    ]
 };
 
 // const path = require("path");
