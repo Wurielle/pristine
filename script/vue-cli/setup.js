@@ -1,4 +1,4 @@
-const PristineScript = require('./pristine-script');
+const PristineScript = require('../pristine-script');
 
 const fs = require('fs');
 const path = require('path');
@@ -7,7 +7,8 @@ const child_process = require('child_process');
 const shell = require('shelljs');
 
 const cwd = process.cwd();
-const pristinePath = path.resolve(__dirname,'../');
+const pristinePath = path.resolve(__dirname,'../../');
+const filesToCopy = require('./copy.json');
 
 const state = {
     __dirname,
@@ -36,7 +37,7 @@ if (!shell.which('vue')) {
 class SetupScript extends PristineScript {
     constructor() {
         super();
-        const { execFileSync, echo, cd } = this;
+        const { execFileSync, echo, cd, copy } = this;
         // Update Pristine ---------------------------------------------------------------------------------------------
         echo('Updating Pristine');
         cd(state.pristinePath);
@@ -85,6 +86,11 @@ class SetupScript extends PristineScript {
             'axios',
         ];
         execFileSync('npm', ['i', '-D', ...developmentDevDeps]);
+        // -------------------------------------------------------------------------------------------------------------
+
+        // Copying Necessary Files -------------------------------------------------------------------------------------
+        echo('Copying Necessary Files');
+        copy(filesToCopy, state.pristinePath, state.cwd);
         // -------------------------------------------------------------------------------------------------------------
 
         echo('All Done 🎉🎉🎉');

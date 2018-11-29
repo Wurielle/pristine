@@ -32,12 +32,22 @@ class PristineScript {
     }
 
     echo(message) {
-        return shell.echo('\n💠 🔔 '+message);
+        return shell.echo('\n💠 ✨  '+message);
     }
 
-    cd (path) {
+    cd(path) {
         shell.echo('💠 Current Directory: '+path);
         shell.cd(path);
+    }
+    copy(files, from, to) {
+        Object.keys(files).forEach(function(key) {
+            let completeFrom = path.resolve(from, key);
+            let completeTo = path.resolve(to, files[key]);
+            shell.mkdir('-p', path.parse(completeTo).dir);
+            if (fs.existsSync(completeFrom)) {
+                shell.cp('-R', completeFrom, completeTo);
+            }
+        });
     }
 }
 
