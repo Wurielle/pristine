@@ -1,3 +1,5 @@
+const PristineScript = require('./pristine-script');
+
 const fs = require('fs');
 const path = require('path');
 const child_process = require('child_process');
@@ -6,6 +8,7 @@ const shell = require('shelljs');
 
 const cwd = process.cwd();
 const pristinePath = path.resolve(__dirname,'../');
+
 const state = {
     __dirname,
     pristinePath,
@@ -13,9 +16,7 @@ const state = {
     cwdParsed: path.parse(cwd)
 };
 
-let command;
-
-shell.echo(state);
+// shell.echo(state);
 
 if (!shell.which('git')) {
     shell.echo('Sorry, this script requires git');
@@ -27,60 +28,68 @@ if (!shell.which('npm')) {
     shell.exit(1);
 }
 
-// Update Pristine -----------------------------------------------------------------------------------------------------
-shell.echo('Updating Pristine');
-shell.cd(state.pristinePath);
-if (shell.exec('git pull').code !== 0) {
-    shell.echo('Error: git pull failed');
+if (!shell.which('vue')) {
+    shell.echo('Sorry, this script requires vue-cli');
     shell.exit(1);
 }
-shell.cd(state.cwd);
-// ---------------------------------------------------------------------------------------------------------------------
 
-// Installing Global Dependencies --------------------------------------------------------------------------------------
-shell.echo('Installing Global Dependencies');
-executeCommandSync('npm config set \'@bit:registry\' https://node.bitsrc.io');
-executeCommandSync('npm install -g @vue/cli');
-executeCommandSync('npm i -g bit-bin');
-// ---------------------------------------------------------------------------------------------------------------------
+class SetupScript extends PristineScript {
+    constructor() {
+        super();
+        const { execFileSync, echo, cd } = this;
+        // Update Pristine ---------------------------------------------------------------------------------------------
+        echo('Updating Pristine');
+        cd(state.pristinePath);
+        execFileSync('git', ['pull']);
+        cd(state.cwd);
+        // -------------------------------------------------------------------------------------------------------------
 
-// Creating a Vue CLI Project ------------------------------------------------------------------------------------------
-shell.echo('Creating a Vue CLI Project');
-shell.cd(path.resolve(state.cwd, '../'));
-child_process.execFileSync('vue.cmd', ['create', state.cwdParsed.name], {stdio: 'inherit'});
-shell.cd(state.cwd);
-// ---------------------------------------------------------------------------------------------------------------------
+        // Installing Global Dependencies ------------------------------------------------------------------------------
+        echo('Installing Global Dependencies');
+        execFileSync('npm', ['config', 'set \'@bit:registry\' https://node.bitsrc.io']);
+        execFileSync('npm', ['i', '-g', '@vue/cli']);
+        execFileSync('npm', ['i', '-g', 'bit-bin']);
+        // -------------------------------------------------------------------------------------------------------------
 
-// Adding Vue CLI Plugins ----------------------------------------------------------------------------------------------
-shell.echo('Adding Vue CLI Plugins');
-child_process.execFileSync('vue.cmd', ['add', 'vue-cli-plugin-build-watch'], {stdio: 'inherit'});
-child_process.execFileSync('vue.cmd', ['add', 'element'], {stdio: 'inherit'});
-child_process.execFileSync('vue.cmd', ['add', 'storybook'], {stdio: 'inherit'});
-// ---------------------------------------------------------------------------------------------------------------------
+        // Creating a Vue CLI Project ----------------------------------------------------------------------------------
+        echo('Creating a Vue CLI Project');
+        cd(path.resolve(state.cwd, '../'));
+        execFileSync('vue', ['create', state.cwdParsed.name], {interactive: true});
+        cd(state.cwd);
+        // -------------------------------------------------------------------------------------------------------------
 
-// Adding Workflow Dependencies ----------------------------------------------------------------------------------------
-shell.echo('Adding Workflow Dependencies');
-child_process.execFileSync('npm.cmd', ['i', '-D', 'tailwindcss'], {stdio: 'inherit'});
-child_process.execFileSync('npm.cmd', ['i', '-D', 'minimist'], {stdio: 'inherit'});
-child_process.execFileSync('npm.cmd', ['i', '-D', 'postcss-pxtorem'], {stdio: 'inherit'});
-child_process.execFileSync('npm.cmd', ['i', '-D', '@bit/wurielle.pristine.webpack.dss-plugin'], {stdio: 'inherit'});
-child_process.execFileSync('npm.cmd', ['i', '-D', '@bit/wurielle.pristine.webpack.json-sass-plugin'], {stdio: 'inherit'});
-child_process.execFileSync('npm.cmd', ['i', '-D', '@bit/wurielle.pristine.vue-components.dss-styleguide'], {stdio: 'inherit'});
-// ---------------------------------------------------------------------------------------------------------------------
+        // Adding Vue CLI Plugins ----------------------------------------------------------------------------------------------
+        echo('Adding Vue CLI Plugins');
+        execFileSync('vue', ['add', 'vue-cli-plugin-build-watch'], {interactive: true});
+        execFileSync('vue', ['add', 'element'], {interactive: true});
+        execFileSync('vue', ['add', 'storybook'], {interactive: true});
+        // ---------------------------------------------------------------------------------------------------------------------
 
-// Adding Dev Dependencies (Optional) ----------------------------------------------------------------------------------
-shell.echo('Adding Dev Dependencies (Optional)');
-child_process.execFileSync('npm.cmd', ['i', '-D', 'lodash'], {stdio: 'inherit'});
-child_process.execFileSync('npm.cmd', ['i', '-D', 'axios'], {stdio: 'inherit'});
-// ---------------------------------------------------------------------------------------------------------------------
+        // Adding Workflow Dependencies --------------------------------------------------------------------------------
+        echo('Adding Workflow Dependencies');
+        const workflowDevDeps = [
+            'tailwindcss',
+            'minimist',
+            'postcss-pxtorem',
+            '@bit/wurielle.pristine.webpack.dss-plugin',
+            '@bit/wurielle.pristine.webpack.json-sass-plugin',
+            '@bit/wurielle.pristine.vue-components.dss-styleguide',
+        ];
+        execFileSync('npm', ['i', '-D', ...workflowDevDeps]);
+        // ------------------------------------------------------------------------------------------------------------
 
-shell.exit(1);
+        // Adding Dev Dependencies (Optional) --------------------------------------------------------------------------
+        echo('Adding Dev Dependencies (Optional)');
+        const developmentDevDeps = [
+            'lodash',
+            'axios',
+        ];
+        execFileSync('npm', ['i', '-D', ...developmentDevDeps]);
+        // -------------------------------------------------------------------------------------------------------------
 
-// Functions -----------------------------------------------------------------------------------------------------------
-function executeCommandSync(command) {
-    if (shell.exec(command).code !== 0) {
-        shell.echo('Error: '+command+' failed');
+        echo('All Done 🎉🎉🎉');
         shell.exit(1);
     }
 }
-// ---------------------------------------------------------------------------------------------------------------------
+
+new SetupScript();
