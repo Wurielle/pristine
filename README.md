@@ -53,7 +53,7 @@ vue create MyProject
 cd MyProject
 
 # Add watch mode to Vue-CLI
-vue add vue-cli-plugin-build-watch // Adds watch mode to Vue-CLI
+vue add vue-cli-plugin-build-watch
 
 # Add Element UI (https://element.eleme.io/#/en-US)
 vue add element
@@ -62,10 +62,10 @@ vue add element
 vue add storybook
 
 # Add Workflow Dependencies
-npm i minimist postcss-pxtorem -D
+npm i minimist tailwindcss postcss-pxtorem -D
 
 # Add Dev Dependencies
-npm i tailwindcss lodash -D
+npm i lodash axios -D
 
 # Add Bit Dependencies
 npm i @bit/wurielle.pristine.webpack.dss-plugin -D
