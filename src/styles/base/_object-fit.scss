@@ -1,0 +1,28 @@
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
+
+//// Object-fit -----------------------------------------------------------------------------------------------------------
+/**
+ * _@name Object-fit
+ * _@section Base > Object-fit
+ * _@description Object-fit classes for contained items.
+ * _@state .pr-fit-cover - Make item totaly fit with his container (x/y) witout anamorophing
+ * _@state .pr-fit-contain - Make item fit with height of his container (y) and center it
+ * _@markup
+ *<div class="pr-flex pr-h-64">
+ *  <div class="pr-flex-1 pr-relative pr-mr-2">
+ *      <img class="pr-absolute pr-fit-cover pr-w-full pr-h-full pr-pin-l pr-pin-t" src="https://romainsokolowski.fr/images/fond1.jpg">
+ *  </div>
+ *  <div class="pr-flex-1 pr-relative pr-ml-2">
+ *      <img class="pr-absolute pr-fit-contain pr-w-full pr-h-full pr-pin-l pr-pin-t" src="https://romainsokolowski.fr/images/fond1.jpg">
+ *  </div>
+ *</div>
+ */
+
+.pr-fit-cover {
+  object-fit: cover;
+}
+
+.pr-fit-contain {
+  object-fit: contain;
+}
