@@ -46,10 +46,6 @@
 @import "base/_lists";
 @import "base/_code";
 @import "base/_tables";
-@import "base/_ratio";
-@import "base/object-fit";
-@import "base/_transitions";
-@import "base/_animations";
 @import "components/_card";
 
 /**
@@ -61,6 +57,10 @@
  * @import "tailwindcss/utilities";
  */
 @tailwind utilities;
+@import "utilities/_ratio";
+@import "utilities/_object-fit";
+@import "utilities/_transitions";
+@import "utilities/_animations";
 @import "base/tailwind-custom-utilities";
 /**
  * Here you would add any custom utilities you need that don't come out of the

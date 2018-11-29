@@ -66,21 +66,22 @@
         max-width: _(screens, xl);
     }
 }
+@responsive{
+    .container {
+        @include container();
 
-.container {
-    @include container();
+    }
 
-}
+    .container-fluid {
+        @include gutters();
+    }
 
-.container-fluid {
-    @include gutters();
-}
+    .col {
+        @include col();
+    }
 
-.col {
-    @include col();
-}
-
-.row {
-    overflow: hidden;
-    @include row();
+    .row {
+        overflow: hidden;
+        @include row();
+    }
 }

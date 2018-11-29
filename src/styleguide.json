@@ -50,37 +50,15 @@
             }
         },
         {
-            "name": "Grid",
+            "name": "Code",
             "section": [
                 "Base",
-                "Grid"
+                "Code"
             ],
-            "description": "Responsive flex grid classes.",
-            "state": [
-                {
-                    "name": ".container-fluid",
-                    "escaped": "container-fluid",
-                    "description": "Container for full width"
-                },
-                {
-                    "name": ".container",
-                    "escaped": "container",
-                    "description": "Container with adaptative width depending of viewport size"
-                },
-                {
-                    "name": ".row",
-                    "escaped": "row",
-                    "description": "Row wrappers for columns"
-                },
-                {
-                    "name": ".col",
-                    "escaped": "col",
-                    "description": "Columns classes, using it with tailwind width classes."
-                }
-            ],
+            "description": "Code for coders.",
             "markup": {
-                "example": "  <div class=\"container-fluid | pr-mb-4 \">\r\n      <div class=\"row\">\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">1 of 3</div>\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">2 of 3</div>\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">3 of 3</div>\r\n      </div>\r\n  </div>\r\n  <div class=\"container | pr-mb-4 \">\r\n      <div class=\"row\">\r\n           <div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\">1 of 2</div>\r\n           <div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\">2 of 2</div>\r\n      </div>\r\n  </div>\r\n  <div class=\"container-fluid\">\r\n      <div class=\"row\">\r\n           <div class=\"col pr-w-full pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\">1 of 1</div>\r\n      </div>\r\n  </div>",
-                "escaped": "  &lt;div class=\"container-fluid | pr-mb-4 \"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;1 of 3&lt;/div&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;2 of 3&lt;/div&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;3 of 3&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"container | pr-mb-4 \"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n           &lt;div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\"&gt;1 of 2&lt;/div&gt;\r\n           &lt;div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\"&gt;2 of 2&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"container-fluid\"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n           &lt;div class=\"col pr-w-full pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\"&gt;1 of 1&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;"
+                "example": "<div class=\"pr-mb-base\">\r\n    In this sentence <code>there is some code</code> that can be displayed.\r\n</div>\r\n<pre>\r\n    <code>\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    </code>\r\n</pre>",
+                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\r\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\r\n&lt;/div&gt;\r\n&lt;pre&gt;\r\n    &lt;code&gt;\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    &lt;/code&gt;\r\n&lt;/pre&gt;"
             }
         },
         {
@@ -140,27 +118,15 @@
             }
         },
         {
-            "name": "Object-fit",
+            "name": "Lists",
             "section": [
                 "Base",
-                "Object-fit"
+                "Lists"
             ],
-            "description": "Object-fit classes for contained items.",
-            "state": [
-                {
-                    "name": ".pr-fit-cover",
-                    "escaped": "pr-fit-cover",
-                    "description": "Make item totaly fit with his container (x/y) witout anamorophing"
-                },
-                {
-                    "name": ".pr-fit-contain",
-                    "escaped": "pr-fit-contain",
-                    "description": "Make item fit with height of his container (y) and center it"
-                }
-            ],
+            "description": "Lists for various purposes.",
             "markup": {
-                "example": "<div class=\"pr-flex pr-h-64\">\r\n  <div class=\"pr-flex-1 pr-relative pr-mr-2\">\r\n      <img class=\"pr-absolute pr-fit-cover pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\">\r\n  </div>\r\n  <div class=\"pr-flex-1 pr-relative pr-ml-2\">\r\n      <img class=\"pr-absolute pr-fit-contain pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\">\r\n  </div>\r\n</div>",
-                "escaped": "&lt;div class=\"pr-flex pr-h-64\"&gt;\r\n  &lt;div class=\"pr-flex-1 pr-relative pr-mr-2\"&gt;\r\n      &lt;img class=\"pr-absolute pr-fit-cover pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\"&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"pr-flex-1 pr-relative pr-ml-2\"&gt;\r\n      &lt;img class=\"pr-absolute pr-fit-contain pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\"&gt;\r\n  &lt;/div&gt;\r\n&lt;/div&gt;"
+                "example": "<div class=\"pr-flex pr-justify-around\">\r\n    <ul class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ul>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ul>\r\n    </ul>\r\n    <ul class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ol>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ol>\r\n    </ul>\r\n    <ol class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ul>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ul>\r\n    </ol>\r\n    <ol class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ol>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ol>\r\n    </ol>\r\n</div>",
+                "escaped": "&lt;div class=\"pr-flex pr-justify-around\"&gt;\r\n    &lt;ul class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ul&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ul&gt;\r\n    &lt;/ul&gt;\r\n    &lt;ul class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ol&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ol&gt;\r\n    &lt;/ul&gt;\r\n    &lt;ol class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ul&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ul&gt;\r\n    &lt;/ol&gt;\r\n    &lt;ol class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ol&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ol&gt;\r\n    &lt;/ol&gt;\r\n&lt;/div&gt;"
             }
         },
         {
@@ -176,45 +142,6 @@
             }
         },
         {
-            "name": "Ratios",
-            "section": [
-                "Base",
-                "Ratios"
-            ],
-            "description": "Ratios for various purposes.",
-            "state": [
-                {
-                    "name": ".pr-ratio-16/9",
-                    "escaped": "pr-ratio-16/9",
-                    "description": "16/9 ratio"
-                },
-                {
-                    "name": ".pr-ratio-4/3",
-                    "escaped": "pr-ratio-4/3",
-                    "description": "4/3 ratio"
-                },
-                {
-                    "name": ".pr-ratio-3/2",
-                    "escaped": "pr-ratio-3/2",
-                    "description": "3/2 ratio"
-                },
-                {
-                    "name": ".pr-ratio-2/1",
-                    "escaped": "pr-ratio-2/1",
-                    "description": "2/1 ratio"
-                },
-                {
-                    "name": ".pr-ratio-1/1",
-                    "escaped": "pr-ratio-1/1",
-                    "description": "1/1 ratio"
-                }
-            ],
-            "markup": {
-                "example": "<div class=\"pr-ratio-16/9\">\r\n  <video class=\"pr-absolute pr-pin-t pr-pin-l pr-h-full pr-w-full\" autoplay muted src=\"http://html5doctor.com/demos/video-canvas-magic/video.mp4\"></video>\r\n</div>",
-                "escaped": "&lt;div class=\"pr-ratio-16/9\"&gt;\r\n  &lt;video class=\"pr-absolute pr-pin-t pr-pin-l pr-h-full pr-w-full\" autoplay muted src=\"http://html5doctor.com/demos/video-canvas-magic/video.mp4\"&gt;&lt;/video&gt;\r\n&lt;/div&gt;"
-            }
-        },
-        {
             "name": "Tables",
             "section": [
                 "Base",
@@ -224,40 +151,6 @@
             "markup": {
                 "example": "<table>\r\n    <thead>\r\n        <tr>\r\n            <th></th>\r\n            <th>name</th>\r\n            <th>age</th>\r\n            <th>location</th>\r\n            <th></th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr>\r\n            <td>\r\n                <img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\">\r\n            </td>\r\n            <td>name</td>\r\n            <td>age</td>\r\n            <td>location</td>\r\n            <td class=\"pr-text-right\">\r\n                <button class=\"button button--primary\">edit</button>\r\n            </td>\r\n        </tr>\r\n    </tbody>\r\n</table>",
                 "escaped": "&lt;table&gt;\r\n    &lt;thead&gt;\r\n        &lt;tr&gt;\r\n            &lt;th&gt;&lt;/th&gt;\r\n            &lt;th&gt;name&lt;/th&gt;\r\n            &lt;th&gt;age&lt;/th&gt;\r\n            &lt;th&gt;location&lt;/th&gt;\r\n            &lt;th&gt;&lt;/th&gt;\r\n        &lt;/tr&gt;\r\n    &lt;/thead&gt;\r\n    &lt;tbody&gt;\r\n        &lt;tr&gt;\r\n            &lt;td&gt;\r\n                &lt;img src=\"https://images.unsplash.com/photo-1539384894456-f4b7ceb0e407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3849b2c9613fa713a1115faf7105588a&auto=format&fit=crop&w=800&q=80\" alt=\"\"&gt;\r\n            &lt;/td&gt;\r\n            &lt;td&gt;name&lt;/td&gt;\r\n            &lt;td&gt;age&lt;/td&gt;\r\n            &lt;td&gt;location&lt;/td&gt;\r\n            &lt;td class=\"pr-text-right\"&gt;\r\n                &lt;button class=\"button button--primary\"&gt;edit&lt;/button&gt;\r\n            &lt;/td&gt;\r\n        &lt;/tr&gt;\r\n    &lt;/tbody&gt;\r\n&lt;/table&gt;"
-            }
-        },
-        {
-            "name": "Transitions",
-            "section": [
-                "Base",
-                "Transitions"
-            ],
-            "description": "Transitions for various purposes.",
-            "state": [
-                {
-                    "name": ".pr-transition-1",
-                    "escaped": "pr-transition-1",
-                    "description": "a simple transition"
-                },
-                {
-                    "name": ".pr-transition-2",
-                    "escaped": "pr-transition-2",
-                    "description": "a simple fastest transition"
-                },
-                {
-                    "name": ".pr-transition-3",
-                    "escaped": "pr-transition-3",
-                    "description": "a simple smoothy transition"
-                },
-                {
-                    "name": ".pr-transition-elastic",
-                    "escaped": "pr-transition-elastic",
-                    "description": "an elastic transition with easeInOut"
-                }
-            ],
-            "markup": {
-                "example": "<div class=\"container-fluid\">\r\n  <div class=\"pr-flex row\">\r\n      <div class=\"col pr-w-1/4 pr-transition-1 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition 1</div>\r\n      <div class=\"col pr-w-1/4 pr-transition-2 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition 2</div>\r\n      <div class=\"col pr-w-1/4 pr-transition-3 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition 3</div>\r\n      <div class=\"col pr-w-1/4 pr-transition-elastic | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition Elastic</div>\r\n  </div>\r\n</div>",
-                "escaped": "&lt;div class=\"container-fluid\"&gt;\r\n  &lt;div class=\"pr-flex row\"&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-1 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition 1&lt;/div&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-2 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition 2&lt;/div&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-3 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition 3&lt;/div&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-elastic | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition Elastic&lt;/div&gt;\r\n  &lt;/div&gt;\r\n&lt;/div&gt;"
             }
         },
         {
@@ -348,44 +241,151 @@
             }
         },
         {
-            "name": "Code",
-            "section": [
-                "Base",
-                "Code"
-            ],
-            "description": "Code for coders.",
-            "markup": {
-                "example": "<div class=\"pr-mb-base\">\r\n    In this sentence <code>there is some code</code> that can be displayed.\r\n</div>\r\n<pre>\r\n    <code>\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    </code>\r\n</pre>",
-                "escaped": "&lt;div class=\"pr-mb-base\"&gt;\r\n    In this sentence &lt;code&gt;there is some code&lt;/code&gt; that can be displayed.\r\n&lt;/div&gt;\r\n&lt;pre&gt;\r\n    &lt;code&gt;\r\n        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorum eligendi esse et fugiat ipsum itaque laborum minima, molestiae optio provident reiciendis, saepe suscipit tenetur vel? Cum dolorum in provident?\r\n    &lt;/code&gt;\r\n&lt;/pre&gt;"
-            }
-        },
-        {
             "name": "Animations",
             "section": [
-                "Base",
+                "Utilities",
                 "Animations"
             ],
             "description": "Animations for various purposes.",
             "state": {
-                "name": ".pr-anim-spin",
-                "escaped": "pr-anim-spin",
+                "name": ".pr-animation-spin",
+                "escaped": "pr-animation-spin",
                 "description": "a spin animation"
             },
             "markup": {
-                "example": "<div class=\"pr-anim-spin | pr-h-16 pr-w-16 pr-bg-primary\"></div>",
-                "escaped": "&lt;div class=\"pr-anim-spin | pr-h-16 pr-w-16 pr-bg-primary\"&gt;&lt;/div&gt;"
+                "example": "<div class=\"pr-animation-spin | pr-h-16 pr-w-16 pr-bg-primary\"></div>",
+                "escaped": "&lt;div class=\"pr-animation-spin | pr-h-16 pr-w-16 pr-bg-primary\"&gt;&lt;/div&gt;"
             }
         },
         {
-            "name": "Lists",
+            "name": "Transitions",
+            "section": [
+                "Utilities",
+                "Transitions"
+            ],
+            "description": "Transitions for various purposes.",
+            "state": [
+                {
+                    "name": ".pr-transition-1",
+                    "escaped": "pr-transition-1",
+                    "description": "a simple transition"
+                },
+                {
+                    "name": ".pr-transition-2",
+                    "escaped": "pr-transition-2",
+                    "description": "a simple fastest transition"
+                },
+                {
+                    "name": ".pr-transition-3",
+                    "escaped": "pr-transition-3",
+                    "description": "a simple smoothy transition"
+                },
+                {
+                    "name": ".pr-transition-elastic",
+                    "escaped": "pr-transition-elastic",
+                    "description": "an elastic transition with easeInOut"
+                }
+            ],
+            "markup": {
+                "example": "<div class=\"container-fluid\">\r\n  <div class=\"pr-flex row\">\r\n      <div class=\"col pr-w-1/4 pr-transition-1 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition 1</div>\r\n      <div class=\"col pr-w-1/4 pr-transition-2 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition 2</div>\r\n      <div class=\"col pr-w-1/4 pr-transition-3 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition 3</div>\r\n      <div class=\"col pr-w-1/4 pr-transition-elastic | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\">Transition Elastic</div>\r\n  </div>\r\n</div>",
+                "escaped": "&lt;div class=\"container-fluid\"&gt;\r\n  &lt;div class=\"pr-flex row\"&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-1 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition 1&lt;/div&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-2 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition 2&lt;/div&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-3 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition 3&lt;/div&gt;\r\n      &lt;div class=\"col pr-w-1/4 pr-transition-elastic | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center\"&gt;Transition Elastic&lt;/div&gt;\r\n  &lt;/div&gt;\r\n&lt;/div&gt;"
+            }
+        },
+        {
+            "name": "Ratios",
+            "section": [
+                "Utilities",
+                "Ratios"
+            ],
+            "description": "Ratios for various purposes.",
+            "state": [
+                {
+                    "name": ".pr-ratio-16/9",
+                    "escaped": "pr-ratio-16/9",
+                    "description": "16/9 ratio"
+                },
+                {
+                    "name": ".pr-ratio-4/3",
+                    "escaped": "pr-ratio-4/3",
+                    "description": "4/3 ratio"
+                },
+                {
+                    "name": ".pr-ratio-3/2",
+                    "escaped": "pr-ratio-3/2",
+                    "description": "3/2 ratio"
+                },
+                {
+                    "name": ".pr-ratio-2/1",
+                    "escaped": "pr-ratio-2/1",
+                    "description": "2/1 ratio"
+                },
+                {
+                    "name": ".pr-ratio-1/1",
+                    "escaped": "pr-ratio-1/1",
+                    "description": "1/1 ratio"
+                }
+            ],
+            "markup": {
+                "example": "<div class=\"pr-ratio-16/9\">\r\n  <video class=\"pr-absolute pr-pin-t pr-pin-l pr-h-full pr-w-full\" autoplay muted src=\"http://html5doctor.com/demos/video-canvas-magic/video.mp4\"></video>\r\n</div>",
+                "escaped": "&lt;div class=\"pr-ratio-16/9\"&gt;\r\n  &lt;video class=\"pr-absolute pr-pin-t pr-pin-l pr-h-full pr-w-full\" autoplay muted src=\"http://html5doctor.com/demos/video-canvas-magic/video.mp4\"&gt;&lt;/video&gt;\r\n&lt;/div&gt;"
+            }
+        },
+        {
+            "name": "Object-fit",
+            "section": [
+                "Utilities",
+                "Object-fit"
+            ],
+            "description": "Object-fit classes for contained items.",
+            "state": [
+                {
+                    "name": ".pr-fit-cover",
+                    "escaped": "pr-fit-cover",
+                    "description": "Make item totaly fit with his container (x/y) witout anamorophing"
+                },
+                {
+                    "name": ".pr-fit-contain",
+                    "escaped": "pr-fit-contain",
+                    "description": "Make item fit with height of his container (y) and center it"
+                }
+            ],
+            "markup": {
+                "example": "<div class=\"pr-flex pr-h-64\">\r\n  <div class=\"pr-flex-1 pr-relative pr-mr-2\">\r\n      <img class=\"pr-absolute pr-fit-cover pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\">\r\n  </div>\r\n  <div class=\"pr-flex-1 pr-relative pr-ml-2\">\r\n      <img class=\"pr-absolute pr-fit-contain pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\">\r\n  </div>\r\n</div>",
+                "escaped": "&lt;div class=\"pr-flex pr-h-64\"&gt;\r\n  &lt;div class=\"pr-flex-1 pr-relative pr-mr-2\"&gt;\r\n      &lt;img class=\"pr-absolute pr-fit-cover pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\"&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"pr-flex-1 pr-relative pr-ml-2\"&gt;\r\n      &lt;img class=\"pr-absolute pr-fit-contain pr-w-full pr-h-full pr-pin-l pr-pin-t\" src=\"https://romainsokolowski.fr/images/fond1.jpg\"&gt;\r\n  &lt;/div&gt;\r\n&lt;/div&gt;"
+            }
+        },
+        {
+            "name": "Grid",
             "section": [
                 "Base",
-                "Lists"
+                "Grid"
             ],
-            "description": "Lists for various purposes.",
+            "description": "Responsive flex grid classes.",
+            "state": [
+                {
+                    "name": ".container-fluid",
+                    "escaped": "container-fluid",
+                    "description": "Container for full width"
+                },
+                {
+                    "name": ".container",
+                    "escaped": "container",
+                    "description": "Container with adaptative width depending of viewport size"
+                },
+                {
+                    "name": ".row",
+                    "escaped": "row",
+                    "description": "Row wrappers for columns"
+                },
+                {
+                    "name": ".col",
+                    "escaped": "col",
+                    "description": "Columns classes, using it with tailwind width classes."
+                }
+            ],
             "markup": {
-                "example": "<div class=\"pr-flex pr-justify-around\">\r\n    <ul class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ul>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ul>\r\n    </ul>\r\n    <ul class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ol>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ol>\r\n    </ul>\r\n    <ol class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ul>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ul>\r\n    </ol>\r\n    <ol class=\"pr-inline-block\">\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <li>hey</li>\r\n        <ol>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n            <li>hey</li>\r\n        </ol>\r\n    </ol>\r\n</div>",
-                "escaped": "&lt;div class=\"pr-flex pr-justify-around\"&gt;\r\n    &lt;ul class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ul&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ul&gt;\r\n    &lt;/ul&gt;\r\n    &lt;ul class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ol&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ol&gt;\r\n    &lt;/ul&gt;\r\n    &lt;ol class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ul&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ul&gt;\r\n    &lt;/ol&gt;\r\n    &lt;ol class=\"pr-inline-block\"&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;ol&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n            &lt;li&gt;hey&lt;/li&gt;\r\n        &lt;/ol&gt;\r\n    &lt;/ol&gt;\r\n&lt;/div&gt;"
+                "example": "  <div class=\"container-fluid | pr-mb-4 \">\r\n      <div class=\"row\">\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">1 of 3</div>\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">2 of 3</div>\r\n          <div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\">3 of 3</div>\r\n      </div>\r\n  </div>\r\n  <div class=\"container | pr-mb-4 \">\r\n      <div class=\"row\">\r\n           <div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\">1 of 2</div>\r\n           <div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\">2 of 2</div>\r\n      </div>\r\n  </div>\r\n  <div class=\"container-fluid\">\r\n      <div class=\"row\">\r\n           <div class=\"col pr-w-full pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\">1 of 1</div>\r\n      </div>\r\n  </div>",
+                "escaped": "  &lt;div class=\"container-fluid | pr-mb-4 \"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;1 of 3&lt;/div&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;2 of 3&lt;/div&gt;\r\n          &lt;div class=\"col pr-w-1/3 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-primary pr-text-white\"&gt;3 of 3&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"container | pr-mb-4 \"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n           &lt;div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\"&gt;1 of 2&lt;/div&gt;\r\n           &lt;div class=\"col pr-w-1/2 | pr-py-4 pr-border-black pr-border pr-text-center pr-bg-warning pr-text-white\"&gt;2 of 2&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;\r\n  &lt;div class=\"container-fluid\"&gt;\r\n      &lt;div class=\"row\"&gt;\r\n           &lt;div class=\"col pr-w-full pr-py-4 pr-border-black pr-border pr-text-center pr-bg-secondary pr-text-white\"&gt;1 of 1&lt;/div&gt;\r\n      &lt;/div&gt;\r\n  &lt;/div&gt;"
             }
         }
     ]

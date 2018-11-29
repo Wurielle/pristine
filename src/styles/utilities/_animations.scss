@@ -3,15 +3,16 @@
 //// Animations -----------------------------------------------------------------------------------------------------------
 /**
  * _@name Animations
- * _@section Base > Animations
+ * _@section Utilities > Animations
  * _@description Animations for various purposes.
- * _@state .pr-anim-spin - a spin animation
+ * _@state .pr-animation-spin - a spin animation
  * _@markup
- *<div class="pr-anim-spin | pr-h-16 pr-w-16 pr-bg-primary"></div>
+ *<div class="pr-animation-spin | pr-h-16 pr-w-16 pr-bg-primary"></div>
  */
-
-.pr-anim-spin{
-  animation: spin 2s cubic-bezier(0.35, 1.01, 0.63,-0.03) infinite;
+@responsive{
+  .pr-animation-spin{
+    animation: spin 2s cubic-bezier(0.35, 1.01, 0.63,-0.03) infinite;
+  }
 }
 @keyframes spin{
   0%{

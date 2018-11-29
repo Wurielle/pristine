@@ -4,7 +4,7 @@
 //// Object-fit -----------------------------------------------------------------------------------------------------------
 /**
  * _@name Object-fit
- * _@section Base > Object-fit
+ * _@section Utilities > Object-fit
  * _@description Object-fit classes for contained items.
  * _@state .pr-fit-cover - Make item totaly fit with his container (x/y) witout anamorophing
  * _@state .pr-fit-contain - Make item fit with height of his container (y) and center it
@@ -18,11 +18,12 @@
  *  </div>
  *</div>
  */
+@responsive {
+  .pr-fit-cover {
+    object-fit: cover;
+  }
 
-.pr-fit-cover {
-  object-fit: cover;
-}
-
-.pr-fit-contain {
-  object-fit: contain;
+  .pr-fit-contain {
+    object-fit: contain;
+  }
 }
