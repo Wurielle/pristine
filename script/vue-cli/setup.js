@@ -1,14 +1,13 @@
-const PristineScript = require('../pristine-script');
-
 const fs = require('fs');
 const path = require('path');
-const child_process = require('child_process');
 
 const shell = require('shelljs');
 
 const cwd = process.cwd();
 const pristinePath = path.resolve(__dirname,'../../');
 const filesToCopy = require('./copy.json');
+
+const { execFileSync, echo, cd, copy } = require('../pristine-script');
 
 const state = {
     __dirname,
@@ -17,27 +16,20 @@ const state = {
     cwdParsed: path.parse(cwd)
 };
 
-// shell.echo(state);
+const requiredCommands = [
+    'git',
+    'npm',
+];
 
-if (!shell.which('git')) {
-    shell.echo('Sorry, this script requires git');
-    shell.exit(1);
-}
+requiredCommands.forEach((command) => {
+    if (!shell.which(command)) {
+        shell.echo('This script requires: '+command+'\n'+'Please make sure you can use that command before continuing.');
+        shell.exit(1);
+    }
+});
 
-if (!shell.which('npm')) {
-    shell.echo('Sorry, this script requires npm');
-    shell.exit(1);
-}
-
-if (!shell.which('vue')) {
-    shell.echo('Sorry, this script requires vue-cli');
-    shell.exit(1);
-}
-
-class SetupScript extends PristineScript {
+class SetupScript {
     constructor() {
-        super();
-        const { execFileSync, echo, cd, copy } = this;
         // Update Pristine ---------------------------------------------------------------------------------------------
         echo('Updating Pristine');
         cd(state.pristinePath);
@@ -59,12 +51,12 @@ class SetupScript extends PristineScript {
         cd(state.cwd);
         // -------------------------------------------------------------------------------------------------------------
 
-        // Adding Vue CLI Plugins ----------------------------------------------------------------------------------------------
+        // Adding Vue CLI Plugins --------------------------------------------------------------------------------------
         echo('Adding Vue CLI Plugins');
         execFileSync('vue', ['add', 'vue-cli-plugin-build-watch'], {interactive: true});
         execFileSync('vue', ['add', 'element'], {interactive: true});
         execFileSync('vue', ['add', 'storybook'], {interactive: true});
-        // ---------------------------------------------------------------------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
 
         // Adding Workflow Dependencies --------------------------------------------------------------------------------
         echo('Adding Workflow Dependencies');
@@ -77,7 +69,7 @@ class SetupScript extends PristineScript {
             '@bit/wurielle.pristine.vue-components.dss-styleguide',
         ];
         execFileSync('npm', ['i', '-D', ...workflowDevDeps]);
-        // ------------------------------------------------------------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------------------
 
         // Adding Dev Dependencies (Optional) --------------------------------------------------------------------------
         echo('Adding Dev Dependencies (Optional)');
@@ -98,4 +90,9 @@ class SetupScript extends PristineScript {
     }
 }
 
-new SetupScript();
+if (require.main === module) {
+    // Called from CLI
+    new SetupScript();
+} else {
+    // Called from require()
+}
