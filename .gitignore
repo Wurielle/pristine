@@ -19,7 +19,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-# .cache
+.cache
 
 playground/vue-cli/*
 !playground/vue-cli/.gitkeep
