@@ -19,3 +19,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+# .cache
+
+playground/vue-cli/*
+!playground/vue-cli/.gitkeep
+
+playground/vue-cli-symfony-4/*
+!playground/vue-cli-symfony-4/.gitkeep

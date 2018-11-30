@@ -46,4 +46,15 @@ const copy = (files, from, to) => {
     });
 };
 
+const move = (files, from, to) => {
+    Object.keys(files).forEach(function (key) {
+        let completeFrom = path.resolve(from, key);
+        let completeTo = path.resolve(to, files[key]);
+        shell.mkdir('-p', path.parse(completeTo).dir);
+        if (fs.existsSync(completeFrom)) {
+            shell.mv('-n', completeFrom, completeTo);
+        }
+    });
+};
+
 module.exports = { execFileSync, echo, cd, copy };
