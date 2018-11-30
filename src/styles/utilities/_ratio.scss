@@ -20,14 +20,12 @@
     position: relative;
     padding-top: calc(100% / (16 / 9)) !important;
   }
-}
-@responsive {
+
   .pr-ratio-4\/3 {
     position: relative;
     padding-top: calc(100% / (4 / 3)) !important;
   }
-}
-@responsive {
+
   .pr-ratio-3\/2 {
     position: relative;
     padding-top: calc(100% / (3 / 2)) !important;
