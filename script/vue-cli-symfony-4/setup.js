@@ -91,7 +91,7 @@ class SetupScript {
 
         // Moving Necessary Files --------------------------------------------------------------------------------------
         echo('Moving Necessary Files');
-        move(filesToMove, state.pristinePath, state.cwd);
+        move(filesToMove, state.cwd, state.cwd);
         // -------------------------------------------------------------------------------------------------------------
 
         echo('All Done 🎉🎉🎉');

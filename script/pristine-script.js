@@ -4,6 +4,15 @@ const child_process = require('child_process');
 
 const shell = require('shelljs');
 
+const isFile = (string) => {
+    const re = /(?:\.([^.]+))?$/;
+    return !!re.exec(string)[1];
+};
+
+const isFolder = (string) => {
+    return !isFile(string);
+};
+
 const execFileSync = (file, args, options = {}) => {
     options = {
         interactive: false,
@@ -39,7 +48,11 @@ const copy = (files, from, to) => {
     Object.keys(files).forEach(function (key) {
         let completeFrom = path.resolve(from, key);
         let completeTo = path.resolve(to, files[key]);
-        shell.mkdir('-p', path.parse(completeTo).dir);
+        if (isFile(completeTo)) {
+            shell.mkdir('-p', path.parse(completeTo).dir);
+        } else {
+            shell.mkdir('-p', path.join(path.parse(completeTo).dir, path.parse(completeTo).name));
+        }
         if (fs.existsSync(completeFrom)) {
             shell.cp('-R', completeFrom, completeTo);
         }
@@ -50,11 +63,15 @@ const move = (files, from, to) => {
     Object.keys(files).forEach(function (key) {
         let completeFrom = path.resolve(from, key);
         let completeTo = path.resolve(to, files[key]);
-        shell.mkdir('-p', path.parse(completeTo).dir);
+        if (isFile(completeTo)) {
+            shell.mkdir('-p', path.parse(completeTo).dir);
+        } else {
+            shell.mkdir('-p', path.join(path.parse(completeTo).dir, path.parse(completeTo).name));
+        }
         if (fs.existsSync(completeFrom)) {
             shell.mv('-n', completeFrom, completeTo);
         }
     });
 };
 
-module.exports = { execFileSync, echo, cd, copy };
+module.exports = { execFileSync, echo, cd, copy, move };

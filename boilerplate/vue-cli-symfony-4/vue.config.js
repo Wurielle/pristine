@@ -13,6 +13,7 @@ module.exports = {
     outputDir: path.resolve(__dirname, "public/build/app/"),
     chainWebpack: config => {
         // vue inspect --plugins
+        config.entry('app').clear().add(path.resolve(__dirname, 'assets/app/main.ts'));
         config.plugins.delete('html');
         config.plugins.delete('preload');
         config.plugins.delete('prefetch');
@@ -23,7 +24,7 @@ module.exports = {
         resolve: {
             alias: {
                 '@config':  path.resolve(__dirname, 'config'),
-                '@': path.resolve(__dirname, 'assets/app/'),
+                '@': path.resolve(__dirname, 'assets/app'),
                 'vue$': 'vue/dist/vue.esm.js',
             }
         },
