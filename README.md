@@ -17,6 +17,7 @@ Available project types:
 | Project Type  | Description      |
 |---------------|------------------|
 | vue-cli       | Vue CLI Project  |
+| vue-cli-symfony-4 | Vue CLI in a Symfony 4 Project  |
 
 Add Pristine as a submodule or download and unzip it inside your project:
 ```bash
