@@ -61,6 +61,8 @@ class SetupScript {
         // Adding Workflow Dependencies --------------------------------------------------------------------------------
         echo('Adding Workflow Dependencies');
         const workflowDevDeps = [
+            'animate.css',
+            'ionicons',
             'tailwindcss',
             'minimist',
             'postcss-pxtorem',

@@ -13,7 +13,13 @@ module.exports = {
     outputDir: path.resolve(__dirname, "public/build/app/"),
     chainWebpack: config => {
         // vue inspect --plugins
-        config.entry('app').clear().add(path.resolve(__dirname, 'assets/app/main.ts'));
+        config
+            .entry('app')
+            .clear()
+            .add('animate.css/animate.min.css')
+            .add('ionicons/dist/css/ionicons.min.css')
+            .add(path.resolve(__dirname, 'assets/app/main.ts'))
+        ;
         config.plugins.delete('html');
         config.plugins.delete('preload');
         config.plugins.delete('prefetch');

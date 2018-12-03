@@ -12,7 +12,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "animate.css": "^3.7.0",
     "element-ui": "^2.4.5",
+    "ionicons": "^4.4.8",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",

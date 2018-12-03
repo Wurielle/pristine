@@ -8,7 +8,7 @@ const pristinePath = path.resolve(__dirname,'../../');
 const filesToCopy = require('./copy.json');
 const filesToMove = require('./move.json');
 
-const { execFileSync, echo, cd, copy, move } = require('../pristine-script');
+const { execFileSync, echo, cd, copy, move, rm } = require('../pristine-script');
 
 const state = {
     __dirname,
@@ -62,6 +62,8 @@ class SetupScript {
         // Adding Workflow Dependencies --------------------------------------------------------------------------------
         echo('Adding Workflow Dependencies');
         const workflowDevDeps = [
+            'animate.css',
+            'ionicons',
             'tailwindcss',
             'minimist',
             'postcss-pxtorem',
@@ -92,6 +94,12 @@ class SetupScript {
         // Moving Necessary Files --------------------------------------------------------------------------------------
         echo('Moving Necessary Files');
         move(filesToMove, state.cwd, state.cwd);
+        // -------------------------------------------------------------------------------------------------------------
+
+        // Removing Unnecessary Files ----------------------------------------------------------------------------------
+        echo('Removing Unnecessary Files');
+        rm(path.resolve(state.cwd, 'public/index.html'));
+        rm(path.resolve(state.cwd, 'public/favicon.ico'));
         // -------------------------------------------------------------------------------------------------------------
 
         echo('All Done 🎉🎉🎉');

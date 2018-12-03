@@ -7,6 +7,14 @@ const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin'
 
 module.exports = {
     baseUrl: '/',
+    chainWebpack: config => {
+        // vue inspect --plugins
+        config
+            .entry('app')
+            .add('animate.css/animate.min.css')
+            .add('ionicons/dist/css/ionicons.min.css')
+        ;
+    },
     configureWebpack: {
         resolve: {
             alias: {

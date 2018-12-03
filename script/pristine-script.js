@@ -74,4 +74,11 @@ const move = (files, from, to) => {
     });
 };
 
-module.exports = { execFileSync, echo, cd, copy, move };
+const rm = (path) => {
+    if (fs.existsSync(path)) {
+        shell.echo('💠 Removing: ' + path);
+        shell.rm('-rf', path);
+    }
+};
+
+module.exports = { execFileSync, echo, cd, copy, move, rm };
