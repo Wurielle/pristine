@@ -1,16 +1,16 @@
 //// Cards -------------------------------------------------------------------------------------------------------------
 /**
- * _@section Components > Card
- * _@description Cards are cool if you want to put stuff inside.
- * _@state .card - Default version of a card
- * _@state .card.card--dark - Dark version of a card
+ * @section Components > Card
+ * @description Cards are cool if you want to put stuff inside.
+ * @state .card - Default version of a card
+ * @state .card.card--dark - Dark version of a card
  */
 
 /**
- * _@name Card Default
- * _@section Components > Card > Default
- * _@state .card - Default version of a card
- * _@markup
+ * @name Card Default
+ * @section Components > Card > Default
+ * @state .card - Default version of a card
+ * @markup
 <div class="card">
     <div class="card__image" title="Sunset" style="background-image: url('https://tailwindcss.com/img/card-top.jpg')"></div>
     <div class="card__content">
@@ -42,10 +42,10 @@
  */
 
 /**
- * _@name Card Dark
- * _@section Components > Card > Dark
- * _@state .card.card--dark - Dark version of a card
- * _@markup
+ * @name Card Dark
+ * @section Components > Card > Dark
+ * @state .card.card--dark - Dark version of a card
+ * @markup
 <div class="card">
     <div class="card__image" title="Sunset" style="background-image: url('https://tailwindcss.com/img/card-top.jpg')"></div>
     <div class="card__content">

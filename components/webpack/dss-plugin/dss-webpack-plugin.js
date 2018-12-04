@@ -5,7 +5,6 @@
  * @param {string} [options.filter=/\.s(c|a)ss/] - Files to be matched.
  * @param {string} [options.watch=./src] - Directory to watch that includes files matching the filter pattern.
  * @param {string} [options.output=./styleguide.json] - JSON Output file.
- * @param {string} [options.detector=@] - Character to look for when parsing stylesheet comments.
  * @example
  *  // webpack.config.js
  *  module.exports = {
@@ -16,7 +15,6 @@
  *              filter: /\.s(c|a)ss/,
  *              output: './src/styleguide.json',
  *              watch: './src',
- *              detector: '_@'
  *          }),
  *      ]
  *  }
@@ -25,7 +23,7 @@ const fs = require('fs');
 const path = require('path');
 
 const readMultipleFiles = require('read-multiple-files');
-const dss = require( 'dss' );
+const dss = require('dss');
 
 class DSSPlugin {
     constructor(options = {}) {
@@ -35,22 +33,31 @@ class DSSPlugin {
             filter: /\.s(c|a)ss/,
             output: './styleguide.json',
             watch: './',
-            detector: '@'
+            detector: '@',
+            detectorFilter: [
+                'media',
+                'import',
+                'tailwind',
+                'apply',
+                'variants',
+                'responsive',
+                'screen'
+            ]
         };
         this.options = {...this.defaultOptions, ...options};
         this.initDSS();
     }
 
     initDSS() {
-        let { filter, watch, detector } = this.options;
+        let { filter, watch, detector, detectorFilter } = this.options;
         const pattern = new RegExp(".*" + detector );
+        const unmatch = new RegExp(".*@(" + detectorFilter.join("|") + ")");
         dss.detector( function(line) {
             if (typeof line !== 'string') {
                 return false;
             }
             const reference = line.split("\n\n").pop();
-            // return !!reference.match(detector) && !reference.match(/.*@\//);
-            return !!reference.match(pattern);
+            return !!reference.match(pattern) && !reference.match(unmatch);
         });
 
         dss.parser('section', function (i, line, block) {
@@ -87,7 +94,11 @@ class DSSPlugin {
             complete() {
                 content.join('\n');
                 dss.parse(content, {}, (parsedObject) => {
-
+                    parsedObject.blocks = parsedObject.blocks.sort((a, b) => {
+                        if(a.name < b.name) { return -1; }
+                        if(a.name > b.name) { return 1; }
+                        return 0;
+                    });
                     const folderPath = outputFullPath.substring(0, outputFullPath.lastIndexOf("/"));
                     _this.mkDirByPathSync(folderPath);
                     parsedObject = JSON.parse(
@@ -101,7 +112,7 @@ class DSSPlugin {
                     ){
                         _this.parsedObject = parsedObject;
                         fs.writeFile(outputFullPath, JSON.stringify(parsedObject, null, 4), function(){
-                            console.log('📖 Updated Styleguide');
+                            console.log('\n📖 Styleguide Updated\n');
                         });
                     }
                 });

@@ -836,7 +836,13 @@
 
             // create sections
 
-            _.each(this.styleguide.blocks, (block: any) => {
+            this.styleguide.blocks.forEach((block: any) => {
+
+                if (!block.section) {
+
+                    block.section = ['Other', block.name ? block.name : 'Nameless'];
+
+                }
 
                 _.each(block.section, (section: string, index) => {
 
@@ -864,7 +870,7 @@
 
                         !_.some(this.sections, (arraySection: any) =>
 
-                        arraySection.name === newSection.name && arraySection.level === newSection.level && arraySection.path === newSection.path)
+                            arraySection.name === newSection.name && arraySection.level === newSection.level && arraySection.path === newSection.path)
 
                     ) {
 
@@ -962,7 +968,7 @@
 
             });
 
-
+            this.sections = _.orderBy(this.sections, [(section: any) => section.name], ['desc']).reverse();
 
         }
 

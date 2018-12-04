@@ -14,8 +14,7 @@ module.exports = {
         new DSSPlugin({
             filter: /\.s(c|a)ss/,
             output: './assets/app/styleguide.json',
-            watch: './assets/app',
-            detector: '_@'
+            watch: './assets/app'
         }),
         new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
     ]
