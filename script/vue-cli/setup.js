@@ -66,6 +66,8 @@ class SetupScript {
             'tailwindcss',
             'minimist',
             'postcss-pxtorem',
+            'css-element-queries',
+            'vue-responsive-components',
             '@bit/wurielle.pristine.webpack.dss-plugin',
             '@bit/wurielle.pristine.webpack.json-sass-plugin',
             '@bit/wurielle.pristine.vue-components.dss-styleguide',

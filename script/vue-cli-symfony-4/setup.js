@@ -67,6 +67,8 @@ class SetupScript {
             'tailwindcss',
             'minimist',
             'postcss-pxtorem',
+            'css-element-queries',
+            'vue-responsive-components',
             'webpack-manifest-plugin',
             'browser-sync',
             'browser-sync-webpack-plugin',
