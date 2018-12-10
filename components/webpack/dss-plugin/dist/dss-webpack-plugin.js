@@ -20,8 +20,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
  * @param {string} [options.output=./styleguide.json] - JSON Output file.
 
- * @param {string} [options.detector=@] - Character to look for when parsing stylesheet comments.
-
  * @example
 
  *  // webpack.config.js
@@ -41,8 +39,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *              output: './src/styleguide.json',
 
  *              watch: './src',
-
- *              detector: '_@'
 
  *          }),
 
@@ -69,7 +65,8 @@ var DSSPlugin = function () {
             filter: /\.s(c|a)ss/,
             output: './styleguide.json',
             watch: './',
-            detector: '@'
+            detector: '@',
+            detectorFilter: ['media', 'import', 'tailwind', 'apply', 'variants', 'responsive', 'screen']
         };
         this.options = _extends({}, this.defaultOptions, options);
         this.initDSS();
@@ -83,16 +80,17 @@ var DSSPlugin = function () {
             var _options = this.options,
                 filter = _options.filter,
                 watch = _options.watch,
-                detector = _options.detector;
+                detector = _options.detector,
+                detectorFilter = _options.detectorFilter;
 
             var pattern = new RegExp(".*" + detector);
+            var unmatch = new RegExp(".*@(" + detectorFilter.join("|") + ")");
             dss.detector(function (line) {
                 if (typeof line !== 'string') {
                     return false;
                 }
                 var reference = line.split("\n\n").pop();
-                // return !!reference.match(detector) && !reference.match(/.*@\//);
-                return !!reference.match(pattern);
+                return !!reference.match(pattern) && !reference.match(unmatch);
             });
 
             dss.parser('section', function (i, line, block) {
@@ -144,14 +142,22 @@ var DSSPlugin = function () {
                 complete: function complete() {
                     content.join('\n');
                     dss.parse(content, {}, function (parsedObject) {
-
+                        parsedObject.blocks = parsedObject.blocks.sort(function (a, b) {
+                            if (a.name < b.name) {
+                                return -1;
+                            }
+                            if (a.name > b.name) {
+                                return 1;
+                            }
+                            return 0;
+                        });
                         var folderPath = outputFullPath.substring(0, outputFullPath.lastIndexOf("/"));
                         _this.mkDirByPathSync(folderPath);
                         parsedObject = JSON.parse(JSON.stringify(parsedObject).replace(markup1, '').replace(markup2, ''));
                         if (!fs.existsSync(outputFullPath) || fs.existsSync(outputFullPath) && JSON.stringify(parsedObject) !== JSON.stringify(_this.parsedObject)) {
                             _this.parsedObject = parsedObject;
                             fs.writeFile(outputFullPath, JSON.stringify(parsedObject, null, 4), function () {
-                                console.log('📖 Updated Styleguide');
+                                console.log('\n📖 Styleguide Updated\n');
                             });
                         }
                     });

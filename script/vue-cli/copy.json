@@ -1,0 +1,10 @@
+{
+  "boilerplate/vue-cli/vue.config.js": "vue.config.js",
+  "postcss.config.js": "postcss.config.js",
+  "src/styles": "src",
+  "src/stories": "src",
+  "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
+  "config/theme.js": "config/theme.js",
+  "config/theme.scss": "config/theme.scss",
+  "src/styleguide.json": "src/styleguide.json"
+}

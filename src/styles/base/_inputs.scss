@@ -3,16 +3,16 @@
 
 //// Inputs ------------------------------------------------------------------------------------------------------------
 /**
- * _@name Inputs
- * _@section Base > Inputs
- * _@description Inputs for various purposes.
- * _@state .input - a normal input
- * _@state .input--primary - a primary input
- * _@state .input--secondary - a secondary input
- * _@state .input--success - a success input
- * _@state .input--danger - a danger input
- * _@state .input--warning - a warning input
- * _@markup
+ * @name Inputs
+ * @section Base > Inputs
+ * @description Inputs for various purposes.
+ * @state .input - a normal input
+ * @state .input--primary - a primary input
+ * @state .input--secondary - a secondary input
+ * @state .input--success - a success input
+ * @state .input--danger - a danger input
+ * @state .input--warning - a warning input
+ * @markup
  *<input type="text" placeholder="Hello World">
  *<input type="text" placeholder="Hello World" class="input--primary">
  *<input type="text" placeholder="Hello World" class="input--secondary">

@@ -7,14 +7,14 @@ module.exports = {
     resolve: {
         alias: {
             '@config':  path.resolve(__dirname, '../../config'),
-            '@':  path.resolve(__dirname, '../../src'),
+            '@':  path.resolve(__dirname, '../../assets/app'),
         }
     },
     plugins:[
         new DSSPlugin({
             filter: /\.s(c|a)ss/,
-            output: './src/styleguide.json',
-            watch: './src'
+            output: './assets/app/styleguide.json',
+            watch: './assets/app'
         }),
         new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
     ]
