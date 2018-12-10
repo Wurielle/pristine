@@ -57,7 +57,11 @@
  * @import "tailwindcss/utilities";
  */
 @tailwind utilities;
-@import "base/tailwind-custom-utilities";
+@import "utilities/_ratio";
+@import "utilities/_object-fit";
+@import "utilities/_transitions";
+@import "utilities/_animations";
+@import "utilities/tailwind-custom-utilities";
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

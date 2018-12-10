@@ -1,0 +1,28 @@
+@import "~@/styles/abstracts/functions.scss";
+
+//// Animations -----------------------------------------------------------------------------------------------------------
+/**
+ * _@name Animations
+ * _@section Utilities > Animations
+ * _@description Animations for various purposes.
+ * _@state .pr-animation-spin - a spin animation
+ * _@markup
+ *<div class="pr-animation-spin | pr-h-16 pr-w-16 pr-bg-primary"></div>
+ */
+@responsive{
+  .pr-animation-spin{
+    animation: spin 2s cubic-bezier(0.35, 1.01, 0.63,-0.03) infinite;
+  }
+}
+@keyframes spin{
+  0%{
+    transform:rotate(0deg);
+  }
+  50%{
+    transform:rotate(180deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+
+}

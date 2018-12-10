@@ -1,0 +1,43 @@
+@import "~@/styles/abstracts/functions.scss";
+@import "~@/styles/abstracts/mixins.scss";
+//// Ratio -----------------------------------------------------------------------------------------------------------
+/**
+ * _@name Ratios
+ * _@section Utilities > Ratios
+ * _@description Ratios for various purposes.
+ * _@state .pr-ratio-16/9 - 16/9 ratio
+ * _@state .pr-ratio-4/3 - 4/3 ratio
+ * _@state .pr-ratio-3/2 - 3/2 ratio
+ * _@state .pr-ratio-2/1 - 2/1 ratio
+ * _@state .pr-ratio-1/1 - 1/1 ratio
+ * _@markup
+ *<div class="pr-ratio-16/9">
+ *  <video class="pr-absolute pr-pin-t pr-pin-l pr-h-full pr-w-full" autoplay muted src="http://html5doctor.com/demos/video-canvas-magic/video.mp4"></video>
+ *</div>
+ */
+@responsive {
+  .pr-ratio-16\/9 {
+    position: relative;
+    padding-top: calc(100% / (16 / 9)) !important;
+  }
+
+  .pr-ratio-4\/3 {
+    position: relative;
+    padding-top: calc(100% / (4 / 3)) !important;
+  }
+
+  .pr-ratio-3\/2 {
+    position: relative;
+    padding-top: calc(100% / (3 / 2)) !important;
+  }
+
+  .pr-ratio-2\/1 {
+    position: relative;
+    padding-top: calc(100% / (2 / 1)) !important;
+  }
+
+  .pr-ratio-1\/1 {
+    position: relative;
+    padding-top: calc(100% / (1 / 1)) !important;
+  }
+}
