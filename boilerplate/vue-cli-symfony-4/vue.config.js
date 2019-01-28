@@ -8,7 +8,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
-    baseUrl: '/build/app/',
+    publicPath: '/build/app/',
     runtimeCompiler: true,
     outputDir: path.resolve(__dirname, "public/build/app/"),
     chainWebpack: config => {

@@ -94,5 +94,18 @@
         "origin": "IMPORTED",
         "originallySharedDir": "components/wepback/dss-plugin"
     },
+    "wurielle.pristine/vue-components/page-gallery@0.0.1": {
+        "files": [
+            {
+                "name": "PageGallery.vue",
+                "relativePath": "PageGallery.vue",
+                "test": false
+            }
+        ],
+        "mainFile": "PageGallery.vue",
+        "rootDir": "components/vue-components/page-gallery",
+        "origin": "IMPORTED",
+        "originallySharedDir": "src/components"
+    },
     "version": "13.0.4"
 }

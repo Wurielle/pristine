@@ -6,7 +6,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
 
 module.exports = {
-    baseUrl: '/',
+    publicPath: '/',
     chainWebpack: config => {
         // vue inspect --plugins
         config

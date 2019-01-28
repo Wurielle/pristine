@@ -26,7 +26,7 @@ git submodule add https://github.com/Wurielle/pristine.git
 
 Launch the setup:
 ```bash
-node pristine/script/project-type/setup.js
+node pristine/scripts/project-type/setup.js
 ```
 
 Add to your `src/main.ts` file:
