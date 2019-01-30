@@ -66,23 +66,32 @@ class SetupScript {
             'ionicons',
             'tailwindcss',
             'minimist',
+            'dotenv',
+            'loglevel',
             'postcss-pxtorem',
             'css-element-queries',
             'vue-responsive-components',
             'webpack-manifest-plugin',
             'browser-sync',
             'browser-sync-webpack-plugin',
-            '@bit/wurielle.pristine.webpack.dss-plugin',
-            '@bit/wurielle.pristine.webpack.json-sass-plugin',
-            '@bit/wurielle.pristine.vue-components.dss-styleguide',
+        ];
+        const workflowBitDevDeps = [
+            'wurielle.pristine/webpack/dss-plugin',
+            'wurielle.pristine/webpack/json-sass-plugin',
+            'wurielle.pristine/vue-components/dss-styleguide',
         ];
         execFileSync('npm', ['i', '-D', ...workflowDevDeps]);
+        execFileSync('bit', ['init']);
+        workflowBitDevDeps.forEach((dep) => {
+            execFileSync('bit', ['import', dep]);
+        });
         // -------------------------------------------------------------------------------------------------------------
 
         // Adding Dev Dependencies (Optional) --------------------------------------------------------------------------
         echo('Adding Dev Dependencies (Optional)');
         const developmentDevDeps = [
             'lodash',
+            '@types/lodash',
             'axios',
         ];
         execFileSync('npm', ['i', '-D', ...developmentDevDeps]);
