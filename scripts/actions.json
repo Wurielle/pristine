@@ -1,0 +1,65 @@
+{
+  "global": {
+    "copy": {
+      
+    }
+  },
+  "vue-cli": {
+    "copy": {
+      "boilerplate/vue-cli/vue.config.js": "vue.config.js",
+      "postcss.config.js": "postcss.config.js",
+      "src/styles": "src",
+      "src/stories": "src",
+      "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
+      "config/theme.js": "config/theme.js",
+      "config/theme.scss": "config/theme.scss",
+      "src/styleguide.json": "src/styleguide.json"
+    }
+  },
+  "vue-cli-symfony-4": {
+    "copy": {
+      "boilerplate/vue-cli-symfony-4/vue.config.js": "vue.config.js",
+      "boilerplate/vue-cli-symfony-4/tsconfig.json": "tsconfig.json",
+      "boilerplate/vue-cli-symfony-4/config": "./",
+      "postcss.config.js": "postcss.config.js",
+      "src/styles": "src",
+      "src/stories": "src",
+      "src/styleguide.json": "src/styleguide.json",
+      "config/theme.js": "config/theme.js",
+      "config/theme.scss": "config/theme.scss"
+    },
+    "move": {
+      "src/assets": "assets/app",
+      "src/components": "assets/app",
+      "src/plugins": "assets/app",
+      "src/store": "assets/app",
+      "src/stories": "assets/app",
+      "src/styles": "assets/app",
+      "src/views": "assets/app",
+      "src/App.vue": "assets/app/App.vue",
+      "src/main.ts": "assets/app/main.ts",
+      "src/shims-tsx.d.ts": "assets/app/shims-tsx.d.ts",
+      "src/shims-vue.d.ts": "assets/app/shims-vue.d.ts",
+      "src/store.ts": "assets/app/store.ts",
+      "src/router.ts": "assets/app/router.ts",
+      "src/styleguide.json": "assets/app/styleguide.json",
+      "src/element-variables.scss": "assets/app/element-variables.scss"
+    },
+    "remove": [
+      "public/index.html",
+      "public/favicon.ico"
+    ]
+  },
+  "vue-cli-app": {
+    "copy": {
+      "boilerplate/vue-cli/vue.config.js": "vue.config.js",
+      "postcss.config.js": "postcss.config.js",
+      "src/styles": "src",
+      "src/stories": "src",
+      "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
+      "config/theme.js": "config/theme.js",
+      "config/theme.scss": "config/theme.scss",
+      "src/styleguide.json": "src/styleguide.json"
+    }
+  }
+}

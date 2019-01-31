@@ -74,11 +74,13 @@ const move = (files, from, to) => {
     });
 };
 
-const rm = (path) => {
-    if (fs.existsSync(path)) {
-        shell.echo('💠 Removing: ' + path);
-        shell.rm('-rf', path);
-    }
+const rm = (files) => {
+    files.forEach(file => {
+        if (fs.existsSync(file)) {
+            shell.echo('💠 Removing: ' + file);
+            shell.rm('-rf', file);
+        }
+    });
 };
 
 module.exports = { execFileSync, echo, cd, copy, move, rm };

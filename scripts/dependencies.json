@@ -1,0 +1,69 @@
+{
+  "global": {
+    "dev": [
+      "animate.css",
+      "ionicons",
+      "tailwindcss",
+      "minimist",
+      "dotenv",
+      "loglevel",
+      "postcss-pxtorem",
+      "css-element-queries",
+      "vue-responsive-components",
+      "lodash",
+      "@types/lodash",
+      "axios"
+    ],
+    "runtime": [
+      
+    ],
+    "bit": [
+      "wurielle.pristine/webpack/dss-plugin",
+      "wurielle.pristine/webpack/json-sass-plugin",
+      "wurielle.pristine/vue-components/dss-styleguide"
+    ],
+    "vue-cli-plugins": [
+      "vue-cli-plugin-build-watch",
+      "element",
+      "storybook"
+    ]
+  },
+  "vue-cli": {
+    "dev": [
+
+    ],
+    "runtime": [
+
+    ],
+    "bit": [
+
+    ]
+  },
+  "vue-cli-symfony-4": {
+    "dev": [
+      "webpack-manifest-plugin",
+      "browser-sync",
+      "browser-sync-webpack-plugin"
+    ],
+    "runtime": [
+
+    ],
+    "bit": [
+
+    ]
+  },
+  "vue-cli-app": {
+    "dev": [
+
+    ],
+    "runtime": [
+
+    ],
+    "bit": [
+
+    ],
+    "vue-cli-plugins": [
+      "electron-builder"
+    ]
+  }
+}
