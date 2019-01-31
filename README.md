@@ -27,6 +27,8 @@ git submodule add https://github.com/Wurielle/pristine.git
 
 Launch the setup:
 ```bash
+# install shelljs at least once before using the script
+npm i shelljs
 node pristine/scripts/install PROJECT_TYPE
 ```
 
