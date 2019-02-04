@@ -169,6 +169,25 @@ class SetupScript {
         }
         // -------------------------------------------------------------------------------------------------------------
 
+        // Adding Scripts ----------------------------------------------------------------------------------------------
+        echo('Adding Scripts');
+        const npmAddScript = require('npm-add-script');
+        if (actions['global']) {
+            if (actions['global'].scripts) {
+                Object.keys(actions['global'].scripts).forEach((key) => {
+                    npmAddScript({key , value: actions['global'].scripts[key], force: true});
+                });
+            }
+        }
+        if (actions[project]) {
+            if (actions[project].scripts) {
+                Object.keys(actions[project].scripts).forEach((key) => {
+                    npmAddScript({key , value: actions[project].scripts[key], force: true});
+                });
+            }
+        }
+        // -------------------------------------------------------------------------------------------------------------
+
         echo('All Done 🎉🎉🎉');
         if (exit) {
             shell.exit(1);

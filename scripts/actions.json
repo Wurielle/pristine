@@ -52,7 +52,9 @@
   },
   "vue-cli-app": {
     "copy": {
-      "boilerplate/vue-cli/vue.config.js": "vue.config.js",
+      "boilerplate/vue-cli-app/minio.exe": "minio.exe",
+      "boilerplate/vue-cli-app/dist_electron/dev-app-update.yml": "dist_electron/dev-app-update.yml",
+      "boilerplate/vue-cli-app/vue.config.js": "vue.config.js",
       "postcss.config.js": "postcss.config.js",
       "src/styles": "src",
       "src/stories": "src",
@@ -60,6 +62,14 @@
       "config/theme.js": "config/theme.js",
       "config/theme.scss": "config/theme.scss",
       "src/styleguide.json": "src/styleguide.json"
+    },
+    "ignore": [
+      "server"
+    ],
+    "scripts": {
+      "electron:build:publish": "vue-cli-service electron:build -p always",
+      "electron:build:publish:minio": "vue-cli-service electron:build -p always -c.compression=store",
+      "minio:serve": "minio.exe server server"
     }
   }
 }

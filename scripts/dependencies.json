@@ -12,7 +12,8 @@
       "vue-responsive-components",
       "lodash",
       "@types/lodash",
-      "axios"
+      "axios",
+      "npm-add-script"
     ],
     "runtime": [
       
@@ -57,7 +58,9 @@
 
     ],
     "runtime": [
-
+      "electron-log",
+      "auto-launch",
+      "electron-promise-ipc"
     ],
     "bit": [
 

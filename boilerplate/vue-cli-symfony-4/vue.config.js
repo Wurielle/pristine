@@ -29,6 +29,7 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
+                '@components':  path.resolve(__dirname, 'components'),
                 '@config':  path.resolve(__dirname, 'config'),
                 '@': path.resolve(__dirname, 'assets/app'),
                 'vue$': 'vue/dist/vue.esm.js',
