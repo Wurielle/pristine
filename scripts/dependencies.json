@@ -60,7 +60,8 @@
     "runtime": [
       "electron-log",
       "auto-launch",
-      "electron-promise-ipc"
+      "electron-promise-ipc",
+      "electron-updater"
     ],
     "bit": [
 

@@ -26,3 +26,5 @@ playground/vue-cli/*
 
 playground/vue-cli-symfony-4/*
 !playground/vue-cli-symfony-4/.gitkeep
+playground/vue-cli-app/*
+!playground/vue-cli-app/.gitkeep
