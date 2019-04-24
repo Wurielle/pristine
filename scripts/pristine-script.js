@@ -1,8 +1,9 @@
 const fs = require('fs');
+const cwd = process.cwd();
 const path = require('path');
 const child_process = require('child_process');
 
-const shell = require('shelljs');
+const shell = require(path.join(cwd, 'node_modules/shelljs'));
 
 const isFile = (string) => {
     const re = /(?:\.([^.]+))?$/;

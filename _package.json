@@ -27,9 +27,9 @@
     "@bit/wurielle.pristine.vue-components.page-gallery": "file:./components/vue-components/page-gallery"
   },
   "devDependencies": {
+    "@bit/wurielle.pristine.vue-components.dss-styleguide": "file:./components/vue-components/dss-styleguide",
     "@bit/wurielle.pristine.webpack.dss-plugin": "file:./components/webpack/dss-plugin",
     "@bit/wurielle.pristine.webpack.json-sass-plugin": "file:./components/webpack/json-sass-plugin",
-    "@bit/wurielle.pristine.vue-components.dss-styleguide": "file:./components/vue-components/dss-styleguide",
     "@storybook/addon-actions": "4.0.0-alpha.20",
     "@storybook/addon-links": "4.0.0-alpha.20",
     "@types/jest": "^23.1.4",
@@ -43,6 +43,7 @@
     "lodash": "^4.17.11",
     "minimist": "^1.2.0",
     "node-sass": "^4.9.0",
+    "npm-add-script": "^1.1.0",
     "postcss-pxtorem": "^4.0.1",
     "sass-loader": "^7.0.1",
     "shelljs": "^0.8.3",

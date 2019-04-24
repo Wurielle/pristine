@@ -55,7 +55,7 @@
       "boilerplate/vue-cli-app/minio.exe": "minio.exe",
       "boilerplate/vue-cli-app/dist_electron/dev-app-update.yml": "dist_electron/dev-app-update.yml",
       "boilerplate/vue-cli-app/vue.config.js": "vue.config.js",
-      "boilerplate/vue-cli-app/src/background.ts": "src/background.ts",
+      "boilerplate/vue-cli-app/src/.electron/main.ts": "src/.electron/main.ts",
       "boilerplate/vue-cli-app/src/platform.ts": "src/platform.ts",
       "boilerplate/vue-cli-app/src/.electron/store.ts": "src/.electron/store.ts",
       "boilerplate/vue-cli-app/src/.electron/renderer.ts": "src/.electron/renderer.ts",
@@ -68,6 +68,9 @@
       "config/theme.scss": "config/theme.scss",
       "src/styleguide.json": "src/styleguide.json"
     },
+    "remove": [
+      "src/background.ts"
+    ],
     "ignore": [
       "server"
     ],

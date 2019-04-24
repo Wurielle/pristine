@@ -34,6 +34,7 @@ module.exports = {
     },
     pluginOptions: {
         electronBuilder: {
+            mainProcessFile: 'src/.electron/main.ts',
             builderOptions: {
                 appId: `com.${pkg.name}.app`,
                 files: [

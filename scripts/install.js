@@ -1,14 +1,17 @@
+const fs = require('fs');
+const cwd = process.cwd();
+const path = require('path');
+const child_process = require('child_process');
+child_process.execFileSync('npm.cmd', ['i', '-D', 'shelljs', 'npm-add-script']);
+
 const project = process.argv[2];
 if (!project) {
     throw new Error("No project type specified.");
 }
 
-const fs = require('fs');
-const path = require('path');
+const shell = require(path.join(cwd, 'node_modules/shelljs'));
+const npmAddScript = require(path.join(cwd, 'node_modules/npm-add-script'));
 
-const shell = require('shelljs');
-
-const cwd = process.cwd();
 const pristinePath = path.resolve(__dirname,'../');
 
 const dependencies = require('./dependencies.json');
@@ -46,7 +49,7 @@ class SetupScript {
 
         // Installing Global Dependencies ------------------------------------------------------------------------------
         echo('Installing Global Dependencies');
-        execFileSync('npm', ['config', 'set \'@bit:registry\' https://node.bitsrc.io']);
+        execFileSync('npm', ['config', 'set \'@bit:registry\' https://node.bit.dev']);
         execFileSync('npm', ['i', '-g', '@vue/cli']);
         execFileSync('npm', ['i', '-g', 'bit-bin']);
         // -------------------------------------------------------------------------------------------------------------
@@ -171,7 +174,6 @@ class SetupScript {
 
         // Adding Scripts ----------------------------------------------------------------------------------------------
         echo('Adding Scripts');
-        const npmAddScript = require('npm-add-script');
         if (actions['global']) {
             if (actions['global'].scripts) {
                 Object.keys(actions['global'].scripts).forEach((key) => {

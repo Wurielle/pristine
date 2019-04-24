@@ -1,10 +1,10 @@
 'use strict';
-const pkg = require('../package.json');
+const pkg = require('../../package.json');
 import log from 'electron-log';
 import path from 'path';
 import fs from 'fs';
-import store from './.electron/store';
-import Platform from './platform';
+import store from './store';
+import Platform from '../platform';
 import {
     app,
     BrowserWindow,
