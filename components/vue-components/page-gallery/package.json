@@ -1,6 +1,6 @@
 {
   "name": "@bit/wurielle.pristine.vue-components.page-gallery",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://bitsrc.io/wurielle/pristine/vue-components/page-gallery",
   "main": "dist/PageGallery.vue",
   "dependencies": {

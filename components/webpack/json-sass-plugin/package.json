@@ -1,6 +1,6 @@
 {
   "name": "@bit/wurielle.pristine.webpack.json-sass-plugin",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "homepage": "https://bitsrc.io/wurielle/pristine/webpack/json-sass-plugin",
   "main": "dist/json-sass-webpack-plugin.js",
   "dependencies": {

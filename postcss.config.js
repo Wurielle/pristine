@@ -1,6 +1,6 @@
 module.exports = {
     plugins: [
-        require('tailwindcss')('./config/theme.js'),
+        require('tailwindcss')('./config/tailwind.config.js'),
         require('autoprefixer'),
         require('postcss-pxtorem')({
             replace: true,

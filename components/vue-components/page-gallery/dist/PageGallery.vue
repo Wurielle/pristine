@@ -66,53 +66,55 @@
 
         <div class="pr-gallery__main">
 
-            <!-- Slider main container -->
+            <!--<Slider></Slider>-->
 
-            <div :id="id" class="swiper-container">
+            <!--&lt;!&ndash; Slider main container &ndash;&gt;-->
 
-                <slot name="pr-gallery-top"></slot>
+            <!--<div :id="id" class="swiper-container">-->
 
-                <!-- Additional required wrapper -->
+                <!--<slot name="pr-gallery-top"></slot>-->
 
-                <div class="swiper-wrapper">
+                <!--&lt;!&ndash; Additional required wrapper &ndash;&gt;-->
 
-                    <!-- Slides -->
+                <!--<div class="swiper-wrapper">-->
 
-                    <div class="swiper-slide" v-for="(page, index) in pages">
+                    <!--&lt;!&ndash; Slides &ndash;&gt;-->
 
-                        <slot :name="`pr-gallery-page-${index}`"></slot>
+                    <!--<div class="swiper-slide" v-for="(page, index) in pages">-->
 
-                    </div>
+                        <!--<slot :name="`pr-gallery-page-${index}`"></slot>-->
 
-                </div>
+                    <!--</div>-->
 
-
-
-                <!-- If we need navigation buttons -->
-
-                <slot name="pr-gallery-left">
-
-                    <div class="swiper-button-prev"></div>
-
-                </slot>
-
-                <slot name="pr-gallery-right">
-
-                    <div class="swiper-button-next"></div>
-
-                </slot>
+                <!--</div>-->
 
 
 
-                <!-- If we need pagination -->
+                <!--&lt;!&ndash; If we need navigation buttons &ndash;&gt;-->
 
-                <slot name="pr-gallery-bottom">
+                <!--<slot name="pr-gallery-left">-->
 
-                    <div class="swiper-pagination"></div>
+                    <!--<div class="swiper-button-prev"></div>-->
 
-                </slot>
+                <!--</slot>-->
 
-            </div>
+                <!--<slot name="pr-gallery-right">-->
+
+                    <!--<div class="swiper-button-next"></div>-->
+
+                <!--</slot>-->
+
+
+
+                <!--&lt;!&ndash; If we need pagination &ndash;&gt;-->
+
+                <!--<slot name="pr-gallery-bottom">-->
+
+                    <!--<div class="swiper-pagination"></div>-->
+
+                <!--</slot>-->
+
+            <!--</div>-->
 
         </div>
 
@@ -190,9 +192,19 @@
 
     import Swiper from 'swiper';
 
+    import Slider from './swiper.vue';
+
     const uuid = require('uuid/v1');
 
-    @Component
+    @Component({
+
+        components: {
+
+            Slider
+
+        }
+
+    })
 
     export default class PageGallery extends Vue {
 
@@ -226,19 +238,21 @@
 
         mounted() {
 
-            this.state.options = {...defaultOptions, ...this.options};
+            console.log(this);
 
-            const swiperOptions = {...defaultSwiperOptions, ...this.swiperOptions, initialSlide: this.index};
+            // this.state.options = {...defaultOptions, ...this.options};
 
-            this.$nextTick(() => {
+            // const swiperOptions = {...defaultSwiperOptions, ...this.swiperOptions, initialSlide: this.index};
 
-                this.swiper = new Swiper(`#${this.id}`, swiperOptions);
+            // this.$nextTick(() => {
 
-                window.dispatchEvent(new Event("resize"));
+            //     this.swiper = new Swiper(`#${this.id}`, swiperOptions);
 
-            });
+            //     window.dispatchEvent(new Event("resize"));
 
-            this.bindListeners();
+            // });
+
+            // this.bindListeners();
 
         }
 
@@ -246,7 +260,7 @@
 
         goToPrevious() {
 
-            this.swiper.slidePrev();
+            // this.swiper.slidePrev();
 
         }
 
@@ -254,7 +268,7 @@
 
         goToNext() {
 
-            this.swiper.slideNext();
+            // this.swiper.slideNext();
 
         }
 

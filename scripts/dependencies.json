@@ -13,7 +13,7 @@
       "lodash",
       "@types/lodash",
       "axios",
-      "npm-add-script"
+      "uuid"
     ],
     "runtime": [
       

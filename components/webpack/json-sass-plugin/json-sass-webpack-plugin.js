@@ -1,133 +1,199 @@
-/**
+/**
 
- * Exports a JavaScript module to a Sass Variable.
 
- * @name JsonSassPlugin
+ * Exports a JavaScript module to a Sass Variable.
 
- * @param {string} srcFile
 
- * @param {string} outputFile
+ * @name JsonSassPlugin
 
- * @example
 
- *  // webpack.config.js
+ * @param {string} srcFile
 
- *  module.exports = {
 
- *      ...
+ * @param {string} outputFile
 
- *      plugins: [
 
- *          ...
+ * @example
 
- *          new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
 
- *      ]
+ *  // webpack.config.js
 
- *  }
 
- */
+ *  module.exports = {
 
-
 
-const fs = require('fs');
+ *      ...
 
-const path = require('path');
 
-
+ *      plugins: [
 
-const jsonSass = require('./json-sass');
 
-
+ *          ...
 
-class JsonSassPlugin {
 
-    constructor(src, output, options) {
+ *          new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
 
-        this.defaultOptions = {};
 
-        this.src = src;
+ *      ]
 
-        this.output = output;
 
-        this.options = options;
+ *  }
 
-    }
 
-    throw(err) {
+ */
 
-        throw err;
 
-    }
 
-    getSass(object) {
 
-        return "$"+path.parse(this.src).name+":"+jsonSass.convertJs(object)+";";
 
-    }
+const fs = require('fs');
 
-    tester() {
 
-        return true;
+const path = require('path');
 
-    }
 
-    apply(compiler) {
 
-        const src = this.src || this.throw('src is required');
 
-        const srcFullPath = path.resolve(process.cwd(), src);
 
-        const output = this.output || path.parse(this.src).name+'.scss';
+const jsonSass = require('./json-sass');
 
-        const outputFullPath = path.resolve(process.cwd(), output);
 
-
 
-        compiler.plugin("watch-run", (compiler, done) => {
 
-            const changedFiles = this.getChangedFiles(compiler);
 
-            if(changedFiles.some((file) => file === srcFullPath )) {
+class JsonSassPlugin {
 
-                delete require.cache[srcFullPath];
 
-                let themeJS = require(srcFullPath);
+    constructor(src, output, options) {
 
-                let themeSASS = this.getSass(themeJS);
 
-                fs.writeFile(outputFullPath, themeSASS, () => {
+        this.defaultOptions = {};
 
-                    done();
 
-                });
+        this.src = src;
 
-            } else {
 
-                done();
+        this.output = output;
 
-            }
 
-        });
+        this.options = options;
 
-    }
 
-
+    }
 
-    getChangedFiles(compiler) {
 
-        const { watchFileSystem } = compiler;
+    throw(err) {
 
-        const watcher = watchFileSystem.watcher || watchFileSystem.wfs.watcher;
 
-
+        throw err;
 
-        return Object.keys(watcher.mtimes);
 
-    }
+    }
 
-}
 
-
+    getSass(object) {
+
+
+        return "$"+path.parse(this.src).name.replace(/\./g, '_')+":"+jsonSass.convertJs(object)+";";
+
+
+    }
+
+
+    tester() {
+
+
+        return true;
+
+
+    }
+
+
+    apply(compiler) {
+
+
+        const src = this.src || this.throw('src is required');
+
+
+        const srcFullPath = path.resolve(process.cwd(), src);
+
+
+        const output = this.output || path.parse(this.src).name+'.scss';
+
+
+        const outputFullPath = path.resolve(process.cwd(), output);
+
+
+
+
+
+        compiler.plugin("watch-run", (compiler, done) => {
+
+
+            const changedFiles = this.getChangedFiles(compiler);
+
+
+            if(changedFiles.some((file) => file === srcFullPath )) {
+
+
+                delete require.cache[srcFullPath];
+
+
+                let themeJS = require(srcFullPath);
+
+
+                let themeSASS = this.getSass(themeJS);
+
+
+                fs.writeFile(outputFullPath, themeSASS, () => {
+
+
+                    done();
+
+
+                });
+
+
+            } else {
+
+
+                done();
+
+
+            }
+
+
+        });
+
+
+    }
+
+
+
+
+
+    getChangedFiles(compiler) {
+
+
+        const { watchFileSystem } = compiler;
+
+
+        const watcher = watchFileSystem.watcher || watchFileSystem.wfs.watcher;
+
+
+
+
+
+        return Object.keys(watcher.mtimes);
+
+
+    }
+
+
+}
+
+
+
+
 
 module.exports = JsonSassPlugin;

@@ -27,8 +27,7 @@ git submodule add https://github.com/Wurielle/pristine.git
 
 Launch the setup:
 ```bash
-# install shelljs at least once before using the script
-node pristine/scripts/install PROJECT_TYPE
+npm install -g @vue/cli && node pristine/scripts/install PROJECT_TYPE
 ```
 
 Add to your `src/main.ts` file:

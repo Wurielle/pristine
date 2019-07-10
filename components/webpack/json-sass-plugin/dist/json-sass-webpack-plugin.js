@@ -5,71 +5,85 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
+
 
 
 
 
  * Exports a JavaScript module to a Sass Variable.
+
 
 
 
 
  * @name JsonSassPlugin
+
 
 
 
 
  * @param {string} srcFile
+
 
 
 
 
  * @param {string} outputFile
+
 
 
 
 
  * @example
+
 
 
 
 
  *  // webpack.config.js
+
 
 
 
 
  *  module.exports = {
+
 
 
 
 
  *      ...
+
 
 
 
 
  *      plugins: [
+
 
 
 
 
  *          ...
+
 
 
 
 
  *          new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
+
 
 
 
 
  *      ]
+
 
 
 
 
  *  }
+
 
 
 
@@ -105,7 +119,7 @@ var JsonSassPlugin = function () {
                 key: 'getSass',
                 value: function getSass(object) {
 
-                        return "$" + path.parse(this.src).name + ":" + jsonSass.convertJs(object) + ";";
+                        return "$" + path.parse(this.src).name.replace(/\./g, '_') + ":" + jsonSass.convertJs(object) + ";";
                 }
         }, {
                 key: 'tester',

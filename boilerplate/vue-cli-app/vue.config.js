@@ -29,7 +29,7 @@ module.exports = {
                 // 'DOMAIN_URL': JSON.stringify(argv.domain.trim()),
                 // ...
             }),
-            new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
+            new JsonSassPlugin('./config/tailwind.config.js', './config/tailwind.config.scss'),
         ]
     },
     pluginOptions: {

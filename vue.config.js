@@ -6,7 +6,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
 
 module.exports = {
-    baseUrl: '/',
+    publicPath: '/',
     configureWebpack: {
         resolve: {
             alias: {
@@ -19,7 +19,7 @@ module.exports = {
                 // 'API_AUTH_PASSWORD': JSON.stringify(argv.apiAuthPassword.trim()),
                 // 'SERVICE_URL': JSON.stringify(argv.domain.trim())
             }),
-            new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
+            new JsonSassPlugin('./config/tailwind.config.js', './config/tailwind.config.scss'),
         ]
     }
 };

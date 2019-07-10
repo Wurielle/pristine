@@ -1,4 +1,4 @@
-@import "~@config/theme.scss";
+@import "~@config/tailwind.config.scss";
 
 @function map-deep-get($map, $keys...) {
     @each $key in $keys {
@@ -8,7 +8,7 @@
 }
 
 @function _($keys...) {
-    $map: $theme;
+    $map: $tailwind_config;
     @each $key in $keys {
         $map: map-get($map, $key);
     }

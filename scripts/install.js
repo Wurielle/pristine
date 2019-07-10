@@ -2,15 +2,18 @@ const fs = require('fs');
 const cwd = process.cwd();
 const path = require('path');
 const child_process = require('child_process');
-child_process.execFileSync('npm.cmd', ['i', '-D', 'shelljs', 'npm-add-script']);
+child_process.execFileSync('npm.cmd', ['i', '-D', 'shelljs', 'npm-add-script'], {interactive: true});
 
 const project = process.argv[2];
 if (!project) {
     throw new Error("No project type specified.");
 }
 
+// install script dependencies locally and point to their path since regular imports won't work inside the process
 const shell = require(path.join(cwd, 'node_modules/shelljs'));
 const npmAddScript = require(path.join(cwd, 'node_modules/npm-add-script'));
+// const bitBin = path.join(cwd, 'node_modules/.bin/bit');
+// const vueBin = path.join(cwd, 'node_modules/.bin/vue');
 
 const pristinePath = path.resolve(__dirname,'../');
 

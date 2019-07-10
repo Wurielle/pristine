@@ -9,7 +9,7 @@
  *
  * @import "tailwindcss/preflight";
  */
-@tailwind preflight;
+@tailwind base;
 
 /**
  * This injects any component classes registered by plugins.
@@ -35,18 +35,18 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
-@import "base/_base";
-@import "base/_typography";
-@import "base/_grid";
-@import "base/_spacing";
-@import "base/_misc";
-@import "base/_links";
-@import "base/_buttons";
-@import "base/_inputs";
-@import "base/_lists";
-@import "base/_code";
-@import "base/_tables";
-@import "components/_card";
+//@import "base/_base";
+//@import "base/_typography";
+//@import "base/_grid";
+//@import "base/_spacing";
+//@import "base/_misc";
+//@import "base/_links";
+//@import "base/_buttons";
+//@import "base/_inputs";
+//@import "base/_lists";
+//@import "base/_code";
+//@import "base/_tables";
+//@import "components/_card";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
@@ -57,11 +57,11 @@
  * @import "tailwindcss/utilities";
  */
 @tailwind utilities;
-@import "utilities/_ratio";
-@import "utilities/_object-fit";
-@import "utilities/_transitions";
-@import "utilities/_animations";
-@import "utilities/tailwind-custom-utilities";
+//@import "utilities/_ratio";
+//@import "utilities/_object-fit";
+//@import "utilities/_transitions";
+//@import "utilities/_animations";
+//@import "utilities/tailwind-custom-utilities";
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

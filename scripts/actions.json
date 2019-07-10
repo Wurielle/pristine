@@ -11,8 +11,8 @@
       "src/styles": "src",
       "src/stories": "src",
       "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
-      "config/theme.js": "config/theme.js",
-      "config/theme.scss": "config/theme.scss",
+      "config/tailwind.config.js": "config/tailwind.config.js",
+      "config/tailwind.config.scss": "config/tailwind.config.scss",
       "src/styleguide.json": "src/styleguide.json"
     }
   },
@@ -25,8 +25,8 @@
       "src/styles": "src",
       "src/stories": "src",
       "src/styleguide.json": "src/styleguide.json",
-      "config/theme.js": "config/theme.js",
-      "config/theme.scss": "config/theme.scss"
+      "config/tailwind.config.js": "config/tailwind.config.js",
+      "config/tailwind.config.scss": "config/tailwind.config.scss"
     },
     "move": {
       "src/assets": "assets/app",
@@ -64,8 +64,8 @@
       "src/styles": "src",
       "src/stories": "src",
       "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
-      "config/theme.js": "config/theme.js",
-      "config/theme.scss": "config/theme.scss",
+      "config/tailwind.config.js": "config/tailwind.config.js",
+      "config/tailwind.config.scss": "config/tailwind.config.scss",
       "src/styleguide.json": "src/styleguide.json"
     },
     "remove": [
