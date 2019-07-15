@@ -25,6 +25,19 @@ module.exports = {
         config.plugins.delete('prefetch');
         config.plugins.delete('copy');
         config.plugins.delete('hmr');
+        config.module.rule('images')
+            .uses.clear()
+            .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
+            .use('file-loader')
+            .loader('file-loader')
+            .tap(options => {
+                return {
+                    ...options,
+                    name: `img/[name].[hash:8].[ext]`,
+                    limit: -1 // no limit
+                };
+            })
+            .end();
     },
     configureWebpack: {
         resolve: {
