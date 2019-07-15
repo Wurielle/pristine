@@ -1,115 +1,174 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
-module.exports = {
+const pristineConfig = require('./pristine.config');
+const negative = (scale) => {
+    return Object.keys(scale).filter(key => scale[key] !== '0').reduce((negativeScale, key) => ({ ...negativeScale,
+        [`-${key}`]: `-${scale[key]}`
+    }), {});
+};
+
+const tailwindConfig = {
     prefix: 'pr-',
     important: false,
     separator: ':',
     theme: {
         screens: {
             ...defaultTheme.screens,
+            ...pristineConfig.screens,
         },
         colors: {
             ...defaultTheme.colors,
+            ...pristineConfig.colors,
         },
         spacing: {
             ...defaultTheme.spacing,
+            ...pristineConfig.spacing,
         },
-        backgroundColor: theme => theme('colors'),
+        backgroundColor: {
+            ...defaultTheme.colors,
+            ...pristineConfig.colors,
+            ...pristineConfig.backgroundColor,
+        },
         backgroundPosition: {
             ...defaultTheme.backgroundPosition,
+            ...pristineConfig.backgroundPosition,
         },
         backgroundSize: {
             ...defaultTheme.backgroundSize,
+            ...pristineConfig.backgroundSize,
         },
-        borderColor: theme => ({
-            ...theme('colors'),
-            default: theme('colors.gray.300', 'currentColor'),
-        }),
+        borderColor: {
+            ...defaultTheme.colors,
+            default: defaultTheme.colors.gray['300'],
+            ...pristineConfig.colors,
+            ...pristineConfig.borderColor,
+        },
         borderRadius: {
             ...defaultTheme.borderRadius,
+            ...pristineConfig.borderRadius,
         },
         borderWidth: {
             ...defaultTheme.borderWidth,
+            ...pristineConfig.borderWidth,
         },
         boxShadow: {
             ...defaultTheme.boxShadow,
+            ...pristineConfig.boxShadow,
         },
-        container: {},
+        container: {
+            ...defaultTheme.container,
+            ...pristineConfig.container,
+        },
         cursor: {
             ...defaultTheme.cursor,
+            ...pristineConfig.cursor,
         },
         fill: {
             ...defaultTheme.fill,
+            ...pristineConfig.fill,
         },
         flex: {
             ...defaultTheme.flex,
+            ...pristineConfig.flex,
         },
         flexGrow: {
             ...defaultTheme.flexGrow,
+            ...pristineConfig.flexGrow,
         },
         flexShrink: {
             ...defaultTheme.flexShrink,
+            ...pristineConfig.flexShrink,
         },
         fontFamily: {
             ...defaultTheme.fontFamily,
+            ...pristineConfig.fontFamily,
         },
         fontSize: {
             ...defaultTheme.fontSize,
+            ...pristineConfig.fontSize,
         },
         fontWeight: {
             ...defaultTheme.fontWeight,
+            ...pristineConfig.fontWeight,
         },
-        height: theme => ({
+        height: {
             auto: 'auto',
-            ...theme('spacing'),
+            ...defaultTheme.spacing,
+            ...pristineConfig.spacing,
             full: '100%',
             screen: '100vh',
-        }),
+            ...pristineConfig.height,
+        },
         inset: {
             ...defaultTheme.inset,
+            ...pristineConfig.inset,
         },
         letterSpacing: {
             ...defaultTheme.letterSpacing,
+            ...pristineConfig.letterSpacing,
         },
         lineHeight: {
             ...defaultTheme.lineHeight,
+            ...pristineConfig.lineHeight,
         },
         listStyleType: {
             ...defaultTheme.listStyleType,
+            ...pristineConfig.listStyleType,
         },
-        margin: (theme, {negative}) => ({
+        margin: {
             auto: 'auto',
-            ...theme('spacing'),
-            ...negative(theme('spacing')),
-        }),
+            ...defaultTheme.spacing,
+            ...negative({...defaultTheme.spacing}),
+            ...pristineConfig.spacing,
+            ...negative({...pristineConfig.spacing}),
+            ...pristineConfig.margin,
+            ...negative({...pristineConfig.margin}),
+        },
         maxHeight: {
             ...defaultTheme.maxHeight,
+            ...pristineConfig.maxHeight,
         },
         maxWidth: {
             ...defaultTheme.maxWidth,
+            ...pristineConfig.maxWidth,
         },
         minHeight: {
             ...defaultTheme.minHeight,
+            ...pristineConfig.minHeight,
         },
         minWidth: {
             ...defaultTheme.minWidth,
+            ...pristineConfig.minWidth,
         },
         objectPosition: {
             ...defaultTheme.objectPosition,
+            ...pristineConfig.objectPosition,
         },
         opacity: {
             ...defaultTheme.opacity,
+            ...pristineConfig.opacity,
         },
         order: {
             ...defaultTheme.order,
+            ...pristineConfig.order,
         },
-        padding: theme => theme('spacing'),
+        padding: {
+            ...defaultTheme.spacing,
+            ...pristineConfig.spacing,
+            ...pristineConfig.padding,
+        },
         stroke: {
             current: 'currentColor',
+            ...pristineConfig.stroke,
         },
-        textColor: theme => theme('colors'),
-        width: theme => ({
+        textColor: {
+            ...defaultTheme.colors,
+            ...pristineConfig.colors,
+            ...pristineConfig.textColor,
+        },
+        width: {
             auto: 'auto',
-            ...theme('spacing'),
+            ...defaultTheme.spacing,
+            ...pristineConfig.spacing,
             '1/2': '50%',
             '1/3': '33.333333%',
             '2/3': '66.666667%',
@@ -138,9 +197,11 @@ module.exports = {
             '11/12': '91.666667%',
             full: '100%',
             screen: '100vw',
-        }),
+            ...pristineConfig.width,
+        },
         zIndex: {
             ...defaultTheme.zIndex,
+            ...pristineConfig.zIndex,
         },
     },
     variants: {
@@ -212,3 +273,5 @@ module.exports = {
     corePlugins: {},
     plugins: [],
 };
+
+module.exports = tailwindConfig;

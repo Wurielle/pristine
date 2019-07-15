@@ -1,7 +1,9 @@
 {
   "global": {
     "copy": {
-      
+      "config/pristine.config.js": "config/pristine.config.js",
+      "config/tailwind.config.js": "config/tailwind.config.js",
+      "config/tailwind.config.scss": "config/tailwind.config.scss"
     }
   },
   "vue-cli": {
@@ -11,8 +13,6 @@
       "src/styles": "src",
       "src/stories": "src",
       "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
-      "config/tailwind.config.js": "config/tailwind.config.js",
-      "config/tailwind.config.scss": "config/tailwind.config.scss",
       "src/styleguide.json": "src/styleguide.json"
     }
   },
@@ -24,9 +24,7 @@
       "postcss.config.js": "postcss.config.js",
       "src/styles": "src",
       "src/stories": "src",
-      "src/styleguide.json": "src/styleguide.json",
-      "config/tailwind.config.js": "config/tailwind.config.js",
-      "config/tailwind.config.scss": "config/tailwind.config.scss"
+      "src/styleguide.json": "src/styleguide.json"
     },
     "move": {
       "src/assets": "assets/app",
@@ -64,8 +62,6 @@
       "src/styles": "src",
       "src/stories": "src",
       "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
-      "config/tailwind.config.js": "config/tailwind.config.js",
-      "config/tailwind.config.scss": "config/tailwind.config.scss",
       "src/styleguide.json": "src/styleguide.json"
     },
     "remove": [
