@@ -25,8 +25,10 @@ module.exports = {
         config.plugins.delete('prefetch');
         config.plugins.delete('copy');
         config.plugins.delete('hmr');
-        config.module.rule('images')
-            .uses.clear()
+        const imagesRule = config.module.rule('images');
+        imagesRule.uses.clear();
+        imagesRule
+        // you can set whatever you want or remove this line completely
             .test(/\.(png|jpe?g|gif|webp)(\?.*)?$/)
             .use('file-loader')
             .loader('file-loader')
