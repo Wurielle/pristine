@@ -13,13 +13,29 @@ module.exports = {
                     transpileOnly: true,
                     appendTsSuffixTo: ['\\.vue$']
                 }
-            }
+            },
+            {
+                test: /\.twig$/,
+                oneOf: [
+                    {
+                        resourceQuery: /raw/,
+                        loader: 'raw-loader',
+                    },
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                        },
+                    },
+                ],
+            },
         ]
     },
     resolve: {
         alias: {
             '@config':  path.resolve(__dirname, '../../config'),
             '@':  path.resolve(__dirname, '../../assets/app'),
+            '@root':  path.resolve(__dirname, '../../'),
         },
         extensions: ['.tsx', '.ts', '.js', '.vue']
     },

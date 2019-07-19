@@ -44,7 +44,9 @@
     "dev": [
       "webpack-manifest-plugin",
       "browser-sync",
-      "browser-sync-webpack-plugin"
+      "browser-sync-webpack-plugin",
+      "twig",
+      "raw-loader"
     ],
     "runtime": [
 
