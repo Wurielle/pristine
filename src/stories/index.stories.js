@@ -52,8 +52,6 @@ storiesOf('DSS Styleguide', module)
 //             }
 //         },
 //         async mounted() {
-//             /* require enables HMR */
-//             // require('@root/templates/front/atoms/heading.html.twig?raw').default;
 //             this.html = await renderTwig(require('@root/templates/front/atoms/heading.html.twig'), {
 //                 heading_content: 'Hello World',
 //             });
