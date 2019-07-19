@@ -19,7 +19,7 @@ module.exports = {
                 // 'API_AUTH_PASSWORD': JSON.stringify(argv.apiAuthPassword.trim()),
                 // 'SERVICE_URL': JSON.stringify(argv.domain.trim())
             }),
-            new JsonSassPlugin('./config/tailwind.config.js', './config/tailwind.config.scss'),
+            new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
         ]
     }
 };

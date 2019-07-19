@@ -3,7 +3,7 @@
     "copy": {
       "config/pristine.config.js": "config/pristine.config.js",
       "config/tailwind.config.js": "config/tailwind.config.js",
-      "config/tailwind.config.scss": "config/tailwind.config.scss"
+      "config/pristine.config.scss": "config/pristine.config.scss"
     }
   },
   "vue-cli": {

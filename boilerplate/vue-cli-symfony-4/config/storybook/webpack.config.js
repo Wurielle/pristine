@@ -45,6 +45,6 @@ module.exports = {
             output: './assets/app/styleguide.json',
             watch: './assets/app'
         }),
-        new JsonSassPlugin('./config/tailwind.config.js', './config/tailwind.config.scss'),
+        new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
     ]
 };

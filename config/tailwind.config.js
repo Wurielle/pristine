@@ -11,7 +11,6 @@ const tailwindConfig = {
     important: false,
     separator: ':',
     theme: {
-        pristine: pristineConfig,
         screens: {
             ...defaultTheme.screens,
             ...pristineConfig.screens,

@@ -57,7 +57,7 @@ module.exports = {
                 // 'DOMAIN_URL': JSON.stringify(argv.domain.trim()),
                 // ...
             }),
-            new JsonSassPlugin('./config/tailwind.config.js', './config/tailwind.config.scss'),
+            new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
             new ManifestPlugin({ fileName: 'manifest.json' }),
             new BrowserSyncPlugin(
                 {
