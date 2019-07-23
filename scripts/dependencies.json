@@ -13,7 +13,8 @@
       "lodash",
       "@types/lodash",
       "axios",
-      "uuid"
+      "uuid",
+      "lorem-ipsum"
     ],
     "runtime": [
       
