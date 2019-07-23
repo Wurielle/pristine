@@ -14,7 +14,9 @@
       "@types/lodash",
       "axios",
       "uuid",
-      "lorem-ipsum"
+      "lorem-ipsum",
+      "@storybook/addon-a11y",
+      "@storybook/addon-viewport"
     ],
     "runtime": [
       
