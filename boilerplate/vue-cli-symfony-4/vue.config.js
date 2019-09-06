@@ -17,7 +17,6 @@ module.exports = {
             .entry('app')
             .clear()
             .add('animate.css/animate.min.css')
-            .add('ionicons/dist/css/ionicons.min.css')
             .add(path.resolve(__dirname, 'assets/app/main.ts'))
         ;
         config.plugins.delete('html');

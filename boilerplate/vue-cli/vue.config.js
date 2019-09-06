@@ -12,7 +12,6 @@ module.exports = {
         config
             .entry('app')
             .add('animate.css/animate.min.css')
-            .add('ionicons/dist/css/ionicons.min.css')
         ;
     },
     configureWebpack: {

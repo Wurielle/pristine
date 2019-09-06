@@ -6,7 +6,7 @@ import './plugins/element.js';
 import './element-variables.scss';
 
 // import '@config/theme.js';
-import '@/styles/main.scss';
+import '@/pristine';
 
 let styleguide;
 if (process.env.NODE_ENV === 'development') {

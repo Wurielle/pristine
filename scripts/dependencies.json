@@ -3,6 +3,8 @@
     "dev": [
       "animate.css",
       "ionicons",
+      "fontisto",
+      "feather-icons",
       "tailwindcss",
       "minimist",
       "dotenv",
