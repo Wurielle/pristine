@@ -6,7 +6,7 @@ const pristineConfig = {
         xl: '1200px',
         '2xl': '1400px',
     },
-    gutter: {
+    gutters: {
         base: '15px',
     },
     colors: {},
