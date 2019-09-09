@@ -10,6 +10,8 @@
                 margin-bottom: $value;
             }
         }
+    }
+    @each $key, $value in _(gutters) {
         &.row-gutter-#{$key} {
             margin-left: -$value;
             margin-right: -$value;
@@ -30,6 +32,8 @@
                         margin-bottom: $value;
                     }
                 }
+            }
+            @each $key, $value in _(gutters) {
                 &.#{$key}\:row-gutter-#{$key} {
                     margin-left: -$value;
                     margin-right: -$value;
