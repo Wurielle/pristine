@@ -16,6 +16,6 @@ module.exports = {
             output: './src/styleguide.json',
             watch: './src'
         }),
-        new JsonSassPlugin('./config/theme.js', './config/theme.scss'),
+        new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
     ]
 };

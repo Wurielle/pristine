@@ -18,7 +18,8 @@
       "uuid",
       "lorem-ipsum",
       "@storybook/addon-a11y",
-      "@storybook/addon-viewport"
+      "@storybook/addon-viewport",
+      "bootstrap"
     ],
     "runtime": [
       

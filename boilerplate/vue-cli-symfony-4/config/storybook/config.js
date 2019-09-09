@@ -3,7 +3,7 @@ import { configure, addDecorator } from '@storybook/vue';
 import { withA11y } from '@storybook/addon-a11y';
 addDecorator(withA11y);
 
-const req = require.context('../../assets/app/stories', true, /.stories.js$/);
+const req = require.context('../../templates', true, /.stories.js$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));

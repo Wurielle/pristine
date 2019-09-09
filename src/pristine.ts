@@ -2,15 +2,18 @@
 import '@/polyfills/WeakMap';
 import '@/polyfills/MutationObserver';
 
+/* Import Pristine Config (for HRM)  */
+import '@config/pristine.config.js';
+
 /* Choose an icon library */
 
-/* Ionicons */
+/** Ionicons */
 // import 'ionicons/dist/css/ionicons.min.css';
 
-/* Fontisto */
+/** Fontisto */
 // import 'fontisto';
 
-/* Feather */
+/** Feather */
 // let feather: any;
 // import 'feather-icons';
 // import Ready from '@/utils/ready';
@@ -20,6 +23,7 @@ import '@/polyfills/MutationObserver';
 //     });
 // })();
 
-/* ---- */
-
+/* Import Styles */
 import '@/styles/main.scss';
+
+/* Import Assets */
