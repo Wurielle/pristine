@@ -7,15 +7,15 @@ import '@config/pristine.config.js';
 
 /* Choose an icon library */
 
-/** Ionicons */
+/** Ionicons: https://ionicons.com/ */
 // import 'ionicons/dist/css/ionicons.min.css';
 
-/** Fontisto */
+/** Fontisto: https://www.fontisto.com/icons */
 // import 'fontisto';
 
-/** Feather */
-// let feather: any;
-// import 'feather-icons';
+/** Feather: https://feathericons.com/ */
+// @ts-ignore
+// import feather from 'feather-icons';
 // import Ready from '@/utils/ready';
 // (() => {
 //     Ready.watch('[data-feather]', () => {

@@ -5,14 +5,16 @@
     @each $key, $value in _(spacing) {
         &.row-vs-#{$key} {
             margin-bottom: -$value;
-            & > .col {
+            & > .col,
+            & > [class^="col"] {
                 margin-bottom: $value;
             }
         }
         &.row-gutter-#{$key} {
             margin-left: -$value;
             margin-right: -$value;
-            & > .col {
+            & > .col,
+            & > [class^="col"] {
                 padding-left: $value;
                 padding-right: $value;
             }
@@ -23,14 +25,16 @@
             @each $key, $value in _(spacing) {
                 &.#{$key}\:row-vs-#{$key} {
                     margin-bottom: -$value;
-                    & > .col {
+                    & > .col,
+                    & > [class^="col"] {
                         margin-bottom: $value;
                     }
                 }
                 &.#{$key}\:row-gutter-#{$key} {
                     margin-left: -$value;
                     margin-right: -$value;
-                    & > .col {
+                    & > .col,
+                    & > [class^="col"] {
                         padding-left: $value;
                         padding-right: $value;
                     }
