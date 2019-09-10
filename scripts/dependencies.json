@@ -5,6 +5,7 @@
       "ionicons",
       "fontisto",
       "feather-icons",
+      "@iconscout/unicons",
       "tailwindcss",
       "minimist",
       "dotenv",
