@@ -4,7 +4,7 @@
   "homepage": "https://bitsrc.io/wurielle/pristine/vue-components/dss-styleguide",
   "main": "dist/Styleguide.vue",
   "dependencies": {
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "vue-notification": "^1.3.13",
     "vue-property-decorator": "^7.0.0",
     "codemirror": "5.40.2",
