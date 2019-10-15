@@ -1,33 +1,14 @@
 const fs = require('fs');
-const cwd = process.cwd();
 const path = require('path');
-const child_process = require('child_process');
-child_process.execFileSync('npm.cmd', ['i', '-D', 'shelljs', 'npm-add-script'], {interactive: true});
 
 const project = process.argv[2];
 if (!project) {
     throw new Error("No project type specified.");
 }
 
-// install script dependencies locally and point to their path since regular imports won't work inside the process
-const shell = require(path.join(cwd, 'node_modules/shelljs'));
-const npmAddScript = require(path.join(cwd, 'node_modules/npm-add-script'));
-// const bitBin = path.join(cwd, 'node_modules/.bin/bit');
-// const vueBin = path.join(cwd, 'node_modules/.bin/vue');
-
-const pristinePath = path.resolve(__dirname,'../');
-
-const dependencies = require('./dependencies.json');
-const actions = require('./actions.json');
-
-const { execFileSync, echo, cd, copy, move, rm } = require('./pristine-script');
-
-const state = {
-    __dirname,
-    pristinePath,
-    cwd,
-    cwdParsed: path.parse(cwd)
-};
+const { pristinePath, dependencies, actions, cwd, cwdParsed } = require('./utils/process');
+const { shell, npmAddScript, vueBin, bitBin } = require('./utils/modules');
+const { execFileSync, echo, cd, copy, move, rm } = require('./utils/commands');
 
 const requiredCommands = [
     'git',
@@ -41,13 +22,13 @@ requiredCommands.forEach((command) => {
     }
 });
 
-class SetupScript {
+class Install {
     constructor(exit = true) {
         // Update Pristine ---------------------------------------------------------------------------------------------
         echo('Updating Pristine');
-        cd(state.pristinePath);
+        cd(pristinePath);
         execFileSync('git', ['pull']);
-        cd(state.cwd);
+        cd(cwd);
         // -------------------------------------------------------------------------------------------------------------
 
         // Installing Global Dependencies ------------------------------------------------------------------------------
@@ -59,9 +40,9 @@ class SetupScript {
 
         // Creating a Vue CLI Project ----------------------------------------------------------------------------------
         echo('Creating a Vue CLI Project');
-        cd(path.resolve(state.cwd, '../'));
-        execFileSync('vue', ['create', state.cwdParsed.name], {interactive: true});
-        cd(state.cwd);
+        cd(path.resolve(cwd, '../'));
+        execFileSync('node', [vueBin, 'create', cwdParsed.name], {interactive: true, autoSuffix: false});
+        cd(cwd);
         // -------------------------------------------------------------------------------------------------------------
 
         // Adding Vue CLI Plugins --------------------------------------------------------------------------------------
@@ -86,7 +67,7 @@ class SetupScript {
             }
         }
         vueCliPlugins.forEach(plugin => {
-            execFileSync('vue', ['add', plugin], {interactive: true});
+            execFileSync('node', [vueBin, 'add', plugin], {interactive: true, autoSuffix: false});
         });
         // -------------------------------------------------------------------------------------------------------------
 
@@ -142,9 +123,9 @@ class SetupScript {
             }
             if (runtimeDependencies.length) execFileSync('npm', ['i', ...runtimeDependencies]);
             if (devDependencies.length) execFileSync('npm', ['i', '-D', ...devDependencies]);
-            execFileSync('bit', ['init']);
+            execFileSync('node', [bitBin, 'init'], {interactive: true, autoSuffix: false});
             bitDependencies.forEach((dep) => {
-                execFileSync('bit', ['import', dep]);
+                execFileSync('node', [bitBin, 'import', dep], {interactive: true, autoSuffix: false});
             });
         }
         // -------------------------------------------------------------------------------------------------------------
@@ -153,24 +134,24 @@ class SetupScript {
         echo('Copying Necessary Files');
         if (actions['global']) {
             if (actions['global'].copy) {
-                copy(actions['global'].copy, state.pristinePath, state.cwd);
+                copy(actions['global'].copy, pristinePath, cwd);
             }
             if (actions['global'].move) {
-                move(actions['global'].move, state.cwd, state.cwd);
+                move(actions['global'].move, cwd, cwd);
             }
             if (actions['global'].remove) {
-                rm(actions['global'].remove, state.cwd);
+                rm(actions['global'].remove, cwd);
             }
         }
         if (actions[project]) {
             if (actions[project].copy) {
-                copy(actions[project].copy, state.pristinePath, state.cwd);
+                copy(actions[project].copy, pristinePath, cwd);
             }
             if (actions[project].move) {
-                move(actions[project].move, state.cwd, state.cwd);
+                move(actions[project].move, cwd, cwd);
             }
             if (actions[project].remove) {
-                rm(actions[project].remove, state.cwd);
+                rm(actions[project].remove, cwd);
             }
         }
         // -------------------------------------------------------------------------------------------------------------
@@ -202,7 +183,7 @@ class SetupScript {
 
 if (require.main === module) {
     // Called from CLI
-    new SetupScript();
+    new Install();
 } else {
     // Called from require()
 }

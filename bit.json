@@ -1,11 +1,5 @@
 {
     "env": {},
-    "dependencies": {
-        "wurielle.pristine/vue-components/dss-styleguide": "0.0.10",
-        "wurielle.pristine/webpack/json-sass-plugin": "0.0.10",
-        "wurielle.pristine/webpack/dss-plugin": "0.0.12",
-        "wurielle.pristine/vue-components/page-gallery": "0.0.1"
-    },
     "componentsDefaultDirectory": "components/{namespace}/{name}",
     "packageManager": "npm"
 }

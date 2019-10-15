@@ -1,9 +1,8 @@
 const fs = require('fs');
-const cwd = process.cwd();
 const path = require('path');
 const child_process = require('child_process');
 
-const shell = require(path.join(cwd, 'node_modules/shelljs'));
+const {shell} = require('./modules');
 
 const isFile = (string) => {
     const re = /(?:\.([^.]+))?$/;
@@ -19,12 +18,13 @@ const execFileSync = (file, args, options = {}) => {
         interactive: false,
         cpOptions: {stdio: 'inherit'},
         shellOptions: {},
+        autoSuffix: true,
         ...options,
     };
     let command = file + ' ' + args.join(' ');
     shell.echo('💠 Executing: ' + command);
     if (options.interactive) {
-        if (process.platform === "win32") {
+        if (process.platform === "win32" && options.autoSuffix) {
             file += '.cmd';
         }
         child_process.execFileSync(file, args, options.cpOptions);
