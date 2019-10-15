@@ -24,29 +24,42 @@ requiredCommands.forEach((command) => {
 
 class Install {
     constructor(exit = true) {
-        // Update Pristine ---------------------------------------------------------------------------------------------
+        this.updatePristine();
+        this.installGlobalDependencies();
+        this.createVueCLIProject();
+        this.installVueCLIPlugins();
+        this.installDependencies();
+        this.executeActions();
+        this.addPackageScripts();
+        echo('All Done 🎉🎉🎉');
+        if (exit) {
+            shell.exit(1);
+        }
+    }
+
+    updatePristine() {
         echo('Updating Pristine');
         cd(pristinePath);
         execFileSync('git', ['pull']);
-        cd(cwd);
-        // -------------------------------------------------------------------------------------------------------------
+    }
 
-        // Installing Global Dependencies ------------------------------------------------------------------------------
+    installGlobalDependencies() {
         echo('Installing Global Dependencies');
+        cd(cwd);
         execFileSync('npm', ['config', 'set \'@bit:registry\' https://node.bit.dev']);
         execFileSync('npm', ['i', '-g', '@vue/cli']);
         execFileSync('npm', ['i', '-g', 'bit-bin']);
-        // -------------------------------------------------------------------------------------------------------------
+    }
 
-        // Creating a Vue CLI Project ----------------------------------------------------------------------------------
+    createVueCLIProject() {
         echo('Creating a Vue CLI Project');
         cd(path.resolve(cwd, '../'));
         execFileSync('node', [vueBin, 'create', cwdParsed.name], {interactive: true, autoSuffix: false});
-        cd(cwd);
-        // -------------------------------------------------------------------------------------------------------------
+    }
 
-        // Adding Vue CLI Plugins --------------------------------------------------------------------------------------
+    installVueCLIPlugins() {
         echo('Adding Vue CLI Plugins');
+        cd(cwd);
         let vueCliPlugins = [];
         if (dependencies['global']) {
             const vueCliPluginsGlobal = dependencies['global']['vue-cli-plugins'];
@@ -69,10 +82,11 @@ class Install {
         vueCliPlugins.forEach(plugin => {
             execFileSync('node', [vueBin, 'add', plugin], {interactive: true, autoSuffix: false});
         });
-        // -------------------------------------------------------------------------------------------------------------
+    }
 
-        // Adding Dependencies -----------------------------------------------------------------------------------------
+    installDependencies() {
         echo('Adding Dependencies');
+        cd(cwd);
         let runtimeDependencies = [];
         let devDependencies = [];
         let bitDependencies = [];
@@ -128,10 +142,11 @@ class Install {
                 execFileSync('node', [bitBin, 'import', dep], {interactive: true, autoSuffix: false});
             });
         }
-        // -------------------------------------------------------------------------------------------------------------
+    }
 
-        // Executing Actions -------------------------------------------------------------------------------------------
+    executeActions() {
         echo('Copying Necessary Files');
+        cd(cwd);
         if (actions['global']) {
             if (actions['global'].copy) {
                 copy(actions['global'].copy, pristinePath, cwd);
@@ -154,10 +169,11 @@ class Install {
                 rm(actions[project].remove, cwd);
             }
         }
-        // -------------------------------------------------------------------------------------------------------------
+    }
 
-        // Adding Scripts ----------------------------------------------------------------------------------------------
+    addPackageScripts() {
         echo('Adding Scripts');
+        cd(cwd);
         if (actions['global']) {
             if (actions['global'].scripts) {
                 Object.keys(actions['global'].scripts).forEach((key) => {
@@ -171,12 +187,6 @@ class Install {
                     npmAddScript({key , value: actions[project].scripts[key], force: true});
                 });
             }
-        }
-        // -------------------------------------------------------------------------------------------------------------
-
-        echo('All Done 🎉🎉🎉');
-        if (exit) {
-            shell.exit(1);
         }
     }
 }
