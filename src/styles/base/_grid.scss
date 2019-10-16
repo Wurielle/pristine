@@ -25,7 +25,7 @@
     @each $screenSize, $screenValue in _(screens) {
         @media (min-width: $screenValue) {
             @each $key, $value in _(spacing) {
-                &.#{$key}\:row-vs-#{$key} {
+                &.#{$screenSize}\:row-vs-#{$key} {
                     margin-bottom: -$value;
                     & > .col,
                     & > [class^="col"] {
@@ -34,7 +34,7 @@
                 }
             }
             @each $key, $value in _(gutters) {
-                &.#{$key}\:row-gutter-#{$key} {
+                &.#{$screenSize}\:row-gutter-#{$key} {
                     margin-left: -$value;
                     margin-right: -$value;
                     & > .col,

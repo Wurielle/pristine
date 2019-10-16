@@ -21,16 +21,17 @@
   },
   "vue-cli-symfony-4": {
     "copy": {
-      "boilerplate/vue-cli-symfony-4/vue.config.js": "vue.config.js",
-      "boilerplate/vue-cli-symfony-4/tsconfig.json": "tsconfig.json",
-      "boilerplate/vue-cli-symfony-4/config": "./",
       "postcss.config.js": "postcss.config.js",
       "src/pristine.ts": "assets/app/pristine.ts",
       "src/polyfills": "assets/app",
       "src/utils": "assets/app",
       "src/styles": "src/styles",
       "src/stories": "src/stories",
-      "src/styleguide.json": "src/styleguide.json"
+      "src/styleguide.json": "src/styleguide.json",
+      "boilerplate/vue-cli-symfony-4/vue.config.js": "vue.config.js",
+      "boilerplate/vue-cli-symfony-4/tsconfig.json": "tsconfig.json",
+      "boilerplate/vue-cli-symfony-4/config": "./",
+      "boilerplate/vue-cli-symfony-4/assets/app/utils/twig.ts": "assets/app/utils/twig.ts"
     },
     "move": {
       "src/assets": "assets/app",
