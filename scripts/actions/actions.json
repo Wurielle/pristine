@@ -11,10 +11,10 @@
       "boilerplate/vue-cli/vue.config.js": "vue.config.js",
       "postcss.config.js": "postcss.config.js",
       "src/pristine.ts": "src/pristine.ts",
-      "src/polyfills": "src",
-      "src/utils": "src",
-      "src/styles": "src",
-      "src/stories": "src",
+      "src/polyfills": "src/polyfills",
+      "src/utils": "src/utils",
+      "src/styles": "src/styles",
+      "src/stories": "src/stories",
       "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
       "src/styleguide.json": "src/styleguide.json"
     }
@@ -28,8 +28,8 @@
       "src/pristine.ts": "assets/app/pristine.ts",
       "src/polyfills": "assets/app",
       "src/utils": "assets/app",
-      "src/styles": "src",
-      "src/stories": "src",
+      "src/styles": "src/styles",
+      "src/stories": "src/stories",
       "src/styleguide.json": "src/styleguide.json"
     },
     "move": {
@@ -52,7 +52,10 @@
     "remove": [
       "public/index.html",
       "public/favicon.ico"
-    ]
+    ],
+    "scripts": {
+      "serve": "vue-cli-service build-watch --mode development"
+    }
   },
   "vue-cli-app": {
     "copy": {
@@ -66,10 +69,10 @@
       "boilerplate/vue-cli-app/src/.electron/store/windows.store.ts": "src/.electron/store/windows.store.ts",
       "postcss.config.js": "postcss.config.js",
       "src/pristine.ts": "src/pristine.ts",
-      "src/polyfills": "src",
-      "src/utils": "src",
-      "src/styles": "src",
-      "src/stories": "src",
+      "src/polyfills": "src/polyfills",
+      "src/utils": "src/utils",
+      "src/styles": "src/styles",
+      "src/stories": "src/stories",
       "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
       "src/styleguide.json": "src/styleguide.json"
     },

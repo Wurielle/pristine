@@ -1,6 +1,7 @@
 /* Add polyfills from the polyfills folder (order matters) */
 import '@/polyfills/WeakMap';
 import '@/polyfills/MutationObserver';
+import '@/polyfills/ObjectFit';
 
 /* Import Pristine Config (for HRM)  */
 import '@config/pristine.config.js';

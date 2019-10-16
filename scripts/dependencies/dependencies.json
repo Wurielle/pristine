@@ -20,7 +20,8 @@
       "lorem-ipsum",
       "@storybook/addon-a11y",
       "@storybook/addon-viewport",
-      "bootstrap"
+      "bootstrap",
+      "objectFitPolyfill"
     ],
     "runtime": [
       

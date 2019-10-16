@@ -2,7 +2,7 @@ const child_process = require('child_process');
 const cwd = process.cwd();
 const path = require('path');
 
-// install script dependencies locally and point to their path since regular imports won't work at runtime
+// install script dependencies locally and point to their path since regular requires won't work at runtime
 child_process.execFileSync('npm.cmd', ['i', '-D', 'shelljs', 'npm-add-script', 'global-modules'], {interactive: true});
 
 const globalModules = require(path.join(cwd, 'node_modules/global-modules'));
