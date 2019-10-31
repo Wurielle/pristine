@@ -1,20 +1,6 @@
 @import "~@/styles/functions/all.scss";
 @import "~@/styles/mixins/all.scss";
-//// Ratio -----------------------------------------------------------------------------------------------------------
-/**
- * _@name Ratios
- * _@section Utilities > Ratios
- * _@description Ratios for various purposes.
- * _@state .pr-ratio-16/9 - 16/9 ratio
- * _@state .pr-ratio-4/3 - 4/3 ratio
- * _@state .pr-ratio-3/2 - 3/2 ratio
- * _@state .pr-ratio-2/1 - 2/1 ratio
- * _@state .pr-ratio-1/1 - 1/1 ratio
- * _@markup
- *<div class="pr-ratio-16/9">
- *  <video class="pr-absolute pr-pin-t pr-pin-l pr-h-full pr-w-full" autoplay muted src="http://html5doctor.com/demos/video-canvas-magic/video.mp4"></video>
- *</div>
- */
+
 @responsive {
   .pr-ratio-16\/9 {
     position: relative;

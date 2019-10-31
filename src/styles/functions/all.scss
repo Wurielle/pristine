@@ -7,7 +7,7 @@
     @return $map;
 }
 
-@function _($keys...) {
+@function theme($keys...) {
     $map: $pristine_config;
     @each $key in $keys {
         $map: map-get($map, $key);

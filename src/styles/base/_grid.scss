@@ -1,5 +1,14 @@
 @import "~@/styles/functions/all.scss";
 @import "~@/styles/mixins/all.scss";
+@import '~bootstrap/dist/css/bootstrap-grid.min.css';
+
+.container {
+    @each $screenSize, $screenValue in _(screens) {
+        @media (min-width: $screenValue) {
+            max-width: $screenValue;
+        }
+    }
+}
 
 .row {
     @each $key, $value in _(spacing) {
@@ -44,14 +53,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-.container {
-    @each $screenSize, $screenValue in _(screens) {
-        @media (min-width: $screenValue) {
-            max-width: $screenValue;
         }
     }
 }

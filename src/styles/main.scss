@@ -2,7 +2,8 @@
 
 @tailwind components;
 
-@import '~bootstrap/dist/css/bootstrap-grid.min.css';
+@import "~@/styles/base/_base";
 @import "~@/styles/base/_grid";
+@import "~@/styles/base/_typography";
 
 @tailwind utilities;

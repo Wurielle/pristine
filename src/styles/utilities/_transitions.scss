@@ -1,24 +1,5 @@
 @import "~@/styles/functions/all.scss";
 
-//// Transitions -----------------------------------------------------------------------------------------------------------
-/**
- * _@name Transitions
- * _@section Utilities > Transitions
- * _@description Transitions for various purposes.
- * _@state .pr-transition-1 - a simple transition
- * _@state .pr-transition-2 - a simple fastest transition
- * _@state .pr-transition-3 - a simple smoothy transition
- * _@state .pr-transition-elastic - an elastic transition with easeInOut
- * _@markup
- *<div class="container-fluid">
- *  <div class="pr-flex row">
- *      <div class="col pr-w-1/4 pr-transition-1 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center">Transition 1</div>
- *      <div class="col pr-w-1/4 pr-transition-2 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center">Transition 2</div>
- *      <div class="col pr-w-1/4 pr-transition-3 | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-primary pr-text-center pr-flex pr-justify-center pr-items-center">Transition 3</div>
- *      <div class="col pr-w-1/4 pr-transition-elastic | hover:pr-h-32  | pr-text-white pr-h-16 pr-bg-secondary pr-text-center pr-flex pr-justify-center pr-items-center">Transition Elastic</div>
- *  </div>
- *</div>
- */
 @responsive {
   .pr-transition-1 {
     transition: all .2s cubic-bezier(.175, .885, .32, 1.275);

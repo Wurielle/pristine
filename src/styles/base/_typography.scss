@@ -1,52 +1,14 @@
-//// Typography ------------------------------------------------------------------
-/**
- * @name Headers
- * @section Base > Headers
- * @description Headers for various purposes.
- * @state .header - a normal button
- * @state .header--primary - a primary button
- * @state .header--secondary - a secondary button
- * @state .header--tertiary - a tertiary button
- * @markup
- *<div class="pr-flex pr-justify-around">
- *    <div class="pr-text-center">
- *        <h1 class="pr-mb-base">Header h1 </h1>
- *        <h2 class="pr-mb-base">Header h2 </h2>
- *        <h3 class="pr-mb-base">Header h3 </h3>
- *        <h4 class="pr-mb-base">Header h4 </h4>
- *        <h5 class="pr-mb-base">Header h5 </h5>
- *        <h6 class="pr-mb-base">Header h6 </h6>
- *    </div>
- *    <div class="pr-text-center">
- *        <h1 class="pr-mb-base header--primary">Header Primary</h1>
- *        <h2 class="pr-mb-base header--secondary">Header Secondary</h2>
- *        <h3 class="pr-mb-base header--tertiary">Header Tertiary</h3>
- *    </div>
- *</div>
- */
+@import "~@/styles/functions/all.scss";
+@import "~@/styles/mixins/all.scss";
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-.header {
-    // Font
-    @apply pr-text-base pr-font-bold pr-text-base-text-color;
-}
+.heading {
 
-// No more than tertiary
-// After that use more specific names (e.g: caption-header)
-.header--primary {
-    @apply pr-text-5xl;
-}
-
-.header--secondary {
-    @apply pr-text-4xl;
-}
-
-.header--tertiary {
-    @apply pr-text-3xl;
 }
 
 
