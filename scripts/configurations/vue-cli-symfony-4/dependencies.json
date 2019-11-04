@@ -1,0 +1,12 @@
+{
+  "dependencies": [],
+  "devDependencies": [
+    "webpack-manifest-plugin",
+    "browser-sync",
+    "browser-sync-webpack-plugin",
+    "twig",
+    "raw-loader"
+  ],
+  "bit": [],
+  "vue-cli-plugins": []
+}

@@ -1,0 +1,34 @@
+{
+  "dependencies": [],
+  "devDependencies": [
+    "animate.css",
+    "ionicons",
+    "fontisto",
+    "feather-icons",
+    "@iconscout/unicons",
+    "tailwindcss",
+    "minimist",
+    "dotenv",
+    "loglevel",
+    "postcss-pxtorem",
+    "css-element-queries",
+    "vue-responsive-components",
+    "lodash",
+    "@types/lodash",
+    "axios",
+    "uuid",
+    "lorem-ipsum",
+    "@storybook/addon-a11y",
+    "@storybook/addon-viewport",
+    "bootstrap",
+    "objectFitPolyfill"
+  ],
+  "bit": [
+    "wurielle.pristine/webpack/json-sass-plugin"
+  ],
+  "vue-cli-plugins": [
+    "vue-cli-plugin-build-watch",
+    "element",
+    "storybook"
+  ]
+}

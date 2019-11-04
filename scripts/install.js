@@ -6,10 +6,13 @@ if (!project) {
     throw new Error("No project type specified.");
 }
 
-const { pristinePath, dependencies, actions, cwd, cwdParsed } = require('./utils/process');
+const { pristinePath, cwd, cwdParsed, getJSONSync } = require('./utils/process');
 const { shell, npmAddScript, vueBin, bitBin } = require('./utils/modules');
 const { execFileSync, echo, cd, copy, move, rm } = require('./utils/commands');
-
+const commonDependencies = getJSONSync('./configurations/' + 'all' + '/dependencies.json');
+const commonActions = getJSONSync('./configurations/' + 'all' + '/actions.json');
+const projectDependencies = getJSONSync('./configurations/' + project + '/dependencies.json');
+const projectActions = getJSONSync('./configurations/' + project + '/actions.json');
 const requiredCommands = [
     'git',
     'npm',
@@ -61,8 +64,8 @@ class Install {
         echo('Adding Vue CLI Plugins');
         cd(cwd);
         let vueCliPlugins = [];
-        if (dependencies['global']) {
-            const vueCliPluginsGlobal = dependencies['global']['vue-cli-plugins'];
+        if (commonDependencies) {
+            const vueCliPluginsGlobal = commonDependencies['vue-cli-plugins'];
             if (typeof vueCliPluginsGlobal === 'object' && Array.isArray(vueCliPluginsGlobal)) {
                 vueCliPlugins = [
                     ...vueCliPlugins,
@@ -70,8 +73,8 @@ class Install {
                 ]
             }
         }
-        if (dependencies[project]) {
-            const vueCliPluginsProject = dependencies[project]['vue-cli-plugins'];
+        if (projectDependencies) {
+            const vueCliPluginsProject = projectDependencies['vue-cli-plugins'];
             if (typeof vueCliPluginsProject === 'object' && Array.isArray(vueCliPluginsProject)) {
                 vueCliPlugins = [
                     ...vueCliPlugins,
@@ -90,22 +93,22 @@ class Install {
         let runtimeDependencies = [];
         let devDependencies = [];
         let bitDependencies = [];
-        if (dependencies['global']) {
-            const runtimeDependenciesGlobal = dependencies['global']['runtime'];
+        if (commonDependencies) {
+            const runtimeDependenciesGlobal = commonDependencies['dependencies'];
             if (typeof runtimeDependenciesGlobal === 'object' && Array.isArray(runtimeDependenciesGlobal)) {
                 runtimeDependencies = [
                     ...runtimeDependencies,
                     ...runtimeDependenciesGlobal
                 ]
             }
-            const devDependenciesGlobal = dependencies['global']['dev'];
+            const devDependenciesGlobal = commonDependencies['devDependencies'];
             if (typeof devDependenciesGlobal === 'object' && Array.isArray(devDependenciesGlobal)) {
                 devDependencies = [
                     ...devDependencies,
                     ...devDependenciesGlobal
                 ]
             }
-            const bitDependenciesGlobal = dependencies['global']['bit'];
+            const bitDependenciesGlobal = commonDependencies['bit'];
             if (typeof bitDependenciesGlobal === 'object' && Array.isArray(bitDependenciesGlobal)) {
                 bitDependencies = [
                     ...bitDependencies,
@@ -113,22 +116,22 @@ class Install {
                 ]
             }
         }
-        if (dependencies[project]) {
-            const runtimeDependenciesProject = dependencies[project]['runtime'];
+        if (projectDependencies) {
+            const runtimeDependenciesProject = projectDependencies['dependencies'];
             if (typeof runtimeDependenciesProject === 'object' && Array.isArray(runtimeDependenciesProject)) {
                 runtimeDependencies = [
                     ...runtimeDependencies,
                     ...runtimeDependenciesProject
                 ]
             }
-            const devDependenciesProject = dependencies[project]['dev'];
+            const devDependenciesProject = projectDependencies['devDependencies'];
             if (typeof devDependenciesProject === 'object' && Array.isArray(devDependenciesProject)) {
                 devDependencies = [
                     ...devDependencies,
                     ...devDependenciesProject
                 ]
             }
-            const bitDependenciesProject = dependencies[project]['bit'];
+            const bitDependenciesProject = projectDependencies['bit'];
             if (typeof bitDependenciesProject === 'object' && Array.isArray(bitDependenciesProject)) {
                 bitDependencies = [
                     ...bitDependencies,
@@ -147,26 +150,26 @@ class Install {
     executeActions() {
         echo('Copying Necessary Files');
         cd(cwd);
-        if (actions['global']) {
-            if (actions['global'].copy) {
-                copy(actions['global'].copy, pristinePath, cwd);
+        if (commonActions) {
+            if (commonActions.copy) {
+                copy(commonActions.copy, pristinePath, cwd);
             }
-            if (actions['global'].move) {
-                move(actions['global'].move, cwd, cwd);
+            if (commonActions.move) {
+                move(commonActions.move, cwd, cwd);
             }
-            if (actions['global'].remove) {
-                rm(actions['global'].remove, cwd);
+            if (commonActions.remove) {
+                rm(commonActions.remove, cwd);
             }
         }
-        if (actions[project]) {
-            if (actions[project].copy) {
-                copy(actions[project].copy, pristinePath, cwd);
+        if (projectActions) {
+            if (projectActions.copy) {
+                copy(projectActions.copy, pristinePath, cwd);
             }
-            if (actions[project].move) {
-                move(actions[project].move, cwd, cwd);
+            if (projectActions.move) {
+                move(projectActions.move, cwd, cwd);
             }
-            if (actions[project].remove) {
-                rm(actions[project].remove, cwd);
+            if (projectActions.remove) {
+                rm(projectActions.remove, cwd);
             }
         }
     }
@@ -174,17 +177,17 @@ class Install {
     addPackageScripts() {
         echo('Adding Scripts');
         cd(cwd);
-        if (actions['global']) {
-            if (actions['global'].scripts) {
-                Object.keys(actions['global'].scripts).forEach((key) => {
-                    npmAddScript({key , value: actions['global'].scripts[key], force: true});
+        if (commonActions) {
+            if (commonActions.scripts) {
+                Object.keys(commonActions.scripts).forEach((key) => {
+                    npmAddScript({key , value: commonActions.scripts[key], force: true});
                 });
             }
         }
-        if (actions[project]) {
-            if (actions[project].scripts) {
-                Object.keys(actions[project].scripts).forEach((key) => {
-                    npmAddScript({key , value: actions[project].scripts[key], force: true});
+        if (projectActions) {
+            if (projectActions.scripts) {
+                Object.keys(projectActions.scripts).forEach((key) => {
+                    npmAddScript({key , value: projectActions.scripts[key], force: true});
                 });
             }
         }

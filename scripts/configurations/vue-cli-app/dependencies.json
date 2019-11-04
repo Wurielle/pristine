@@ -1,0 +1,13 @@
+{
+  "dependencies": [
+    "electron-log",
+    "auto-launch",
+    "electron-promise-ipc",
+    "electron-updater"
+  ],
+  "devDependencies": [],
+  "bit": [],
+  "vue-cli-plugins": [
+    "electron-builder"
+  ]
+}
