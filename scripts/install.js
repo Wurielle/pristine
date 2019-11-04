@@ -9,10 +9,10 @@ if (!project) {
 const { pristinePath, cwd, cwdParsed, getJSONSync } = require('./utils/process');
 const { shell, npmAddScript, vueBin, bitBin } = require('./utils/modules');
 const { execFileSync, echo, cd, copy, move, rm } = require('./utils/commands');
-const commonDependencies = getJSONSync('./configurations/' + 'all' + '/dependencies.json');
-const commonActions = getJSONSync('./configurations/' + 'all' + '/actions.json');
-const projectDependencies = getJSONSync('./configurations/' + project + '/dependencies.json');
-const projectActions = getJSONSync('./configurations/' + project + '/actions.json');
+const commonDependencies = getJSONSync(path.join(pristinePath, './scripts/configurations/' + 'all' + '/dependencies.json'));
+const commonActions = getJSONSync(path.join(pristinePath, './scripts/configurations/' + 'all' + '/actions.json'));
+const projectDependencies = getJSONSync(path.join(pristinePath, './scripts/configurations/' + project + '/dependencies.json'));
+const projectActions = getJSONSync(path.join(pristinePath, './scripts/configurations/' + project + '/actions.json'));
 const requiredCommands = [
     'git',
     'npm',

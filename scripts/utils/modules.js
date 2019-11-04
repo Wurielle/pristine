@@ -1,7 +1,10 @@
 const child_process = require('child_process');
 const cwd = process.cwd();
 const path = require('path');
+const fs = require('fs');
 
+const packageJsonPath = path.join(cwd, 'package.json');
+if (!fs.existsSync(packageJsonPath)) fs.writeFileSync(packageJsonPath, JSON.stringify({}));
 // install script dependencies locally and point to their path since regular requires won't work at runtime
 child_process.execFileSync('npm.cmd', ['i', '-D', 'shelljs', 'npm-add-script', 'global-modules'], {interactive: true});
 
