@@ -29,7 +29,6 @@ requiredCommands.forEach((command) => {
 
 class Install {
     constructor(exit = true) {
-        this.updatePristine();
         this.installGlobalDependencies();
         this.createVueCLIProject();
         this.installVueCLIPlugins();
@@ -40,12 +39,6 @@ class Install {
         if (exit) {
             shell.exit(1);
         }
-    }
-
-    updatePristine() {
-        echo('Updating Pristine');
-        cd(pristinePath);
-        execFileSync('git', ['pull']);
     }
 
     installGlobalDependencies() {
