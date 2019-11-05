@@ -12,6 +12,7 @@ module.exports = {
         config
             .entry('app')
             .add('animate.css/animate.min.css')
+            .add(path.resolve(__dirname, 'src/pristine.ts'))
         ;
     },
     configureWebpack: {

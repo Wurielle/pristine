@@ -3,7 +3,7 @@
 @import '~bootstrap/dist/css/bootstrap-grid.min.css';
 
 .container {
-    @each $screenSize, $screenValue in _(screens) {
+    @each $screenSize, $screenValue in theme(screens) {
         @media (min-width: $screenValue) {
             max-width: $screenValue;
         }
@@ -11,7 +11,7 @@
 }
 
 .row {
-    @each $key, $value in _(spacing) {
+    @each $key, $value in theme(spacing) {
         &.row-vs-#{$key} {
             margin-bottom: -$value;
             & > .col,
@@ -20,7 +20,7 @@
             }
         }
     }
-    @each $key, $value in _(gutters) {
+    @each $key, $value in theme(gutters) {
         &.row-gutter-#{$key} {
             margin-left: -$value;
             margin-right: -$value;
@@ -31,9 +31,9 @@
             }
         }
     }
-    @each $screenSize, $screenValue in _(screens) {
+    @each $screenSize, $screenValue in theme(screens) {
         @media (min-width: $screenValue) {
-            @each $key, $value in _(spacing) {
+            @each $key, $value in theme(spacing) {
                 &.#{$screenSize}\:row-vs-#{$key} {
                     margin-bottom: -$value;
                     & > .col,
@@ -42,7 +42,7 @@
                     }
                 }
             }
-            @each $key, $value in _(gutters) {
+            @each $key, $value in theme(gutters) {
                 &.#{$screenSize}\:row-gutter-#{$key} {
                     margin-left: -$value;
                     margin-right: -$value;

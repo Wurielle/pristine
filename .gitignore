@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+/tests/e2e/videos/
+/tests/e2e/screenshots/
+
 # local env files
 .env.local
 .env.*.local
@@ -18,13 +21,4 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
-.cache
-
-playground/vue-cli/*
-!playground/vue-cli/.gitkeep
-
-playground/vue-cli-symfony-4/*
-!playground/vue-cli-symfony-4/.gitkeep
-playground/vue-cli-app/*
-!playground/vue-cli-app/.gitkeep
+*.sw?

@@ -7,17 +7,27 @@ const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin'
 
 module.exports = {
     publicPath: '/',
+    chainWebpack: config => {
+        // vue inspect --plugins
+        config
+            .entry('app')
+            .add('animate.css/animate.min.css')
+            .add('./src/pristine.ts')
+        ;
+    },
     configureWebpack: {
         resolve: {
             alias: {
                 '@config':  path.resolve(__dirname, 'config'),
+                '@components':  path.resolve(__dirname, 'components'),
             }
         },
         plugins:[
             new webpack.DefinePlugin({
                 // 'API_AUTH_USERNAME': JSON.stringify(argv.apiAuthUsername.trim()),
                 // 'API_AUTH_PASSWORD': JSON.stringify(argv.apiAuthPassword.trim()),
-                // 'SERVICE_URL': JSON.stringify(argv.domain.trim())
+                // 'DOMAIN_URL': JSON.stringify(argv.domain.trim()),
+                // ...
             }),
             new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
         ]
