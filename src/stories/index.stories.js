@@ -1,20 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import '@/pristine.ts';
 import { storiesOf } from "@storybook/vue";
-import "@/styles/main.scss";
-import "@config/pristine.config.js";
 
-const Styleguide = require("@bit/wurielle.pristine.vue-components.dss-styleguide")
-  .default;
-const styleguideJSON = require("@/styleguide.json");
-storiesOf("DSS Styleguide", module).add("Styleguide", () => ({
-  components: { Styleguide },
-  data() {
-    return {
-      options: styleguideJSON
-    };
-  },
-  template: '<Styleguide :styleguide="options"/>'
-}));
+storiesOf("Storybook", module)
+    .add("Hello World", () => ({
+        components: { },
+        template: '<div>Hello World</div>'
+    }))
+;
 
 /* uncomment if you're using twig files: https://github.com/twigjs/twig.js */
 // import Twig from 'twig';
