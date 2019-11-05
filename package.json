@@ -1,9 +1,13 @@
 {
-  "name": "pristine",
+  "name": "@wurielle/pristine",
+  "repository": "https://github.com/wurielle/pristine",
   "version": "0.1.0",
   "private": true,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
+  },
+  "bin": {
+    "pristine-install": "./scripts/install.js"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
