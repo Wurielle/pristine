@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
  * Copyright 2012 The Polymer Authors. All rights reserved.
  * Use of this source code is goverened by a BSD-style
@@ -5,7 +6,6 @@
  */
 
 (function(global) {
-
   var registrationsTable = new WeakMap();
 
   // We use setImmediate or postMessage for our future callback.
@@ -15,7 +15,7 @@
   if (!setImmediate) {
     var setImmediateQueue = [];
     var sentinel = String(Math.random());
-    window.addEventListener('message', function(e) {
+    window.addEventListener("message", function(e) {
       if (e.data === sentinel) {
         var queue = setImmediateQueue;
         setImmediateQueue = [];
@@ -26,7 +26,7 @@
     });
     setImmediate = function(func) {
       setImmediateQueue.push(func);
-      window.postMessage(sentinel, '*');
+      window.postMessage(sentinel, "*");
     };
   }
 
@@ -49,9 +49,11 @@
   }
 
   function wrapIfNeeded(node) {
-    return window.ShadowDOMPolyfill &&
-        window.ShadowDOMPolyfill.wrapIfNeeded(node) ||
-        node;
+    return (
+      (window.ShadowDOMPolyfill &&
+        window.ShadowDOMPolyfill.wrapIfNeeded(node)) ||
+      node
+    );
   }
 
   function dispatchCallbacks() {
@@ -68,7 +70,6 @@
 
     var anyNonEmpty = false;
     observers.forEach(function(observer) {
-
       // 2.1, 2.2
       var queue = observer.takeRecords();
       // 2.3. Remove all transient registered observers whose observer is mo.
@@ -82,15 +83,13 @@
     });
 
     // 3.
-    if (anyNonEmpty)
-      dispatchCallbacks();
+    if (anyNonEmpty) dispatchCallbacks();
   }
 
   function removeTransientObserversFor(observer) {
     observer.nodes_.forEach(function(node) {
       var registrations = registrationsTable.get(node);
-      if (!registrations)
-        return;
+      if (!registrations) return;
       registrations.forEach(function(registration) {
         if (registration.observer === observer)
           registration.removeTransientObservers();
@@ -120,12 +119,10 @@
           var options = registration.options;
 
           // Only target ignores subtree.
-          if (node !== target && !options.subtree)
-            continue;
+          if (node !== target && !options.subtree) continue;
 
           var record = callback(options);
-          if (record)
-            registration.enqueue(record);
+          if (record) registration.enqueue(record);
         }
       }
     }
@@ -150,24 +147,22 @@
       target = wrapIfNeeded(target);
 
       // 1.1
-      if (!options.childList && !options.attributes && !options.characterData ||
-
-          // 1.2
-          options.attributeOldValue && !options.attributes ||
-
-          // 1.3
-          options.attributeFilter && options.attributeFilter.length &&
-              !options.attributes ||
-
-          // 1.4
-          options.characterDataOldValue && !options.characterData) {
-
+      if (
+        (!options.childList && !options.attributes && !options.characterData) ||
+        // 1.2
+        (options.attributeOldValue && !options.attributes) ||
+        // 1.3
+        (options.attributeFilter &&
+          options.attributeFilter.length &&
+          !options.attributes) ||
+        // 1.4
+        (options.characterDataOldValue && !options.characterData)
+      ) {
         throw new SyntaxError();
       }
 
       var registrations = registrationsTable.get(target);
-      if (!registrations)
-        registrationsTable.set(target, registrations = []);
+      if (!registrations) registrationsTable.set(target, (registrations = []));
 
       // 2
       // If target's list of registered observers already includes a registered
@@ -248,7 +243,7 @@
     record.attributeNamespace = original.attributeNamespace;
     record.oldValue = original.oldValue;
     return record;
-  };
+  }
 
   // We keep track of the two (possibly one) records used in a single mutation.
   var currentRecord, recordWithOldValue;
@@ -260,7 +255,7 @@
    * @return {MutationRecord}
    */
   function getRecord(type, target) {
-    return currentRecord = new MutationRecord(type, target);
+    return (currentRecord = new MutationRecord(type, target));
   }
 
   /**
@@ -269,8 +264,7 @@
    * @return {MutationRecord}
    */
   function getRecordWithOldValue(oldValue) {
-    if (recordWithOldValue)
-      return recordWithOldValue;
+    if (recordWithOldValue) return recordWithOldValue;
     recordWithOldValue = copyMutationRecord(currentRecord);
     recordWithOldValue.oldValue = oldValue;
     return recordWithOldValue;
@@ -298,8 +292,7 @@
    * @param {MutationRecord}
    */
   function selectRecord(lastRecord, newRecord) {
-    if (lastRecord === newRecord)
-      return lastRecord;
+    if (lastRecord === newRecord) return lastRecord;
 
     // Check if the the record we are adding represents the same record. If
     // so, we keep the one with the oldValue in it.
@@ -353,16 +346,16 @@
     addListeners_: function(node) {
       var options = this.options;
       if (options.attributes)
-        node.addEventListener('DOMAttrModified', this, true);
+        node.addEventListener("DOMAttrModified", this, true);
 
       if (options.characterData)
-        node.addEventListener('DOMCharacterDataModified', this, true);
+        node.addEventListener("DOMCharacterDataModified", this, true);
 
       if (options.childList)
-        node.addEventListener('DOMNodeInserted', this, true);
+        node.addEventListener("DOMNodeInserted", this, true);
 
       if (options.childList || options.subtree)
-        node.addEventListener('DOMNodeRemoved', this, true);
+        node.addEventListener("DOMNodeRemoved", this, true);
     },
 
     removeListeners: function() {
@@ -372,16 +365,16 @@
     removeListeners_: function(node) {
       var options = this.options;
       if (options.attributes)
-        node.removeEventListener('DOMAttrModified', this, true);
+        node.removeEventListener("DOMAttrModified", this, true);
 
       if (options.characterData)
-        node.removeEventListener('DOMCharacterDataModified', this, true);
+        node.removeEventListener("DOMCharacterDataModified", this, true);
 
       if (options.childList)
-        node.removeEventListener('DOMNodeInserted', this, true);
+        node.removeEventListener("DOMNodeInserted", this, true);
 
       if (options.childList || options.subtree)
-        node.removeEventListener('DOMNodeRemoved', this, true);
+        node.removeEventListener("DOMNodeRemoved", this, true);
     },
 
     /**
@@ -392,14 +385,12 @@
     addTransientObserver: function(node) {
       // Don't add transient observers on the target itself. We already have all
       // the required listeners set up on the target.
-      if (node === this.target)
-        return;
+      if (node === this.target) return;
 
       this.addListeners_(node);
       this.transientObservedNodes.push(node);
       var registrations = registrationsTable.get(node);
-      if (!registrations)
-        registrationsTable.set(node, registrations = []);
+      if (!registrations) registrationsTable.set(node, (registrations = []));
 
       // We know that registrations does not contain this because we already
       // checked if node === this.target.
@@ -433,7 +424,7 @@
       e.stopImmediatePropagation();
 
       switch (e.type) {
-        case 'DOMAttrModified':
+        case "DOMAttrModified":
           // http://dom.spec.whatwg.org/#concept-mo-queue-attributes
 
           var name = e.attrName;
@@ -441,23 +432,25 @@
           var target = e.target;
 
           // 1.
-          var record = new getRecord('attributes', target);
+          var record = new getRecord("attributes", target);
           record.attributeName = name;
           record.attributeNamespace = namespace;
 
           // 2.
           var oldValue =
-              e.attrChange === MutationEvent.ADDITION ? null : e.prevValue;
+            e.attrChange === MutationEvent.ADDITION ? null : e.prevValue;
 
           forEachAncestorAndObserverEnqueueRecord(target, function(options) {
             // 3.1, 4.2
-            if (!options.attributes)
-              return;
+            if (!options.attributes) return;
 
             // 3.2, 4.3
-            if (options.attributeFilter && options.attributeFilter.length &&
-                options.attributeFilter.indexOf(name) === -1 &&
-                options.attributeFilter.indexOf(namespace) === -1) {
+            if (
+              options.attributeFilter &&
+              options.attributeFilter.length &&
+              options.attributeFilter.indexOf(name) === -1 &&
+              options.attributeFilter.indexOf(namespace) === -1
+            ) {
               return;
             }
             // 3.3, 4.4
@@ -470,21 +463,19 @@
 
           break;
 
-        case 'DOMCharacterDataModified':
+        case "DOMCharacterDataModified":
           // http://dom.spec.whatwg.org/#concept-mo-queue-characterdata
           var target = e.target;
 
           // 1.
-          var record = getRecord('characterData', target);
+          var record = getRecord("characterData", target);
 
           // 2.
           var oldValue = e.prevValue;
 
-
           forEachAncestorAndObserverEnqueueRecord(target, function(options) {
             // 3.1, 4.2
-            if (!options.characterData)
-              return;
+            if (!options.characterData) return;
 
             // 3.2, 4.3
             if (options.characterDataOldValue)
@@ -496,19 +487,18 @@
 
           break;
 
-        case 'DOMNodeRemoved':
+        case "DOMNodeRemoved":
           this.addTransientObserver(e.target);
-          // Fall through.
-        case 'DOMNodeInserted':
+        // Fall through.
+        case "DOMNodeInserted":
           // http://dom.spec.whatwg.org/#concept-mo-queue-childlist
           var target = e.relatedNode;
           var changedNode = e.target;
           var addedNodes, removedNodes;
-          if (e.type === 'DOMNodeInserted') {
+          if (e.type === "DOMNodeInserted") {
             addedNodes = [changedNode];
             removedNodes = [];
           } else {
-
             addedNodes = [];
             removedNodes = [changedNode];
           }
@@ -516,7 +506,7 @@
           var nextSibling = changedNode.nextSibling;
 
           // 1.
-          var record = getRecord('childList', target);
+          var record = getRecord("childList", target);
           record.addedNodes = addedNodes;
           record.removedNodes = removedNodes;
           record.previousSibling = previousSibling;
@@ -524,13 +514,11 @@
 
           forEachAncestorAndObserverEnqueueRecord(target, function(options) {
             // 2.1, 3.2
-            if (!options.childList)
-              return;
+            if (!options.childList) return;
 
             // 2.2, 3.3
             return record;
           });
-
       }
 
       clearRecords();
@@ -539,8 +527,5 @@
 
   global.JsMutationObserver = JsMutationObserver;
 
-  if (!global.MutationObserver)
-    global.MutationObserver = JsMutationObserver;
-
-
+  if (!global.MutationObserver) global.MutationObserver = JsMutationObserver;
 })(window);

@@ -1,10 +1,10 @@
 /* Add polyfills from the polyfills folder (order matters) */
-import '@/polyfills/WeakMap';
-import '@/polyfills/MutationObserver';
-import '@/polyfills/ObjectFit';
+import "@/polyfills/WeakMap";
+import "@/polyfills/MutationObserver";
+import "@/polyfills/ObjectFit";
 
 /* Import Pristine Config (for HRM)  */
-import '@config/pristine.config.js';
+import "@config/pristine.config.js";
 
 /* Choose an icon library */
 
@@ -28,6 +28,6 @@ import '@config/pristine.config.js';
 // import '@iconscout/unicons/css/unicons.css';
 
 /* Import Styles */
-import '@/styles/main.scss';
+import "@/styles/main.scss";
 
 /* Import Assets */

@@ -6,7 +6,7 @@
  */
 
 (function(self) {
-  'use strict';
+  "use strict";
 
   if (self.WeakMap) {
     return;
@@ -26,25 +26,24 @@
   };
 
   self.WeakMap = (function() {
-
     // ECMA-262 23.3 WeakMap Objects
     function WeakMap() {
       if (this === void 0) {
         throw new TypeError("Constructor WeakMap requires 'new'");
       }
 
-      defineProperty(this, '_id', genId('_WeakMap'));
+      defineProperty(this, "_id", genId("_WeakMap"));
 
       // ECMA-262 23.3.1.1 WeakMap([iterable])
       if (arguments.length > 0) {
         // Currently, WeakMap `iterable` argument is not supported
-        throw new TypeError('WeakMap iterable is not supported');
+        throw new TypeError("WeakMap iterable is not supported");
       }
     }
 
     // ECMA-262 23.3.3.2 WeakMap.prototype.delete(key)
-    defineProperty(WeakMap.prototype, 'delete', function(key) {
-      checkInstance(this, 'delete');
+    defineProperty(WeakMap.prototype, "delete", function(key) {
+      checkInstance(this, "delete");
 
       if (!isObject(key)) {
         return false;
@@ -60,8 +59,8 @@
     });
 
     // ECMA-262 23.3.3.3 WeakMap.prototype.get(key)
-    defineProperty(WeakMap.prototype, 'get', function(key) {
-      checkInstance(this, 'get');
+    defineProperty(WeakMap.prototype, "get", function(key) {
+      checkInstance(this, "get");
 
       if (!isObject(key)) {
         return void 0;
@@ -76,8 +75,8 @@
     });
 
     // ECMA-262 23.3.3.4 WeakMap.prototype.has(key)
-    defineProperty(WeakMap.prototype, 'has', function(key) {
-      checkInstance(this, 'has');
+    defineProperty(WeakMap.prototype, "has", function(key) {
+      checkInstance(this, "has");
 
       if (!isObject(key)) {
         return false;
@@ -92,11 +91,11 @@
     });
 
     // ECMA-262 23.3.3.5 WeakMap.prototype.set(key, value)
-    defineProperty(WeakMap.prototype, 'set', function(key, value) {
-      checkInstance(this, 'set');
+    defineProperty(WeakMap.prototype, "set", function(key, value) {
+      checkInstance(this, "set");
 
       if (!isObject(key)) {
-        throw new TypeError('Invalid value used as weak map key');
+        throw new TypeError("Invalid value used as weak map key");
       }
 
       var entry = key[this._id];
@@ -109,36 +108,37 @@
       return this;
     });
 
-
     function checkInstance(x, methodName) {
-      if (!isObject(x) || !hasOwnProperty.call(x, '_id')) {
+      if (!isObject(x) || !hasOwnProperty.call(x, "_id")) {
         throw new TypeError(
-          methodName + ' method called on incompatible receiver ' +
-          typeof x
+          methodName + " method called on incompatible receiver " + typeof x
         );
       }
     }
 
     function genId(prefix) {
-      return prefix + '_' + rand() + '.' + rand();
+      return prefix + "_" + rand() + "." + rand();
     }
 
     function rand() {
-      return Math.random().toString().substring(2);
+      return Math.random()
+        .toString()
+        .substring(2);
     }
 
-
-    defineProperty(WeakMap, '_polyfill', true);
+    defineProperty(WeakMap, "_polyfill", true);
     return WeakMap;
   })();
-
 
   function isObject(x) {
     return Object(x) === x;
   }
-
 })(
-  typeof self !== 'undefined' ? self :
-  typeof window !== 'undefined' ? window :
-  typeof global !== 'undefined' ? global : this
+  typeof self !== "undefined"
+    ? self
+    : typeof window !== "undefined"
+    ? window
+    : typeof global !== "undefined"
+    ? global
+    : this
 );
