@@ -2,6 +2,9 @@
   "name": "pristine",
   "version": "0.1.0",
   "private": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -27,9 +30,11 @@
     "@iconscout/unicons": "^1.0.1",
     "@storybook/addon-a11y": "^5.2.5",
     "@storybook/addon-actions": "^4.1.0 || ^5.0.0",
+    "@storybook/addon-centered": "^5.2.5",
     "@storybook/addon-knobs": "^4.1.0 || ^5.0.0",
     "@storybook/addon-links": "^4.1.0 || ^5.0.0",
     "@storybook/addon-notes": "^4.1.0 || ^5.0.0",
+    "@storybook/addon-storysource": "^5.2.5",
     "@storybook/addon-viewport": "^5.2.5",
     "@types/jest": "^24.0.11",
     "@types/lodash": "^4.14.144",

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { configure, addDecorator } from '@storybook/vue'
-import { withA11y } from '@storybook/addon-a11y'
-addDecorator(withA11y)
+import centered from '@storybook/addon-centered/vue';
+addDecorator(centered);
 
 const req = require.context('../../src', true, /.stories.js$/)
 

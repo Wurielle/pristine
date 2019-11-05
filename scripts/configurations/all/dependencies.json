@@ -20,6 +20,8 @@
     "lorem-ipsum",
     "@storybook/addon-a11y",
     "@storybook/addon-viewport",
+    "@storybook/addon-storysource",
+    "@storybook/addon-centered/vue",
     "bootstrap",
     "objectFitPolyfill"
   ],
