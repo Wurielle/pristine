@@ -11,12 +11,16 @@ if (!project) {
 const { pristinePath, cwd, cwdParsed, getJSONSync } = require('./utils/process');
 const { shell, npmAddScript, vueBin, bitBin } = require('./utils/modules');
 const { execFileSync, echo, cd, copy, move, rm } = require('./utils/commands');
+echo('Installing Pristine Locally');
+cd(cwd);
+const libPath = {};
+libPath[path.basename(path.dirname(__dirname))] = '.pristine/temp/lib';
+copy(libPath, path.resolve(__dirname,'../../'), cwd);
 const commonDependencies = getJSONSync(path.join(pristinePath, './scripts/configurations/' + 'all' + '/dependencies.json'));
 const commonActions = getJSONSync(path.join(pristinePath, './scripts/configurations/' + 'all' + '/actions.json'));
 const projectDependencies = getJSONSync(path.join(pristinePath, './scripts/configurations/' + project + '/dependencies.json'));
 const projectActions = getJSONSync(path.join(pristinePath, './scripts/configurations/' + project + '/actions.json'));
 const requiredCommands = [
-    'git',
     'npm',
 ];
 

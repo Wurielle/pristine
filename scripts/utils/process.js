@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
-const pristinePath = path.resolve(__dirname,'../../');
 const cwd = process.cwd();
+const pristinePath = path.resolve(cwd, '.pristine/temp/lib');
 const cwdParsed = path.parse(cwd);
 
 const getJSONSync = (path, defaultReturn = {}) => {
