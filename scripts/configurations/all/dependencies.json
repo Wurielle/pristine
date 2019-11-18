@@ -1,6 +1,8 @@
 {
   "dependencies": [],
   "devDependencies": [
+    "prettier",
+    "prettier-webpack-plugin",
     "animate.css",
     "ionicons",
     "fontisto",
