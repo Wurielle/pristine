@@ -4,7 +4,8 @@ const child_process = require('child_process');
 
 const {shell} = require('./modules');
 const {cwd} = require('./process');
-const backupDir = path.join(cwd, '.pristine/backup');
+const date = new Date();
+const backupDir = path.join(cwd, '.pristine/backup', date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
 
 const backup = (target) => {
     if (fs.existsSync(target)) {
@@ -16,7 +17,11 @@ const backup = (target) => {
             +'"'
         );
         mkdir(backupTarget);
-        shell.cp('-R', target, backupTarget);
+        if (isFile(backupTarget)) {
+            shell.cp('-R', target, backupTarget);
+        } else {
+            shell.cp('-R', path.join(target, '*'), backupTarget);
+        }
     }
 };
 
