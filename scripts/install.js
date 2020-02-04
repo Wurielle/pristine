@@ -9,7 +9,7 @@ if (!project) {
 }
 
 const { pristinePath, cwd, cwdParsed, getJSONSync } = require('./utils/process');
-const { shell, npmAddScript, vueBin, bitBin } = require('./utils/modules');
+const { shell, npmAddScript, vueBin, bitBin, lodashDifference } = require('./utils/modules');
 const { execFileSync, echo, cd, copy, move, rm } = require('./utils/commands');
 echo('Installing Pristine Locally');
 cd(cwd);
@@ -32,17 +32,29 @@ requiredCommands.forEach((command) => {
 });
 
 class Install {
+
     constructor(exit = true) {
-        this.installGlobalDependencies();
-        this.createVueCLIProject();
-        this.installVueCLIPlugins();
-        this.installDependencies();
-        this.executeActions();
-        this.addPackageScripts();
+        this.initialDirectoryState = null;
+        this.afterInstallDirectoryState = null;
+        this.directoryStateDiff = null;
+        this.setInitialDirectoryState();
+        // this.installGlobalDependencies();
+        // this.createVueCLIProject();
+        // this.installVueCLIPlugins();
+        // this.installDependencies();
+        this.setAfterInstallDirectoryState();
+        this.setDirectoryStateDiff();
+        // this.executeActions();
+        // this.addPackageScripts();
         echo('All Done 🎉🎉🎉');
         if (exit) {
             shell.exit(1);
         }
+    }
+
+    setInitialDirectoryState() {
+        this.initialDirectoryState = fs.readdirSync(cwd);
+        console.log(this.initialDirectoryState);
     }
 
     installGlobalDependencies() {
@@ -171,6 +183,16 @@ class Install {
                 rm(projectActions.remove, cwd);
             }
         }
+    }
+
+    setAfterInstallDirectoryState() {
+        this.afterInstallDirectoryState = fs.readdirSync(cwd);
+        console.log(this.afterInstallDirectoryState);
+    }
+
+    setDirectoryStateDiff() {
+        this.directoryStateDiff = lodashDifference(this.afterInstallDirectoryState, this.initialDirectoryState);
+        console.log(this.directoryStateDiff);
     }
 
     addPackageScripts() {

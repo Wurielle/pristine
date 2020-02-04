@@ -13,21 +13,9 @@
     "boilerplate/vue-cli-symfony-4/assets/app/utils/twig.ts": "assets/app/utils/twig.ts"
   },
   "move": {
-    "src/assets": "assets/app/assets",
-    "src/components": "assets/app/components",
-    "src/plugins": "assets/app/plugins",
-    "src/store": "assets/app/store",
-    "src/stories": "assets/app/stories",
-    "src/styles": "assets/app/styles",
-    "src/views": "assets/app/views",
-    "src/App.vue": "assets/app/App.vue",
-    "src/main.ts": "assets/app/main.ts",
-    "src/shims-tsx.d.ts": "assets/app/shims-tsx.d.ts",
-    "src/shims-vue.d.ts": "assets/app/shims-vue.d.ts",
-    "src/store.ts": "assets/app/store.ts",
-    "src/router/index.ts": "assets/app/router/index.ts",
-    "src/styleguide.json": "assets/app/styleguide.json",
-    "src/element-variables.scss": "assets/app/element-variables.scss"
+  },
+  "moveDiff": {
+    "src": "assets/app"
   },
   "remove": [
     "public/index.html",
