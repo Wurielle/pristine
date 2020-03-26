@@ -6,8 +6,6 @@
     "src/polyfills": "src/polyfills",
     "src/utils": "src/utils",
     "src/styles": "src/styles",
-    "src/stories": "src/stories",
-    "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
-    "src/styleguide.json": "src/styleguide.json"
+    "src/stories": "src/stories"
   }
 }

@@ -9,19 +9,19 @@ class Ready {
       this.observer = new MutationObserver(this.checkMutations.bind(this));
       this.observer.observe(document, {
         childList: true,
-        subtree: true
+        subtree: true,
       });
     }
     if (
-      selector === document &&
-      /complete|loaded|interactive/.test(document.readyState)
+        selector === document &&
+        /complete|loaded|interactive/.test(document.readyState)
     ) {
       callback.call(document, document);
       return () => {};
     }
     const listener = { selector, callback };
     this.listeners.push(listener);
-    if (typeof selector === "string") {
+    if (typeof selector === 'string') {
       // Array.from(document.querySelectorAll(selector)).forEach((el: any) => callback.call(el, el));
     }
     return () => this.removeListener(listener);
@@ -29,15 +29,15 @@ class Ready {
 
   private checkMutations(mutations: any) {
     this.listeners.forEach(
-      ({ selector, callback }: { selector: string; callback: any }) => {
-        const elements = document.querySelectorAll(selector);
-        [].forEach.call(elements, (element: any) => {
-          if (!element.$ready) {
-            element.$ready = true;
-            callback.call(element, element);
-          }
-        });
-      }
+        ({ selector, callback }: { selector: string; callback: any }) => {
+          const elements = document.querySelectorAll(selector);
+          [].forEach.call(elements, (element: any) => {
+            if (!element.$ready) {
+              element.$ready = true;
+              callback.call(element, element);
+            }
+          });
+        },
     );
   }
 

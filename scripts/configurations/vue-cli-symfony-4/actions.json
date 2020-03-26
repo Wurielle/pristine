@@ -6,10 +6,8 @@
     "src/utils": "assets/app/utils",
     "src/styles": "src/styles/styles",
     "src/stories": "src/stories/stories",
-    "src/styleguide.json": "src/styleguide.json",
     "boilerplate/vue-cli-symfony-4/vue.config.js": "vue.config.js",
     "boilerplate/vue-cli-symfony-4/tsconfig.json": "tsconfig.json",
-    "boilerplate/vue-cli-symfony-4/config": "config",
     "boilerplate/vue-cli-symfony-4/assets/app/utils/twig.ts": "assets/app/utils/twig.ts"
   },
   "move": {
@@ -26,7 +24,6 @@
     "src/shims-vue.d.ts": "assets/app/shims-vue.d.ts",
     "src/store.ts": "assets/app/store.ts",
     "src/router/index.ts": "assets/app/router/index.ts",
-    "src/styleguide.json": "assets/app/styleguide.json",
     "src/element-variables.scss": "assets/app/element-variables.scss"
   },
   "remove": [

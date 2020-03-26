@@ -1,6 +1,5 @@
 {
   "copy": {
-    "boilerplate/vue-cli-app/minio.exe": "minio.exe",
     "boilerplate/vue-cli-app/dist_electron/dev-app-update.yml": "dist_electron/dev-app-update.yml",
     "boilerplate/vue-cli-app/vue.config.js": "vue.config.js",
     "boilerplate/vue-cli-app/src/.electron/main.ts": "src/.electron/main.ts",
@@ -14,8 +13,7 @@
     "src/utils": "src/utils",
     "src/styles": "src/styles",
     "src/stories": "src/stories",
-    "config/storybook/webpack.config.js": "config/storybook/webpack.config.js",
-    "src/styleguide.json": "src/styleguide.json"
+    "config/storybook/webpack.config.js": "config/storybook/webpack.config.js"
   },
   "remove": [
     "src/background.ts"

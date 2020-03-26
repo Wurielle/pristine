@@ -3,10 +3,6 @@
   "devDependencies": [
     "prettier",
     "prettier-webpack-plugin",
-    "animate.css",
-    "ionicons",
-    "fontisto",
-    "feather-icons",
     "@iconscout/unicons",
     "tailwindcss",
     "minimist",
@@ -25,7 +21,9 @@
     "@storybook/addon-storysource",
     "@storybook/addon-centered",
     "bootstrap",
-    "objectFitPolyfill"
+    "objectFitPolyfill",
+    "twig",
+    "raw-loader"
   ],
   "bit": [
     "wurielle.pristine/webpack/json-sass-plugin"

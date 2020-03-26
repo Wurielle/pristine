@@ -3,9 +3,7 @@
   "devDependencies": [
     "webpack-manifest-plugin",
     "browser-sync",
-    "browser-sync-webpack-plugin",
-    "twig",
-    "raw-loader"
+    "browser-sync-webpack-plugin"
   ],
   "bit": [],
   "vue-cli-plugins": []

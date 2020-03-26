@@ -1,25 +1,25 @@
-const fs = require("fs");
-const path = require("path");
-const webpack = require("webpack");
-const argv = require("minimist")(process.argv.slice(2));
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
+const argv = require('minimist')(process.argv.slice(2));
 
-const JsonSassPlugin = require("@bit/wurielle.pristine.webpack.json-sass-plugin");
-const PrettierPlugin = require("prettier-webpack-plugin");
+const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
+const PrettierPlugin = require('prettier-webpack-plugin');
 
 module.exports = {
-  publicPath: "/",
+  publicPath: '/',
   chainWebpack: config => {
     // vue inspect --plugins
     config
-      .entry("app")
-      .add("animate.css/animate.min.css")
-      .add("./src/pristine.ts");
+      .entry('app')
+      .add('./src/pristine.ts');
   },
   configureWebpack: {
     resolve: {
       alias: {
-        "@config": path.resolve(__dirname, "config"),
-        "@components": path.resolve(__dirname, "components")
+        '@root': path.resolve(__dirname),
+        '@config': path.resolve(__dirname, 'config'),
+        '@components': path.resolve(__dirname, 'components')
       }
     },
     plugins: [
@@ -36,8 +36,8 @@ module.exports = {
         // ...
       }),
       new JsonSassPlugin(
-        "./config/pristine.config.js",
-        "./config/pristine.config.scss"
+        './config/pristine.config.js',
+        './config/pristine.config.scss'
       )
     ]
   }
