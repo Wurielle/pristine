@@ -1,5 +1,22 @@
 {
-  "dependencies": [],
+  "dependencies": [
+    {
+      "name": "electron-log",
+      "for": ["vue-cli-app"]
+    },
+    {
+      "name": "auto-launch",
+      "for": ["vue-cli-app"]
+    },
+    {
+      "name": "electron-promise-ipc",
+      "for": ["vue-cli-app"]
+    },
+    {
+      "name": "electron-updater",
+      "for": ["vue-cli-app"]
+    }
+  ],
   "devDependencies": [
     "prettier",
     "prettier-webpack-plugin",
@@ -24,12 +41,28 @@
     "bootstrap",
     "objectFitPolyfill",
     "twig",
-    "raw-loader"
+    "raw-loader",
+    {
+      "name": "webpack-manifest-plugin",
+      "for": ["vue-cli-symfony-4"]
+    },
+    {
+      "name": "browser-sync",
+      "for": ["vue-cli-symfony-4"]
+    },
+    {
+      "name": "browser-sync-webpack-plugin",
+      "for": ["vue-cli-symfony-4"]
+    }
   ],
   "vue-cli-plugins": [
     "vue-cli-plugin-build-watch",
     "element",
-    "storybook"
+    "storybook",
+    {
+      "name": "electron-builder",
+      "for": ["vue-cli-app"]
+    }
   ],
   ".npmrc": [
     "@wurielle:registry=https://npm.pkg.github.com"

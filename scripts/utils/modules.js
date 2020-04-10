@@ -12,6 +12,5 @@ const globalModules = require(path.join(cwd, 'node_modules/global-modules'));
 const shell = require(path.join(cwd, 'node_modules/shelljs'));
 const npmAddScript = require(path.join(cwd, 'node_modules/npm-add-script'));
 const vueBin = path.join(globalModules, '@vue/cli/bin/vue.js');
-const bitBin = path.join(globalModules, 'bit-bin/bin/bit.js');
 
-module.exports = { shell, npmAddScript, vueBin, bitBin };
+module.exports = { shell, npmAddScript, vueBin };
