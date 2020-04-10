@@ -3,10 +3,8 @@
     "boilerplate/vue-cli-app/dist_electron/dev-app-update.yml": "dist_electron/dev-app-update.yml",
     "boilerplate/vue-cli-app/vue.config.js": "vue.config.js",
     "boilerplate/vue-cli-app/src/.electron/main.ts": "src/.electron/main.ts",
-    "boilerplate/vue-cli-app/src/platform.ts": "src/platform.ts",
-    "boilerplate/vue-cli-app/src/.electron/store.ts": "src/.electron/store.ts",
     "boilerplate/vue-cli-app/src/.electron/renderer.ts": "src/.electron/renderer.ts",
-    "boilerplate/vue-cli-app/src/.electron/store/windows.store.ts": "src/.electron/store/windows.store.ts",
+    "boilerplate/vue-cli-app/src/platform.ts": "src/platform.ts",
     "postcss.config.js": "postcss.config.js",
     "src/pristine.ts": "src/pristine.ts",
     "src/polyfills": "src/polyfills",
@@ -16,14 +14,11 @@
     "config/storybook/webpack.config.js": "config/storybook/webpack.config.js"
   },
   "remove": [
-    "src/background.ts"
   ],
   "ignore": [
     "server"
   ],
   "scripts": {
-    "electron:build:publish": "vue-cli-service electron:build -p always",
-    "electron:build:publish:minio": "vue-cli-service electron:build -p always -c.compression=store",
-    "minio:serve": "minio.exe server server"
+    "electron:build:publish": "vue-cli-service electron:build -p always"
   }
 }

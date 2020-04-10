@@ -33,16 +33,49 @@ requiredCommands.forEach((command) => {
 
 class Install {
     constructor(exit = true) {
-        this.installGlobalDependencies();
-        this.createVueCLIProject();
-        this.installVueCLIPlugins();
-        this.installDependencies();
-        this.executeActions();
-        this.addPackageScripts();
+        this.setNPMScopes();
+        // this.installGlobalDependencies();
+        // this.createVueCLIProject();
+        // this.installVueCLIPlugins();
+        // this.installDependencies();
+        // this.executeActions();
+        // this.addPackageScripts();
         echo('All Done 🎉🎉🎉');
         if (exit) {
             shell.exit(1);
         }
+    }
+
+    setNPMScopes() {
+        const npmrcFile = path.join(cwd, '.npmrc');
+        const npmrcScopes = commonDependencies['.npmrc'];
+        if (fs.existsSync(npmrcFile)) {
+            try {
+                const data = fs.readFileSync(npmrcFile, 'utf8');
+                const content = this.getNPMRCContent(npmrcScopes, data);
+                return fs.writeFileSync(npmrcFile, content);
+            } catch (err) {
+                throw err;
+            }
+        }
+        try {
+            const content = this.getNPMRCContent(npmrcScopes);
+            return fs.writeFileSync(npmrcFile, content);
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    getNPMRCContent(scopes, content = '') {
+        const scopesIsArray = scopes && typeof scopes === 'object' && Array.isArray(scopes);
+        if (scopesIsArray) {
+            scopes.forEach((scope) => {
+                if (content.indexOf(scope) < 0) {
+                    content += scope + '\n';
+                }
+            });
+        }
+        return content;
     }
 
     installGlobalDependencies() {

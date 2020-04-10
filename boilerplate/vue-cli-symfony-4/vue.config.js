@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const argv = require('minimist')(process.argv.slice(2));
 
-const JsonSassPlugin = require('@bit/wurielle.pristine.webpack.json-sass-plugin');
+const JsonSassPlugin = require('@wurielle/json-sass-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const PrettierPlugin = require("prettier-webpack-plugin");

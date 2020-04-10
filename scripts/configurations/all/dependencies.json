@@ -20,17 +20,18 @@
     "@storybook/addon-viewport",
     "@storybook/addon-storysource",
     "@storybook/addon-centered",
+    "@wurielle/json-sass-webpack-plugin",
     "bootstrap",
     "objectFitPolyfill",
     "twig",
     "raw-loader"
   ],
-  "bit": [
-    "wurielle.pristine/webpack/json-sass-plugin"
-  ],
   "vue-cli-plugins": [
     "vue-cli-plugin-build-watch",
     "element",
     "storybook"
+  ],
+  ".npmrc": [
+    "@wurielle:registry=https://npm.pkg.github.com"
   ]
 }
