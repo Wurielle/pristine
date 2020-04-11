@@ -5,7 +5,7 @@ const child_process = require('child_process');
 const {shell} = require('./modules');
 const {cwd} = require('./process');
 const date = new Date();
-const backupDir = path.join(cwd, '.pristine/backup', date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+const backupDir = path.join(cwd, '.pristine/backup', date.getFullYear() + (date.getMonth() + 1) + date.getDate() + date.getHours() + date.getMinutes() + date.getSeconds());
 
 const backup = (target) => {
     if (fs.existsSync(target)) {

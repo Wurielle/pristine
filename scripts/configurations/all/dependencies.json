@@ -38,6 +38,7 @@
     "@storybook/addon-storysource",
     "@storybook/addon-centered",
     "@wurielle/json-sass-webpack-plugin",
+    "@wurielle/pristine",
     "bootstrap",
     "objectFitPolyfill",
     "twig",
