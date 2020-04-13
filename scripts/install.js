@@ -174,9 +174,9 @@ class Install {
             if (commonActions) {
                 if (commonActions.scripts) {
                     Object.keys(commonActions.scripts).forEach((key) => {
-                        const script = commonActions.scripts[key][project] || commonActions.scripts[key].default;
+                        const script = typeof commonActions.scripts[key] === 'string' ? commonActions.scripts[key] : commonActions.scripts[key][project] || commonActions.scripts[key].default;
                         if (script) {
-                            npmAddScript({key, value: commonActions.scripts[key], force: true});
+                            npmAddScript({key, value: script, force: true});
                         }
                     });
                 }
