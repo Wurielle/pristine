@@ -3,12 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const project = process.argv[2];
-if (!project) {
-    throw new Error("No project type specified.");
-}
-
-const {pristinePath, pristineStatePath, defaultPristineState, cwd, cwdParsed, getJSONSync} = require('./utils/process');
+const {pristinePath, pristineStatePath, defaultPristineState, cwd, cwdParsed, project, getJSONSync} = require('./utils/process');
 const {shell, npmAddScript, vueBin} = require('./utils/modules');
 const {execFileSync, echo, cd, copy, move, rm} = require('./utils/commands');
 echo('Installing Pristine Locally');
@@ -18,9 +13,8 @@ libPath[path.basename(path.dirname(__dirname))] = '.pristine/temp/lib';
 copy(libPath, path.resolve(__dirname, '../../'), cwd);
 
 const pristineState = getJSONSync(pristineStatePath, defaultPristineState);
-const commonDependencies = getJSONSync(path.join(pristinePath, './scripts/configurations/' + 'all' + '/dependencies.json'));
-const commonActions = getJSONSync(path.join(pristinePath, './scripts/configurations/' + 'all' + '/actions.json'));
-const projectActions = getJSONSync(path.join(pristinePath, './scripts/configurations/' + project + '/actions.json'));
+const commonDependencies = getJSONSync(path.join(pristinePath, './scripts/configurations/dependencies.json'));
+const commonActions = getJSONSync(path.join(pristinePath, './scripts/configurations/actions.json'));
 const requiredCommands = [
     'npm',
 ];
@@ -169,17 +163,6 @@ class Install {
                     rm(commonActions.remove, cwd);
                 }
             }
-            if (projectActions) {
-                if (projectActions.copy) {
-                    copy(projectActions.copy, pristinePath, cwd);
-                }
-                if (projectActions.move) {
-                    move(projectActions.move, cwd, cwd);
-                }
-                if (projectActions.remove) {
-                    rm(projectActions.remove, cwd);
-                }
-            }
             this.addCheckpoint('executeActions');
         }
     }
@@ -191,14 +174,10 @@ class Install {
             if (commonActions) {
                 if (commonActions.scripts) {
                     Object.keys(commonActions.scripts).forEach((key) => {
-                        npmAddScript({key, value: commonActions.scripts[key], force: true});
-                    });
-                }
-            }
-            if (projectActions) {
-                if (projectActions.scripts) {
-                    Object.keys(projectActions.scripts).forEach((key) => {
-                        npmAddScript({key, value: projectActions.scripts[key], force: true});
+                        const script = commonActions.scripts[key][project] || commonActions.scripts[key].default;
+                        if (script) {
+                            npmAddScript({key, value: commonActions.scripts[key], force: true});
+                        }
                     });
                 }
             }

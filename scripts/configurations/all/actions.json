@@ -1,8 +1,0 @@
-{
-  "copy": {
-    "config/storybook": "config/storybook",
-    "config/pristine.config.js": "config/pristine.config.js",
-    "config/tailwind.config.js": "config/tailwind.config.js",
-    "config/pristine.config.scss": "config/pristine.config.scss"
-  }
-}

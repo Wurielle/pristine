@@ -1,6 +1,11 @@
 const path = require('path');
 const fs = require('fs');
 
+const project = process.argv[2];
+if (!project) {
+    throw new Error("No project type specified.");
+}
+
 const cwd = process.cwd();
 const pristinePath = path.resolve(cwd, '.pristine/temp/lib');
 const cwdParsed = path.parse(cwd);
@@ -17,4 +22,4 @@ const defaultPristineState = {
 };
 const pristineStatePath = path.join(cwd, '.pristine.json');
 
-module.exports = { pristinePath, cwd, cwdParsed, defaultPristineState, pristineStatePath, getJSONSync };
+module.exports = { pristinePath, cwd, cwdParsed, defaultPristineState, pristineStatePath, project, getJSONSync };
