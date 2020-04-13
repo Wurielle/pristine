@@ -44,6 +44,10 @@
     "twig",
     "raw-loader",
     {
+      "name": "alpinejs",
+      "for": ["vue-cli-symfony-4"]
+    },
+    {
       "name": "webpack-manifest-plugin",
       "for": ["vue-cli-symfony-4"]
     },
