@@ -106,6 +106,7 @@
     ]
   },
   "scripts": {
+    "update:packages": "npm update --save/--save-dev",
     "serve": {
       "vue-cli-symfony-4": "vue-cli-service build-watch --mode development"
     },
