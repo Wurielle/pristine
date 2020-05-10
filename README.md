@@ -22,7 +22,7 @@ Available project types:
 
 Install Pristine:
 ```bash
-npm install @wurielle/pristine
+npm config set @wurielle:registry https://npm.pkg.github.com && npm install @wurielle/pristine
 ```
 
 Launch the setup:
