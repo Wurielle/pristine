@@ -1,0 +1,75 @@
+{
+  "dependencies": [
+    {
+      "name": "electron-log",
+      "for": ["vue-cli-app"]
+    },
+    {
+      "name": "auto-launch",
+      "for": ["vue-cli-app"]
+    },
+    {
+      "name": "electron-promise-ipc",
+      "for": ["vue-cli-app"]
+    },
+    {
+      "name": "electron-updater",
+      "for": ["vue-cli-app"]
+    }
+  ],
+  "devDependencies": [
+    "prettier",
+    "prettier-webpack-plugin",
+    "@iconscout/unicons",
+    "tailwindcss",
+    "minimist",
+    "dotenv",
+    "loglevel",
+    "postcss-pxtorem",
+    "css-element-queries",
+    "vue-responsive-components",
+    "lodash",
+    "@types/lodash",
+    "axios",
+    "uuid",
+    "lorem-ipsum",
+    "@storybook/addon-a11y",
+    "@storybook/addon-viewport",
+    "@storybook/addon-storysource",
+    "@storybook/addon-centered",
+    "@wurielle/json-sass-webpack-plugin",
+    "@wurielle/pristine",
+    "bootstrap",
+    "objectFitPolyfill",
+    "twig",
+    "raw-loader",
+    {
+      "name": "alpinejs",
+      "for": ["vue-cli-symfony-4"]
+    },
+    {
+      "name": "webpack-manifest-plugin",
+      "for": ["vue-cli-symfony-4"]
+    },
+    {
+      "name": "browser-sync",
+      "for": ["vue-cli-symfony-4"]
+    },
+    {
+      "name": "browser-sync-webpack-plugin",
+      "for": ["vue-cli-symfony-4"]
+    }
+  ],
+  "vue-cli-plugins": [
+    "vue-cli-plugin-build-watch",
+    "element",
+    "storybook",
+    {
+      "name": "electron-builder",
+      "for": ["vue-cli-app"]
+    }
+  ],
+  ".npmrc": [
+    "@wurielle:registry=https://npm.pkg.github.com"
+  ]
+}

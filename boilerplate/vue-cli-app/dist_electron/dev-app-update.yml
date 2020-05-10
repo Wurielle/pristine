@@ -1,3 +1,0 @@
-provider=s3
-endpoint=http://55.55.55.1:9000
-bucket=vue-cli-app

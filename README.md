@@ -10,7 +10,7 @@
 
 ## Create A New Project Based On Pristine
 Select the script type you want to use depending on the type of project you want to have.  
-For instance, if you want to setup a vue-cli pristine project you'd use `pristine/scripts/install vue-cli` or if you want to setup an Electron/NativeScript pristine project, you'd use `pristine/scripts/install vue-cli-app`
+For instance, if you want to setup a vue-cli pristine project you'd use `pristine install vue-cli` or if you want to setup an Electron/NativeScript pristine project, you'd use `pristine install vue-cli-app`
 
 Available project types:  
 
@@ -20,19 +20,14 @@ Available project types:
 | vue-cli-symfony-4 | Vue CLI in a Symfony 4 Project  |
 | vue-cli-app | Vue CLI with Electron and NativeScript  |
 
-Add Pristine as a submodule or download and unzip it inside your project:
+Install Pristine:
 ```bash
-git submodule add https://github.com/Wurielle/pristine.git
+npm install @wurielle/pristine
 ```
 
 Launch the setup:
 ```bash
-npm install -g @vue/cli && node pristine/scripts/install PROJECT_TYPE
+pristine install PROJECT_TYPE
 ```
 
-Add to your `src/main.ts` file:
-```javascript
-import '@config/theme.js';
-import '@/styles/main.scss';
-```
 

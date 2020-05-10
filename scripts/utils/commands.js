@@ -3,9 +3,14 @@ const path = require('path');
 const child_process = require('child_process');
 
 const {shell} = require('./modules');
-const {cwd} = require('./process');
+const {cwd, project} = require('./process');
 const date = new Date();
-const backupDir = path.join(cwd, '.pristine/backup', date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+const backupDir = path.join(
+  cwd,
+  '.pristine/backup',
+  [date.getFullYear(), (date.getMonth() + 1), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
+    .reduce((previousValue, currentValue) => previousValue + currentValue.toString(), '')
+);
 
 const backup = (target) => {
     if (fs.existsSync(target)) {
@@ -78,15 +83,18 @@ const cd = (path) => {
 
 const copy = (files, from, to) => {
     Object.keys(files).forEach(function (key) {
-        let completeFrom = path.resolve(from, key);
-        let completeTo = path.resolve(to, files[key]);
-        if (fs.existsSync(completeFrom)) {
-            backup(completeTo);
-            mkdir(completeTo);
-            if (isFile(completeTo)) {
-                shell.cp('-R', completeFrom, completeTo);
-            } else {
-                shell.cp('-R', path.join(completeFrom, '*'), completeTo);
+        const target = typeof files[key] === 'string' ? files[key] : files[key][project] || files[key].default;
+        if (target) {
+            let completeFrom = path.resolve(from, key);
+            let completeTo = path.resolve(to, target);
+            if (fs.existsSync(completeFrom)) {
+                backup(completeTo);
+                mkdir(completeTo);
+                if (isFile(completeTo)) {
+                    shell.cp('-R', completeFrom, completeTo);
+                } else {
+                    shell.cp('-R', path.join(completeFrom, '*'), completeTo);
+                }
             }
         }
     });
@@ -94,26 +102,30 @@ const copy = (files, from, to) => {
 
 const move = (files, from, to) => {
     Object.keys(files).forEach(function (key) {
-        let completeFrom = path.resolve(from, key);
-        let completeTo = path.resolve(to, files[key]);
-        if (fs.existsSync(completeFrom)) {
-            backup(completeTo);
-            mkdir(completeTo);
-            if (isFile(completeTo)) {
-                shell.mv('-n', completeFrom, completeTo);
-            } else {
-                shell.mv('-n', path.join(completeFrom, '*'), completeTo);
+        const target = typeof files[key] === 'string' ? files[key] : files[key][project] || files[key].default;
+        if (target) {
+            let completeFrom = path.resolve(from, key);
+            let completeTo = path.resolve(to, target);
+            if (fs.existsSync(completeFrom)) {
+                backup(completeTo);
+                mkdir(completeTo);
+                if (isFile(completeTo)) {
+                    shell.mv('-n', completeFrom, completeTo);
+                } else {
+                    shell.mv('-n', path.join(completeFrom, '*'), completeTo);
+                }
             }
         }
     });
 };
 
 const rm = (files) => {
-    files.forEach(file => {
-        if (fs.existsSync(file)) {
-            shell.echo('💠 Removing: ' + file);
-            backup(file);
-            shell.rm('-rf', file);
+    Object.keys(files).forEach(target => {
+        const inProject = typeof files[target] === 'object' && Array.isArray(files[target]) && files[target].indexOf(project) >= 0;
+        if (inProject && fs.existsSync(target)) {
+            shell.echo('💠 Removing: ' + target);
+            backup(target);
+            shell.rm('-rf', target);
         }
     });
 };
