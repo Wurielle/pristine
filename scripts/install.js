@@ -153,11 +153,11 @@ class Install {
             echo('Copying Necessary Files');
             cd(cwd);
             if (commonActions) {
-                if (commonActions.copy) {
-                    copy(commonActions.copy, pristinePath, cwd);
-                }
                 if (commonActions.move) {
                     move(commonActions.move, cwd, cwd);
+                }
+                if (commonActions.copy) {
+                    copy(commonActions.copy, pristinePath, cwd);
                 }
                 if (commonActions.remove) {
                     rm(commonActions.remove, cwd);

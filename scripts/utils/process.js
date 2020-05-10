@@ -1,7 +1,13 @@
 const path = require('path');
 const fs = require('fs');
 
-const project = process.argv[2];
+const action = process.argv[2];
+const project = process.argv[3];
+
+if (!action) {
+    throw new Error("No action specified.");
+}
+
 if (!project) {
     throw new Error("No project type specified.");
 }
@@ -22,4 +28,4 @@ const defaultPristineState = {
 };
 const pristineStatePath = path.join(cwd, '.pristine.json');
 
-module.exports = { pristinePath, cwd, cwdParsed, defaultPristineState, pristineStatePath, project, getJSONSync };
+module.exports = { pristinePath, cwd, cwdParsed, defaultPristineState, pristineStatePath, action, project, getJSONSync };

@@ -95,6 +95,10 @@
     },
     "src/element-variables.scss": {
       "vue-cli-symfony-4": "assets/app/element-variables.scss"
+    },
+    "src/registerServiceWorker.ts": {
+      "default": "src/registerServiceWorker.ts",
+      "vue-cli-symfony-4": "assets/app/registerServiceWorker.ts"
     }
   },
   "remove": {

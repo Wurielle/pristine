@@ -120,9 +120,9 @@ const move = (files, from, to) => {
 };
 
 const rm = (files) => {
-    Object.keys(files).forEach(key => {
-        const target = typeof files[key] === 'string' ? files[key] : files[key][project] || files[key].default;
-        if (target && fs.existsSync(target)) {
+    Object.keys(files).forEach(target => {
+        const inProject = typeof files[target] === 'object' && Array.isArray(files[target]) && files[target].indexOf(project) >= 0;
+        if (inProject && fs.existsSync(target)) {
             shell.echo('💠 Removing: ' + target);
             backup(target);
             shell.rm('-rf', target);
