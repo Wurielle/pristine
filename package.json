@@ -6,7 +6,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "bin": {
-    "pristine": "./scripts/install.js"
+    "pristine": "./scripts/cli.js"
   },
   "scripts": {
     "serve": "vue-cli-service serve",

@@ -211,3 +211,5 @@ if (require.main === module) {
 } else {
     // Called from require()
 }
+
+module.exports = Install;
