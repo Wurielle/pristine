@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { action } = require('./utils/process');
 switch(action) {
     case 'install':
