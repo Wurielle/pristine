@@ -17,7 +17,6 @@ module.exports = {
         config
             .entry('app')
             .clear()
-            .add('animate.css/animate.min.css')
             .add(path.resolve(__dirname, 'assets/app/pristine.ts'))
             .add(path.resolve(__dirname, 'assets/app/main.ts'))
         ;
