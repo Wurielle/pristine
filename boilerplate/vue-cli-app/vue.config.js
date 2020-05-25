@@ -18,6 +18,7 @@ module.exports = {
     configureWebpack: {
         resolve: {
             alias: {
+                '@root': path.resolve(__dirname),
                 '@config':  path.resolve(__dirname, 'config'),
                 '@components':  path.resolve(__dirname, 'components'),
             }
