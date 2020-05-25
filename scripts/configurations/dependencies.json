@@ -38,7 +38,6 @@
     "@storybook/addon-storysource",
     "@storybook/addon-centered",
     "@wurielle/json-sass-webpack-plugin",
-    "@wurielle/pristine",
     "bootstrap",
     "objectFitPolyfill",
     "twig",
@@ -70,6 +69,7 @@
     }
   ],
   ".npmrc": [
+    "//npm.pkg.github.com/:_authToken=95d26185814ccc2427972778566b00221ebf7bba",
     "@wurielle:registry=https://npm.pkg.github.com"
   ]
 }
