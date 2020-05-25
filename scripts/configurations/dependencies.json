@@ -69,7 +69,7 @@
     }
   ],
   ".npmrc": [
-    "//npm.pkg.github.com/:_authToken=95d26185814ccc2427972778566b00221ebf7bba",
+    "# //npm.pkg.github.com/:_authToken=GITHUB_PACKAGES_TOKEN",
     "@wurielle:registry=https://npm.pkg.github.com"
   ]
 }
