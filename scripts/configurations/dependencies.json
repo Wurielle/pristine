@@ -43,7 +43,7 @@
     "twig",
     "raw-loader",
     "voca",
-    "numeraljs",
+    "numeral",
     "moment",
     {
       "name": "alpinejs",
