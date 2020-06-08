@@ -42,6 +42,9 @@
     "objectFitPolyfill",
     "twig",
     "raw-loader",
+    "voca",
+    "numeraljs",
+    "moment",
     {
       "name": "alpinejs",
       "for": ["vue-cli-symfony-4"]
