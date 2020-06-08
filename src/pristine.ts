@@ -13,8 +13,9 @@ import '@iconscout/unicons/css/unicons.css';
 import '@/styles/main.scss';
 
 /* Auto Imports */
-const srcContext = require.context('@', true, /\.(runtime|asset)\.(.*?)$/);
+const filesExpression = /\.(runtime|asset)\.(.*?)$/;
+const srcContext = require.context('@', true, filesExpression);
 srcContext.keys().forEach(srcContext);
 
-const templatesContext = require.context('@root/templates', true, /\.(runtime|asset)\.(.*?)$/);
+const templatesContext = require.context('@root/templates', true, filesExpression);
 templatesContext.keys().forEach(templatesContext);
