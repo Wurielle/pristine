@@ -1,0 +1,123 @@
+@import '~@/styles/functions/all.scss';
+@import '~@/styles/mixins/all.scss';
+
+$grid-breakpoints: theme(bootstrapBreakpoints);
+$container-max-widths: theme(bootstrapMaxWidths);
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/functions";
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/grid';
+
+.row {
+    & > .col,
+    & > [class^='col'] {
+        padding-left: theme(spacing, base);
+        padding-right: theme(spacing, base);
+    }
+    @each $key, $value in theme(spacing) {
+        &.row-vs-#{$key} {
+            margin-bottom: -$value;
+            & > .col,
+            & > [class^='col'] {
+                margin-bottom: $value;
+            }
+        }
+    }
+    @each $key, $value in theme(gutters) {
+        &.row-gutter-#{$key} {
+            margin-left: -$value;
+            margin-right: -$value;
+            & > .col,
+            & > [class^='col'] {
+                padding-left: $value;
+                padding-right: $value;
+            }
+        }
+    }
+    @each $key, $value in theme(spacing) {
+        @responsive {
+            &.row-vs-#{$key} {
+                margin-bottom: -$value;
+                & > .col,
+                & > [class^='col'] {
+                    margin-bottom: $value;
+                }
+            }
+        }
+    }
+    @each $key, $value in theme(gutters) {
+        @responsive {
+            &.row-gutter-#{$key} {
+                margin-left: -$value;
+                margin-right: -$value;
+                & > .col,
+                & > [class^='col'] {
+                    padding-left: $value;
+                    padding-right: $value;
+                }
+            }
+        }
+    }
+}
+
+@responsive {
+    .px-container-side {
+        @each $screenSize, $screenValue in theme(screens) {
+            @media (min-width: $screenValue) {
+                padding-left: calc((100vw - #{$screenValue}) / 2);
+                padding-left: calc(((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2);
+                padding-right: calc((100vw - #{$screenValue}) / 2);
+                padding-right: calc(
+                    ((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2
+                );
+            }
+        }
+    }
+
+    .pl-container-side {
+        @each $screenSize, $screenValue in theme(screens) {
+            @media (min-width: $screenValue) {
+                padding-left: calc((100vw - #{$screenValue}) / 2);
+                padding-left: calc(((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2);
+            }
+        }
+    }
+
+    .pr-container-side {
+        @each $screenSize, $screenValue in theme(screens) {
+            @media (min-width: $screenValue) {
+                padding-right: calc((100vw - #{$screenValue}) / 2);
+                padding-right: calc(((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2);
+            }
+        }
+    }
+
+    .-mx-container-side {
+        @each $screenSize, $screenValue in theme(screens) {
+            @media (min-width: $screenValue) {
+                margin-left: calc((100vw - #{$screenValue}) / 2 * -1);
+                margin-left: calc(((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2 * -1);
+                margin-right: calc((100vw - #{$screenValue}) / 2 * -1);
+                margin-right: calc(((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2 * -1);
+            }
+        }
+    }
+
+    .-ml-container-side {
+        @each $screenSize, $screenValue in theme(screens) {
+            @media (min-width: $screenValue) {
+                margin-left: calc((100vw - #{$screenValue}) / 2 * -1);
+                margin-left: calc(((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2 * -1);
+            }
+        }
+    }
+
+    .-mr-container-side {
+        @each $screenSize, $screenValue in theme(screens) {
+            @media (min-width: $screenValue) {
+                margin-right: calc((100vw - #{$screenValue}) / 2 * -1);
+                margin-right: calc(((100vw - var(--scrollbar-width)) - #{$screenValue}) / 2 * -1);
+            }
+        }
+    }
+}

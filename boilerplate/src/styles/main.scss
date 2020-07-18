@@ -1,0 +1,12 @@
+@tailwind base;
+
+@tailwind components;
+
+@import "~@/styles/base/base";
+@import "~@/styles/base/grid";
+
+@tailwind utilities;
+
+@import "~@/styles/utilities/ratios";
+@import "~@/styles/utilities/animations";
+@import "~@/styles/utilities/transitions";

@@ -1,56 +1,47 @@
 {
+  "generate": {
+    "boilerplate/vue.config.template.js": "vue.config.js"
+  },
   "copy": {
-    "config/storybook": "config/storybook",
-    "config/pristine.config.js": "config/pristine.config.js",
-    "config/tailwind.config.js": "config/tailwind.config.js",
-    "config/pristine.config.scss": "config/pristine.config.scss",
-    "postcss.config.js": "postcss.config.js",
-    "src/pristine.ts": {
+    "boilerplate/config/storybook": "config/storybook",
+    "boilerplate/config/pristine.config.js": "config/pristine.config.js",
+    "boilerplate/config/tailwind.config.js": "config/tailwind.config.js",
+    "boilerplate/config/pristine.config.scss": "config/pristine.config.scss",
+    "boilerplate/postcss.config.js": "postcss.config.js",
+    "boilerplate/src/pristine.ts": {
       "default": "src/pristine.ts",
       "vue-cli-symfony-4": "assets/app/pristine.ts"
     },
-    "src/polyfills": {
+    "boilerplate/src/polyfills": {
       "default": "src/polyfills",
       "vue-cli-symfony-4": "assets/app/polyfills"
     },
-    "src/utils": {
+    "boilerplate/src/utils": {
       "default": "src/utils",
       "vue-cli-symfony-4": "assets/app/utils"
     },
-    "src/styles": {
+    "boilerplate/src/styles": {
       "default": "src/styles",
       "vue-cli-symfony-4": "assets/app/styles"
     },
-    "src/stories": {
+    "boilerplate/src/stories": {
       "default": "src/stories",
       "vue-cli-symfony-4": "assets/app/stories"
     },
-    "boilerplate/vue-cli/vue.config.js": {
-      "vue-cli": "vue.config.js"
-    },
-    "boilerplate/vue-cli-symfony-4/vue.config.js": {
-      "vue-cli-symfony-4": "vue.config.js"
-    },
-    "boilerplate/vue-cli-symfony-4/tsconfig.json": {
+    "boilerplate/tsconfig.json": {
       "vue-cli-symfony-4": "tsconfig.json"
     },
-    "boilerplate/vue-cli-symfony-4/assets/app/utils/twig.ts": {
-      "vue-cli-symfony-4": "assets/app/utils/twig.ts"
-    },
-    "boilerplate/vue-cli-app/dist_electron/dev-app-update.yml": {
+    "boilerplate/dist_electron/dev-app-update.yml": {
       "vue-cli-app": "dist_electron/dev-app-update.yml"
     },
-    "boilerplate/vue-cli-app/vue.config.js": {
-      "vue-cli-app": "vue.config.js"
-    },
-    "boilerplate/vue-cli-app/src/.electron/main.ts": {
+    "boilerplate/src/.electron/main.ts": {
       "vue-cli-app": "src/.electron/main.ts"
     },
-    "boilerplate/vue-cli-app/src/.electron/renderer.ts": {
+    "boilerplate/src/.electron/renderer.ts": {
       "vue-cli-app": "src/.electron/renderer.ts"
     },
-    "boilerplate/vue-cli-app/src/platform.ts": {
-      "vue-cli-app": "src/platform.ts"
+    "boilerplate/src/modules/platform.ts": {
+      "vue-cli-app": "src/modules/platform.ts"
     }
   },
   "move": {

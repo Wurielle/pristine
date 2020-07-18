@@ -1,0 +1,39 @@
+@import "~@/styles/functions/all.scss";
+
+.animation-pulse {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse{
+  0% {
+    opacity: .3;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .3;
+  }
+}
+
+.animation-spin{
+  animation-name: spin;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.35, 1.01, 0.63,-0.03);
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin{
+  0%{
+    transform:rotate(0deg);
+  }
+  50%{
+    transform:rotate(180deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
