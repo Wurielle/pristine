@@ -86,7 +86,7 @@ class Install {
         if (!this.hasCheckpoint('generateVueConfig')) {
             echo('Creating Vue Config File');
             cd(cwd);
-            writeFileSync(cwd, `
+            writeFileSync(path.join(cwd, 'vue.config.js'), `
                 module.exports = {
                     lintOnSave: false,
                 }
