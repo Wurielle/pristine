@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 package-lock.json
-/dist
+/playground
+!/playground/.gitkeep
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/

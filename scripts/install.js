@@ -5,7 +5,7 @@ const path = require('path');
 
 const {pristinePath, pristineStatePath, defaultPristineState, cwd, cwdParsed, project, getJSONSync} = require('./utils/process');
 const {shell, npmAddScript, vueBin} = require('./utils/modules');
-const {execFileSync, echo, cd, copy, move, rm} = require('./utils/commands');
+const {execFileSync, echo, cd, copy, move, rm, writeFileSync} = require('./utils/commands');
 echo('Installing Pristine Locally');
 cd(cwd);
 const libPath = {};
@@ -30,6 +30,7 @@ class Install {
     constructor(exit = true) {
         this.setNPMScopes();
         this.installGlobalDependencies();
+        this.generateVueConfig();
         this.createVueCLIProject();
         this.installVueCLIPlugins();
         this.createVueCLIProject();
@@ -78,6 +79,19 @@ class Install {
             cd(cwd);
             execFileSync('npm', ['i', '-g', '@vue/cli']);
             this.addCheckpoint('installGlobalDependencies');
+        }
+    }
+
+    generateVueConfig() {
+        if (!this.hasCheckpoint('generateVueConfig')) {
+            echo('Creating Vue Config File');
+            cd(cwd);
+            writeFileSync(cwd, `
+                module.exports = {
+                    lintOnSave: false,
+                }
+            `)
+            this.addCheckpoint('generateVueConfig');
         }
     }
 
@@ -158,6 +172,9 @@ class Install {
                 }
                 if (commonActions.copy) {
                     copy(commonActions.copy, pristinePath, cwd);
+                }
+                if (commonActions.generate) {
+                    copy(commonActions.generate, pristinePath, cwd);
                 }
                 if (commonActions.remove) {
                     rm(commonActions.remove, cwd);

@@ -5,6 +5,9 @@ const child_process = require('child_process');
 const {shell} = require('./modules');
 const {cwd, project} = require('./process');
 const date = new Date();
+const rendererOptions = {
+    project,
+}
 const backupDir = path.join(
   cwd,
   '.pristine/backup',
@@ -81,6 +84,26 @@ const cd = (path) => {
     shell.cd(path);
 };
 
+const writeFileSync = (destination, content) => {
+    return fs.writeFileSync(destination, content);
+}
+
+const generate = (files, from, to) => {
+    Object.keys(files).forEach(function (key) {
+        const target = typeof files[key] === 'string' ? files[key] : files[key][project] || files[key].default;
+        if (target) {
+            let completeFrom = path.resolve(from, key);
+            let completeTo = path.resolve(to, target);
+            const renderer = require(completeFrom);
+            if (fs.existsSync(completeFrom)) {
+                backup(completeTo);
+                mkdir(completeTo);
+                writeFileSync(completeTo, renderer(rendererOptions))
+            }
+        }
+    });
+};
+
 const copy = (files, from, to) => {
     Object.keys(files).forEach(function (key) {
         const target = typeof files[key] === 'string' ? files[key] : files[key][project] || files[key].default;
@@ -132,4 +155,4 @@ const rm = (files) => {
 
 mkdir(backupDir);
 
-module.exports = { execFileSync, echo, cd, copy, move, rm, mkdir };
+module.exports = { execFileSync, echo, cd, copy, move, rm, mkdir, generate, writeFileSync };
