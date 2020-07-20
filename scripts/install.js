@@ -5,7 +5,7 @@ const path = require('path');
 
 const {pristinePath, pristineStatePath, defaultPristineState, cwd, cwdParsed, project, getJSONSync} = require('./utils/process');
 const {shell, npmAddScript, vueBin} = require('./utils/modules');
-const {execFileSync, echo, cd, copy, move, rm, writeFileSync} = require('./utils/commands');
+const {execFileSync, echo, cd, copy, move, rm, writeFileSync, generate, commit} = require('./utils/commands');
 echo('Installing Pristine Locally');
 cd(cwd);
 const libPath = {};
@@ -17,6 +17,7 @@ const commonDependencies = getJSONSync(path.join(pristinePath, './scripts/config
 const commonActions = getJSONSync(path.join(pristinePath, './scripts/configurations/actions.json'));
 const requiredCommands = [
     'npm',
+    'git',
 ];
 
 requiredCommands.forEach((command) => {
@@ -28,6 +29,7 @@ requiredCommands.forEach((command) => {
 
 class Install {
     constructor(exit = true) {
+        this.initGit();
         this.setNPMScopes();
         this.installGlobalDependencies();
         this.generateVueConfig();
@@ -39,6 +41,27 @@ class Install {
         this.executeActions();
         this.addPackageScripts();
         this.isDone(exit);
+    }
+
+    initGit() {
+        const gitIgnorePath = path.join(cwd, '.gitignore')
+        execFileSync('git', ['init']);
+
+        if (fs.existsSync(gitIgnorePath)) {
+            try {
+                let data = fs.readFileSync(gitIgnorePath, 'utf8');
+                if (data.indexOf('node_modules') < 0) {
+                    data += '\n' + 'node_modules';
+                    fs.writeFileSync(gitIgnorePath, data);
+                }
+            } catch (err) {
+                throw err;
+            }
+        } else {
+            writeFileSync(path.join(cwd, '.gitignore'), `
+            node_modules
+        `.trim())
+        }
     }
 
     setNPMScopes() {
@@ -174,7 +197,7 @@ class Install {
                     copy(commonActions.copy, pristinePath, cwd);
                 }
                 if (commonActions.generate) {
-                    copy(commonActions.generate, pristinePath, cwd);
+                    generate(commonActions.generate, pristinePath, cwd);
                 }
                 if (commonActions.remove) {
                     rm(commonActions.remove, cwd);
@@ -217,8 +240,10 @@ class Install {
     }
 
     addCheckpoint(checkpointName) {
+        cd(cwd);
         pristineState.checkpoints.push(checkpointName);
         fs.writeFileSync(pristineStatePath, JSON.stringify(pristineState));
+        commit('build: Pristine - Checkpoint (' + checkpointName + ')');
     }
 }
 

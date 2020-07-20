@@ -153,6 +153,11 @@ const rm = (files) => {
     });
 };
 
+const commit = (message = 'build: Pristine automatic commit') => {
+    execFileSync('git', ['add', '-A']);
+    execFileSync('git', ['commit', '-m', '"' + message + '"']);
+}
+
 mkdir(backupDir);
 
-module.exports = { execFileSync, echo, cd, copy, move, rm, mkdir, generate, writeFileSync };
+module.exports = { execFileSync, echo, cd, copy, move, rm, mkdir, generate, writeFileSync, commit };

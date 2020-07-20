@@ -19,7 +19,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     lintOnSave: !(argv._[0].indexOf('storybook') > -1),
-    publicPath: ${project === 'vue-cli-symfony-4' ? '/build/app/' : '/'},
+    publicPath: ${project === 'vue-cli-symfony-4' ? `'/build/app/'` : `'/'`},
     ${project === 'vue-cli-symfony-4' ? `
     runtimeCompiler: true,
     outputDir: path.resolve(__dirname, "public/build/app/"),
