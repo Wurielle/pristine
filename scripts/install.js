@@ -29,15 +29,15 @@ requiredCommands.forEach((command) => {
 
 class Install {
     constructor(exit = true) {
-        this.initGit();
-        this.setNPMScopes();
-        this.installGlobalDependencies();
-        this.generateVueConfig();
-        this.createVueCLIProject();
-        this.installVueCLIPlugins();
-        this.createVueCLIProject();
-        this.installVueCLIPlugins();
-        this.installDependencies();
+        // this.initGit();
+        // this.setNPMScopes();
+        // this.installGlobalDependencies();
+        // this.generateVueConfig();
+        // this.createVueCLIProject();
+        // this.installVueCLIPlugins();
+        // this.createVueCLIProject();
+        // this.installVueCLIPlugins();
+        // this.installDependencies();
         this.executeActions();
         this.addPackageScripts();
         this.isDone(exit);
@@ -229,6 +229,9 @@ class Install {
         echo('All Done 🎉🎉🎉');
         if (fs.existsSync(pristineStatePath)) {
             fs.unlinkSync(pristineStatePath);
+        }
+        if (fs.existsSync(path.join(cwd, '.pristine/temp'))) {
+            fs.rmdirSync(path.join(cwd, '.pristine/temp'), { recursive: true });
         }
         if (exit) {
             shell.exit(1);

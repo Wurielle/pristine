@@ -37,6 +37,7 @@
     "@storybook/addon-viewport",
     "@storybook/addon-storysource",
     "@storybook/addon-centered",
+    "@storybook/addon-notes",
     "@wurielle/json-sass-webpack-plugin",
     "bootstrap",
     "objectFitPolyfill",

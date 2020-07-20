@@ -1,26 +1,32 @@
+const renderer = ({project}) => {
+    return `
 module.exports = {
     stories: [
+    ${ project === 'vue-cli-symfony-4' ? `
         '../../templates/**/*.stories.(js|jsx|ts|tsx|mdx)',
         '../../assets/app/**/*.stories.(js|jsx|ts|tsx|mdx)',
+    ` : ''
+    }
         '../../src/**/*.stories.(js|jsx|ts|tsx|mdx)',
     ],
         addons: [
         '@storybook/addon-actions',
-        {
-            name: '@storybook/addon-docs',
-            options: {
-                babelOptions: {
-                    presets: [
-                        [
-                            '@vue/cli-plugin-babel/preset',
-                            {
-                                jsx: false
-                            }
-                        ]
-                    ]
-                }
-            }
-        },
+        /* Uncomment if you have @storybook/addon-docs installed */
+        // {
+        //     name: '@storybook/addon-docs',
+        //     options: {
+        //         babelOptions: {
+        //             presets: [
+        //                 [
+        //                     '@vue/cli-plugin-babel/preset',
+        //                     {
+        //                         jsx: false
+        //                     }
+        //                 ]
+        //             ]
+        //         }
+        //     }
+        // },
         '@storybook/addon-knobs',
         '@storybook/addon-links',
         '@storybook/addon-notes',
@@ -60,3 +66,7 @@ module.exports = {
         return storybookConfig;
     }
 };
+`;
+}
+
+module.exports = renderer;
