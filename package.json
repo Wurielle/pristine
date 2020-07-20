@@ -1,7 +1,7 @@
 {
   "name": "@wurielle/pristine",
   "repository": "https://github.com/wurielle/pristine",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "files": [
     "/scripts",
     "/boilerplate"
