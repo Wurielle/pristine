@@ -1,4 +1,8 @@
 {
+  "concatenate": [
+    ".gitignore",
+    "README.md"
+  ],
   "copy": {
     "boilerplate/config/storybook/preview.js": "config/storybook/preview.js",
     "boilerplate/config/pristine.config.js": "config/pristine.config.js",

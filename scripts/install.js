@@ -5,7 +5,7 @@ const path = require('path');
 
 const {pristinePath, pristineStatePath, defaultPristineState, cwd, cwdParsed, project, getJSONSync} = require('./utils/process');
 const {shell, npmAddScript, vueBin} = require('./utils/modules');
-const {execFileSync, echo, cd, copy, move, rm, writeFileSync, generate, commit} = require('./utils/commands');
+const {execFileSync, echo, cd, copy, move, rm, writeFileSync, generate, commit, backup, concatenate} = require('./utils/commands');
 echo('Installing Pristine Locally');
 cd(cwd);
 const libPath = {};
@@ -30,11 +30,10 @@ requiredCommands.forEach((command) => {
 class Install {
     constructor(exit = true) {
         this.initGit();
+        this.backupConcatenation();
         this.setNPMScopes();
         this.installGlobalDependencies();
         this.generateVueConfig();
-        this.createVueCLIProject();
-        this.installVueCLIPlugins();
         this.createVueCLIProject();
         this.installVueCLIPlugins();
         this.installDependencies();
@@ -61,6 +60,15 @@ class Install {
             writeFileSync(path.join(cwd, '.gitignore'), `
             node_modules
         `.trim())
+        }
+    }
+
+
+    backupConcatenation() {
+        if (commonActions) {
+            if (commonActions.concatenate) {
+                commonActions.concatenate.forEach((filePath) =>backup(path.join(cwd, filePath), false));
+            }
         }
     }
 
@@ -201,6 +209,9 @@ class Install {
                 }
                 if (commonActions.remove) {
                     rm(commonActions.remove, cwd);
+                }
+                if (commonActions.concatenate) {
+                    concatenate(commonActions.concatenate);
                 }
             }
             this.addCheckpoint('executeActions');

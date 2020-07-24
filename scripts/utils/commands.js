@@ -8,16 +8,22 @@ const date = new Date();
 const rendererOptions = {
     project,
 }
+
 const backupDir = path.join(
+  cwd,
+  '.pristine/backup'
+);
+
+const backupDirTimestamped = path.join(
   cwd,
   '.pristine/backup',
   [date.getFullYear(), (date.getMonth() + 1), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()]
     .reduce((previousValue, currentValue) => previousValue + currentValue.toString(), '')
 );
 
-const backup = (target) => {
+const backup = (target, timestampedDir = true) => {
     if (fs.existsSync(target)) {
-        const backupTarget = target.replace(cwd, backupDir);
+        const backupTarget = timestampedDir ? target.replace(cwd, backupDirTimestamped) : target.replace(cwd, backupDir);
         console.log('💠 Backing up "'
             + target.replace(cwd, '').replace(/\\/g, '/')
             + '" in "'
@@ -153,11 +159,25 @@ const rm = (files) => {
     });
 };
 
+const concatenate = (files) => {
+    files.forEach(target => {
+        let completeFrom = path.resolve(cwd, target);
+        let completeTemp = path.resolve(backupDir, target);
+        if (fs.existsSync(completeFrom)) {
+            let currentContent = fs.readFileSync(completeFrom, 'utf8');
+            let previousContent = fs.readFileSync(completeTemp, 'utf8');
+            if (currentContent !== previousContent) {
+                const newContent = previousContent + '\n' + currentContent;
+                writeFileSync(completeFrom, newContent);
+            }
+        }
+    });
+};
 const commit = (message = 'build: Pristine automatic commit') => {
     execFileSync('git', ['add', '-A']);
     execFileSync('git', ['commit', '-m', '"' + message + '"']);
 }
 
-mkdir(backupDir);
+mkdir(backupDirTimestamped);
 
-module.exports = { execFileSync, echo, cd, copy, move, rm, mkdir, generate, writeFileSync, commit };
+module.exports = { execFileSync, echo, cd, copy, move, rm, mkdir, generate, writeFileSync, commit, backup, concatenate };
