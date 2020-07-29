@@ -18,6 +18,8 @@
     }
   ],
   "devDependencies": [
+    "glob-all",
+    "purgecss-webpack-plugin",
     "prettier",
     "prettier-webpack-plugin",
     "@iconscout/unicons",
