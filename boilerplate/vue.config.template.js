@@ -8,6 +8,7 @@ const argv = require('minimist')(process.argv.slice(2));
 // const glob = require('glob-all');
 
 // const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const JsonSassPlugin = require('@wurielle/json-sass-webpack-plugin');
 const PrettierPlugin = require("prettier-webpack-plugin");
 ${
@@ -83,7 +84,8 @@ module.exports = {
                     singleQuote: true,
                     trailingComma: 'all',
                     arrowParens: 'always',
-                }),,
+                }),
+            // new BundleAnalyzerPlugin(),
             // new PurgeCSSPlugin({
             //     paths: glob.sync([
             //         './templates/**/*.html.twig',
