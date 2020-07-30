@@ -5,9 +5,9 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const argv = require('minimist')(process.argv.slice(2));
-const glob = require('glob-all');
+// const glob = require('glob-all');
 
-const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+// const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const JsonSassPlugin = require('@wurielle/json-sass-webpack-plugin');
 const PrettierPlugin = require("prettier-webpack-plugin");
 ${
@@ -84,14 +84,14 @@ module.exports = {
                     trailingComma: 'all',
                     arrowParens: 'always',
                 }),,
-            new PurgeCSSPlugin({
-                paths: glob.sync([
-                    './templates/**/*.html.twig',
-                    './templates/**/*.stories.js',
-                    './src/**/*.vue',
-                    './src/**/*.stories.js',
-                ],  { nodir: true }),
-            }),
+            // new PurgeCSSPlugin({
+            //     paths: glob.sync([
+            //         './templates/**/*.html.twig',
+            //         './templates/**/*.stories.js',
+            //         './src/**/*.vue',
+            //         './src/**/*.stories.js',
+            //     ],  { nodir: true }),
+            // }),
             new webpack.DefinePlugin({
                 // 'ARGV_VAR': JSON.stringify(argv.ARGV_VAR.trim()),
                 // 'DOTENV_VAR': JSON.stringify(process.env.MY_VAR),
