@@ -1,5 +1,5 @@
 // @ts-ignore
-import uuid from 'uuid/v1';
+import {v1 as uuid} from 'uuid';
 /* uncomment if you're using twig files: https://github.com/twigjs/twig.js */
 // @ts-ignore
 import Twig from 'twig';
