@@ -101,7 +101,7 @@ module.exports = {
             new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
             ${project === 'vue-cli-symfony-4' ? `
             new ManifestPlugin({ fileName: 'manifest.json' }),
-            argv._[0].indexOf('storybook') > -1 || process.end.NODE_ENV === 'production' ? () => null :
+            argv._[0].indexOf('storybook') > -1 || process.env.NODE_ENV === 'production' ? () => null :
                 new BrowserSyncPlugin({
                     host: 'localhost',
                     port: 3000,
