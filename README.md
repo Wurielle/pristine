@@ -8,7 +8,7 @@ npm config set @wurielle:registry https://npm.pkg.github.com && npm install @wur
 
 Launch the setup:
 ```bash
-pristine install PROJECT_TYPE
+npx pristine install PROJECT_TYPE
 ```
 
 Available project types:  
