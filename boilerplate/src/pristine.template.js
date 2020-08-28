@@ -16,7 +16,7 @@ document.documentElement.style.setProperty(
 import '@config/pristine.config.js';
 
 /** Unicons: https://iconscout.com/unicons */
-import '@iconscout/unicons/css/unicons.css';
+import '@iconscout/unicons/css/line.css';
 
 /* Auto Imports */
 const srcContext = require.context(
