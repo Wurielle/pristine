@@ -49,6 +49,8 @@
     "voca",
     "numeral",
     "moment",
+    "color",
+    "color-hash",
     {
       "name": "alpinejs",
       "for": ["vue-cli-symfony-4"]
