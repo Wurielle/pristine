@@ -84,6 +84,7 @@ module.exports = {
                     singleQuote: true,
                     trailingComma: 'all',
                     arrowParens: 'always',
+                    endOfLine: 'auto',
                 }),
             // new BundleAnalyzerPlugin(),
             // new PurgeCSSPlugin({
