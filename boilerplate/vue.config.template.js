@@ -27,6 +27,9 @@ module.exports = {
     runtimeCompiler: true,
     outputDir: path.resolve(__dirname, "public/build/app/"),
     ` : ''}
+    css: {
+        extract: true
+    },
     chainWebpack: config => {
         // vue inspect --plugins
         ${
