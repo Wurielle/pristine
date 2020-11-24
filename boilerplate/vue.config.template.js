@@ -28,7 +28,7 @@ module.exports = {
     outputDir: path.resolve(__dirname, "public/build/app/"),
     ` : ''}
     css: {
-        extract: true
+        extract: !(argv._[0].indexOf('storybook') > -1)
     },
     chainWebpack: config => {
         // vue inspect --plugins
