@@ -157,6 +157,10 @@ class Install {
                     this.addCheckpoint(plugin);
                 }
             });
+            if (!this.hasCheckpoint('eslint')) {
+                execFileSync('node', [vueBin, 'add', 'eslint'], {interactive: true, autoSuffix: false});
+                this.addCheckpoint('eslint');
+            }
             this.addCheckpoint('installVueCLIPlugins');
         }
     }
