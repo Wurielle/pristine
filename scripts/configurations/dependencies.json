@@ -51,6 +51,7 @@
     "moment",
     "color",
     "color-hash",
+    "@ryanmorr/ready",
     {
       "name": "alpinejs",
       "for": ["vue-cli-symfony-4"]
