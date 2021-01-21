@@ -1,4 +1,4 @@
-import Ready from "@/utils/ready";
+import ready from "@ryanmorr/ready";
 import "objectFitPolyfill/dist/objectFitPolyfill.min.js";
 
 const selector = '[data-ref="objectFit"]';
@@ -8,7 +8,7 @@ const ObjectFit = (el = null) => {
 };
 
 (() => {
-  Ready.watch(selector, element => {
+  ready(selector, element => {
     if (
       element &&
       !element.parentNode.classList.contains("object-fit-polyfill")
