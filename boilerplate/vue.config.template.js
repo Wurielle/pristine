@@ -56,7 +56,8 @@ module.exports = {
                 return {
                     ...options,
                     name: \`img/[name].[hash:8].[ext]\`,
-                    limit: -1 // no limit
+                    limit: -1, // no limit
+                    esModule: false, // fixes a rare bug where hashes sometimes end up in manifest keys
                 };
             })
             .end();
