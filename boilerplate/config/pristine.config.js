@@ -9,7 +9,7 @@ const screens = {
 const pristineConfig = {
     screens,
     bootstrapBreakpoints: {
-        xs: 0,
+        min: 0,
         ...screens,
     },
     bootstrapMaxWidths: screens,
