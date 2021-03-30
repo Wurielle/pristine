@@ -52,6 +52,9 @@
     "color",
     "color-hash",
     "@ryanmorr/ready",
+    "object-fit-images",
+    "object-fit-videos",
+    "tippy.js",
     {
       "name": "alpinejs",
       "for": ["vue-cli-symfony-4"]
@@ -79,7 +82,7 @@
     }
   ],
   ".npmrc": [
-    "# //npm.pkg.github.com/:_authToken=GITHUB_PACKAGES_TOKEN",
+    "# //npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}",
     "@wurielle:registry=https://npm.pkg.github.com"
   ]
 }
