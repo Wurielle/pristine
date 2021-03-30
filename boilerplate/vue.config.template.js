@@ -15,7 +15,7 @@ ${
 project === 'vue-cli-app' ? `
 const pkg = require('./package.json');
 ` : project === 'vue-cli-symfony-4' ? `
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 ` : ``
 }
@@ -105,7 +105,7 @@ module.exports = {
             }),
             new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
             ${project === 'vue-cli-symfony-4' ? `
-            new ManifestPlugin({ fileName: 'manifest.json' }),
+            new WebpackManifestPlugin({ fileName: 'manifest.json' }),
             argv._[0].indexOf('storybook') > -1 || process.env.NODE_ENV === 'production' ? () => null :
                 new BrowserSyncPlugin({
                     host: 'localhost',
