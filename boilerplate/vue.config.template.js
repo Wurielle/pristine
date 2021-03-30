@@ -109,7 +109,7 @@ module.exports = {
             argv._[0].indexOf('storybook') > -1 || process.env.NODE_ENV === 'production' ? () => null :
                 new BrowserSyncPlugin({
                     host: 'localhost',
-                    port: 3000,
+                    port: process.env.BROWSERSYNC_PORT ? process.env.BROWSERSYNC_PORT : 3000,
                     proxy: process.env.BROWSERSYNC_PROXY ? process.env.BROWSERSYNC_PROXY : 'http://55.55.55.55/',
                     notify: false,
                     open: false,
