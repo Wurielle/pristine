@@ -55,9 +55,21 @@ module.exports = {
             .tap(options => {
                 return {
                     ...options,
-                    name: \`img/[name].[hash:8].[ext]\`,
+                    name: \`[path][name].[hash:8].[ext]\`,
                     limit: -1, // no limit
                     esModule: false, // fixes a rare bug where hashes sometimes end up in manifest keys
+                };
+            })
+            .end();
+        config.module.rule('videos')
+            .test(/\.(mp4|webm|ogg)(\?.*)?$/)
+            .use('file-loader')
+            .loader('file-loader')
+            .tap(options => {
+                return {
+                    ...options,
+                    name: `[path][name].[hash:8].[ext]`,
+                    limit: -1 // no limit
                 };
             })
             .end();
