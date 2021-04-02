@@ -68,7 +68,7 @@ module.exports = {
             .tap(options => {
                 return {
                     ...options,
-                    name: `[path][name].[hash:8].[ext]`,
+                    name: \`[path][name].[hash:8].[ext]\`,
                     limit: -1 // no limit
                 };
             })
