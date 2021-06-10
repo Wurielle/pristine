@@ -1,12 +1,8 @@
 const pristineConfig = require('./pristine.config');
-const enablePurge = process.env.NODE_ENV !== 'development';
 
 const tailwindConfig = {
-    prefix: '',
-    separator: ':',
-    important: false,
+    mode: 'jit',
     purge: {
-        enabled: enablePurge,
         content: [
             './templates/**/*.html.twig',
             './templates/**/*.stories.js',
@@ -19,11 +15,6 @@ const tailwindConfig = {
             ...pristineConfig
         },
     },
-    variants: {
-        extend: {},
-    },
-    corePlugins: {},
-    plugins: [],
 };
 
 module.exports = tailwindConfig;
