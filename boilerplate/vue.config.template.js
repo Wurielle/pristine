@@ -115,7 +115,7 @@ module.exports = {
                 // 'ARGV_VAR': JSON.stringify(argv.ARGV_VAR.trim()),
                 // 'DOTENV_VAR': JSON.stringify(process.env.MY_VAR),
             }),
-            new JsonSassPlugin('./config/pristine.config.js', './config/pristine.config.scss'),
+            new JsonSassPlugin('./pristine.config.js', './pristine.config.scss'),
             ${project === 'vue-cli-symfony-4' ? `
             new WebpackManifestPlugin({ fileName: 'manifest.json' }),
             argv._[0].indexOf('storybook') > -1 || process.env.NODE_ENV === 'production' ? () => null :

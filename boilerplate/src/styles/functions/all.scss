@@ -1,4 +1,4 @@
-@import "~@config/pristine.config.scss";
+@import "~@root/pristine.config.scss";
 
 @function map-deep-get($map, $keys...) {
     @each $key in $keys {
@@ -8,7 +8,7 @@
 }
 
 @function theme($keys...) {
-    $map: $pristine_config;
+    $map: map-get($pristine_config, tailwind);
     @each $key in $keys {
         $map: map-get($map, $key);
     }

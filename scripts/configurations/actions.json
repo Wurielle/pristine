@@ -1,103 +1,26 @@
 {
   "concatenate": [
     ".gitignore",
-    "README.md"
+    "README.md",
+    ".npmrc"
   ],
   "copy": {
-    "boilerplate/config/storybook/preview.js": "config/storybook/preview.js",
-    "boilerplate/config/pristine.config.js": "config/pristine.config.js",
-    "boilerplate/config/tailwind.config.js": "config/tailwind.config.js",
-    "boilerplate/config/pristine.config.scss": "config/pristine.config.scss",
-    "boilerplate/postcss.config.js": "postcss.config.js",
-    "boilerplate/src/polyfills": {
-      "default": "src/polyfills",
-      "vue-cli-symfony-4": "assets/app/polyfills"
-    },
-    "boilerplate/src/utils": {
-      "default": "src/utils",
-      "vue-cli-symfony-4": "assets/app/utils"
-    },
-    "boilerplate/src/styles": {
-      "default": "src/styles",
-      "vue-cli-symfony-4": "assets/app/styles"
-    },
-    "boilerplate/src/stories": {
-      "default": "src/stories",
-      "vue-cli-symfony-4": "assets/app/stories"
-    },
-    "boilerplate/tsconfig.json": {
-      "vue-cli-symfony-4": "tsconfig.json"
-    },
-    "boilerplate/dist_electron/dev-app-update.yml": {
-      "vue-cli-app": "dist_electron/dev-app-update.yml"
-    },
-    "boilerplate/src/.electron/main.ts": {
-      "vue-cli-app": "src/.electron/main.ts"
-    },
-    "boilerplate/src/.electron/renderer.ts": {
-      "vue-cli-app": "src/.electron/renderer.ts"
-    },
-    "boilerplate/src/modules/platform.ts": {
-      "vue-cli-app": "src/modules/platform.ts"
-    }
+    "boilerplate": "/"
   },
   "generate": {
-    "boilerplate/vue.config.template.js": "vue.config.js",
-    "boilerplate/src/pristine.template.js": {
-      "default": "src/pristine.ts",
-      "vue-cli-symfony-4": "assets/app/pristine.ts"
-    },
-    "boilerplate/config/storybook/main.template.js": "config/storybook/main.js"
+    "vue.config.template.js": "vue.config.js",
+    "src/.pristine/imports.template.js": "src/.pristine/imports.js",
+    "config/storybook/main.template.js": "config/storybook/main.js"
   },
   "move": {
-    "src/assets": {
-      "vue-cli-symfony-4": "assets/app/assets"
-    },
-    "src/components": {
-      "vue-cli-symfony-4": "assets/app/components"
-    },
-    "src/plugins": {
-      "vue-cli-symfony-4": "assets/app/plugins"
-    },
-    "src/store": {
-      "vue-cli-symfony-4": "assets/app/store"
-    },
-    "src/stories": {
-      "vue-cli-symfony-4": "assets/app/stories"
-    },
-    "src/styles": {
-      "vue-cli-symfony-4": "assets/app/styles"
-    },
-    "src/views": {
-      "vue-cli-symfony-4": "assets/app/views"
-    },
-    "src/App.vue": {
-      "vue-cli-symfony-4": "assets/app/App.vue"
-    },
-    "src/main.ts": {
-      "vue-cli-symfony-4": "assets/app/main.ts"
-    },
-    "src/shims-tsx.d.ts": {
-      "vue-cli-symfony-4": "assets/app/shims-tsx.d.ts"
-    },
-    "src/shims-vue.d.ts": {
-      "vue-cli-symfony-4": "assets/app/shims-vue.d.ts"
-    },
-    "src/store.ts": {
-      "vue-cli-symfony-4": "assets/app/store.ts"
-    },
-    "src/router/index.ts": {
-      "vue-cli-symfony-4": "assets/app/router/index.ts"
-    },
-    "src/element-variables.scss": {
-      "vue-cli-symfony-4": "assets/app/element-variables.scss"
-    },
-    "src/registerServiceWorker.ts": {
-      "default": "src/registerServiceWorker.ts",
-      "vue-cli-symfony-4": "assets/app/registerServiceWorker.ts"
+    "src": {
+      "vue-cli-symfony-4": "assets/app/"
     }
   },
   "remove": {
+    "vue.config.template.js": "*",
+    "src/.pristine/imports.template.js": "*",
+    "config/storybook/main.template.js": "*",
     "public/index.html": [
       "vue-cli-symfony-4"
     ],
@@ -109,9 +32,6 @@
     "update:packages": "npm update --save/--save-dev",
     "serve": {
       "vue-cli-symfony-4": "vue-cli-service build-watch --mode development"
-    },
-    "electron:build:publish": {
-      "vue-cli-app": "vue-cli-service electron:build -p always"
     }
   }
 }

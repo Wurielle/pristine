@@ -1,4 +1,4 @@
-const pristineConfig = require('./pristine.config');
+const pristine = require('./pristine.config');
 
 const tailwindConfig = {
     mode: 'jit',
@@ -12,9 +12,14 @@ const tailwindConfig = {
     },
     theme: {
         extend: {
-            ...pristineConfig
+            ...pristine.tailwind
         },
     },
+    variants: {
+        extend: {},
+    },
+    corePlugins: {},
+    plugins: [],
 };
 
 module.exports = tailwindConfig;
