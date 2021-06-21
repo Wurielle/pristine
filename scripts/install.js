@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const {pristinePath, pristineStatePath, defaultPristineState, cwd, cwdParsed, project, getJSONSync} = require('./utils/process');
+const {pristinePath, pristineStatePath, defaultPristineState, cwd, cwdParsed, project, getJSONSync, installCwd} = require('./utils/process');
 const {shell, npmAddScript, vueBin} = require('./utils/modules');
 const {execFileSync, echo, cd, copy, move, rm, writeFileSync, generate, commit, backup, concatenate} = require('./utils/commands');
 echo('Installing Pristine Locally');
@@ -51,7 +51,7 @@ class Install {
                 let data = fs.readFileSync(gitIgnorePath, 'utf8');
                 if (data.indexOf('node_modules') < 0) {
                     data += '\n' + 'node_modules';
-                    fs.writeFileSync(gitIgnorePath, data);
+                    writeFileSync(gitIgnorePath, data);
                 }
             } catch (err) {
                 throw err;
@@ -79,14 +79,14 @@ class Install {
             try {
                 const data = fs.readFileSync(npmrcFile, 'utf8');
                 const content = this.getNPMRCContent(npmrcScopes, data);
-                return fs.writeFileSync(npmrcFile, content);
+                return writeFileSync(npmrcFile, content);
             } catch (err) {
                 throw err;
             }
         }
         try {
             const content = this.getNPMRCContent(npmrcScopes);
-            return fs.writeFileSync(npmrcFile, content);
+            return writeFileSync(npmrcFile, content);
         } catch (err) {
             throw err;
         }
@@ -116,8 +116,8 @@ class Install {
     generateVueConfig() {
         if (!this.hasCheckpoint('generateVueConfig')) {
             echo('Creating Vue Config File');
-            cd(cwd);
-            writeFileSync(path.join(cwd, 'vue.config.js'), `
+            cd(installCwd);
+            writeFileSync(path.join(installCwd, 'vue.config.js'), `
                 module.exports = {
                     lintOnSave: false,
                 }
@@ -129,8 +129,8 @@ class Install {
     createVueCLIProject() {
         if (!this.hasCheckpoint('createVueCLIProject')) {
             echo('Creating a Vue CLI Project');
-            cd(path.resolve(cwd, '../'));
-            execFileSync('node', [vueBin, 'create', cwdParsed.name], {interactive: true, autoSuffix: false});
+            cd(path.resolve(installCwd, '../'));
+            execFileSync('node', [vueBin, 'create', 'pristine', '--packageManager=npm'], {interactive: true, autoSuffix: false});
             this.addCheckpoint('createVueCLIProject');
         }
     }
@@ -138,7 +138,7 @@ class Install {
     installVueCLIPlugins() {
         if (!this.hasCheckpoint('installVueCLIPlugins')) {
             echo('Adding Vue CLI Plugins');
-            cd(cwd);
+            cd(installCwd);
             let vueCliPlugins = [];
             if (commonDependencies) {
                 const vueCliPluginsGlobal = commonDependencies['vue-cli-plugins'];
@@ -153,11 +153,13 @@ class Install {
             }
             vueCliPlugins.forEach(plugin => {
                 if (!this.hasCheckpoint(plugin)) {
+                    cd(installCwd);
                     execFileSync('node', [vueBin, 'add', plugin], {interactive: true, autoSuffix: false});
                     this.addCheckpoint(plugin);
                 }
             });
             if (!this.hasCheckpoint('eslint')) {
+                cd(installCwd);
                 execFileSync('node', [vueBin, 'add', 'eslint'], {interactive: true, autoSuffix: false});
                 this.addCheckpoint('eslint');
             }
@@ -168,7 +170,7 @@ class Install {
     installDependencies() {
         if (!this.hasCheckpoint('installDependencies')) {
             echo('Adding Dependencies');
-            cd(cwd);
+            cd(installCwd);
             let runtimeDependencies = [];
             let devDependencies = [];
             if (commonDependencies) {
@@ -202,20 +204,22 @@ class Install {
             echo('Copying Necessary Files');
             cd(cwd);
             if (commonActions) {
-                if (commonActions.move) {
-                    move(commonActions.move, cwd, cwd);
-                }
+                shell.rm('-rf', path.join(installCwd, 'node_modules'));
                 if (commonActions.copy) {
-                    copy(commonActions.copy, pristinePath, cwd);
+                    copy(commonActions.copy, pristinePath, installCwd);
                 }
                 if (commonActions.generate) {
-                    generate(commonActions.generate, pristinePath, cwd);
-                }
-                if (commonActions.remove) {
-                    rm(commonActions.remove, cwd);
+                    generate(commonActions.generate, installCwd, installCwd);
                 }
                 if (commonActions.concatenate) {
-                    concatenate(commonActions.concatenate);
+                    concatenate(commonActions.concatenate, installCwd, cwd);
+                }
+                if (commonActions.move) {
+                    move(commonActions.move, installCwd, cwd);
+                }
+                shell.cp('-R', path.join(path.resolve(installCwd), '*'), path.resolve(cwd));
+                if (commonActions.remove) {
+                    rm(commonActions.remove, cwd);
                 }
             }
             this.addCheckpoint('executeActions');
@@ -260,7 +264,7 @@ class Install {
     addCheckpoint(checkpointName) {
         cd(cwd);
         pristineState.checkpoints.push(checkpointName);
-        fs.writeFileSync(pristineStatePath, JSON.stringify(pristineState));
+        writeFileSync(pristineStatePath, JSON.stringify(pristineState));
         commit('build: Pristine - Checkpoint (' + checkpointName + ')');
     }
 }

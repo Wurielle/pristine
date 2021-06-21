@@ -13,6 +13,7 @@ if (!project) {
 }
 
 const cwd = process.cwd();
+const installCwd = path.join(process.cwd(), 'pristine');
 const pristinePath = path.resolve(cwd, '.pristine/temp/lib');
 const cwdParsed = path.parse(cwd);
 
@@ -26,6 +27,6 @@ const getJSONSync = (path, defaultReturn = null) => {
 const defaultPristineState = {
     checkpoints: [],
 };
-const pristineStatePath = path.join(cwd, '.pristine.json');
+const pristineStatePath = path.join(cwd, 'pristine.temp.json');
 
-module.exports = { pristinePath, cwd, cwdParsed, defaultPristineState, pristineStatePath, action, project, getJSONSync };
+module.exports = { pristinePath, cwd, cwdParsed, defaultPristineState, pristineStatePath, action, project, getJSONSync, installCwd };

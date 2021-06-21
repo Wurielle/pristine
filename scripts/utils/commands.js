@@ -91,6 +91,8 @@ const cd = (path) => {
 };
 
 const writeFileSync = (destination, content) => {
+    const dirname = path.dirname(destination);
+    mkdir(dirname);
     return fs.writeFileSync(destination, content);
 }
 
@@ -159,13 +161,13 @@ const rm = (files) => {
     });
 };
 
-const concatenate = (files) => {
+const concatenate = (files, from, to) => {
     files.forEach(target => {
-        let completeFrom = path.resolve(cwd, target);
-        let completeTemp = path.resolve(backupDir, target);
+        let completeFrom = path.resolve(from, target);
+        let completeTo = path.resolve(to, target);
         if (fs.existsSync(completeFrom)) {
-            let currentContent = fs.readFileSync(completeFrom, 'utf8');
-            let previousContent = fs.readFileSync(completeTemp, 'utf8');
+            let currentContent = fs.existsSync(completeFrom) ? fs.readFileSync(completeFrom, 'utf8') : '';
+            let previousContent = fs.existsSync(completeTo) ? fs.readFileSync(completeTo, 'utf8') : '';
             if (currentContent !== previousContent) {
                 const newContent = previousContent + '\n' + currentContent;
                 writeFileSync(completeFrom, newContent);
