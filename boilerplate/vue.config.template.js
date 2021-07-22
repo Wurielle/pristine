@@ -62,7 +62,7 @@ module.exports = {
             })
             .end();
         config.module.rule('videos')
-            .test(/\.(mp4|webm|ogg)(\?.*)?$/)
+            .test(/\.(mp4|webm|ogg)(\\?.*)?$/)
             .use('file-loader')
             .loader('file-loader')
             .tap(options => {
