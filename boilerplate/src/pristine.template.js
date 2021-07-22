@@ -22,7 +22,7 @@ import '@iconscout/unicons/css/line.css';
 const srcContext = require.context(
     '@',
     true,
-    /\.(runtime|asset|style)\.(.*?)$/,
+    /\\.(runtime|asset|style)\\.(.*?)$/,
 );
 srcContext.keys().forEach(srcContext);
 
@@ -30,7 +30,7 @@ ${project === 'vue-cli-symfony-4' ? `
 const templatesContext = require.context(
     '@root/templates',
     true,
-    /\.(runtime|asset|style)\.(.*?)$/,
+    /\\.(runtime|asset|style)\\.(.*?)$/,
 );
 templatesContext.keys().forEach(templatesContext);
 ` : ''}
